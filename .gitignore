@@ -9,9 +9,8 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
-/[Aa]ssets/[Ss]imulator/
 /[Aa]ssets/[Ss]cripts/[Pp]lugins/
-
+/[Aa]ssets/[Ss]imulator/[Mm]odels/
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
