@@ -12,10 +12,7 @@ public class RandomTitleScreen : MonoBehaviour
     {
         this.GetComponent<RawImage>().texture = characters[Random.Range(0, characters.Length)];
         Destroy(this.GetComponent<RandomTitleScreen>());
-        if (GameVersion.gameName != "Faz-Anim")
-        {
-            Destroy(this.gameObject);
-        }
+
     }
 
 }

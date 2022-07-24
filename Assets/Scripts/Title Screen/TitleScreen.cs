@@ -31,8 +31,6 @@ public class TitleScreen : MonoBehaviour
     public GameObject downButton;
 
     public GameObject showtimeButton;
-    public GameObject logo;
-    public GameObject logoTwo;
 
     public Button charcustomBtn;
     public Button editorBtn;
@@ -65,7 +63,11 @@ public class TitleScreen : MonoBehaviour
         {
             if (PlayerPrefs.GetInt("Tutorial Save 0") != 0 || GameVersion.gameName != "Faz-Anim")
             {
-                charcustomBtn.interactable = true;
+                if(charcustomBtn != null)
+                {
+                    charcustomBtn.interactable = true;
+                }
+
                 editorBtn.interactable = true;
                 sandboxBtn.interactable = true;
             }
@@ -126,14 +128,6 @@ public class TitleScreen : MonoBehaviour
         }
         if (!stopUpdate)
         {
-            if (GameVersion.gameName == "Faz-Anim")
-            {
-                Destroy(logoTwo);
-            }
-            else
-            {
-                Destroy(logo);
-            }
             if (barUp)
             {
                 settingG.alpha += .1f;
@@ -288,15 +282,14 @@ public class TitleScreen : MonoBehaviour
             sc.clip = (AudioClip)Resources.Load("tap");
             sc.pitch = UnityEngine.Random.Range(0.95f, 1.05f);
             sc.Play();
-            if (PlayerPrefs.GetInt("Intro: TutorialA") == 0)
+            if (GameVersion.gameName == "Faz-Anim")
             {
-                ////////////////////////////////////////////////SceneManager.LoadScene("Tutorial", LoadSceneMode.Single);
                 sceneLoadCache = "Title Screen";
                 fadeWhichWay = true;
             }
             else
             {
-                sceneLoadCache = "Title Screen";
+                sceneLoadCache = "Title RR";
                 fadeWhichWay = true;
             }
         }

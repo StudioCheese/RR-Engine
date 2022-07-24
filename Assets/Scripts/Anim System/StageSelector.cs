@@ -77,7 +77,19 @@ public class CharacterPos
 [System.Serializable]
 public class ShowTV
 {
+    public tvSetting tvSettings;
+    public enum tvSetting
+    {
+        offOnly,
+        onOnly,
+        offOn,
+        none,
+    }
+    public bool onWhenCurtain;
     public bool drawer;
     public int bitOff;
-    public VideoPlayer[] tvs;
+    public int bitOn;
+    public MeshRenderer[] tvs;
+    [HideInInspector]
+    public int curtainSubState;
 }

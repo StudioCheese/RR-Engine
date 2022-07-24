@@ -1,6 +1,6 @@
 public static class GameVersion
 {
-    public const string gameName = "Faz-Anim";
-    public const string gameVersion = "1.50";
-    public const string isVR = "false";
+    public const string gameName = "Reel to Real";
+    public const string gameVersion = "1.58";
+    public const string isVR = "true";
 }

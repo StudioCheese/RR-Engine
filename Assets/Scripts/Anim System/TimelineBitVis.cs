@@ -10,6 +10,8 @@ public class TimelineBitVis : MonoBehaviour
     public GameObject bitPrefab;
     public GameObject holderPrefab;
     public GameObject[] holder;
+
+    public Color32[] colors;
     int maximumHolders = 10;
 
     public void RepaintBitGroups()
@@ -52,6 +54,7 @@ public class TimelineBitVis : MonoBehaviour
                 holder[i].transform.Find("Bit Header").Find("Name").GetComponent<Text>().text = "(" + temper + ") " + timelineEditor.windowMaker.SearchBitChartName(timelineEditor.tlRecordGroup[i + timelineEditor.holderOffset].bit);
                 holder[i].GetComponent<TimelineScreen>().rCBitBarNumber = i;
                 holder[i] = holder[i].transform.Find("Holder").gameObject;
+
             }
         }
         uiShowtapeManager.inputHandler.editorKeys.inputNames = temp.ToArray();
@@ -74,8 +77,8 @@ public class TimelineBitVis : MonoBehaviour
                 }
             }
         }
-        int bitStart = Mathf.RoundToInt(viewzoomMin * 60.0f);
-        int bitsRepresented = Mathf.RoundToInt((viewZoomMax - viewzoomMin) * 60.0f);
+        int bitStart = Mathf.RoundToInt(viewzoomMin * uiShowtapeManager.dataStreamedFPS);
+        int bitsRepresented = Mathf.RoundToInt((viewZoomMax - viewzoomMin) * uiShowtapeManager.dataStreamedFPS);
 
         int secondIndex = 0;
         //Loop all frames in view
@@ -121,8 +124,10 @@ public class TimelineBitVis : MonoBehaviour
         {
             timelineEditor.tlRecordGroup[recGroupIndex + timelineEditor.holderOffset].currentBit = GameObject.Instantiate(bitPrefab, holder[recGroupIndex].transform);
             timelineEditor.tlRecordGroup[recGroupIndex + timelineEditor.holderOffset].currentBit.SetActive(true);
+            timelineEditor.tlRecordGroup[recGroupIndex + timelineEditor.holderOffset].currentBit.GetComponent<Image>().color = colors[timelineEditor.windowMaker.SearchBitChartGroupID(timelineEditor.tlRecordGroup[recGroupIndex + timelineEditor.holderOffset].bit)];
+
             RectTransform rect = timelineEditor.tlRecordGroup[recGroupIndex + timelineEditor.holderOffset].currentBit.transform as RectTransform;
-            rect.position = new Vector3((remap(viewzoomMin + (secondIndex / 60.0f), viewzoomMin, viewZoomMax, 0, 1) * (Screen.width)), rect.position.y, 0);
+            rect.position = new Vector3((remap(viewzoomMin + (secondIndex / uiShowtapeManager.dataStreamedFPS), viewzoomMin, viewZoomMax, 0, 1) * (Screen.width)), rect.position.y, 0);
             rect.sizeDelta = new Vector2(rect.sizeDelta.x + ((Screen.width * (1080.0f / Screen.height)) / ((viewZoomMax - viewzoomMin) * uiShowtapeManager.dataStreamedFPS)), rect.sizeDelta.y);
             timelineEditor.tlRecordGroup[recGroupIndex + timelineEditor.holderOffset].checkedObject = true;
         }

@@ -492,10 +492,79 @@ public class UI_SidePanel : MonoBehaviour
                             default:
                                 break;
                         }
-                        if (thetest.name == thefile.characters[i].name)
+
+                        //HORRIBLE oversight for flows, gotta redo this
+                        string finalname = thetest.transform.parent.name;
+                        finalname = finalname.Replace("(Clone)", "").Trim();
+                        switch (finalname)
+                        {
+                            case "3-Stage Building":
+                                finalname = "Building";
+                                break;
+                            case "3-Stage Chuck":
+                                finalname = "Chuck E. Cheese";
+                                break;
+                            case "3-Stage Helen":
+                                finalname = "Helen Henny";
+                                break;
+                            case "3-Stage Jasper":
+                                finalname = "Jasper T. Jowls";
+                                break;
+                            case "3-Stage Munch":
+                                finalname = "Mr. Munch";
+                                break;
+                            case "3-Stage Pasqually":
+                                finalname = "Pasqually";
+                                break;
+                            case "3-Stage Pizzacam":
+                                finalname = "Pizza Cam";
+                                break;
+                            case "3-Stage Unused Mech":
+                                finalname = "Unused Mech";
+                                break;
+                            case "3-Stage Wink":
+                                finalname = "Wink";
+                                break;
+                            case "Cyberamic Chuck":
+                                finalname = "Chuck E Cheese";
+                                break;
+                            case "Cyberamic Flag Wavers":
+                                finalname = "Flags";
+                                break;
+                            case "Cyberamic Guest":
+                                finalname = "Guest";
+                                break;
+                            case "Cyberamic Jasper":
+                                finalname = "Jasper T Jowls";
+                                break;
+                            case "Cyberamic Munch":
+                                finalname = "Munch";
+                                break;
+                            case "Cyberamic Pasqually":
+                                finalname = "Pasqually";
+                                break;
+                            case "Cyberamic Warblettes":
+                                finalname = "Warblettes";
+                                break;
+                            case "Studio C Chuck":
+                                finalname = "Chuck E Cheese";
+                                break;
+                            case "Uncle Pappy":
+                                finalname = "Uncle Pappy";
+                                break;
+                            default:
+                                break;
+                        }
+
+
+                        if (finalname == thefile.characters[i].name)
                         {
                             theCharacter = thetest;
                             Debug.Log("Flows: Character found: " + thefile.characters[i].name);
+                        }
+                        else
+                        {
+                            Debug.Log("Flows: Error: " + finalname  + "!=" + thefile.characters[i].name);
                         }
                     }
                     if (theCharacter != null)

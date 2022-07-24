@@ -39,22 +39,22 @@ public class Curtain_Valves : MonoBehaviour
         curtainbools = new bool[characterValves.layerCount];
     }
 
-    public void CreateMovements(float num3)
+    public void CreateMovements(float num3, bool reverse)
     {
         //Loop through cylinders to update
         for (int i = 0; i < cylindersTop.Count; i++)
         {
             //Get current animation value
-            SetTime("T", cylindersTop[i], bitChart.topDrawer, i, num3);
+            SetTime("T", cylindersTop[i], bitChart.topDrawer, i, num3,reverse);
         }
         for (int i = 0; i < cylindersBottom.Count; i++)
         {
             //Get current animation value
-            SetTime("B", cylindersBottom[i], bitChart.bottomDrawer, i, num3);
+            SetTime("B", cylindersBottom[i], bitChart.bottomDrawer, i, num3, reverse);
         }
     }
 
-    void SetTime(string drawername, int currentAnim, bool[] drawer, int lasti, float num3)
+    void SetTime(string drawername, int currentAnim, bool[] drawer, int lasti, float num3, bool reverse)
     {
         //Cycle through parameters to find matching code
         for (int e = 0; e < characterValves.parameters.Length; e++)
@@ -67,11 +67,17 @@ public class Curtain_Valves : MonoBehaviour
                 //Check if animation is already done
                 if (!curtainOverride)
                 {
-                    if (nextTime == 0 && !drawer[currentAnim - 1])
+                    bool check = drawer[currentAnim - 1];
+                    if(reverse)
+                    {
+                        check = !check;
+                    }
+
+                    if (nextTime == 0 && !check)
                     {
                         break;
                     }
-                    if (nextTime == 1 && drawer[currentAnim - 1])
+                    if (nextTime == 1 && check)
                     {
                         break;
                     }
@@ -80,12 +86,29 @@ public class Curtain_Valves : MonoBehaviour
                 //Set bool
                 if (drawer[currentAnim - 1])
                 {
-                    curtainbools[lasti] = true;
+                    if(reverse)
+                    {
+                        curtainbools[lasti] = false;
+                    }
+                    else
+                    {
+                        curtainbools[lasti] = true;
+                    }
+                   
                 }
                 else if (drawer[currentAnim + 1 - 1])
                 {
-                    curtainbools[lasti] = false;
+                    if (reverse)
+                    {
+                        curtainbools[lasti] = true;
+                    }
+                    else
+                    {
+                        curtainbools[lasti] = false;
+                    }
+                    
                 }
+
                 //Set Curtain
                 if (!curtainOverride)
                 {

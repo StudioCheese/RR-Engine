@@ -30,7 +30,7 @@ public class UI_ShowtapeManager : MonoBehaviour
     public string fileExtention = "rshw";
     public string[] showtapeSegmentPaths = new string[1];
     public int currentShowtapeSegment = -1;
-    public int dataStreamedFPS = 60;
+    public float dataStreamedFPS = 60;
     [Space(20)]
 
     //Events
@@ -82,13 +82,13 @@ public class UI_ShowtapeManager : MonoBehaviour
             syncTvsAndSpeakers.Invoke();
         }
 
-        if(inputHandler != null)
+        if (inputHandler != null)
         {
-        InputDataObj inputDataObj = inputHandler.InputCheck();
+            InputDataObj inputDataObj = inputHandler.InputCheck();
 
-        //Clear Drawers
-        mack.topDrawer = inputDataObj.topDrawer;
-        mack.bottomDrawer = inputDataObj.bottomDrawer;
+            //Clear Drawers
+            mack.topDrawer = inputDataObj.topDrawer;
+            mack.bottomDrawer = inputDataObj.bottomDrawer;
 
             //Check for inputs and send to mack valves
             if (inputHandler != null && mack != null && referenceSpeaker.clip != null)
@@ -223,7 +223,7 @@ public class UI_ShowtapeManager : MonoBehaviour
                     }
 
                     //Check if show is over
-                    if (referenceSpeaker.time >= referenceSpeaker.clip.length)
+                    if (referenceSpeaker.time >= (referenceSpeaker.clip.length / referenceSpeaker.clip.channels))
                     {
                         if (isRandomPlaybackOn)
                         {
@@ -521,6 +521,45 @@ public class UI_ShowtapeManager : MonoBehaviour
         }
     }
 
+    public void PadAllBits(int padding)
+    {
+        if (rshwData != null)
+        {
+            int address = (int)(referenceSpeaker.time * dataStreamedFPS);
+
+            if (padding > 0)
+            {
+                //Create new space
+                for (int i = 0; i < padding; i++)
+                {
+                    rshwData = rshwData.Append(new BitArray(300)).ToArray();
+                }
+
+                int track = rshwData.Length;
+                while (track > address)
+                {
+                    if (track + padding < rshwData.Length)
+                    {
+                        rshwData[track + padding] = (rshwData[track]);
+                    }
+                    track--;
+                }
+            }
+            else
+            {
+                while (address < rshwData.Length)
+                {
+                    if (address + padding > 0)
+                    {
+                        rshwData[address + padding] = (rshwData[address]);
+                    }
+                    address++;
+                }
+            }
+            
+        }
+    }
+
     public enum addWavResult
     {
         none,
@@ -757,11 +796,11 @@ public class UI_ShowtapeManager : MonoBehaviour
             yield return null;
             if (recordMovements)
             {
-                Debug.Log("Recording Showtape: " + url + " (Length: " + ((float)countlength / 60.0f) + ")");
+                Debug.Log("Recording Showtape: " + url + " (Length: " + ((float)countlength / dataStreamedFPS) + ")");
             }
             else
             {
-                Debug.Log("Playing Showtape: " + url + " (Length: " + ((float)countlength / 60.0f) + ")");
+                Debug.Log("Playing Showtape: " + url + " (Length: " + ((float)countlength / dataStreamedFPS) + ")");
             }
             yield return null;
             timeSongStarted = Time.time;
@@ -840,7 +879,7 @@ public class UI_ShowtapeManager : MonoBehaviour
             string[] exts = new string[] { };
             if (GameVersion.gameName == "Faz-Anim")
             {
-                exts = new string[] { "*.fshw", "*.tshw" , "*.mshw"};
+                exts = new string[] { "*.fshw", "*.tshw", "*.mshw" };
             }
             else
             {

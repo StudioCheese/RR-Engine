@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using System;
 using System.Collections;
 using UnityEngine.Events;
+using UnityEngine.Video;
 
 public class UI_PlayRecord : MonoBehaviour
 {
@@ -37,6 +38,7 @@ public class UI_PlayRecord : MonoBehaviour
     public Text AddSource;
     public Text Uncompress;
     public Text ticketText;
+    VideoPlayer videoplayer;
     [Space(20)]
 
     //Show Data
@@ -68,6 +70,7 @@ public class UI_PlayRecord : MonoBehaviour
         inputHandlercomp = mackValves.GetComponent<InputHandler>();
         mack = mackValves.GetComponent<Mack_Valves>();
         manager.inputHandler = inputHandlercomp;
+        videoplayer = this.GetComponent<VideoPlayer>();
 
         //Start up stages
         for (int i = 0; i < stages.Length; i++)
@@ -87,7 +90,7 @@ public class UI_PlayRecord : MonoBehaviour
         //Advances the tutorial if it is active
         if (manager.recordMovements && manager.referenceSpeaker.clip != null)
         {
-            if (manager.referenceSpeaker.time >= manager.referenceSpeaker.clip.length)
+            if (manager.referenceSpeaker.time >= (manager.referenceSpeaker.clip.length / manager.referenceSpeaker.clip.channels))
             {
                 GameObject tt = GameObject.Find("Tutorial");
                 if (tt != null)
@@ -140,7 +143,15 @@ public class UI_PlayRecord : MonoBehaviour
         //Update Curtains
         if (stages[currentStage].curtainValves != null)
         {
-            stages[currentStage].curtainValves.CreateMovements(Time.deltaTime * 60);
+            if (manager.referenceSpeaker.pitch < 0)
+            {
+                stages[currentStage].curtainValves.CreateMovements(Time.deltaTime * 60,true);
+            }
+            else
+            {
+                stages[currentStage].curtainValves.CreateMovements(Time.deltaTime * 60,false);
+            }
+          
         }
 
         //Update Turntables
@@ -160,32 +171,114 @@ public class UI_PlayRecord : MonoBehaviour
         {
             for (int i = 0; i < stages[currentStage].tvs.Length; i++)
             {
-                bool onoff = false;
+                bool bitOff = false;
+                bool bitOn = false;
                 if (stages[currentStage].tvs[i].drawer)
                 {
                     if (mack.bottomDrawer[stages[currentStage].tvs[i].bitOff])
                     {
-                        onoff = true;
+                        bitOff = true;
+                    }
+                    if (mack.bottomDrawer[stages[currentStage].tvs[i].bitOn])
+                    {
+                        bitOn = true;
                     }
                 }
                 else
                 {
                     if (mack.topDrawer[stages[currentStage].tvs[i].bitOff])
                     {
-                        onoff = true;
+                        bitOff = true;
+                    }
+                    if (mack.topDrawer[stages[currentStage].tvs[i].bitOn])
+                    {
+                        bitOn = true;
                     }
                 }
 
 
                 for (int e = 0; e < stages[currentStage].tvs[i].tvs.Length; e++)
                 {
-                    if (onoff)
+                    //Curtain check
+                    if (stages[currentStage].tvs[i].onWhenCurtain)
                     {
-                        stages[currentStage].tvs[i].tvs[e].gameObject.GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.black);
+                        //0 = Off First Frame
+                        //1 = Off
+                        //2 = On First Frame
+                        //3 = On
+
+
+                        //If Force Curtain
+                        if (stages[currentStage].curtainValves.curtainOverride && stages[currentStage].tvs[i].curtainSubState == 1)
+                        {
+                            stages[currentStage].tvs[i].curtainSubState = 2;
+                        }
+                        if (!stages[currentStage].curtainValves.curtainOverride && stages[currentStage].tvs[i].curtainSubState == 3)
+                        {
+                            stages[currentStage].tvs[i].curtainSubState = 0;
+                        }
+
+
+
+                        //Apply
+                        if (stages[currentStage].tvs[i].curtainSubState == 0)
+                        {
+                            stages[currentStage].tvs[i].tvs[e].material.SetColor("_BaseColor", Color.black);
+                            stages[currentStage].tvs[i].curtainSubState = 1;
+                        }
+                        else if (stages[currentStage].tvs[i].curtainSubState == 2)
+                        {
+                            stages[currentStage].tvs[i].tvs[e].material.SetColor("_BaseColor", Color.black);
+                            stages[currentStage].tvs[i].curtainSubState = 3;
+                        }
+                       
                     }
-                    else
+                    switch (stages[currentStage].tvs[i].tvSettings)
                     {
-                        stages[currentStage].tvs[i].tvs[e].gameObject.GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.white);
+
+                        case ShowTV.tvSetting.offOnly:
+                            break;
+                            if (bitOff)
+                            {
+                                stages[currentStage].tvs[i].tvs[e].material.SetColor("_BaseColor", Color.black);
+                            }
+                            else
+                            {
+                                stages[currentStage].tvs[i].tvs[e].material.SetColor("_BaseColor", Color.white);
+                            }
+                        case ShowTV.tvSetting.onOnly:
+                            if (!bitOn)
+                            {
+                                stages[currentStage].tvs[i].tvs[e].material.SetColor("_BaseColor", Color.black);
+                            }
+                            else
+                            {
+                                stages[currentStage].tvs[i].tvs[e].material.SetColor("_BaseColor", Color.white);
+                            }
+                            break;
+                        case ShowTV.tvSetting.offOn:
+                            //Reversed time curtain bits
+                            if (stages[currentStage].tvs[i].onWhenCurtain && manager.referenceSpeaker.pitch < 0)
+                            {
+                                bool temp;
+                                temp = bitOff;
+                                bitOff = bitOn;
+                                bitOn = temp;
+                            }
+                            if (bitOff)
+                            {
+                                stages[currentStage].tvs[i].tvs[e].material.SetColor("_BaseColor", Color.black);
+                            }
+                            if (bitOn)
+                            {
+                                stages[currentStage].tvs[i].tvs[e].material.SetColor("_BaseColor", Color.white);
+                            }
+                            break;
+                        case ShowTV.tvSetting.none:
+                            stages[currentStage].tvs[i].tvs[e].material.SetColor("_BaseColor", Color.white);
+                            break;
+                        default:
+                            break;
                     }
                 }
             }
@@ -483,7 +576,7 @@ public class UI_PlayRecord : MonoBehaviour
                             newChar.name = characters[e].characterName;
                             newChar.transform.parent = characterHolder.transform;
                             newChar.transform.localPosition = stages[currentStage].stageCharacters[i].characterPos + characters[e].allCostumes[characters[e].currentCostume].offsetPos;
-                            newChar.transform.rotation = Quaternion.Euler(stages[currentStage].stageCharacters[i].characterRot);
+                            newChar.transform.localRotation = Quaternion.Euler(stages[currentStage].stageCharacters[i].characterRot);
                             newChar.transform.GetChild(0).GetComponent<Character_Valves>().mackValves = mackValves;
                             newChar.transform.GetChild(0).GetComponent<Character_Valves>().StartUp();
                             g++;
@@ -537,7 +630,7 @@ public class UI_PlayRecord : MonoBehaviour
                             newChar.transform.parent = characterHolder.transform;
                             newChar.transform.GetChild(0).GetComponent<Character_Valves>().mackValves = mackValves;
                             newChar.transform.localPosition = stages[currentStage].stageCharacters[g].characterPos;
-                            newChar.transform.rotation = Quaternion.Euler(stages[currentStage].stageCharacters[g].characterRot);
+                            newChar.transform.localRotation = Quaternion.Euler(stages[currentStage].stageCharacters[g].characterRot);
                             newChar.transform.GetChild(0).GetComponent<Character_Valves>().StartUp();
                             //Delete other costumes
                             foreach (Transform mesh in newChar.transform.GetChild(0).transform)
@@ -655,15 +748,9 @@ public class UI_PlayRecord : MonoBehaviour
         }
         if (manager.videoPath != "")
         {
-            for (int i = 0; i < stages[currentStage].tvs.Length; i++)
-            {
-                for (int e = 0; e < stages[currentStage].tvs[i].tvs.Length; e++)
-                {
-                    stages[currentStage].tvs[i].tvs[e].url = manager.videoPath;
-                    stages[currentStage].tvs[i].tvs[e].Play();
-                    stages[currentStage].tvs[i].tvs[e].Pause();
-                }
-            }
+            videoplayer.url = manager.videoPath;
+            videoplayer.Play();
+            videoplayer.Pause();
         }
         manager.Play(true, true);
         syncAudio();
@@ -678,13 +765,7 @@ public class UI_PlayRecord : MonoBehaviour
     {
         if (manager.videoPath != "")
         {
-            for (int i = 0; i < stages[currentStage].tvs.Length; i++)
-            {
-                for (int e = 0; e < stages[currentStage].tvs[i].tvs.Length; e++)
-                {
-                    stages[currentStage].tvs[i].tvs[e].time = manager.referenceSpeaker.time;
-                }
-            }
+            videoplayer.time = manager.referenceSpeaker.time;
         }
         for (int i = 0; i < speakerL.Length; i++)
         {
@@ -704,6 +785,10 @@ public class UI_PlayRecord : MonoBehaviour
         manager.referenceSpeaker.time = 0;
         manager.Play(true, false);
         SwitchWindow(2);
+        for (int i = 0; i < stages[currentStage].curtainValves.curtainbools.Length; i++)
+        {
+            stages[currentStage].curtainValves.curtainbools[i] = false;
+        }
     }
 
     /// <summary>
@@ -752,13 +837,7 @@ public class UI_PlayRecord : MonoBehaviour
         Debug.Log("Audio Video Pause");
         if (manager.videoPath != "")
         {
-            for (int i = 0; i < stages[currentStage].tvs.Length; i++)
-            {
-                for (int e = 0; e < stages[currentStage].tvs[i].tvs.Length; e++)
-                {
-                    stages[currentStage].tvs[i].tvs[e].Pause();
-                }
-            }
+            videoplayer.Pause();
         }
         manager.referenceSpeaker.Pause();
         for (int i = 0; i < speakerL.Length; i++)
@@ -780,13 +859,7 @@ public class UI_PlayRecord : MonoBehaviour
         Debug.Log("Audio Video Pause");
         if (manager.videoPath != "")
         {
-            for (int i = 0; i < stages[currentStage].tvs.Length; i++)
-            {
-                for (int e = 0; e < stages[currentStage].tvs[i].tvs.Length; e++)
-                {
-                    stages[currentStage].tvs[i].tvs[e].Play();
-                }
-            }
+            videoplayer.Play();
         }
         manager.referenceSpeaker.Play();
         for (int i = 0; i < speakerL.Length; i++)
@@ -828,13 +901,7 @@ public class UI_PlayRecord : MonoBehaviour
         }
         if (manager.videoPath != "")
         {
-            for (int i = 0; i < stages[currentStage].tvs.Length; i++)
-            {
-                for (int e = 0; e < stages[currentStage].tvs[i].tvs.Length; e++)
-                {
-                    stages[currentStage].tvs[i].tvs[e].playbackSpeed = manager.referenceSpeaker.pitch;
-                }
-            }
+            videoplayer.playbackSpeed = manager.referenceSpeaker.pitch;
         }
         syncAudio();
     }
@@ -851,17 +918,20 @@ public class UI_PlayRecord : MonoBehaviour
         }
         switch (manager.referenceSpeaker.pitch)
         {
+            case -100:
+                manager.referenceSpeaker.pitch = -10;
+                break;
             case -10:
-                manager.referenceSpeaker.pitch = 0.5f;
+                manager.referenceSpeaker.pitch = -5;
                 break;
             case -5:
-                manager.referenceSpeaker.pitch = 0.5f;
+                manager.referenceSpeaker.pitch = -2;
                 break;
             case -2:
-                manager.referenceSpeaker.pitch = 0.5f;
+                manager.referenceSpeaker.pitch = -1;
                 break;
             case -1:
-                manager.referenceSpeaker.pitch = 0.5f;
+                manager.referenceSpeaker.pitch = -0.5f;
                 break;
             case -0.5f:
                 manager.referenceSpeaker.pitch = 0.5f;
@@ -902,6 +972,18 @@ public class UI_PlayRecord : MonoBehaviour
         }
         switch (manager.referenceSpeaker.pitch)
         {
+            case 100:
+                manager.referenceSpeaker.pitch = 10;
+                break;
+            case 10:
+                manager.referenceSpeaker.pitch = 5;
+                break;
+            case 5:
+                manager.referenceSpeaker.pitch = 2;
+                break;
+            case 2:
+                manager.referenceSpeaker.pitch = 1;
+                break;
             case 1:
                 manager.referenceSpeaker.pitch = 0.5f;
                 break;
@@ -931,13 +1013,7 @@ public class UI_PlayRecord : MonoBehaviour
         }
         if (manager.videoPath != "")
         {
-            for (int i = 0; i < stages[currentStage].tvs.Length; i++)
-            {
-                for (int e = 0; e < stages[currentStage].tvs[i].tvs.Length; e++)
-                {
-                    stages[currentStage].tvs[i].tvs[e].playbackSpeed = manager.referenceSpeaker.pitch;
-                }
-            }
+            videoplayer.playbackSpeed = manager.referenceSpeaker.pitch;
         }
     }
 

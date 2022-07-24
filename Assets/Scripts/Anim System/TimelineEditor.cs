@@ -19,6 +19,8 @@ public class TimelineEditor : MonoBehaviour
     public Dropdown file;
     public Dropdown edit;
     public Dropdown analysis;
+    public Dropdown import;
+
 
     public AudioSource speaker;
     public VideoPlayer video;
@@ -118,7 +120,8 @@ public class TimelineEditor : MonoBehaviour
                     viewZoomMax = dragPos + length;
                 }
             }
-            currentTimeText.text = System.TimeSpan.FromSeconds(speaker.time).ToString().TrimEnd(new Char[] { '0' }); ;
+            currentTimeText.text = System.TimeSpan.FromSeconds(speaker.time).ToString().TrimEnd(new Char[] { '0' });
+            currentTimeText.text = currentTimeText.text.Substring(0, Mathf.Min(11, currentTimeText.text.Length));
             viewZoomMax = Mathf.Clamp(viewZoomMax, viewZoomMin + 0.1f, audioLengthMax);
             viewZoomMin = Mathf.Clamp(viewZoomMin, 0, viewZoomMax - 0.1f);
             playbackMarker.transform.position = new Vector3((remap(speaker.time, viewZoomMin, viewZoomMax, 0, 1) * Screen.width), playbackMarker.transform.position.y, 0);
@@ -161,8 +164,10 @@ public class TimelineEditor : MonoBehaviour
     public void RepaintTimeline()
     {
         waveformVisualizer.PaintWaveformSpectrum(viewZoomMin, viewZoomMax, audioLengthMax);
-        viewMinText.text = System.TimeSpan.FromSeconds(viewZoomMin).ToString().TrimEnd(new Char[] { '0' }); ;
-        viewMaxText.text = System.TimeSpan.FromSeconds(viewZoomMax).ToString().TrimEnd(new Char[] { '0' }); ;
+        viewMinText.text = System.TimeSpan.FromSeconds(viewZoomMin).ToString().TrimEnd(new Char[] { '0' });
+        viewMinText.text = viewMinText.text.Substring(0, Mathf.Min(11, viewMinText.text.Length));
+        viewMaxText.text = System.TimeSpan.FromSeconds(viewZoomMax).ToString().TrimEnd(new Char[] { '0' });
+        viewMaxText.text = viewMaxText.text.Substring(0, Mathf.Min(11, viewMaxText.text.Length));
         timeScaleText.text = "[ " + (viewZoomMax - viewZoomMin).ToString() + "s ]";
         timelineBitVis.RepaintTimeline(viewZoomMin, viewZoomMax, audioLengthMax);
     }
@@ -197,12 +202,22 @@ public class TimelineEditor : MonoBehaviour
                     break;
                 case 3:
                     uiShowtapeManager.SaveRecording();
+                    uiShowtapeManager.recordMovements = true;
                     break;
                 case 4:
                     uiShowtapeManager.SaveRecordingAs();
+                    uiShowtapeManager.recordMovements = true;
                     break;
                 case 5:
-                    SceneManager.LoadScene("Title Screen");
+                    if (GameVersion.gameName != "Faz-Anim")
+                    {
+                        SceneManager.LoadScene("Title RR");
+                    }
+                    else
+                    {
+                        SceneManager.LoadScene("Title Screen");
+                    }
+                    
                     break;
                 default:
                     break;
@@ -243,6 +258,24 @@ public class TimelineEditor : MonoBehaviour
                     uiShowtapeManager.SetMasterFolder();
                     break;
 
+                default:
+                    break;
+            }
+        }
+        dropdownCooldown = 30;
+    }
+    public void ImportValueChanged()
+    {
+        if (dropdownCooldown == 0 && audioLengthMax != 0)
+        {
+            switch (import.value)
+            {
+                case 0:
+                    analyzer.StartAnalysis("Import APS");
+                    break;
+                case 1:
+                    analyzer.StartAnalysis("Import RR");
+                    break;
                 default:
                     break;
             }
@@ -485,7 +518,7 @@ public class TimelineEditor : MonoBehaviour
         waveformVisualizer.GetAudioSamples();
         waveformVisualizer.PaintWaveformSpectrum(viewZoomMin, viewZoomMax, audioLengthMax);
         fileName.text = Path.GetFileName(uiShowtapeManager.showtapeSegmentPaths[0]);
-        extraInfoText.text = "Length: " + audioLengthMax + "s | 60fps Signal Density";
+        extraInfoText.text = "Length: " + audioLengthMax + "s | "+ uiShowtapeManager.dataStreamedFPS +" Signal Density";
         StartCoroutine(CreateAndLinkScene(uiShowtapeManager.showtapeSegmentPaths[0].Substring(uiShowtapeManager.showtapeSegmentPaths[0].Length - 4, 4)));
     }
 
@@ -558,6 +591,9 @@ public class TimelineEditor : MonoBehaviour
                                 uiShowtapeManager.inputHandler = mv.gameObject.GetComponent<InputHandler>();
                                 bitvis.mackvalves = mv;
                                 cameraFeeds = GameObject.Find("FNaF1").transform.Find("Cameras").gameObject;
+                                ui.GetComponent<UI_ShowtapeManager>().enabled = false;
+                                ui.transform.position = new Vector3(0, -100, 0);
+                                sidePanel.transform.position = new Vector3(0, -100, 0);
                                 CamFeedCreate();
                             }
                             yield return null;
@@ -583,6 +619,9 @@ public class TimelineEditor : MonoBehaviour
                                 uiShowtapeManager.inputHandler = mv.gameObject.GetComponent<InputHandler>();
                                 bitvis.mackvalves = mv;
                                 cameraFeeds = GameObject.Find("FNaF2").transform.Find("Cameras").gameObject;
+                                ui.GetComponent<UI_ShowtapeManager>().enabled = false;
+                                ui.transform.position = new Vector3(0, -100, 0);
+                                sidePanel.transform.position = new Vector3(0, -100, 0);
                                 CamFeedCreate();
                             }
                             yield return null;
@@ -608,6 +647,9 @@ public class TimelineEditor : MonoBehaviour
                                 uiShowtapeManager.inputHandler = mv.gameObject.GetComponent<InputHandler>();
                                 bitvis.mackvalves = mv;
                                 cameraFeeds = GameObject.Find("MangleStage").transform.Find("Cameras").gameObject;
+                                ui.GetComponent<UI_ShowtapeManager>().enabled = false;
+                                ui.transform.position = new Vector3(0, -100, 0);
+                                sidePanel.transform.position = new Vector3(0, -100, 0);
                                 CamFeedCreate();
                             }
                             yield return null;
@@ -640,6 +682,9 @@ public class TimelineEditor : MonoBehaviour
                                 uiShowtapeManager.inputHandler = mv.gameObject.GetComponent<InputHandler>();
                                 bitvis.mackvalves = mv;
                                 cameraFeeds = GameObject.Find("Studio C").transform.Find("Cameras").gameObject;
+                                ui.GetComponent<UI_ShowtapeManager>().enabled = false;
+                                ui.transform.position = new Vector3(0, -100, 0);
+                                sidePanel.transform.position = new Vector3(0, -100, 0);
                                 CamFeedCreate();
                             }
                             yield return null;
@@ -665,6 +710,9 @@ public class TimelineEditor : MonoBehaviour
                                 uiShowtapeManager.inputHandler = mv.gameObject.GetComponent<InputHandler>();
                                 bitvis.mackvalves = mv;
                                 cameraFeeds = GameObject.Find("RFE").transform.Find("Cameras").gameObject;
+                                ui.GetComponent<UI_ShowtapeManager>().enabled = false;
+                                ui.transform.position = new Vector3(0, -100, 0);
+                                sidePanel.transform.position = new Vector3(0, -100, 0);
                                 CamFeedCreate();
                             }
                             yield return null;
@@ -690,6 +738,9 @@ public class TimelineEditor : MonoBehaviour
                                 uiShowtapeManager.inputHandler = mv.gameObject.GetComponent<InputHandler>();
                                 bitvis.mackvalves = mv;
                                 cameraFeeds = GameObject.Find("Cyberamics").transform.Find("Cameras").gameObject;
+                                ui.GetComponent<UI_ShowtapeManager>().enabled = false;
+                                ui.transform.position = new Vector3(0, -100, 0);
+                                sidePanel.transform.position = new Vector3(0, -100, 0);
                                 CamFeedCreate();
                             }
                             yield return null;
@@ -715,6 +766,9 @@ public class TimelineEditor : MonoBehaviour
                                 uiShowtapeManager.inputHandler = mv.gameObject.GetComponent<InputHandler>();
                                 bitvis.mackvalves = mv;
                                 cameraFeeds = GameObject.Find("NRAE").transform.Find("Cameras").gameObject;
+                                ui.GetComponent<UI_ShowtapeManager>().enabled = false;
+                                ui.transform.position = new Vector3(0, -100, 0);
+                                sidePanel.transform.position = new Vector3(0, -100, 0);
                                 CamFeedCreate();
                             }
                             yield return null;
@@ -725,6 +779,7 @@ public class TimelineEditor : MonoBehaviour
                     break;
             }
         }
+        ChangeCameraFeed(camFeedHolder.transform.GetChild(0).gameObject);
         RepaintTimeline();
         timelineBitVis.RepaintBitGroups();
         RepaintTimeline();
@@ -776,21 +831,6 @@ public class TimelineEditor : MonoBehaviour
         }
     }
 
-    public void SwapViews(int view)
-    {
-        for (int i = 0; i < views.Length; i++)
-        {
-            views[i].enabled = false;
-        }
-        views[view].enabled = true;
-        if(view != 2 && cameraFeeds != null)
-        {
-            for (int i = 0; i < cameraFeeds.transform.childCount; i++)
-            {
-                cameraFeeds.transform.GetChild(i).gameObject.SetActive(false);
-            }
-        }    
-    }
 
     public void ChangeCameraFeed(GameObject feedObj)
     {
@@ -810,6 +850,12 @@ public class TimelineEditor : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void PadAllBits(int pad)
+    {
+        uiShowtapeManager.PadAllBits(pad);
+        RepaintTimeline();
     }
 }
 

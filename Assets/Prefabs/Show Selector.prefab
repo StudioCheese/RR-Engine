@@ -31532,6 +31532,7 @@ GameObject:
   - component: {fileID: 1595808682013958733}
   - component: {fileID: 6271648905452401700}
   - component: {fileID: 8271845208927515202}
+  - component: {fileID: 5496100585369389279}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -31610,20 +31611,20 @@ MonoBehaviour:
     curtainValves: {fileID: 0}
     lights: {fileID: 0}
     lightValves: []
-    turntable: {fileID: 0}
     tableValves: []
-    leftStage: {fileID: 0}
-    rightStage: {fileID: 0}
-    audController: {fileID: 0}
     texController: {fileID: 0}
     tvs:
-    - drawer: 1
+    - tvSettings: 0
+      drawer: 1
       bitOff: 40
+      bitOn: 0
       tvs:
       - {fileID: 0}
       - {fileID: 0}
-    - drawer: 1
+    - tvSettings: 0
+      drawer: 1
       bitOff: 41
+      bitOn: 0
       tvs:
       - {fileID: 0}
   - stage: {fileID: 0}
@@ -31654,20 +31655,20 @@ MonoBehaviour:
     curtainValves: {fileID: 0}
     lights: {fileID: 0}
     lightValves: []
-    turntable: {fileID: 0}
     tableValves: []
-    leftStage: {fileID: 0}
-    rightStage: {fileID: 0}
-    audController: {fileID: 0}
     texController: {fileID: 0}
     tvs:
-    - drawer: 1
+    - tvSettings: 0
+      drawer: 1
       bitOff: 40
+      bitOn: 0
       tvs:
       - {fileID: 0}
       - {fileID: 0}
-    - drawer: 1
+    - tvSettings: 0
+      drawer: 1
       bitOff: 41
+      bitOn: 0
       tvs:
       - {fileID: 0}
   - stage: {fileID: 0}
@@ -31682,18 +31683,18 @@ MonoBehaviour:
     curtainValves: {fileID: 0}
     lights: {fileID: 0}
     lightValves: []
-    turntable: {fileID: 0}
     tableValves: []
-    leftStage: {fileID: 0}
-    rightStage: {fileID: 0}
-    audController: {fileID: 0}
     texController: {fileID: 0}
     tvs:
-    - drawer: 0
+    - tvSettings: 0
+      drawer: 0
       bitOff: 0
+      bitOn: 0
       tvs: []
-    - drawer: 0
+    - tvSettings: 0
+      drawer: 0
       bitOff: 0
+      bitOn: 0
       tvs: []
   currentStage: 0
   characters:
@@ -31981,6 +31982,7 @@ MonoBehaviour:
   Uncompress: {fileID: 5215550095840363343}
   ticketText: {fileID: 0}
   thePlayer: {fileID: 0}
+  signalChange: 0
   manager: {fileID: 1595808682013958733}
 --- !u!114 &5215550095897422191
 MonoBehaviour:
@@ -32742,6 +32744,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 919a705e049999a43a27b39746ebff70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!328 &5496100585369389279
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5215550095897422184}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 0}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 4f1aa1874bdc5b24880f520fcde7f7db, type: 2}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
+  m_RenderMode: 2
+  m_AspectRatio: 5
+  m_DataSource: 0
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 0
+  m_TargetAudioSources:
+  - {fileID: 6271648905452401700}
+  m_DirectAudioVolumes:
+  - 1
+  m_Url: 
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
+  m_PlayOnAwake: 0
+  m_SkipOnDrop: 1
+  m_Looping: 0
+  m_WaitForFirstFrame: 0
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []
 --- !u!1 &5215550095902303054
 GameObject:
   m_ObjectHideFlags: 0

@@ -96,8 +96,8 @@ public class GlobalController : MonoBehaviour
             else
             {
                 //PTP
-                playernew.transform.position = new Vector3(44.86588f, -1.078f, -4.248048f);
-                playernew.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 283.725f, 0.0f));
+                playernew.transform.position = new Vector3(0, 1.078f, 0);
+                playernew.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0, 0.0f));
             }
             GameObject.Find("Player").transform.Find("PlayerModel").Find("MainBody").GetComponent<CharPrefaber>().playerNum = 1;
             GameObject.Find("Player").transform.Find("PlayerModel").Find("MainBody").GetComponent<CharPrefaber>().LoadCharacterData();

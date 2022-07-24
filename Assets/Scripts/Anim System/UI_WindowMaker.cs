@@ -380,21 +380,23 @@ public class UI_WindowMaker : MonoBehaviour
         DisableWindows();
         RecordIconsWindow.SetActive(true);
 
+        int currentButton = 0;
         for (int i = 0; i < 24; i++)
         {
             if(i < characters.Length && characters[i].allCostumes.Length > 1)
             {
-                GameObject button = RecordIconsWindow.transform.Find("Button (" + i + ")").gameObject;
+                GameObject button = RecordIconsWindow.transform.Find("Button (" + currentButton + ")").gameObject;
                 button.SetActive(true);
                 button.GetComponent<Image>().sprite = characters[i].icon;
                 button.transform.GetChild(0).GetComponent<Button3D>().funcName = "CharacterCustomMenu";
                 button.transform.GetChild(0).GetComponent<Button3D>().funcWindow = i;
                 button.transform.GetChild(0).transform.GetChild(0).GetComponent<Text>().text = characters[i].characterName;
+                currentButton++;
             }
-            else
-            {
-                RecordIconsWindow.transform.Find("Button (" + i + ")").gameObject.SetActive(false);
-            }
+        }
+        for (int i = currentButton; i < 24; i++)
+        {
+            RecordIconsWindow.transform.Find("Button (" + i + ")").gameObject.SetActive(false);
         }
         RecordIconsWindow.transform.Find("Back Button").GetComponent<Button3D>().funcWindow = 8;
     }
@@ -524,6 +526,27 @@ public class UI_WindowMaker : MonoBehaviour
             
         }
         return bit.ToString() + "- Nothing";
+    }
+
+    public int SearchBitChartGroupID(int bit)
+    {
+        for (int i = 0; i < recordingGroups.Length; i++)
+        {
+            for (int e = 0; e < recordingGroups[i].inputNames.Length; e++)
+            {
+                int finalBitNum = 0;
+                if (recordingGroups[i].inputNames[e].drawer)
+                {
+                    finalBitNum += 150;
+                }
+                if (recordingGroups[i].inputNames[e].index[0] + finalBitNum == bit)
+                {
+                    return i;
+                }
+            }
+
+        }
+        return 0;
     }
 
     void DisableWindows()

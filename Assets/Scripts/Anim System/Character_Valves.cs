@@ -102,6 +102,7 @@ public class Character_Valves : MonoBehaviour
 
     public void StartUp()
     {
+        transform.parent.name = transform.parent.name.Replace("(Clone)", "").Trim();
         cylParamHash = new List<int>();
         cylDrawer = new List<bool>();
         cylBit = new List<int>();
