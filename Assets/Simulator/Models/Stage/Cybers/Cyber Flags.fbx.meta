@@ -1,0 +1,288 @@
+fileFormatVersion: 2
+guid: 6d7836e6a7ad51f41912c4673a708790
+ModelImporter:
+  serializedVersion: 21202
+  internalIDToNameTable:
+  - first:
+      74: 2282769492210245243
+    second: Armature|Baked.002Action
+  - first:
+      74: -6517668236660582114
+    second: Armature|Baked.002Action.001
+  - first:
+      74: -7875785087122413154
+    second: Armature|Baked.002Action.002
+  - first:
+      74: 1443650975875858605
+    second: Armature|Baked.002Action.003
+  - first:
+      74: -3617295897516406308
+    second: Armature|Baked.002Action.004
+  - first:
+      74: 2361938877478274094
+    second: Armature|Baked.002Action.006
+  - first:
+      74: -2568614193479566787
+    second: Armature|Baked.002Action.007
+  - first:
+      74: 3340486618562064133
+    second: Armature|Baked.002Action.008
+  - first:
+      74: 5857434543536842368
+    second: Armature|CEC Flag
+  - first:
+      74: -1778737126097061126
+    second: Armature|Circle.004Action
+  - first:
+      74: -1491612686272071940
+    second: Armature|Circle.005Action
+  - first:
+      74: -846717766198801700
+    second: Armature|Circle.006Action
+  - first:
+      74: -7602763437776155231
+    second: Armature|Circle.006Action.001
+  - first:
+      74: -6100980638344224305
+    second: Armature|Circle.006Action.002
+  - first:
+      74: 6130140319601532985
+    second: Armature|Circle.006Action.003
+  - first:
+      74: -5105584205049959799
+    second: Armature|Circle.006Action.004
+  - first:
+      74: 4531658132150550091
+    second: Armature|Circle.006Action.005
+  - first:
+      74: -326233819939606583
+    second: Armature|Circle.011Action
+  - first:
+      74: 2841379297727910577
+    second: Armature|Circle.011Action.001
+  - first:
+      74: 5544125580048810681
+    second: Armature|Circle.011Action.002
+  - first:
+      74: -5823086851366766925
+    second: Armature|Default.001Action
+  - first:
+      74: 8802660568161176930
+    second: Armature|Italy Flag
+  - first:
+      74: -2310840667275110227
+    second: Armature|State Flag
+  - first:
+      74: -8660911544216341476
+    second: Armature|USA Flag
+  - first:
+      74: -1601290981423634225
+    second: Armature|Italy Flag.001
+  - first:
+      74: 744252255712726426
+    second: Armature|Italy Flag.002
+  - first:
+      74: 7452597479279970266
+    second: Armature|Italy Flag.003
+  - first:
+      74: 4328228085802702166
+    second: Armature|Italy Flag.004
+  - first:
+      74: -7866386330223680277
+    second: Armature|Italy Flag.005
+  - first:
+      74: 2504519803097752688
+    second: Armature|Italy Flag.006
+  - first:
+      74: -3689175114803874524
+    second: Armature|Italy Flag.007
+  - first:
+      74: 1103236427053167388
+    second: Armature|Italy Flag.008
+  - first:
+      74: -1510363881314817990
+    second: Armature|Italy Flag.009
+  - first:
+      74: 9049598351215698773
+    second: Armature|Italy Flag.010
+  - first:
+      74: 7689437861120571926
+    second: Armature|Italy Flag.011
+  - first:
+      74: -7551862030654581731
+    second: Armature|Italy Flag.012
+  - first:
+      74: 3765815828627309884
+    second: Armature|Italy Flag.013
+  - first:
+      74: 3799878199438443618
+    second: Armature|Italy Flag.014
+  - first:
+      74: -426724390955024812
+    second: Armature|Italy Flag.015
+  - first:
+      74: 722276480431512946
+    second: Armature|Italy Flag.016
+  - first:
+      74: -3936290306776856205
+    second: Armature|Italy Flag.017
+  - first:
+      74: 3829671891261047803
+    second: Armature|Italy Flag.018
+  - first:
+      74: 6527825861888772052
+    second: Armature|Italy Flag.019
+  - first:
+      74: 8657648405453613387
+    second: Armature|Italy Flag.020
+  - first:
+      74: -213737510995339082
+    second: Armature|Italy Flag.021
+  - first:
+      74: 4801190845781068961
+    second: Armature|Italy Flag.022
+  - first:
+      74: 8394576472371728588
+    second: Armature|Italy Flag.023
+  - first:
+      74: 6916733636874504398
+    second: Armature|Italy Flag.024
+  - first:
+      74: -6536490053523170448
+    second: Armature|Italy Flag.025
+  - first:
+      74: -2784042021161091491
+    second: Armature|Italy Flag.026
+  - first:
+      74: 4402257296740944960
+    second: Armature|Italy Flag.027
+  - first:
+      74: 5898508359630631078
+    second: Armature|Italy Flag.028
+  - first:
+      74: -4304357989546376172
+    second: Armature|Italy Flag.029
+  - first:
+      74: -290574638407800464
+    second: Armature|Italy Flag.030
+  - first:
+      74: 4571311507373859482
+    second: Armature|C Flag
+  - first:
+      74: 4781951162920444690
+    second: Armature|ArmatureAction
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Flags
+    second: {fileID: 2100000, guid: 24ed7e72ff64e854992d9b1713169817, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Other Metals
+    second: {fileID: 2100000, guid: 28b8177df7f57ba479acdbcd94279bb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WoodTwo
+    second: {fileID: 2100000, guid: 0f016e5a27b384041b4833049a4cd3c1, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 2
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
