@@ -1,0 +1,614 @@
+fileFormatVersion: 2
+guid: d6eb24df996f53a4080c87b4e5ad3844
+ModelImporter:
+  serializedVersion: 21202
+  internalIDToNameTable:
+  - first:
+      74: -7934734707663110438
+    second: Beach Bear|Body Lean.001
+  - first:
+      74: -4319590318840744323
+    second: Beach Bear|Eyes Left.001
+  - first:
+      74: -5763437472991769646
+    second: Beach Bear|Eyes Right.001
+  - first:
+      74: 5749236488973073582
+    second: Beach Bear|Hand
+  - first:
+      74: -888184981011198009
+    second: Beach Bear|Head Left.001
+  - first:
+      74: 87263848625543800
+    second: Beach Bear|Head Right.001
+  - first:
+      74: -7429699466860060799
+    second: Beach Bear|Shoukder
+  - first:
+      74: 9019650640527448456
+    second: Beach Bear|Wrist
+  - first:
+      74: -7908412888588109859
+    second: Beach Bear|Eyelid L.001
+  - first:
+      74: -8778082646750295973
+    second: Beach Bear|Eyelid R.001
+  - first:
+      74: 6822783299120291135
+    second: Beach Bear|Mouth.003
+  - first:
+      74: 5054715299478034596
+    second: Beach Bear|Head Up
+  - first:
+      74: 5768695598986986681
+    second: Beach Bear|Head Up.001
+  - first:
+      74: -8788819481688904389
+    second: Eyelid R
+  - first:
+      74: -3396555045852577636
+    second: Beach Bear|Mouth.001
+  - first:
+      74: 4677583881923486224
+    second: Beach Bear|Arm
+  - first:
+      74: 4325845116019536750
+    second: Beach Bear|Guitar Raise
+  - first:
+      74: -8137848805306070872
+    second: Beach Bear|Guitar Slide
+  - first:
+      74: 705818271499599828
+    second: Beach Bear|Eyes Cross
+  - first:
+      74: 2159086921397320144
+    second: Beach Bear|Mech.002Action
+  - first:
+      74: -2511855609653565613
+    second: Beach Bear|Body Lean
+  - first:
+      74: -3257909243533802622
+    second: Beach Bear|Body Lean.002
+  - first:
+      74: -6566723865445278798
+    second: Beach Bear|CircleAction
+  - first:
+      74: -4021317619451646943
+    second: Beach Bear|CircleAction.001
+  - first:
+      74: -5933947880865507885
+    second: Beach Bear|CircleAction.002
+  - first:
+      74: 5813275736633384468
+    second: Beach Bear|CosmeticlessAction
+  - first:
+      74: -4845741549548851445
+    second: Beach Bear|Hand.001
+  - first:
+      74: 5419167793879207787
+    second: Beach Bear|Hand.002
+  - first:
+      74: 3400011320832158982
+    second: Beach Bear|Head Left
+  - first:
+      74: -8771032287127644128
+    second: Beach Bear|Head Left.002
+  - first:
+      74: 9137041778357876717
+    second: Beach Bear|Head Right
+  - first:
+      74: 5979230468282652690
+    second: Beach Bear|Head Right.002
+  - first:
+      74: 8954369848238114309
+    second: Beach Bear|Leg R
+  - first:
+      74: 6609618823135780599
+    second: Beach Bear|Mouth.002
+  - first:
+      74: -6166657340147575242
+    second: Beach Bear|Mouth.004
+  - first:
+      74: -8560180520805330088
+    second: Beach Bear|Shoukder.001
+  - first:
+      74: -1458305499991913825
+    second: Beach Bear|Shoukder.002
+  - first:
+      74: -8585004321594713908
+    second: Beach Bear|SphereAction
+  - first:
+      74: -7268083478994074073
+    second: Beach Bear|SphereAction.001
+  - first:
+      74: 1844370058209968791
+    second: Beach Bear|SphereAction.002
+  - first:
+      74: 8092086199789618327
+    second: Beach Bear|SphereAction.003
+  - first:
+      74: 8126589933406019214
+    second: Beach Bear|SphereAction.004
+  - first:
+      74: 8671823980291053241
+    second: Beach Bear|SphereAction.005
+  - first:
+      74: 12359720934208144
+    second: Beach Bear|SphereAction.006
+  - first:
+      74: 5141483686040217972
+    second: Beach Bear|SphereAction.007
+  - first:
+      74: -327010896844599971
+    second: Beach Bear|SphereAction.008
+  - first:
+      74: -4149286610262875440
+    second: Beach Bear|SphereAction.009
+  - first:
+      74: -6391243096408680796
+    second: Beach Bear|SphereAction.010
+  - first:
+      74: 5949819936681833427
+    second: Beach Bear|SphereAction.011
+  - first:
+      74: -7821861838955925344
+    second: Beach Bear|SphereAction.012
+  - first:
+      74: 6977628719822056295
+    second: Beach Bear|SphereAction.013
+  - first:
+      74: -506510585903656992
+    second: Beach Bear|TextAction
+  - first:
+      74: 2867469413086368882
+    second: Beach Bear|Wrist.001
+  - first:
+      74: 4925353352927409628
+    second: Beach Bear|Wrist.002
+  - first:
+      74: 7039729275498084790
+    second: Beach Bear|Leg L
+  - first:
+      74: 6166148906128529157
+    second: Beach Bear|CylinderAction
+  - first:
+      74: -6139473434951675203
+    second: Beach Bear|EmptyAction
+  - first:
+      74: 8899653515138384800
+    second: Beach Bear|EmptyAction.001
+  - first:
+      74: 7586331115638378536
+    second: Beach Bear|EmptyAction.002
+  - first:
+      74: 5043396793897989199
+    second: Beach Bear|EmptyAction.003
+  - first:
+      74: -6750845827859867636
+    second: Beach Bear|EmptyAction.004
+  - first:
+      74: 7175296661407214132
+    second: Beach Bear|EmptyAction.005
+  - first:
+      74: -52373415891734844
+    second: Beach Bear|SunAction
+  - first:
+      74: 7611690723489729054
+    second: Beach Bear|SunAction.001
+  - first:
+      74: 537588318217520075
+    second: Beach Bear|SunAction.002
+  - first:
+      74: 1831660335810899534
+    second: Beach Bear|SunAction.003
+  - first:
+      74: 2624046769812976780
+    second: Beach Bear|SunAction.004
+  - first:
+      74: -8337541042749432137
+    second: Beach Bear|SunAction.005
+  - first:
+      74: -330489941318765212
+    second: Beach Bear|Eyelid R.002
+  - first:
+      74: -4372210358483033834
+    second: Beach Bear|Eyelid R.003
+  - first:
+      74: -2562625452308706827
+    second: Beach Bear|Eyelid R.004
+  - first:
+      74: 3417071740358551360
+    second: Beach Bear|Default.001Action.003
+  - first:
+      74: -8973741374403628952
+    second: Armature|Arm
+  - first:
+      74: -7567656522128324632
+    second: Armature|Body Lean.001
+  - first:
+      74: -751813995980742648
+    second: Armature|EmptyAction
+  - first:
+      74: 6914186477651995811
+    second: Armature|EmptyAction.001
+  - first:
+      74: -9150964367085206158
+    second: Armature|EmptyAction.003
+  - first:
+      74: 3086911650464452594
+    second: Armature|EmptyAction.004
+  - first:
+      74: -5738119579906306520
+    second: Armature|Eyelid L.001
+  - first:
+      74: -6705907368276732199
+    second: Armature|Eyes Cross
+  - first:
+      74: -1383612497406154702
+    second: Armature|Guitar Raise
+  - first:
+      74: 434663305003526948
+    second: Armature|Guitar Slide
+  - first:
+      74: 7733244973078190657
+    second: Armature|Hand
+  - first:
+      74: -1818950162399287984
+    second: Armature|Head Left.001
+  - first:
+      74: 7402230198621166923
+    second: Armature|Head Right.001
+  - first:
+      74: -4913389476121632529
+    second: Armature|Head Up
+  - first:
+      74: 9054742548983156322
+    second: Armature|Head Up.001
+  - first:
+      74: 3124184821994342154
+    second: Armature|Eyelid R.001
+  - first:
+      74: -3226468755154405012
+    second: Armature|Leg L
+  - first:
+      74: 6388773446516638307
+    second: Armature|Leg R
+  - first:
+      74: 768535513267556900
+    second: Armature|Mouth.003
+  - first:
+      74: -2953527778590845221
+    second: Armature|Shoukder
+  - first:
+      74: -6788291789069941537
+    second: Armature|SphereAction
+  - first:
+      74: 1599356377470273256
+    second: Armature|SphereAction.001
+  - first:
+      74: -1883150853644995191
+    second: Armature|SphereAction.002
+  - first:
+      74: 7838798483450627966
+    second: Armature|SphereAction.003
+  - first:
+      74: 840005603809075384
+    second: Armature|SphereAction.004
+  - first:
+      74: 8039437375205953329
+    second: Armature|SunAction
+  - first:
+      74: 18767786136841554
+    second: Armature|SunAction.001
+  - first:
+      74: -6168032749037960210
+    second: Armature|SunAction.002
+  - first:
+      74: 7856774166715922232
+    second: Armature|SunAction.003
+  - first:
+      74: 9049613367881584172
+    second: Armature|SunAction.004
+  - first:
+      74: 5659865136663727133
+    second: Armature|SunAction.005
+  - first:
+      74: 2766202887342132908
+    second: Armature|Wrist
+  - first:
+      74: -4825216642824821694
+    second: Armature|SphereAction.005
+  - first:
+      74: -869978269832519881
+    second: Armature|SphereAction.006
+  - first:
+      74: -8475499637696500558
+    second: Armature|SphereAction.007
+  - first:
+      74: -895535295031493829
+    second: Armature|SphereAction.008
+  - first:
+      74: 8034419855047060383
+    second: Armature|SphereAction.009
+  - first:
+      74: 615210373391578123
+    second: Armature|SphereAction.010
+  - first:
+      74: 2164611421427134540
+    second: Armature|SphereAction.011
+  - first:
+      74: 1243953278026115349
+    second: Armature|SphereAction.012
+  - first:
+      74: 132934537306240105
+    second: Armature|SphereAction.013
+  - first:
+      74: 1886035380275303358
+    second: Armature|SphereAction.014
+  - first:
+      74: 889658748316688877
+    second: Armature|SphereAction.015
+  - first:
+      74: -5038860426340699826
+    second: Armature|SphereAction.016
+  - first:
+      74: 3616652767756427724
+    second: Armature|SphereAction.017
+  - first:
+      74: 66278746996511973
+    second: Armature|SphereAction.018
+  - first:
+      74: 5925991137680309629
+    second: Armature|SphereAction.019
+  - first:
+      74: -1061206871761933832
+    second: Armature|SunAction.006
+  - first:
+      74: 8747545572049993099
+    second: Armature|SunAction.007
+  - first:
+      74: -2296587557688231762
+    second: Armature|SunAction.008
+  - first:
+      74: 8385333099777902677
+    second: Armature|SunAction.009
+  - first:
+      74: -8118274423365070652
+    second: Armature|SunAction.010
+  - first:
+      74: 6291236128130889704
+    second: Armature|SunAction.011
+  - first:
+      74: -6609763362072348185
+    second: Armature|SunAction.012
+  - first:
+      74: 52420405264687597
+    second: Armature|SunAction.013
+  - first:
+      74: -3136873770525020641
+    second: Eyelid L
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Alluminum
+    second: {fileID: 2100000, guid: c431cf0f72d0e2d4c9fb9399c41ec3a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Alluminum.001
+    second: {fileID: 2100000, guid: c431cf0f72d0e2d4c9fb9399c41ec3a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Beach Legs
+    second: {fileID: 2100000, guid: e4a5206e66a8a454fa1571676cc39702, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CU Eye
+    second: {fileID: 2100000, guid: 9969b2801deebc544ad66527d2e84dcc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CU Eyelids
+    second: {fileID: 2100000, guid: a9f52458f22308949ad6bbd0e594db89, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CU Main
+    second: {fileID: 2100000, guid: f2f8323a6d1e712499d53b45e3aa2645, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cushons
+    second: {fileID: 2100000, guid: 095a21f329b59344b9c38f23df1a301d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eye
+    second: {fileID: 2100000, guid: 9ae966a9b2ef4e94c94c697f2b34ff35, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyelid Brown
+    second: {fileID: 2100000, guid: 39cb9b017cda9934990be727754f105d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fake Wood
+    second: {fileID: 2100000, guid: 96ce5981bc21c5344a95f636286528ed, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FiberGlass Billybob
+    second: {fileID: 2100000, guid: f371922b99aeea04e942103be6dabd26, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur0
+    second: {fileID: 2100000, guid: f9bee76e1dbbe714f98fb79c468e4dbd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur1
+    second: {fileID: 2100000, guid: 139fc886e763e454f8830cf187196e63, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur2
+    second: {fileID: 2100000, guid: 1460996088dcfc5458d2c3c6f72d184f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur3
+    second: {fileID: 2100000, guid: 62e2321f291d1d0448e77faa95c8c38c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FurEnd
+    second: {fileID: 2100000, guid: 945c482e4d94d5b429a0fb1b9005635f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: e9dc92beee08f3a4cb9edb5293201dd1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glitter
+    second: {fileID: 2100000, guid: 7283f3c8db5eb5a4fbd7d38bc53f920b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jasper
+    second: {fileID: 2100000, guid: b0c14a88e243c354ba7c2627ea9bd1a0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: e4161519fca24d24e9f44a18411de0a7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Other Metals
+    second: {fileID: 2100000, guid: 28b8177df7f57ba479acdbcd94279bb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Other Metals.001
+    second: {fileID: 2100000, guid: 28b8177df7f57ba479acdbcd94279bb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Paw
+    second: {fileID: 2100000, guid: f8ceae1167740f844ac53be9fe6631fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Red Jasper
+    second: {fileID: 2100000, guid: dd4ff85113e5bd64ca366e6f460ef1e7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shorts
+    second: {fileID: 2100000, guid: b124253b6b8e4de41a6b76740cc042a0, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 2
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

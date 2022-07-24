@@ -1,0 +1,956 @@
+fileFormatVersion: 2
+guid: ff155040b3ecc2745b06aa62c096d263
+ModelImporter:
+  serializedVersion: 21202
+  internalIDToNameTable:
+  - first:
+      74: 3578533287177081056
+    second: Rolfe|Arm L
+  - first:
+      74: -6633522340921816291
+    second: Rolfe|Arm R
+  - first:
+      74: -3447805937829060647
+    second: Rolfe|Arm Twist R
+  - first:
+      74: 9001060047607154578
+    second: Rolfe|body do left
+  - first:
+      74: -7256432731704576720
+    second: Rolfe|body do left.001
+  - first:
+      74: 8421276652852558348
+    second: Rolfe|body do left.002
+  - first:
+      74: 7955847775163347394
+    second: Rolfe|body do left.003
+  - first:
+      74: -39881138836297278
+    second: Rolfe|body do left.005
+  - first:
+      74: 1314117700390751944
+    second: Rolfe|body do left.007
+  - first:
+      74: 1388942790701637373
+    second: Rolfe|Body Lean
+  - first:
+      74: -5502717519381515580
+    second: Rolfe|Body Turn Right
+  - first:
+      74: -7383726447965912437
+    second: Rolfe|DefaultAction
+  - first:
+      74: -1999462564725173978
+    second: Rolfe|Ear L
+  - first:
+      74: -1661479001494852004
+    second: Rolfe|Ear R
+  - first:
+      74: 4261895665074474168
+    second: Rolfe|Earl Eyebrow
+  - first:
+      74: -286191110709428043
+    second: Rolfe|Earl Tilt
+  - first:
+      74: 806051894446246699
+    second: Rolfe|EarlMouth
+  - first:
+      74: 6588990808954633644
+    second: Rolfe|Eyelid L
+  - first:
+      74: -3536080901671807108
+    second: Rolfe|Eyes Left
+  - first:
+      74: 1553316274164679416
+    second: Rolfe|Eyes Right
+  - first:
+      74: 4925263773304549577
+    second: Rolfe|Head Left
+  - first:
+      74: -5632240015501184038
+    second: Rolfe|Head Right
+  - first:
+      74: 2965680977030520200
+    second: Rolfe|Head Up
+  - first:
+      74: -7076690954115704594
+    second: Rolfe|Mouth Rolfe
+  - first:
+      74: 2946453001630154840
+    second: Rolfe|Eyelid R
+  - first:
+      74: -4478708334413958361
+    second: Rolfe|Shoulder L
+  - first:
+      74: 8643211411400488484
+    second: Rolfe|Shoulder R
+  - first:
+      74: -4731336341405595511
+    second: Rolfe|Wrist L
+  - first:
+      74: 6027775504880494101
+    second: Circle.004|Circle.002Action
+  - first:
+      74: -3710303081346447268
+    second: Circle.004|Circle.002Action.001
+  - first:
+      74: 5582355125951851876
+    second: Circle.004|Circle.002Action.002
+  - first:
+      74: 1303984363534758981
+    second: Circle.004|Circle.002Action.003
+  - first:
+      74: -3265743937188827757
+    second: Circle.004|CircleAction.001
+  - first:
+      74: -6215633117196186550
+    second: Circle.004|CircleAction.002
+  - first:
+      74: -4204993827004828330
+    second: Circle.004|CircleAction.003
+  - first:
+      74: 2881512533289991775
+    second: Circle.004|CircleAction.004
+  - first:
+      74: -655824339885054155
+    second: Circle.004|Cube.001Action.001
+  - first:
+      74: -6430706408721990179
+    second: Circle.004|Cube.001Action.006
+  - first:
+      74: 8227151330247861187
+    second: Circle.004|CubeAction
+  - first:
+      74: -8043938442502182278
+    second: Circle.004|CubeAction.001
+  - first:
+      74: -2936290707374673552
+    second: Circle.004|CylinderAction.001
+  - first:
+      74: 8100986006122853053
+    second: Circle.004|CylinderAction.002
+  - first:
+      74: -4432980260436495805
+    second: Circle.004|CylinderAction.003
+  - first:
+      74: -3242163745689517627
+    second: Circle.004|CylinderAction.005
+  - first:
+      74: -2716793453065235670
+    second: Circle.004|EmptyAction
+  - first:
+      74: -3839231582762653684
+    second: Circle.004|EmptyAction.001
+  - first:
+      74: -6679787255519310172
+    second: Circle.004|EmptyAction.002
+  - first:
+      74: 3115027741822369301
+    second: Circle.004|EmptyAction.003
+  - first:
+      74: -2328838385865647536
+    second: Circle.004|EmptyAction.004
+  - first:
+      74: -677164228755431822
+    second: Circle.004|EmptyAction.005
+  - first:
+      74: 428396912172596718
+    second: Circle.004|EmptyAction.006
+  - first:
+      74: -3806303261224846045
+    second: Circle.004|EmptyAction.007
+  - first:
+      74: -6478971212218483382
+    second: Circle.004|EmptyAction.008
+  - first:
+      74: 1687314757918928998
+    second: Circle.004|EmptyAction.009
+  - first:
+      74: -8020607869068188694
+    second: Circle.004|EmptyAction.010
+  - first:
+      74: 8960193994932787138
+    second: Circle.004|EmptyAction.011
+  - first:
+      74: -8476831224177480493
+    second: Circle.004|EmptyAction.012
+  - first:
+      74: 8842001477580430002
+    second: Circle.004|EmptyAction.013
+  - first:
+      74: 6968463853264141658
+    second: Circle.004|EmptyAction.014
+  - first:
+      74: -5668543484307935520
+    second: Circle.004|EmptyAction.015
+  - first:
+      74: -7339721086158398979
+    second: Circle.004|EmptyAction.016
+  - first:
+      74: -1934703628069923453
+    second: Circle.004|EmptyAction.017
+  - first:
+      74: -5018868019185063030
+    second: Circle.004|EmptyAction.018
+  - first:
+      74: 3759949059043517998
+    second: Circle.004|EmptyAction.019
+  - first:
+      74: 3884674512031782417
+    second: Circle.004|EmptyAction.020
+  - first:
+      74: 156646499540204228
+    second: Circle.004|EmptyAction.021
+  - first:
+      74: 4504233056862506452
+    second: Circle.004|EmptyAction.022
+  - first:
+      74: -1886114307470121508
+    second: Circle.004|EmptyAction.023
+  - first:
+      74: 1155581413240657267
+    second: Circle.004|EmptyAction.024
+  - first:
+      74: 3508000481755759038
+    second: Circle.004|PlaneAction.001
+  - first:
+      74: 506931388211178355
+    second: Circle.004|PlaneAction.002
+  - first:
+      74: -4284840465248131903
+    second: Circle.004|SunAction
+  - first:
+      74: -2326321725936078832
+    second: Circle.004|SunAction.001
+  - first:
+      74: 1763697833452843217
+    second: Circle.004|SunAction.002
+  - first:
+      74: 6617112091751887484
+    second: Circle.004|SunAction.003
+  - first:
+      74: 5977525570130190159
+    second: Circle.004|SunAction.004
+  - first:
+      74: 6947394976520903348
+    second: Klunk|Arm L
+  - first:
+      74: 7764763366267452120
+    second: Klunk|Arm L.001
+  - first:
+      74: 8228959897075527110
+    second: Klunk|Arm R
+  - first:
+      74: 8466646755217149295
+    second: Klunk|Arm R.001
+  - first:
+      74: 4289411116270019171
+    second: Klunk|Arm R.002
+  - first:
+      74: 1539517555804401477
+    second: Klunk|body do left.001
+  - first:
+      74: -1524206374471749166
+    second: Klunk|body do left.002
+  - first:
+      74: 7396780247842873173
+    second: Klunk|body do left.003
+  - first:
+      74: -7543612286257476276
+    second: Klunk|body do left.004
+  - first:
+      74: 3719347513084723186
+    second: Klunk|body do left.005
+  - first:
+      74: -3624335914168056686
+    second: Klunk|body do left.006
+  - first:
+      74: -3650179932701828715
+    second: Klunk|body do left.007
+  - first:
+      74: -30232100278480987
+    second: Klunk|body do left.008
+  - first:
+      74: 1901847352841193813
+    second: Klunk|body do left.009
+  - first:
+      74: 445886558154582786
+    second: Klunk|body do left.010
+  - first:
+      74: -7577113482997880115
+    second: Klunk|body do left.011
+  - first:
+      74: 1833085379820698543
+    second: Klunk|body do left.012
+  - first:
+      74: -3837842746644856529
+    second: Klunk|body do left.013
+  - first:
+      74: -8724219506407706416
+    second: Klunk|body do left.014
+  - first:
+      74: -4664483164724554370
+    second: Klunk|body do left.015
+  - first:
+      74: 3910355583089316019
+    second: Klunk|body do left.016
+  - first:
+      74: 7826754040249901614
+    second: Klunk|body do left.017
+  - first:
+      74: -3958647599089433496
+    second: Klunk|body do left.018
+  - first:
+      74: -407985505247454192
+    second: Klunk|body do left.019
+  - first:
+      74: -1815535212822329907
+    second: Klunk|body do left.020
+  - first:
+      74: 8334034291759764694
+    second: Klunk|body do left.021
+  - first:
+      74: -444304470080772653
+    second: Klunk|body do left.022
+  - first:
+      74: -542766100655177093
+    second: Klunk|body do left.023
+  - first:
+      74: -672192442642575048
+    second: Klunk|body do left.024
+  - first:
+      74: 8597289510897379936
+    second: Klunk|body do left.025
+  - first:
+      74: -9068514706842029185
+    second: Klunk|body do left.026
+  - first:
+      74: 5557675089995589439
+    second: Klunk|body do left.027
+  - first:
+      74: 3656255546304144202
+    second: Klunk|Body Left
+  - first:
+      74: 7811588175079516117
+    second: Klunk|Body Turn Right.001
+  - first:
+      74: 8291755238540406388
+    second: Klunk|Body Turn Right.002
+  - first:
+      74: 8572074211440923219
+    second: Klunk|Body Turn Right.003
+  - first:
+      74: -1691122953769693805
+    second: Klunk|Body Turn Right.004
+  - first:
+      74: -4102978924378952820
+    second: Klunk|Body Turn Right.005
+  - first:
+      74: -2434382393074063886
+    second: Klunk|Body Turn Right.006
+  - first:
+      74: 3431609268798313390
+    second: Klunk|Body Turn Right.007
+  - first:
+      74: 7905329093055367693
+    second: Klunk|Body Turn Right.008
+  - first:
+      74: 7657981388760709882
+    second: Klunk|Body Turn Right.009
+  - first:
+      74: 833362227302526678
+    second: Klunk|Body Turn Right.010
+  - first:
+      74: -8796124802406742035
+    second: Klunk|Body Turn Right.011
+  - first:
+      74: 135224228646698495
+    second: Klunk|Body Turn Right.012
+  - first:
+      74: 6543113618734569165
+    second: Klunk|Body Turn Right.013
+  - first:
+      74: -2853413262212042485
+    second: Klunk|Body Turn Right.014
+  - first:
+      74: -5554058207479791898
+    second: Klunk|Body Turn Right.015
+  - first:
+      74: 2184376482692403732
+    second: Klunk|Body Turn Right.018
+  - first:
+      74: -4366561094160524004
+    second: Klunk|Circle.002Action
+  - first:
+      74: -264804337245517769
+    second: Klunk|Circle.002Action.001
+  - first:
+      74: -2341499781290184969
+    second: Klunk|Circle.002Action.002
+  - first:
+      74: 224235638772321263
+    second: Klunk|Circle.002Action.003
+  - first:
+      74: -8085938322116225121
+    second: Klunk|Circle.002Action.004
+  - first:
+      74: -7523474855765919031
+    second: Klunk|CircleAction.001
+  - first:
+      74: 167488965158785590
+    second: Klunk|CircleAction.002
+  - first:
+      74: 7332679943275591613
+    second: Klunk|CircleAction.003
+  - first:
+      74: 8890551925887192694
+    second: Klunk|CircleAction.004
+  - first:
+      74: -198263290895365205
+    second: Klunk|CircleAction.005
+  - first:
+      74: 1880981915456081317
+    second: Klunk|CircleAction.006
+  - first:
+      74: -5088728316879402557
+    second: Klunk|Cube.001Action.001
+  - first:
+      74: -5908103342789987787
+    second: Klunk|Cube.001Action.006
+  - first:
+      74: -4046337837250391052
+    second: Klunk|CubeAction
+  - first:
+      74: -5749950365209565622
+    second: Klunk|CubeAction.001
+  - first:
+      74: -1695415095984490001
+    second: Klunk|CubeAction.002
+  - first:
+      74: 4665806948543421243
+    second: Klunk|CylinderAction.001
+  - first:
+      74: 7983731506979067279
+    second: Klunk|CylinderAction.002
+  - first:
+      74: 7272748612350595710
+    second: Klunk|CylinderAction.003
+  - first:
+      74: -3161101194372686744
+    second: Klunk|CylinderAction.005
+  - first:
+      74: 5324303624682120938
+    second: Klunk|EmptyAction
+  - first:
+      74: 8962868693682677625
+    second: Klunk|EmptyAction.001
+  - first:
+      74: 3587411457903574629
+    second: Klunk|EmptyAction.002
+  - first:
+      74: 5171527125069638491
+    second: Klunk|EmptyAction.003
+  - first:
+      74: 2497855132331183593
+    second: Klunk|EmptyAction.004
+  - first:
+      74: -5228416171277494214
+    second: Klunk|EmptyAction.005
+  - first:
+      74: -400684583615656300
+    second: Klunk|EmptyAction.006
+  - first:
+      74: -8755566277579638981
+    second: Klunk|EmptyAction.007
+  - first:
+      74: -6991569712887550214
+    second: Klunk|EmptyAction.008
+  - first:
+      74: 7382538315565044141
+    second: Klunk|EmptyAction.009
+  - first:
+      74: 6656184734163383336
+    second: Klunk|EmptyAction.010
+  - first:
+      74: -3221552732796579104
+    second: Klunk|EmptyAction.011
+  - first:
+      74: -4239783799518405927
+    second: Klunk|EmptyAction.012
+  - first:
+      74: 6850483462014488456
+    second: Klunk|EmptyAction.013
+  - first:
+      74: 1462278174649628783
+    second: Klunk|EmptyAction.014
+  - first:
+      74: -6064042349240023153
+    second: Klunk|EmptyAction.015
+  - first:
+      74: 2600583261392452019
+    second: Klunk|EmptyAction.016
+  - first:
+      74: 5639209362719255569
+    second: Klunk|EmptyAction.017
+  - first:
+      74: -610478397565308329
+    second: Klunk|EmptyAction.018
+  - first:
+      74: -7444692003472810754
+    second: Klunk|EmptyAction.019
+  - first:
+      74: 7730308585231886810
+    second: Klunk|EmptyAction.020
+  - first:
+      74: -7223483628956193869
+    second: Klunk|EmptyAction.021
+  - first:
+      74: 3110163429958450478
+    second: Klunk|EmptyAction.022
+  - first:
+      74: 1273914047416563067
+    second: Klunk|EmptyAction.023
+  - first:
+      74: -8648249922841559223
+    second: Klunk|EmptyAction.024
+  - first:
+      74: 2765876094685247519
+    second: Klunk|EmptyAction.025
+  - first:
+      74: -5804725912628246297
+    second: Klunk|EmptyAction.026
+  - first:
+      74: 3656739586581139973
+    second: Klunk|EmptyAction.027
+  - first:
+      74: -5510831548884639975
+    second: Klunk|EmptyAction.028
+  - first:
+      74: -7425715579919574696
+    second: Klunk|Eyes Left
+  - first:
+      74: 3712835383506053363
+    second: Klunk|Eyes Left.001
+  - first:
+      74: 5129387885033645299
+    second: Klunk|Eyes Left.002
+  - first:
+      74: -7414135815693232135
+    second: Klunk|Eyes Left.003
+  - first:
+      74: -4833568070623183813
+    second: Klunk|Eyes Right
+  - first:
+      74: -3229864829813074975
+    second: Klunk|Eyes Right.001
+  - first:
+      74: 192544342715769477
+    second: Klunk|Eyes Right.002
+  - first:
+      74: -3933814288981392560
+    second: Klunk|Eyes Right.003
+  - first:
+      74: 8815715650789361070
+    second: Klunk|Head Left
+  - first:
+      74: -5982621690536172019
+    second: Klunk|Head Left.002
+  - first:
+      74: 5162960309649758181
+    second: Klunk|Head Right
+  - first:
+      74: 933874003182572848
+    second: Klunk|Head Right.002
+  - first:
+      74: 4065929185974581027
+    second: Klunk|Mech.001Action
+  - first:
+      74: 579703778153970435
+    second: Klunk|Mech.001Action.001
+  - first:
+      74: 8023486174047834089
+    second: Klunk|Mech.001Action.002
+  - first:
+      74: -2538722973361691760
+    second: Klunk|PlaneAction.001
+  - first:
+      74: -3763068371017830011
+    second: Klunk|PlaneAction.002
+  - first:
+      74: 599558844451282943
+    second: Klunk|Shoukder
+  - first:
+      74: 2642364975173827265
+    second: Klunk|Shoukder.001
+  - first:
+      74: 3940091200997210335
+    second: Klunk|Shoulder L
+  - first:
+      74: -8977103609264833850
+    second: Klunk|Shoulder L.001
+  - first:
+      74: 2891895756292915258
+    second: Klunk|Shoulder R
+  - first:
+      74: 7854985420565255723
+    second: Klunk|Shoulder R.001
+  - first:
+      74: -1260527597409447919
+    second: Klunk|Side Shoulder
+  - first:
+      74: 6124793142479441102
+    second: Klunk|SunAction
+  - first:
+      74: 5204506084318610541
+    second: Klunk|SunAction.001
+  - first:
+      74: -4525167199292053356
+    second: Klunk|SunAction.002
+  - first:
+      74: 1315190461983776700
+    second: Klunk|SunAction.003
+  - first:
+      74: 3214661954111628006
+    second: Klunk|SunAction.004
+  - first:
+      74: -2996848270913674308
+    second: THE MOUTH
+  - first:
+      74: -347038943410695894
+    second: Klunk|Body Lean
+  - first:
+      74: -1880018537358871705
+    second: Klunk|Klunk Mouuth
+  - first:
+      74: 3778797642246051599
+    second: Klunk|Head Up.001
+  - first:
+      74: 1569602999850629929
+    second: Body Turn Right.001
+  - first:
+      74: -2787819892911781056
+    second: Klunk|Body Turn Right
+  - first:
+      74: 1252865082610428824
+    second: Klunk|Eyelid Down L
+  - first:
+      74: -4808510245032322861
+    second: Klunk|Eyelid Down R
+  - first:
+      74: -7156806910561906632
+    second: Klunk|Eyelid L
+  - first:
+      74: -3718188246611600096
+    second: Klunk|Eyelid Up L
+  - first:
+      74: 8158326739928269753
+    second: Klunk|Eyelid Up R
+  - first:
+      74: 1229494705682881710
+    second: Klunk|Cosmeticless.001Action
+  - first:
+      74: 265169689431373222
+    second: Klunk|Mech Chair.001Action
+  - first:
+      74: 7486601865741384088
+    second: Klunk|Mech.001Action.003
+  - first:
+      74: 3697558838105012441
+    second: Armature|body do left.004
+  - first:
+      74: -1718317249047265409
+    second: Armature|Body Lean
+  - first:
+      74: 3057708023422154675
+    second: Armature|Body Left
+  - first:
+      74: -8376643437477355781
+    second: Armature|Body Turn Right
+  - first:
+      74: -8365598972114915423
+    second: Armature|CircleAction.002
+  - first:
+      74: -751813995980742648
+    second: Armature|EmptyAction
+  - first:
+      74: 6914186477651995811
+    second: Armature|EmptyAction.001
+  - first:
+      74: -5028752428267467716
+    second: Armature|EmptyAction.002
+  - first:
+      74: -9150964367085206158
+    second: Armature|EmptyAction.003
+  - first:
+      74: 3086911650464452594
+    second: Armature|EmptyAction.004
+  - first:
+      74: -2538085419438640294
+    second: Armature|EmptyAction.005
+  - first:
+      74: 7945844781604671946
+    second: Armature|EmptyAction.006
+  - first:
+      74: 3741786635015813669
+    second: Armature|EmptyAction.007
+  - first:
+      74: -5128410966086016306
+    second: Armature|EmptyAction.008
+  - first:
+      74: -7100429820042247671
+    second: Armature|EmptyAction.009
+  - first:
+      74: -1720118493407406298
+    second: Armature|EmptyAction.010
+  - first:
+      74: -8917007971968367235
+    second: Armature|EmptyAction.011
+  - first:
+      74: 7631870453351146795
+    second: Armature|EmptyAction.012
+  - first:
+      74: -5479596721741710335
+    second: Armature|EmptyAction.013
+  - first:
+      74: 4511101645032971970
+    second: Armature|EmptyAction.014
+  - first:
+      74: 2712656817063013278
+    second: Armature|EmptyAction.015
+  - first:
+      74: 9122757626030786175
+    second: Armature|EmptyAction.016
+  - first:
+      74: 3756074212385130537
+    second: Armature|EmptyAction.017
+  - first:
+      74: -6303412796631332642
+    second: Armature|EmptyAction.018
+  - first:
+      74: 3901523587184968018
+    second: Armature|EmptyAction.019
+  - first:
+      74: 7309854506358292474
+    second: Armature|EmptyAction.020
+  - first:
+      74: 1452863034322548459
+    second: Armature|EmptyAction.021
+  - first:
+      74: 8856994231123993385
+    second: Armature|EmptyAction.022
+  - first:
+      74: -4183111736638574796
+    second: Armature|EmptyAction.023
+  - first:
+      74: 255961234504847375
+    second: Armature|EmptyAction.024
+  - first:
+      74: -8571008431265861788
+    second: Armature|EmptyAction.025
+  - first:
+      74: -4225236287338405433
+    second: Armature|EmptyAction.027
+  - first:
+      74: 4468811573028367231
+    second: Armature|EmptyAction.028
+  - first:
+      74: 928067819813929891
+    second: Armature|Eyelid Down L
+  - first:
+      74: -7566757443781420565
+    second: Armature|Eyelid Down R
+  - first:
+      74: -8102774646436671295
+    second: Armature|Eyelid L
+  - first:
+      74: 438448703777256425
+    second: Armature|Eyelid Up L
+  - first:
+      74: 2381750886994694917
+    second: Armature|Eyelid Up R
+  - first:
+      74: 433276810487897329
+    second: Armature|Eyes Left
+  - first:
+      74: -3398162639280079445
+    second: Armature|Eyes Right
+  - first:
+      74: 83207907464575627
+    second: Armature|Head Left
+  - first:
+      74: 3177541799068961987
+    second: Armature|Head Right
+  - first:
+      74: 9054742548983156322
+    second: Armature|Head Up.001
+  - first:
+      74: 7411214902748946416
+    second: Armature|Klunk Mouuth
+  - first:
+      74: 6699205256998525213
+    second: Armature|Mech Chair.001Action
+  - first:
+      74: -211736435916528774
+    second: Armature|Mech.001Action.002
+  - first:
+      74: -2953527778590845221
+    second: Armature|Shoukder
+  - first:
+      74: -9003452450044033663
+    second: Armature|Shoulder L
+  - first:
+      74: -2984444310896951120
+    second: Armature|Shoulder R
+  - first:
+      74: -2991074059521364599
+    second: Armature|Side Shoulder
+  - first:
+      74: 8039437375205953329
+    second: Armature|SunAction
+  - first:
+      74: 18767786136841554
+    second: Armature|SunAction.001
+  - first:
+      74: -6168032749037960210
+    second: Armature|SunAction.002
+  - first:
+      74: 7856774166715922232
+    second: Armature|SunAction.003
+  - first:
+      74: 9049613367881584172
+    second: Armature|SunAction.004
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Alluminum
+    second: {fileID: 2100000, guid: c431cf0f72d0e2d4c9fb9399c41ec3a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chair
+    second: {fileID: 2100000, guid: 7df3553050be1f441bcf72c3505cc6bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eye
+    second: {fileID: 2100000, guid: 9ae966a9b2ef4e94c94c697f2b34ff35, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyelid Brown
+    second: {fileID: 2100000, guid: 39cb9b017cda9934990be727754f105d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FiberGlass Billybob
+    second: {fileID: 2100000, guid: f371922b99aeea04e942103be6dabd26, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: e9dc92beee08f3a4cb9edb5293201dd1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Other Metals
+    second: {fileID: 2100000, guid: 28b8177df7f57ba479acdbcd94279bb1, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 2
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

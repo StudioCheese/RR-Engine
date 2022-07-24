@@ -1,0 +1,1111 @@
+fileFormatVersion: 2
+guid: 584958942d378b84db67e70f06b6aa5d
+ModelImporter:
+  serializedVersion: 21202
+  internalIDToNameTable:
+  - first:
+      74: -3136873770525020641
+    second: Eyelid L
+  - first:
+      74: -8788819481688904389
+    second: Eyelid R
+  - first:
+      74: -2389193069945694251
+    second: Eyes Left
+  - first:
+      74: -2543204820721877990
+    second: Eyes Right
+  - first:
+      74: -6577138895837638246
+    second: Head Left
+  - first:
+      74: -3403960994174772431
+    second: Head Right
+  - first:
+      74: 526402855126258128
+    second: Head Tilt Left
+  - first:
+      74: -9188758037755831281
+    second: Head Tilt Right
+  - first:
+      74: -3957888924700851956
+    second: Wrist
+  - first:
+      74: 4607637514412819795
+    second: Shoukder
+  - first:
+      74: 6571660120627390595
+    second: Arm
+  - first:
+      74: -6684015078380512896
+    second: Hand
+  - first:
+      74: 2295634414707178314
+    second: Foot Tap
+  - first:
+      74: -5047717746629447203
+    second: Head Up
+  - first:
+      74: -7407916199137096884
+    second: Body Lean
+  - first:
+      74: 4943170692604499659
+    second: Guitar Raise
+  - first:
+      74: -3754445076883753320
+    second: Guitar Slide
+  - first:
+      74: -1400729384605972557
+    second: Mouth
+  - first:
+      74: 8016531802047372375
+    second: Body Turn Left
+  - first:
+      74: -3816223361859690260
+    second: Body Turn Right
+  - first:
+      74: -7506378154385767693
+    second: Billy Bob|Arm
+  - first:
+      74: -4256122749665390217
+    second: Billy Bob|Body Lean
+  - first:
+      74: -4474063217777335888
+    second: Billy Bob|Body Turn Left
+  - first:
+      74: 969245526044411981
+    second: Billy Bob|Body Turn Right
+  - first:
+      74: 8616370142306699542
+    second: Billy Bob|Body Turn Right.011
+  - first:
+      74: -8644599263897797719
+    second: Billy Bob|CosmeticlessAction
+  - first:
+      74: -6491574071957694506
+    second: Billy Bob|Default.003Action
+  - first:
+      74: -1584168441413587494
+    second: Billy Bob|Eyelid L
+  - first:
+      74: 2282315219953675912
+    second: Billy Bob|Eyelid L.003
+  - first:
+      74: -778993291613993977
+    second: Billy Bob|Eyelid R
+  - first:
+      74: 4951041337214097217
+    second: Billy Bob|Eyes Left
+  - first:
+      74: 8621120292461239444
+    second: Billy Bob|Eyes Right
+  - first:
+      74: -7555706053260749904
+    second: Billy Bob|Foot Tap
+  - first:
+      74: -5461293824053258926
+    second: Billy Bob|Guitar Raise
+  - first:
+      74: -8914083289685756376
+    second: Billy Bob|Hand
+  - first:
+      74: 3587773101596484267
+    second: Billy Bob|Head Left
+  - first:
+      74: 1595764643180383637
+    second: Billy Bob|Head Right
+  - first:
+      74: 73225119938365074
+    second: Billy Bob|Head Tilt Left
+  - first:
+      74: -4698522916155519926
+    second: Billy Bob|Head Tilt Right
+  - first:
+      74: 3270061809531056083
+    second: Billy Bob|Head Up
+  - first:
+      74: -8466007988593429859
+    second: Billy Bob|Mouth
+  - first:
+      74: 5945848798925313185
+    second: Billy Bob|Shoukder
+  - first:
+      74: 1432896059165475894
+    second: Billy Bob|Wrist
+  - first:
+      74: -1137243265150854174
+    second: Billy Bob|CircleAction
+  - first:
+      74: -5014548789636327579
+    second: Billy Bob|CircleAction.001
+  - first:
+      74: -2221361694094435452
+    second: Billy Bob|EmptyAction
+  - first:
+      74: 3886462265150919177
+    second: Billy Bob|EmptyAction.001
+  - first:
+      74: 8585072058692943845
+    second: Billy Bob|Eyelid L.001
+  - first:
+      74: -2339804609065985381
+    second: Billy Bob|Eyelid L.002
+  - first:
+      74: 8018228905126082752
+    second: Billy Bob|Eyelid L.004
+  - first:
+      74: 9111069292724306664
+    second: Billy Bob|Eyelid L.005
+  - first:
+      74: 5603636563888238308
+    second: Billy Bob|SphereAction
+  - first:
+      74: -3444900191511290619
+    second: Billy Bob|SunAction
+  - first:
+      74: -4293901791051523846
+    second: Billy Bob|SunAction.001
+  - first:
+      74: -8373888281850436031
+    second: Billy Bob|SunAction.002
+  - first:
+      74: -5071485987897470264
+    second: Sun|CircleAction
+  - first:
+      74: 182554670225679459
+    second: Sun|CircleAction.001
+  - first:
+      74: -4374521120254688922
+    second: Sun|CosmeticlessAction
+  - first:
+      74: 7604955416863790849
+    second: Sun|EmptyAction
+  - first:
+      74: 3372950160696009048
+    second: Sun|EmptyAction.001
+  - first:
+      74: -1036459723522276575
+    second: Sun|SphereAction
+  - first:
+      74: -7796041486607857598
+    second: Sun|SunAction
+  - first:
+      74: -1957405289485043199
+    second: Sun|SunAction.001
+  - first:
+      74: 5578218394181880315
+    second: Sun|SunAction.002
+  - first:
+      74: 895587657589284243
+    second: Sun.001|CircleAction
+  - first:
+      74: 2052398778564560937
+    second: Sun.001|CircleAction.001
+  - first:
+      74: 6892717927493245578
+    second: Sun.001|CosmeticlessAction
+  - first:
+      74: 6537525640890614512
+    second: Sun.001|EmptyAction
+  - first:
+      74: 1256701412235243792
+    second: Sun.001|EmptyAction.001
+  - first:
+      74: -8505232916253196666
+    second: Sun.001|SphereAction
+  - first:
+      74: -1193243850734726416
+    second: Sun.001|SunAction
+  - first:
+      74: 2314032198100729411
+    second: Sun.001|SunAction.001
+  - first:
+      74: -7058814235823917685
+    second: Sun.001|SunAction.002
+  - first:
+      74: 3571607469713825134
+    second: Sun.002|CircleAction
+  - first:
+      74: 5424213327192134014
+    second: Sun.002|CircleAction.001
+  - first:
+      74: -952559388559524176
+    second: Sun.002|CosmeticlessAction
+  - first:
+      74: 4235872279804959137
+    second: Sun.002|EmptyAction
+  - first:
+      74: -2578129548210891263
+    second: Sun.002|EmptyAction.001
+  - first:
+      74: -4774049599397205670
+    second: Sun.002|SphereAction
+  - first:
+      74: 4530061083583921674
+    second: Sun.002|SunAction
+  - first:
+      74: -5454055066053903010
+    second: Sun.002|SunAction.001
+  - first:
+      74: 5868237728125379726
+    second: Sun.002|SunAction.002
+  - first:
+      74: -7141263742092328517
+    second: Empty|CircleAction
+  - first:
+      74: 8360874460911107118
+    second: Empty|CircleAction.001
+  - first:
+      74: -3317089315357332596
+    second: Empty|CosmeticlessAction
+  - first:
+      74: -5572541973309549404
+    second: Empty|EmptyAction
+  - first:
+      74: 523742727469920145
+    second: Empty|EmptyAction.001
+  - first:
+      74: -2425141448667813168
+    second: Empty|SphereAction
+  - first:
+      74: 3801766493775435786
+    second: Empty|SunAction
+  - first:
+      74: -4512567823343770417
+    second: Empty|SunAction.001
+  - first:
+      74: 3845788786053373566
+    second: Empty|SunAction.002
+  - first:
+      74: 3875654257470243174
+    second: Empty.001|CircleAction
+  - first:
+      74: -7199900771914861801
+    second: Empty.001|CircleAction.001
+  - first:
+      74: -2627040675508426663
+    second: Empty.001|CosmeticlessAction
+  - first:
+      74: 5829745925575038128
+    second: Empty.001|EmptyAction
+  - first:
+      74: 7898733980060134528
+    second: Empty.001|EmptyAction.001
+  - first:
+      74: 7828155865914198038
+    second: Empty.001|SphereAction
+  - first:
+      74: -1205992195996880077
+    second: Empty.001|SunAction
+  - first:
+      74: 7073581213779426211
+    second: Empty.001|SunAction.001
+  - first:
+      74: -8406626522671722993
+    second: Empty.001|SunAction.002
+  - first:
+      74: 2134454912923697087
+    second: Billy Bob|Circle.001Action
+  - first:
+      74: -2172560893585701228
+    second: Billy Bob|Circle.001Action.001
+  - first:
+      74: -4034554716852853929
+    second: Billy Bob|Circle.001Action.002
+  - first:
+      74: 6585229928346501464
+    second: Billy Bob|Circle.001Action.003
+  - first:
+      74: 5368542420613339629
+    second: Billy Bob|Circle.001Action.004
+  - first:
+      74: 1567448395268592671
+    second: Billy Bob|Circle.001Action.005
+  - first:
+      74: -4730006937149852558
+    second: Billy Bob|Circle.001Action.006
+  - first:
+      74: -1540185002695236097
+    second: Billy Bob|CircleAction.002
+  - first:
+      74: 5687815220861544989
+    second: Billy Bob|CircleAction.003
+  - first:
+      74: -4210319714833589261
+    second: Billy Bob|CubeAction
+  - first:
+      74: -9063833996988091624
+    second: Billy Bob|CubeAction.001
+  - first:
+      74: 1638169774336720050
+    second: Billy Bob|Default.001Action
+  - first:
+      74: 3634891592491661632
+    second: Billy Bob|Default.001Action.001
+  - first:
+      74: 1682194768123656688
+    second: Billy Bob|Default.001Action.002
+  - first:
+      74: 2315020847888398871
+    second: Billy Bob|Default.001Action.003
+  - first:
+      74: 2899742559483675110
+    second: Billy Bob|Default.001Action.004
+  - first:
+      74: -4997323824396048830
+    second: Billy Bob|Default.001Action.005
+  - first:
+      74: -6280604489179705617
+    second: Billy Bob|Default.001Action.006
+  - first:
+      74: -8053997540669807595
+    second: Billy Bob|Default.001Action.007
+  - first:
+      74: -3996350859800726403
+    second: Billy Bob|Default.001Action.008
+  - first:
+      74: -8888663437281006617
+    second: Billy Bob|EmptyAction.002
+  - first:
+      74: 1640756026419637098
+    second: Billy Bob|PlaneAction
+  - first:
+      74: -6004183209060889449
+    second: Billy Bob|SunAction.003
+  - first:
+      74: 2010953232205085258
+    second: Billy Bob|SunAction.004
+  - first:
+      74: 1407116138523979871
+    second: Billy Bob|Default.001Action.009
+  - first:
+      74: 2623229244650979019
+    second: Billy Bob|Cosmeticless.001Action
+  - first:
+      74: -4528602307359118330
+    second: Billy Bob|Cosmeticless.001Action.001
+  - first:
+      74: -8986831336730118304
+    second: Billy Bob|Cosmeticless.001Action.002
+  - first:
+      74: 1586353348956216866
+    second: Billy Bob|Cosmeticless.001Action.003
+  - first:
+      74: 4019294221220896298
+    second: Billy Bob|Cosmeticless.001Action.004
+  - first:
+      74: 5506504741435169909
+    second: Billy Bob|Cosmeticless.001Action.005
+  - first:
+      74: 5849109650987306748
+    second: Billy Bob|Cosmeticless.001Action.006
+  - first:
+      74: -6196495561330237311
+    second: Billy Bob|CubeAction.002
+  - first:
+      74: 440613014256375898
+    second: Billy Bob|CubeAction.003
+  - first:
+      74: -6550991516996929333
+    second: Billy Bob|CubeAction.004
+  - first:
+      74: 4685297061736672809
+    second: Billy Bob|CubeAction.005
+  - first:
+      74: -5900266382087500837
+    second: Billy Bob|Default.001Action.010
+  - first:
+      74: 4118257454979232862
+    second: Billy Bob|CircleAction.004
+  - first:
+      74: -7553592164122267606
+    second: Billy Bob|CircleAction.005
+  - first:
+      74: -4040847283362850300
+    second: Billy Bob|CircleAction.006
+  - first:
+      74: 4043856229596372991
+    second: Billy Bob|CircleAction.007
+  - first:
+      74: -7502519761472522540
+    second: Billy Bob|CircleAction.008
+  - first:
+      74: -5080179810860645539
+    second: Billy Bob|Cube.001Action
+  - first:
+      74: -6097565253944234440
+    second: Billy Bob|Cube.001Action.001
+  - first:
+      74: -3811912299219079591
+    second: Billy Bob|Cube.001Action.002
+  - first:
+      74: -4063620983310780992
+    second: Billy Bob|Plane.001Action
+  - first:
+      74: -7288436557180326994
+    second: Billy Bob|Plane.001Action.001
+  - first:
+      74: 7563188884640075764
+    second: Billy Bob|Plane.001Action.002
+  - first:
+      74: 1930676411445010525
+    second: Billy Bob|Plane.001Action.003
+  - first:
+      74: 204046857331077199
+    second: Billy Bob|Plane.001Action.004
+  - first:
+      74: -7427807933430988668
+    second: Billy Bob|Plane.001Action.005
+  - first:
+      74: 6425078110207144149
+    second: Billy Bob|Plane.001Action.006
+  - first:
+      74: -7773446994125526135
+    second: Billy Bob|Plane.001Action.007
+  - first:
+      74: 2809910429711586084
+    second: Billy Bob|Plane.001Action.008
+  - first:
+      74: -1458032338774394296
+    second: Billy Bob|Plane.001Action.009
+  - first:
+      74: 8606210179701974585
+    second: Billy Bob|Plane.003Action
+  - first:
+      74: -8710681587790635114
+    second: Billy Bob|Plane.003Action.001
+  - first:
+      74: 261257583505296662
+    second: Billy Bob|PlaneAction.001
+  - first:
+      74: -9029253626811769352
+    second: Billy Bob|PlaneAction.002
+  - first:
+      74: 4634889410672070629
+    second: Billy Bob|PlaneAction.003
+  - first:
+      74: 7672778275382704533
+    second: Billy Bob|PlaneAction.004
+  - first:
+      74: -5521783358250970296
+    second: Billy Bob|PlaneAction.005
+  - first:
+      74: 2817049022148532255
+    second: Billy Bob|PlaneAction.006
+  - first:
+      74: 7790177295733785425
+    second: Billy Bob|PlaneAction.007
+  - first:
+      74: 3457654314263602419
+    second: Billy Bob|PlaneAction.008
+  - first:
+      74: -2662945669402471541
+    second: Billy Bob|PlaneAction.009
+  - first:
+      74: -719145858710242888
+    second: Billy Bob|PlaneAction.010
+  - first:
+      74: 3435655541415751057
+    second: Billy Bob|PlaneAction.011
+  - first:
+      74: 4851639628540994843
+    second: Billy Bob|PlaneAction.012
+  - first:
+      74: 6075534383430428796
+    second: Billy Bob|PlaneAction.013
+  - first:
+      74: 3756928567780627985
+    second: Billy Bob|PlaneAction.014
+  - first:
+      74: 2560258338345711653
+    second: Billy Bob|SphereAction.001
+  - first:
+      74: -4267900723564042693
+    second: Billy Bob|SphereAction.002
+  - first:
+      74: 4423642216997871615
+    second: Billy Bob|CylinderAction
+  - first:
+      74: -2045046841542329960
+    second: Billy Bob|CylinderAction.001
+  - first:
+      74: -8953100730774788444
+    second: Billy Bob|Default.001Action.011
+  - first:
+      74: -6487479876232347421
+    second: Billy Bob|Default.001Action.012
+  - first:
+      74: -4960592588838344131
+    second: Billy Bob|Default.001Action.013
+  - first:
+      74: 7347428520286828172
+    second: Sun|CylinderAction
+  - first:
+      74: -717419958680668703
+    second: Sun|CylinderAction.001
+  - first:
+      74: -8166711806328860123
+    second: Sun|Default.001Action
+  - first:
+      74: -7789554315684352820
+    second: Sun|Default.001Action.001
+  - first:
+      74: -4942714638068465594
+    second: Sun|Default.001Action.002
+  - first:
+      74: -2705248077200368154
+    second: Sun|Default.001Action.003
+  - first:
+      74: 9132287671654056263
+    second: Sun|Default.001Action.004
+  - first:
+      74: 1394059183392803565
+    second: Sun|Default.001Action.005
+  - first:
+      74: -7079178576459826692
+    second: Sun|Default.001Action.006
+  - first:
+      74: 13295142039882938
+    second: Sun|Default.001Action.007
+  - first:
+      74: -3067519611868250783
+    second: Sun|Default.001Action.008
+  - first:
+      74: -6703050253750168523
+    second: Sun|Default.001Action.009
+  - first:
+      74: 2605698135429213921
+    second: Sun|Default.001Action.010
+  - first:
+      74: -5103039740974827170
+    second: Sun|Default.001Action.011
+  - first:
+      74: -1577212661453537735
+    second: Sun|Default.001Action.012
+  - first:
+      74: 2472207389124723843
+    second: Sun|Default.001Action.013
+  - first:
+      74: -5612000960280224786
+    second: Sun.001|CylinderAction
+  - first:
+      74: -2972742060284810151
+    second: Sun.001|CylinderAction.001
+  - first:
+      74: -4994663782900763762
+    second: Sun.001|Default.001Action
+  - first:
+      74: -7294859425805694444
+    second: Sun.001|Default.001Action.001
+  - first:
+      74: 8371668790089363189
+    second: Sun.001|Default.001Action.002
+  - first:
+      74: 7561010021021677171
+    second: Sun.001|Default.001Action.003
+  - first:
+      74: -9116911898945584589
+    second: Sun.001|Default.001Action.004
+  - first:
+      74: 5989213930887648407
+    second: Sun.001|Default.001Action.005
+  - first:
+      74: -4183171490920802247
+    second: Sun.001|Default.001Action.006
+  - first:
+      74: 8804513785912534107
+    second: Sun.001|Default.001Action.007
+  - first:
+      74: -6718204366688306044
+    second: Sun.001|Default.001Action.008
+  - first:
+      74: 5673044565283323758
+    second: Sun.001|Default.001Action.009
+  - first:
+      74: -6742914503835261624
+    second: Sun.001|Default.001Action.010
+  - first:
+      74: -4941080144511429570
+    second: Sun.001|Default.001Action.011
+  - first:
+      74: 1470888229166987735
+    second: Sun.001|Default.001Action.012
+  - first:
+      74: -6507524786037698716
+    second: Sun.001|Default.001Action.013
+  - first:
+      74: -3970671395654493058
+    second: Sun.002|CylinderAction
+  - first:
+      74: 1021258076619706402
+    second: Sun.002|CylinderAction.001
+  - first:
+      74: 1262173388280535792
+    second: Sun.002|Default.001Action
+  - first:
+      74: 595240107507434568
+    second: Sun.002|Default.001Action.001
+  - first:
+      74: -5656963555462491088
+    second: Sun.002|Default.001Action.002
+  - first:
+      74: 8952515097842438785
+    second: Sun.002|Default.001Action.003
+  - first:
+      74: -3763540325656200893
+    second: Sun.002|Default.001Action.004
+  - first:
+      74: -7979948858320593486
+    second: Sun.002|Default.001Action.005
+  - first:
+      74: -5796879478541354902
+    second: Sun.002|Default.001Action.006
+  - first:
+      74: -4773714013892981330
+    second: Sun.002|Default.001Action.007
+  - first:
+      74: 3098088599392322428
+    second: Sun.002|Default.001Action.008
+  - first:
+      74: -7018875621684136224
+    second: Sun.002|Default.001Action.009
+  - first:
+      74: -7333517186314546718
+    second: Sun.002|Default.001Action.010
+  - first:
+      74: -2524042317012068310
+    second: Sun.002|Default.001Action.011
+  - first:
+      74: -3066472581471923947
+    second: Sun.002|Default.001Action.012
+  - first:
+      74: 5046847595898007183
+    second: Sun.002|Default.001Action.013
+  - first:
+      74: -6658117218065101026
+    second: Billy Bob|Default.001Action.014
+  - first:
+      74: 5707614292391671732
+    second: Billy Bob|Default.002Action
+  - first:
+      74: 8400157903566253140
+    second: Billy Bob|Default.002Action.001
+  - first:
+      74: 3821699350109885927
+    second: Billy Bob|Default.002Action.002
+  - first:
+      74: -4620801282095521842
+    second: Billy Bob|Default.002Action.003
+  - first:
+      74: -380768551782794504
+    second: Billy Bob|Second Beta.001Action
+  - first:
+      74: 2345409860073277595
+    second: Billy Bob|Bday BirdAction.003
+  - first:
+      74: 645348782519169480
+    second: Billy Bob|Billy BobAction
+  - first:
+      74: 2507094487507610519
+    second: Billy Bob|CubeAction.006
+  - first:
+      74: 3920815175591064811
+    second: Billy Bob|CubeAction.007
+  - first:
+      74: -555301784909988342
+    second: Billy Bob|CubeAction.008
+  - first:
+      74: 4387654847062105260
+    second: Billy Bob|Mouth.001
+  - first:
+      74: -6930370414306704973
+    second: Billy Bob|Mouth.002
+  - first:
+      74: -607209879543407119
+    second: Billy Bob|Mouth.003
+  - first:
+      74: 4489703798555513759
+    second: Billy Bob|Mouth.004
+  - first:
+      74: -8973741374403628952
+    second: Armature|Arm
+  - first:
+      74: 8739301333749982951
+    second: Armature|Billy BobAction
+  - first:
+      74: -1718317249047265409
+    second: Armature|Body Lean
+  - first:
+      74: 6471267088441470842
+    second: Armature|Body Turn Left
+  - first:
+      74: -8376643437477355781
+    second: Armature|Body Turn Right
+  - first:
+      74: -5851547240543934403
+    second: Armature|Body Turn Right.011
+  - first:
+      74: 4201302503788891511
+    second: Armature|CosmeticlessAction
+  - first:
+      74: -5823086851366766925
+    second: Armature|Default.001Action
+  - first:
+      74: 3618104650454736755
+    second: Armature|Default.001Action.002
+  - first:
+      74: 4802415863488973436
+    second: Armature|Default.001Action.003
+  - first:
+      74: -5338432360037247313
+    second: Armature|Default.001Action.010
+  - first:
+      74: -8102774646436671295
+    second: Armature|Eyelid L
+  - first:
+      74: -8758908993344292041
+    second: Armature|Eyelid L.005
+  - first:
+      74: 7165113696694872863
+    second: Armature|Eyelid R
+  - first:
+      74: 433276810487897329
+    second: Armature|Eyes Left
+  - first:
+      74: -3398162639280079445
+    second: Armature|Eyes Right
+  - first:
+      74: -8785547834726071550
+    second: Armature|Foot Tap
+  - first:
+      74: 7733244973078190657
+    second: Armature|Hand
+  - first:
+      74: 83207907464575627
+    second: Armature|Head Left
+  - first:
+      74: 3177541799068961987
+    second: Armature|Head Right
+  - first:
+      74: 2910592309923920858
+    second: Armature|Head Tilt Left
+  - first:
+      74: -5579847049396986278
+    second: Armature|Head Tilt Right
+  - first:
+      74: -4913389476121632529
+    second: Armature|Head Up
+  - first:
+      74: -2058056044862172881
+    second: Armature|Mouth
+  - first:
+      74: -2953527778590845221
+    second: Armature|Shoukder
+  - first:
+      74: 2766202887342132908
+    second: Armature|Wrist
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Alluminum
+    second: {fileID: 2100000, guid: c431cf0f72d0e2d4c9fb9399c41ec3a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BB1
+    second: {fileID: 2100000, guid: 491a7355ca569fe43942aa6ce644d7d5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BB2
+    second: {fileID: 2100000, guid: b2c95de22af5808408abf9e4905fe07a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BB3
+    second: {fileID: 2100000, guid: 4c98bc9d50f582a40936f8a0dfd8a5d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Beta Mask
+    second: {fileID: 2100000, guid: c462d4a933df90845831c824b06451d1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BetaEyelid
+    second: {fileID: 2100000, guid: aef4dd81a4605674e91d7ca3bedd901e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BetaGuitar
+    second: {fileID: 2100000, guid: a4f67317b05f27b46bb26ee3560a4813, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BetaPaw
+    second: {fileID: 2100000, guid: 1748c7928208bde4db3acefd25616e79, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Betafur0
+    second: {fileID: 2100000, guid: 2431033199eb49b4c822895c4cd24498, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Betafur1
+    second: {fileID: 2100000, guid: e7adafd7123587d49bccacbeabd9598f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Betafur2
+    second: {fileID: 2100000, guid: d1465691d7b178546aea4c0d38bda137, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Betafur3
+    second: {fileID: 2100000, guid: c2c2eb29ec4256a4b827aa8e550a79fa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BetafurEnd
+    second: {fileID: 2100000, guid: 38fa4e11e50198e4c8207f48c0f53c6f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Billy Mask
+    second: {fileID: 2100000, guid: 9863299cb870e3447a8204974d8eafb9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BirdLatex
+    second: {fileID: 2100000, guid: 3b484eba441e20946bce960441541117, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Button
+    second: {fileID: 2100000, guid: 21b75044270c8a04f8b8d3e6cd7f5466, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Colander
+    second: {fileID: 2100000, guid: fa5dadb92e2a63945a19396834edc5ef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eye
+    second: {fileID: 2100000, guid: 9ae966a9b2ef4e94c94c697f2b34ff35, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyelid
+    second: {fileID: 2100000, guid: 39cb9b017cda9934990be727754f105d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FiberGlass Billybob
+    second: {fileID: 2100000, guid: f371922b99aeea04e942103be6dabd26, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur0
+    second: {fileID: 2100000, guid: bac279c7d42d8cd46baca1179b087e59, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur1
+    second: {fileID: 2100000, guid: 3abb76c5cce426245b5fba3a2bb9812b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur2
+    second: {fileID: 2100000, guid: a36fe5ec33de4bc46b18592211232349, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur3
+    second: {fileID: 2100000, guid: e238a3c6edc53604889a266cffb22ce0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FurEnd
+    second: {fileID: 2100000, guid: bd497138d776ed44dbcef439e00a484c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FurEnds
+    second: {fileID: 2100000, guid: aaab244a57ca7364ca541c397cba00d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: 3c996b5f0ead3454bb66545c3c6a3722, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Guitar
+    second: {fileID: 2100000, guid: a4f67317b05f27b46bb26ee3560a4813, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Guitar2
+    second: {fileID: 2100000, guid: 0b43198019430bd42b3c98414491c75f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MagicNightOveralls
+    second: {fileID: 2100000, guid: 83efa99e0cff1d14e87add4c0c5cac21, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Melted Latex
+    second: {fileID: 2100000, guid: 6209bb49dc6b5c144a33dfc33a86f2a5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Other Metals
+    second: {fileID: 2100000, guid: 28b8177df7f57ba479acdbcd94279bb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Overalls
+    second: {fileID: 2100000, guid: 4ba14ae0b24e9004587ba105ae1e1704, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: OverallsBeta
+    second: {fileID: 2100000, guid: 44612804a576aa8468d9cbd190a0dd84, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Paw
+    second: {fileID: 2100000, guid: f8ceae1167740f844ac53be9fe6631fd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SecondBeta
+    second: {fileID: 2100000, guid: 529d2037fe7afa24587d420f48d20e7e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SecondBetaFur0
+    second: {fileID: 2100000, guid: 893db3c14c7560b459c7925bf798a2bf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SecondBetaFur1
+    second: {fileID: 2100000, guid: d9d363e37bdd2e542afab39f9bc8000b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SecondBetaFur2
+    second: {fileID: 2100000, guid: ab8b72f25892e4c4bae83e11c254f39b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SecondBetaFur3
+    second: {fileID: 2100000, guid: 58bf148ba12040b4bb02bc27e0a12274, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SecondBetaFurEnd
+    second: {fileID: 2100000, guid: e834be1e91ef0da4a9cfb81bbdd5fd5d, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 2
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

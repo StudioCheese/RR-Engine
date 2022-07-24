@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: 8eac62f63f362ce4098c4b6205a09f19
+ModelImporter:
+  serializedVersion: 21202
+  internalIDToNameTable:
+  - first:
+      74: -2120241651853487985
+    second: Mech|Body Turn Right.008
+  - first:
+      74: -6543005055729901689
+    second: Mech|Circle.001Action.002
+  - first:
+      74: -6359834464950883027
+    second: Mech|Cylinder.001Action
+  - first:
+      74: 6611727049106869019
+    second: Mech|SunAction
+  - first:
+      74: -1102486504143858904
+    second: Mech|SunAction.001
+  - first:
+      74: -2307308585154911361
+    second: Mech|SunAction.002
+  - first:
+      74: 7270076585803775767
+    second: Head Raise
+  - first:
+      74: -1400729384605972557
+    second: Mouth
+  - first:
+      74: -2024359356289925971
+    second: Eyes Cross
+  - first:
+      74: -8788819481688904389
+    second: Eyelid R
+  - first:
+      74: -3136873770525020641
+    second: Eyelid L
+  - first:
+      74: -6577138895837638246
+    second: Head Left
+  - first:
+      74: 8908988800486385566
+    second: Looney Bird|ArmatureAction
+  - first:
+      74: 3478181923748834225
+    second: Looney Bird|Body Turn Right.008
+  - first:
+      74: 2768918789234614565
+    second: Looney Bird|Eyelid L
+  - first:
+      74: 3808839884115826878
+    second: Looney Bird|Eyelid R
+  - first:
+      74: 6926652063304849833
+    second: Looney Bird|Eyes Cross
+  - first:
+      74: -450530209729667160
+    second: Looney Bird|Head Left
+  - first:
+      74: -1551182842380172677
+    second: Looney Bird|Head Raise
+  - first:
+      74: -4848502155152857041
+    second: Looney Bird|Mouth
+  - first:
+      74: 6009968363469465935
+    second: Looney Bird|SunAction
+  - first:
+      74: -7790955902465346165
+    second: Looney Bird|SunAction.001
+  - first:
+      74: -7272994273874362521
+    second: Looney Bird|SunAction.002
+  - first:
+      74: -4284797420667825525
+    second: Looney Bird|SunAction.003
+  - first:
+      74: 2881189788699659523
+    second: Looney Bird|CircleAction.001
+  - first:
+      74: -7594636986792790031
+    second: Looney Bird|CircleAction.002
+  - first:
+      74: 386273142203159396
+    second: Looney Bird|CircleAction.003
+  - first:
+      74: 1573208273588942254
+    second: Looney Bird|CircleAction.004
+  - first:
+      74: -6468771809114578565
+    second: Looney Bird|CircleAction.005
+  - first:
+      74: -1646449221395874351
+    second: Looney Bird|Cube.000Action.001
+  - first:
+      74: 593484977875729192
+    second: Looney Bird|Cube.001Action
+  - first:
+      74: -3985666035032480778
+    second: Looney Bird|Eyelid L.001
+  - first:
+      74: -5835456435895224028
+    second: Looney Bird|Eyelid L.002
+  - first:
+      74: 2118223624012624992
+    second: Looney Bird|Eyelid L.003
+  - first:
+      74: 3383647763953954767
+    second: Looney Bird|Eyelid L.004
+  - first:
+      74: -8483054224204066573
+    second: Looney Bird|Eyelid L.005
+  - first:
+      74: -2464907569326582593
+    second: Looney Bird|Eyelid L.006
+  - first:
+      74: 183127601116625758
+    second: Looney Bird|Eyelid L.007
+  - first:
+      74: 440080045186789595
+    second: Looney Bird|Eyelid L.008
+  - first:
+      74: -8102774646436671295
+    second: Armature|Eyelid L
+  - first:
+      74: -5738119579906306520
+    second: Armature|Eyelid L.001
+  - first:
+      74: -8410913927190143369
+    second: Armature|Eyelid L.002
+  - first:
+      74: -58678624148485415
+    second: Armature|Eyelid L.003
+  - first:
+      74: 7165113696694872863
+    second: Armature|Eyelid R
+  - first:
+      74: -6705907368276732199
+    second: Armature|Eyes Cross
+  - first:
+      74: 83207907464575627
+    second: Armature|Head Left
+  - first:
+      74: 6209474720423992317
+    second: Armature|Head Raise
+  - first:
+      74: -2058056044862172881
+    second: Armature|Mouth
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Alluminum
+    second: {fileID: 2100000, guid: c431cf0f72d0e2d4c9fb9399c41ec3a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eye
+    second: {fileID: 2100000, guid: 9ae966a9b2ef4e94c94c697f2b34ff35, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyelid
+    second: {fileID: 2100000, guid: 39cb9b017cda9934990be727754f105d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyelid Brown
+    second: {fileID: 2100000, guid: 6aef8c6163420b64b99465439baf7a6d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FakeMetal
+    second: {fileID: 2100000, guid: 20bcbdb779ed1fb4591116c52369a5a9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Feather
+    second: {fileID: 2100000, guid: 97c2060765616bc42a9d7eee7845e930, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FeatherBlack
+    second: {fileID: 2100000, guid: 0fa72c5b67af36042b967cdded09ecfd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FeatherBlue
+    second: {fileID: 2100000, guid: ed91ec7acd1858441837646c0e11fdc2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FeatherPink
+    second: {fileID: 2100000, guid: 94026815ce358b64fb75cfa04c07a83e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FeatherPurple
+    second: {fileID: 2100000, guid: 6c4d5f9a9d291d64f978b044420cb5e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fiberglass
+    second: {fileID: 2100000, guid: f371922b99aeea04e942103be6dabd26, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur 0
+    second: {fileID: 2100000, guid: ce482863b6300b046b03935da3deedb7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur 1
+    second: {fileID: 2100000, guid: 507a244eb6b27304988da4948ebecee3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur 2
+    second: {fileID: 2100000, guid: 22530ad0f0635f84399c88c5c807978d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur 3
+    second: {fileID: 2100000, guid: 1d7215141d8bdf1418e248cf665ba62d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur B0
+    second: {fileID: 2100000, guid: bb5a568e88d053745a8f79b2d652c479, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur B1
+    second: {fileID: 2100000, guid: 9dd2264a1ae562f4dac689767b01c39e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur B2
+    second: {fileID: 2100000, guid: 5de00e1bc812fc340aa8fcf731420589, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur B3
+    second: {fileID: 2100000, guid: b5b1609f30da33e449d741ef285b2b89, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur BEnds
+    second: {fileID: 2100000, guid: 57b22471f1658394f82de08f61bb959c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur Ends
+    second: {fileID: 2100000, guid: 48a44aacbdbe70d47aa91e166dd4623d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur G0
+    second: {fileID: 2100000, guid: 61456c204e86d9b4f8a63b78c8dbfd17, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur G1
+    second: {fileID: 2100000, guid: 1a680cb7aeaf00f4ea26ae3993596a0f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur G2
+    second: {fileID: 2100000, guid: 964d133d3dfa3c94bb2b7a98e137e7a9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur G3
+    second: {fileID: 2100000, guid: 6d8e23fc7a9890e4495bd949f7b426fe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur GEnds
+    second: {fileID: 2100000, guid: bb698657862bbe0409caacd488762b19, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur Y0
+    second: {fileID: 2100000, guid: deb83c699cd6da042a45640d356d6030, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur Y1
+    second: {fileID: 2100000, guid: 2ffeb464acdfce045818da9736232697, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur Y2
+    second: {fileID: 2100000, guid: 3d60b4420369a5443905f6cdae143d21, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur Y3
+    second: {fileID: 2100000, guid: 7eeaaca3bfe06a34982f0c440058847f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur YEnds
+    second: {fileID: 2100000, guid: f83c970b66acb314f9e2c694065e6f08, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: e9dc92beee08f3a4cb9edb5293201dd1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Looney Bird Mask
+    second: {fileID: 2100000, guid: db5e568640330a34aa14d61f23b9fc6e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Looney Leaf
+    second: {fileID: 2100000, guid: f10ba42c868adc141865b9130405852f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Other Metals
+    second: {fileID: 2100000, guid: 28b8177df7f57ba479acdbcd94279bb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PizzaCam
+    second: {fileID: 2100000, guid: 98bab1bad689d924f93dc135a4651ac5, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

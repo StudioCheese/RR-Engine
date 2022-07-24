@@ -1,0 +1,813 @@
+fileFormatVersion: 2
+guid: d05d90e6f5f86b047b35e7fa71847eda
+ModelImporter:
+  serializedVersion: 21202
+  internalIDToNameTable:
+  - first:
+      74: 3578533287177081056
+    second: Rolfe|Arm L
+  - first:
+      74: -6633522340921816291
+    second: Rolfe|Arm R
+  - first:
+      74: -3447805937829060647
+    second: Rolfe|Arm Twist R
+  - first:
+      74: 1388942790701637373
+    second: Rolfe|Body Lean
+  - first:
+      74: -5502717519381515580
+    second: Rolfe|Body Turn Right
+  - first:
+      74: -6391972734390779119
+    second: Rolfe|Body Turn Right.025
+  - first:
+      74: -1999462564725173978
+    second: Rolfe|Ear L
+  - first:
+      74: -1661479001494852004
+    second: Rolfe|Ear R
+  - first:
+      74: 4261895665074474168
+    second: Rolfe|Earl Eyebrow
+  - first:
+      74: -286191110709428043
+    second: Rolfe|Earl Tilt
+  - first:
+      74: 806051894446246699
+    second: Rolfe|EarlMouth
+  - first:
+      74: 6588990808954633644
+    second: Rolfe|Eyelid L
+  - first:
+      74: -3536080901671807108
+    second: Rolfe|Eyes Left
+  - first:
+      74: 1553316274164679416
+    second: Rolfe|Eyes Right
+  - first:
+      74: -8154900412339544256
+    second: Rolfe|Guitar Raise.002
+  - first:
+      74: 4925263773304549577
+    second: Rolfe|Head Left
+  - first:
+      74: 1129785604437871576
+    second: Rolfe|Head Left.002
+  - first:
+      74: -5632240015501184038
+    second: Rolfe|Head Right
+  - first:
+      74: -634277893413969178
+    second: Rolfe|RolfeAction
+  - first:
+      74: -2229340678839528922
+    second: Rolfe|RolfeAction.001
+  - first:
+      74: 2946453001630154840
+    second: Rolfe|Eyelid R
+  - first:
+      74: 1839846374874873611
+    second: Rolfe|Eyelid R.001
+  - first:
+      74: 4324413134916133415
+    second: Rolfe|Shoukder.002
+  - first:
+      74: -4478708334413958361
+    second: Rolfe|Shoulder L
+  - first:
+      74: 8643211411400488484
+    second: Rolfe|Shoulder R
+  - first:
+      74: -4731336341405595511
+    second: Rolfe|Wrist L
+  - first:
+      74: -1400729384605972557
+    second: Mouth
+  - first:
+      74: 2965680977030520200
+    second: Rolfe|Head Up
+  - first:
+      74: 1115672850512433646
+    second: Rolfe|Mouth.002
+  - first:
+      74: -3043258132988748376
+    second: Mouth.001
+  - first:
+      74: -4871326461498736103
+    second: Body Turn Left.002
+  - first:
+      74: 9001060047607154578
+    second: Rolfe|body do left
+  - first:
+      74: -7076690954115704594
+    second: Rolfe|Mouth Rolfe
+  - first:
+      74: -7256432731704576720
+    second: Rolfe|body do left.001
+  - first:
+      74: 5697158619074832676
+    second: Rolfe|Mouth
+  - first:
+      74: 8421276652852558348
+    second: Rolfe|body do left.002
+  - first:
+      74: 7955847775163347394
+    second: Rolfe|body do left.003
+  - first:
+      74: 5265271838725537608
+    second: Rolfe|CosmeticlessAction
+  - first:
+      74: 1688573825968441992
+    second: Rolfe|CosmeticlessAction.001
+  - first:
+      74: 1472445257406809097
+    second: Rolfe|Eyes Left.001
+  - first:
+      74: 3784145385641379488
+    second: Rolfe|Eyes Left.002
+  - first:
+      74: 3766391326400813370
+    second: Rolfe|Eyes Right.001
+  - first:
+      74: 1291667870820332303
+    second: Rolfe|Eyes Right.002
+  - first:
+      74: 7680212769062863196
+    second: Rolfe|Head Left.001
+  - first:
+      74: 2714932645424864422
+    second: Rolfe|Head Right.001
+  - first:
+      74: -3262236608326776467
+    second: Rolfe|Head Right.002
+  - first:
+      74: -8953684452922801569
+    second: Rolfe|Shoukder
+  - first:
+      74: 6624617650890926814
+    second: Rolfe|Shoukder.001
+  - first:
+      74: -2451362697630068870
+    second: Rolfe|body do left.004
+  - first:
+      74: -39881138836297278
+    second: Rolfe|body do left.005
+  - first:
+      74: -7354717417798566481
+    second: Rolfe|Arm L.001
+  - first:
+      74: -2552612916836216585
+    second: Rolfe|Arm R.001
+  - first:
+      74: -6744247525808365715
+    second: Rolfe|Arm Twist R.001
+  - first:
+      74: 5434444822659004662
+    second: Rolfe|body do left.006
+  - first:
+      74: 1314117700390751944
+    second: Rolfe|body do left.007
+  - first:
+      74: -7383726447965912437
+    second: Rolfe|DefaultAction
+  - first:
+      74: 7743929614611976855
+    second: Rolfe|DefaultAction.001
+  - first:
+      74: 3302412351380050766
+    second: Rolfe|DefaultAction.002
+  - first:
+      74: -187489304959788036
+    second: Rolfe|DefaultAction.003
+  - first:
+      74: 5813565245371127351
+    second: Rolfe|Ear L.001
+  - first:
+      74: 2112687512493240332
+    second: Rolfe|Ear R.001
+  - first:
+      74: 8378973883369953077
+    second: Rolfe|Earl Eyebrow.001
+  - first:
+      74: 2505106423499336732
+    second: Rolfe|Earl Tilt.001
+  - first:
+      74: -4623268561756358907
+    second: Rolfe|EarlMouth.001
+  - first:
+      74: 8749022671756559247
+    second: Rolfe|Shoulder L.001
+  - first:
+      74: 7010262114745834526
+    second: Rolfe|Shoulder R.001
+  - first:
+      74: 1237679484393044408
+    second: Rolfe|Wrist L.001
+  - first:
+      74: -6020657479805111183
+    second: Rolfe|body do left.008
+  - first:
+      74: 7626546961715404168
+    second: Rolfe|CU Cosmeticless.001Action
+  - first:
+      74: 5893551224560507528
+    second: Rolfe|CU Cosmeticless.001Action.001
+  - first:
+      74: -9220968363553805603
+    second: Rolfe|Rolfe|Rolfe|Arm L.001|Rolfe|Arm L.001
+  - first:
+      74: 7037674236315891852
+    second: Rolfe|Rolfe|Rolfe|Arm L|Rolfe|Arm L
+  - first:
+      74: -8468044549585579971
+    second: Rolfe|Rolfe|Rolfe|Arm R.001|Rolfe|Arm R.001
+  - first:
+      74: -6652220764082780870
+    second: Rolfe|Rolfe|Rolfe|Arm R|Rolfe|Arm R
+  - first:
+      74: -4924469073453643045
+    second: Rolfe|Rolfe|Rolfe|Arm Twist R.001|Rolfe|Arm Twist R.001
+  - first:
+      74: 5007720042195017101
+    second: Rolfe|Rolfe|Rolfe|Arm Twist R|Rolfe|Arm Twist R
+  - first:
+      74: -4637220635831789425
+    second: Rolfe|Rolfe|Rolfe|body do left.001|Rolfe|body do left.001
+  - first:
+      74: 715131342595125447
+    second: Rolfe|Rolfe|Rolfe|body do left.002|Rolfe|body do left.002
+  - first:
+      74: -6771826521085087002
+    second: Rolfe|Rolfe|Rolfe|body do left.003|Rolfe|body do left.003
+  - first:
+      74: 8765358441965611645
+    second: Rolfe|Rolfe|Rolfe|body do left.004|Rolfe|body do left.004
+  - first:
+      74: -7364482855730977024
+    second: Rolfe|Rolfe|Rolfe|body do left.005|Rolfe|body do left.005
+  - first:
+      74: -7018627972259739697
+    second: Rolfe|Rolfe|Rolfe|body do left.006|Rolfe|body do left.006
+  - first:
+      74: -8084668891304083589
+    second: Rolfe|Rolfe|Rolfe|body do left.007|Rolfe|body do left.007
+  - first:
+      74: 4509539370103035596
+    second: Rolfe|Rolfe|Rolfe|body do left.008|Rolfe|body do left.008
+  - first:
+      74: 6972453328877591018
+    second: Rolfe|Rolfe|Rolfe|body do left|Rolfe|body do left
+  - first:
+      74: -4610468475721038590
+    second: Rolfe|Rolfe|Rolfe|Body Lean|Rolfe|Body Lean
+  - first:
+      74: -4286870384015789852
+    second: Rolfe|Rolfe|Rolfe|Body Turn Right|Rolfe|Body Turn Right
+  - first:
+      74: 4555938312315753606
+    second: Rolfe|Rolfe|Rolfe|DefaultAction.001|Rolfe|DefaultAction.001
+  - first:
+      74: -5646188174560518377
+    second: Rolfe|Rolfe|Rolfe|DefaultAction.002|Rolfe|DefaultAction.002
+  - first:
+      74: -6497173041775188579
+    second: Rolfe|Rolfe|Rolfe|DefaultAction.003|Rolfe|DefaultAction.003
+  - first:
+      74: -9003304998908414562
+    second: Rolfe|Rolfe|Rolfe|DefaultAction|Rolfe|DefaultAction
+  - first:
+      74: 9184306693391301750
+    second: Rolfe|Rolfe|Rolfe|Ear L.001|Rolfe|Ear L.001
+  - first:
+      74: -3226038225941031634
+    second: Rolfe|Rolfe|Rolfe|Ear L|Rolfe|Ear L
+  - first:
+      74: -3219978179800455894
+    second: Rolfe|Rolfe|Rolfe|Ear R.001|Rolfe|Ear R.001
+  - first:
+      74: 3275577834970826358
+    second: Rolfe|Rolfe|Rolfe|Ear R|Rolfe|Ear R
+  - first:
+      74: 8080033731142627578
+    second: Rolfe|Rolfe|Rolfe|Earl Eyebrow.001|Rolfe|Earl Eyebrow.001
+  - first:
+      74: 4530442527798105205
+    second: Rolfe|Rolfe|Rolfe|Earl Eyebrow|Rolfe|Earl Eyebrow
+  - first:
+      74: 3556263806100749052
+    second: Rolfe|Rolfe|Rolfe|Earl Tilt.001|Rolfe|Earl Tilt.001
+  - first:
+      74: -8998899791664436753
+    second: Rolfe|Rolfe|Rolfe|Earl Tilt|Rolfe|Earl Tilt
+  - first:
+      74: 3680444612141696611
+    second: Rolfe|Rolfe|Rolfe|EarlMouth.001|Rolfe|EarlMouth.001
+  - first:
+      74: 674018399990670730
+    second: Rolfe|Rolfe|Rolfe|EarlMouth|Rolfe|EarlMouth
+  - first:
+      74: 5711223345896924070
+    second: Rolfe|Rolfe|Rolfe|Eyelid L|Rolfe|Eyelid L
+  - first:
+      74: 4238160758846043893
+    second: Rolfe|Rolfe|Rolfe|Eyelid R|Rolfe|Eyelid R
+  - first:
+      74: -6375485432329964983
+    second: Rolfe|Rolfe|Rolfe|Eyes Left.001|Rolfe|Eyes Left.001
+  - first:
+      74: -6434738266375239142
+    second: Rolfe|Rolfe|Rolfe|Eyes Left|Rolfe|Eyes Left
+  - first:
+      74: -3651079620565881099
+    second: Rolfe|Rolfe|Rolfe|Eyes Right.001|Rolfe|Eyes Right.001
+  - first:
+      74: 8308023581851509650
+    second: Rolfe|Rolfe|Rolfe|Eyes Right|Rolfe|Eyes Right
+  - first:
+      74: -1445094097993477637
+    second: Rolfe|Rolfe|Rolfe|Head Left|Rolfe|Head Left
+  - first:
+      74: 8991634759936716158
+    second: Rolfe|Rolfe|Rolfe|Head Right|Rolfe|Head Right
+  - first:
+      74: 5267264878589807099
+    second: Rolfe|Rolfe|Rolfe|Head Up|Rolfe|Head Up
+  - first:
+      74: 6165619092367309404
+    second: Rolfe|Rolfe|Rolfe|Mouth Rolfe|Rolfe|Mouth Rolfe
+  - first:
+      74: 6688708836127421
+    second: Rolfe|Rolfe|Rolfe|Shoulder L.001|Rolfe|Shoulder L.001
+  - first:
+      74: -8711702078362602393
+    second: Rolfe|Rolfe|Rolfe|Shoulder L|Rolfe|Shoulder L
+  - first:
+      74: 8237013100444344548
+    second: Rolfe|Rolfe|Rolfe|Shoulder R.001|Rolfe|Shoulder R.001
+  - first:
+      74: 2682584903316548218
+    second: Rolfe|Rolfe|Rolfe|Shoulder R|Rolfe|Shoulder R
+  - first:
+      74: 373253463732457999
+    second: Rolfe|Rolfe|Rolfe|Wrist L.001|Rolfe|Wrist L.001
+  - first:
+      74: 1721135532524834546
+    second: Rolfe|Rolfe|Rolfe|Wrist L|Rolfe|Wrist L
+  - first:
+      74: 6161736481017557181
+    second: Rolfe|Rolfe|Rolfe|Arm L|Rolfe|Arm L.001
+  - first:
+      74: 1611733058584239143
+    second: Armature|Rolfe|Rolfe|Arm L.001|Rolfe|Arm L.001
+  - first:
+      74: 2579574888617122467
+    second: Armature|Rolfe|Rolfe|Arm L|Rolfe|Arm L
+  - first:
+      74: -7726062193158466052
+    second: Armature|Rolfe|Rolfe|Arm R.001|Rolfe|Arm R.001
+  - first:
+      74: -3231742536189604961
+    second: Armature|Rolfe|Rolfe|Arm R|Rolfe|Arm R
+  - first:
+      74: 736560422963401095
+    second: Armature|Rolfe|Rolfe|Arm Twist R.001|Rolfe|Arm Twist R.001
+  - first:
+      74: 3872425202496191723
+    second: Armature|Rolfe|Rolfe|Arm Twist R|Rolfe|Arm Twist R
+  - first:
+      74: -2316175595669395490
+    second: Armature|Rolfe|Rolfe|body do left.001|Rolfe|body do left.001
+  - first:
+      74: -8975189578093118254
+    second: Armature|Rolfe|Rolfe|body do left.002|Rolfe|body do left.002
+  - first:
+      74: 8094923655866749741
+    second: Armature|Rolfe|Rolfe|body do left.003|Rolfe|body do left.003
+  - first:
+      74: -1842850062521773974
+    second: Armature|Rolfe|Rolfe|body do left.004|Rolfe|body do left.004
+  - first:
+      74: 4856039210927360799
+    second: Armature|Rolfe|Rolfe|body do left.005|Rolfe|body do left.005
+  - first:
+      74: 8810265043490098850
+    second: Armature|Rolfe|Rolfe|body do left.006|Rolfe|body do left.006
+  - first:
+      74: 2090292945100498242
+    second: Armature|Rolfe|Rolfe|body do left.007|Rolfe|body do left.007
+  - first:
+      74: 887667790751431322
+    second: Armature|Rolfe|Rolfe|body do left.008|Rolfe|body do left.008
+  - first:
+      74: 7995626250685131868
+    second: Armature|Rolfe|Rolfe|body do left|Rolfe|body do left
+  - first:
+      74: -7669578473946759844
+    second: Armature|Rolfe|Rolfe|Body Lean|Rolfe|Body Lean
+  - first:
+      74: -2268369157465555738
+    second: Armature|Rolfe|Rolfe|Body Turn Right|Rolfe|Body Turn Right
+  - first:
+      74: -4350628499658239576
+    second: Armature|Rolfe|Rolfe|DefaultAction.001|Rolfe|DefaultAction.001
+  - first:
+      74: 6483354677500292060
+    second: Armature|Rolfe|Rolfe|DefaultAction.002|Rolfe|DefaultAction.002
+  - first:
+      74: 4398681438309933773
+    second: Armature|Rolfe|Rolfe|DefaultAction.003|Rolfe|DefaultAction.003
+  - first:
+      74: -294864182447779160
+    second: Armature|Rolfe|Rolfe|DefaultAction|Rolfe|DefaultAction
+  - first:
+      74: -2312212853728020785
+    second: Armature|Rolfe|Rolfe|Ear L.001|Rolfe|Ear L.001
+  - first:
+      74: 7429684194538514463
+    second: Armature|Rolfe|Rolfe|Ear L|Rolfe|Ear L
+  - first:
+      74: -8144968779740216348
+    second: Armature|Rolfe|Rolfe|Ear R.001|Rolfe|Ear R.001
+  - first:
+      74: -8042824273527532027
+    second: Armature|Rolfe|Rolfe|Ear R|Rolfe|Ear R
+  - first:
+      74: -7935945518983042898
+    second: Armature|Rolfe|Rolfe|Earl Eyebrow.001|Rolfe|Earl Eyebrow.001
+  - first:
+      74: 4828553289042694803
+    second: Armature|Rolfe|Rolfe|Earl Eyebrow|Rolfe|Earl Eyebrow
+  - first:
+      74: -5128798838145676301
+    second: Armature|Rolfe|Rolfe|Earl Tilt.001|Rolfe|Earl Tilt.001
+  - first:
+      74: -3613304092116146068
+    second: Armature|Rolfe|Rolfe|Earl Tilt|Rolfe|Earl Tilt
+  - first:
+      74: -6952995708090852998
+    second: Armature|Rolfe|Rolfe|EarlMouth.001|Rolfe|EarlMouth.001
+  - first:
+      74: 5644949056702699572
+    second: Armature|Rolfe|Rolfe|EarlMouth|Rolfe|EarlMouth
+  - first:
+      74: -525270731074231143
+    second: Armature|Rolfe|Rolfe|Eyelid L|Rolfe|Eyelid L
+  - first:
+      74: 4488213488968727115
+    second: Armature|Rolfe|Rolfe|Eyelid R|Rolfe|Eyelid R
+  - first:
+      74: 388528830806342604
+    second: Armature|Rolfe|Rolfe|Eyes Left.001|Rolfe|Eyes Left.001
+  - first:
+      74: -5874214266230829187
+    second: Armature|Rolfe|Rolfe|Eyes Left|Rolfe|Eyes Left
+  - first:
+      74: -709195093310075514
+    second: Armature|Rolfe|Rolfe|Eyes Right.001|Rolfe|Eyes Right.001
+  - first:
+      74: 6698649229329593517
+    second: Armature|Rolfe|Rolfe|Eyes Right|Rolfe|Eyes Right
+  - first:
+      74: 2314675941101358367
+    second: Armature|Rolfe|Rolfe|Head Left|Rolfe|Head Left
+  - first:
+      74: 1390444039824432732
+    second: Armature|Rolfe|Rolfe|Head Right|Rolfe|Head Right
+  - first:
+      74: -5521416981611288035
+    second: Armature|Rolfe|Rolfe|Head Up|Rolfe|Head Up
+  - first:
+      74: -9172918175882240321
+    second: Armature|Rolfe|Rolfe|Mouth Rolfe|Rolfe|Mouth Rolfe
+  - first:
+      74: 992344462230154910
+    second: Armature|Rolfe|Rolfe|Shoulder L.001|Rolfe|Shoulder L.001
+  - first:
+      74: -4091573097541615582
+    second: Armature|Rolfe|Rolfe|Shoulder L|Rolfe|Shoulder L
+  - first:
+      74: 7179561590229039377
+    second: Armature|Rolfe|Rolfe|Shoulder R.001|Rolfe|Shoulder R.001
+  - first:
+      74: 2588392533794087776
+    second: Armature|Rolfe|Rolfe|Shoulder R|Rolfe|Shoulder R
+  - first:
+      74: -5198312779204016967
+    second: Armature|Rolfe|Rolfe|Wrist L.001|Rolfe|Wrist L.001
+  - first:
+      74: 83022877697475330
+    second: Armature|Rolfe|Rolfe|Wrist L|Rolfe|Wrist L
+  - first:
+      74: 4781951162920444690
+    second: Armature|ArmatureAction
+  - first:
+      74: 4656685819489407295
+    second: Armature|CU Cosmeticless.001Action
+  - first:
+      74: -3620637933483131629
+    second: Armature|Empty.001Action
+  - first:
+      74: 464729275189209187
+    second: Armature|Empty.002Action
+  - first:
+      74: -751813995980742648
+    second: Armature|EmptyAction
+  - first:
+      74: 2920023865792766560
+    second: Armature|PlaneAction
+  - first:
+      74: 8039437375205953329
+    second: Armature|SunAction
+  - first:
+      74: 140384451894856134
+    second: Rolfe|ArmatureAction
+  - first:
+      74: 6974589535270445060
+    second: Rolfe|CU Cosmeticless.001Action.002
+  - first:
+      74: -586739530465810890
+    second: Rolfe|CU Cosmeticless.001Action.003
+  - first:
+      74: -6492409961009046175
+    second: Rolfe|MOUTHTIME
+  - first:
+      74: -3524721601315574185
+    second: Rolfe|Rolfe|Rolfe|Mouth Rolfe|Rolfe|Mouth Rolfe.001
+  - first:
+      74: -5057352393423445504
+    second: Armature|CU Cosmeticless.001Action.001
+  - first:
+      74: 3407814437214412095
+    second: Armature|CU Cosmeticless.001Action.002
+  - first:
+      74: 4204544134287942152
+    second: Armature|CU Cosmeticless.001Action.003
+  - first:
+      74: -1624357048183375598
+    second: Armature|MOUTHTIME
+  - first:
+      74: 5113279933298403900
+    second: Armature|Rolfe|Rolfe|Mouth Rolfe|Rolfe|Mouth Rolfe.001
+  - first:
+      74: -8973741374403628952
+    second: Armature|Arm
+  - first:
+      74: -7201236145341678037
+    second: Armature|Eyes Left.001
+  - first:
+      74: 4713328442592464503
+    second: Armature|Eyes Right.001
+  - first:
+      74: -1818950162399287984
+    second: Armature|Head Left.001
+  - first:
+      74: 7402230198621166923
+    second: Armature|Head Right.001
+  - first:
+      74: -4913389476121632529
+    second: Armature|Head Up
+  - first:
+      74: 9054742548983156322
+    second: Armature|Head Up.001
+  - first:
+      74: 768535513267556900
+    second: Armature|Mouth.003
+  - first:
+      74: -2953527778590845221
+    second: Armature|Shoukder
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Alluminum
+    second: {fileID: 2100000, guid: c431cf0f72d0e2d4c9fb9399c41ec3a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Alluminum.001
+    second: {fileID: 2100000, guid: c431cf0f72d0e2d4c9fb9399c41ec3a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CU Eye
+    second: {fileID: 2100000, guid: 9969b2801deebc544ad66527d2e84dcc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CU Eyelid
+    second: {fileID: 2100000, guid: a9f52458f22308949ad6bbd0e594db89, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eye
+    second: {fileID: 2100000, guid: 9ae966a9b2ef4e94c94c697f2b34ff35, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eye.001
+    second: {fileID: 2100000, guid: 9ae966a9b2ef4e94c94c697f2b34ff35, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyelid Brown
+    second: {fileID: 2100000, guid: 39cb9b017cda9934990be727754f105d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyelid Brown.001
+    second: {fileID: 2100000, guid: 39cb9b017cda9934990be727754f105d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FiberGlass Billybob.001
+    second: {fileID: 2100000, guid: f371922b99aeea04e942103be6dabd26, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur0
+    second: {fileID: 2100000, guid: 59c1cec5b4afa3a4eb06b4b4b250c22a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur0.001
+    second: {fileID: 2100000, guid: 59c1cec5b4afa3a4eb06b4b4b250c22a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur1
+    second: {fileID: 2100000, guid: dbe12731857981b45a4dca777a2f1dc1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur1.001
+    second: {fileID: 2100000, guid: da85adbb1374bdc49b644129711cebd8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur2
+    second: {fileID: 2100000, guid: fc26795902897eb4c85b13bd4882bbf0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur2.001
+    second: {fileID: 2100000, guid: de5a9e54cf9f33a42bd9ada65f618c20, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur3
+    second: {fileID: 2100000, guid: 522badf742e5d6044ac1daa7d0e08903, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur3.001
+    second: {fileID: 2100000, guid: 17a436ce04fa05f4382caffcdfde5a46, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: e9dc92beee08f3a4cb9edb5293201dd1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass.001
+    second: {fileID: 2100000, guid: e9dc92beee08f3a4cb9edb5293201dd1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Jasper
+    second: {fileID: 2100000, guid: e0ecada9089191c42b6fca81ecdfdab8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MitziMask
+    second: {fileID: 2100000, guid: 5af6c0b3072197b429306b5a7bfd6ed5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MitziMask.001
+    second: {fileID: 2100000, guid: 5af6c0b3072197b429306b5a7bfd6ed5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Other Metals
+    second: {fileID: 2100000, guid: 28b8177df7f57ba479acdbcd94279bb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Other Metals.001
+    second: {fileID: 2100000, guid: 28b8177df7f57ba479acdbcd94279bb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Proto Chuck
+    second: {fileID: 2100000, guid: f7a2f2ddd8720e5408bc971be1e4d07b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shirt
+    second: {fileID: 2100000, guid: b9d66f1ad1fa16844ad58ee15f42edaa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shirt.001
+    second: {fileID: 2100000, guid: b9d66f1ad1fa16844ad58ee15f42edaa, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 2
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 0
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

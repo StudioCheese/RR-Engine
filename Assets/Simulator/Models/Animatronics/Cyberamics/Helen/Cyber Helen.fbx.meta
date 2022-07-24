@@ -1,0 +1,232 @@
+fileFormatVersion: 2
+guid: b480fee760e26c743894ecf856dd698d
+ModelImporter:
+  serializedVersion: 21202
+  internalIDToNameTable:
+  - first:
+      74: 4976626676966158945
+    second: Armature|Eye Left
+  - first:
+      74: -7217445034407844447
+    second: Armature|Eye Right.001
+  - first:
+      74: -4468833103851162649
+    second: Armature|Eyelid
+  - first:
+      74: -4913389476121632529
+    second: Armature|Head Up
+  - first:
+      74: -355497010890236693
+    second: Armature|Jaw
+  - first:
+      74: -6067092455236434400
+    second: Armature|Body Turn
+  - first:
+      74: 5222244535955428218
+    second: Armature|Head Turn
+  - first:
+      74: 3133010809390419799
+    second: Armature|Jaw.002
+  - first:
+      74: -8973741374403628952
+    second: Armature|Arm
+  - first:
+      74: 6590296792495705961
+    second: Armature|Body Turn.001
+  - first:
+      74: 271997525282036724
+    second: Armature|CylinderAction
+  - first:
+      74: 464729275189209187
+    second: Armature|Empty.002Action
+  - first:
+      74: -751813995980742648
+    second: Armature|EmptyAction
+  - first:
+      74: 6914186477651995811
+    second: Armature|EmptyAction.001
+  - first:
+      74: -5028752428267467716
+    second: Armature|EmptyAction.002
+  - first:
+      74: 1248479096871523054
+    second: Armature|Jaw.001
+  - first:
+      74: 9035444703435630850
+    second: Armature|Jaw.003
+  - first:
+      74: -6517287059312264933
+    second: Armature|Jaw.004
+  - first:
+      74: -2008809272409278145
+    second: Armature|Jaw.005
+  - first:
+      74: -2854927342544895544
+    second: Armature|Jaw.006
+  - first:
+      74: -4732626710192885119
+    second: Armature|Jaw.007
+  - first:
+      74: 2920023865792766560
+    second: Armature|PlaneAction
+  - first:
+      74: -3722548421079296135
+    second: Armature|PlaneAction.001
+  - first:
+      74: 3188179081554864017
+    second: Armature|PlaneAction.002
+  - first:
+      74: 5629557216389519908
+    second: Armature|PlaneAction.003
+  - first:
+      74: -8014513536001368723
+    second: Armature|PlaneAction.004
+  - first:
+      74: 3691582489394652415
+    second: Armature|PlaneAction.005
+  - first:
+      74: -8772361659261011745
+    second: Armature|Mech.001Action
+  - first:
+      74: 8324471698542400440
+    second: Armature|Mech.001Action.001
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Alluminum
+    second: {fileID: 2100000, guid: c431cf0f72d0e2d4c9fb9399c41ec3a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BlackWood
+    second: {fileID: 2100000, guid: d769e0e2e32d53347b6dbb3bf4d6af01, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cyber Eye
+    second: {fileID: 2100000, guid: a420aa2664220b647af0b75b59eccc23, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eye
+    second: {fileID: 2100000, guid: 9ae966a9b2ef4e94c94c697f2b34ff35, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyelid
+    second: {fileID: 2100000, guid: 7438a348f1ed168478c83b683e838fec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyelid Brown
+    second: {fileID: 2100000, guid: 39cb9b017cda9934990be727754f105d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: 1de2d700b6a40fc41ba83ab0bd2a38b0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Other Metals
+    second: {fileID: 2100000, guid: 28b8177df7f57ba479acdbcd94279bb1, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 2
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,495 @@
+fileFormatVersion: 2
+guid: 2824d2fb0dd59bf4a93d0dde9118ff76
+ModelImporter:
+  serializedVersion: 21202
+  internalIDToNameTable:
+  - first:
+      74: -1990594381437677456
+    second: Armature|Empty.027Action
+  - first:
+      74: -751813995980742648
+    second: Armature|EmptyAction
+  - first:
+      74: 6914186477651995811
+    second: Armature|EmptyAction.001
+  - first:
+      74: -5028752428267467716
+    second: Armature|EmptyAction.002
+  - first:
+      74: -9150964367085206158
+    second: Armature|EmptyAction.003
+  - first:
+      74: 3086911650464452594
+    second: Armature|EmptyAction.004
+  - first:
+      74: -2538085419438640294
+    second: Armature|EmptyAction.005
+  - first:
+      74: 7945844781604671946
+    second: Armature|EmptyAction.006
+  - first:
+      74: 3741786635015813669
+    second: Armature|EmptyAction.007
+  - first:
+      74: -5128410966086016306
+    second: Armature|EmptyAction.008
+  - first:
+      74: -7100429820042247671
+    second: Armature|EmptyAction.009
+  - first:
+      74: -1720118493407406298
+    second: Armature|EmptyAction.010
+  - first:
+      74: -8917007971968367235
+    second: Armature|EmptyAction.011
+  - first:
+      74: 7631870453351146795
+    second: Armature|EmptyAction.012
+  - first:
+      74: -5479596721741710335
+    second: Armature|EmptyAction.013
+  - first:
+      74: 4511101645032971970
+    second: Armature|EmptyAction.014
+  - first:
+      74: 2712656817063013278
+    second: Armature|EmptyAction.015
+  - first:
+      74: 9122757626030786175
+    second: Armature|EmptyAction.016
+  - first:
+      74: 3756074212385130537
+    second: Armature|EmptyAction.017
+  - first:
+      74: -6303412796631332642
+    second: Armature|EmptyAction.018
+  - first:
+      74: 3901523587184968018
+    second: Armature|EmptyAction.019
+  - first:
+      74: 7309854506358292474
+    second: Armature|EmptyAction.020
+  - first:
+      74: 1452863034322548459
+    second: Armature|EmptyAction.021
+  - first:
+      74: 8856994231123993385
+    second: Armature|EmptyAction.022
+  - first:
+      74: -4183111736638574796
+    second: Armature|EmptyAction.023
+  - first:
+      74: 255961234504847375
+    second: Armature|EmptyAction.024
+  - first:
+      74: -8571008431265861788
+    second: Armature|EmptyAction.025
+  - first:
+      74: -4232347066933991242
+    second: Armature|EmptyAction.026
+  - first:
+      74: -4225236287338405433
+    second: Armature|EmptyAction.027
+  - first:
+      74: 4468811573028367231
+    second: Armature|EmptyAction.028
+  - first:
+      74: 4976626676966158945
+    second: Armature|Eye Left
+  - first:
+      74: 1692011805038436969
+    second: Armature|Eye Right
+  - first:
+      74: -7217445034407844447
+    second: Armature|Eye Right.001
+  - first:
+      74: -4468833103851162649
+    second: Armature|Eyelid
+  - first:
+      74: -4913389476121632529
+    second: Armature|Head Up
+  - first:
+      74: -355497010890236693
+    second: Armature|Jaw
+  - first:
+      74: -6067092455236434400
+    second: Armature|Body Turn
+  - first:
+      74: 5222244535955428218
+    second: Armature|Head Turn
+  - first:
+      74: 3133010809390419799
+    second: Armature|Jaw.002
+  - first:
+      74: 6590296792495705961
+    second: Armature|Body Turn.001
+  - first:
+      74: 5449073193131188545
+    second: Armature|CubeAction
+  - first:
+      74: 783080663221867442
+    second: Armature|CubeAction.001
+  - first:
+      74: 6755636440131579798
+    second: Armature|CubeAction.002
+  - first:
+      74: -6061105779773282926
+    second: Armature|CubeAction.003
+  - first:
+      74: 271997525282036724
+    second: Armature|CylinderAction
+  - first:
+      74: 464729275189209187
+    second: Armature|Empty.002Action
+  - first:
+      74: 1248479096871523054
+    second: Armature|Jaw.001
+  - first:
+      74: 9035444703435630850
+    second: Armature|Jaw.003
+  - first:
+      74: -6517287059312264933
+    second: Armature|Jaw.004
+  - first:
+      74: -2008809272409278145
+    second: Armature|Jaw.005
+  - first:
+      74: -2854927342544895544
+    second: Armature|Jaw.006
+  - first:
+      74: -4732626710192885119
+    second: Armature|Jaw.007
+  - first:
+      74: 6283026340913234772
+    second: Armature|Jaw.008
+  - first:
+      74: -6724352137439969539
+    second: Armature|Jaw.009
+  - first:
+      74: -2848844351973041953
+    second: Armature|Jaw.010
+  - first:
+      74: 6081194570854699641
+    second: Armature|Jaw.011
+  - first:
+      74: 564082634833121988
+    second: Armature|Jaw.012
+  - first:
+      74: 6241277948924962479
+    second: Armature|Jaw.013
+  - first:
+      74: -8541261095468666706
+    second: Armature|Jaw.014
+  - first:
+      74: -6808675210639574715
+    second: Armature|Jaw.015
+  - first:
+      74: -6278550382717424706
+    second: Armature|Jaw.016
+  - first:
+      74: -174339255076577974
+    second: Armature|Jaw.017
+  - first:
+      74: -6691277538071673490
+    second: Armature|Jaw.018
+  - first:
+      74: -6480241987629465643
+    second: Empty|CubeAction
+  - first:
+      74: 2581858170349792495
+    second: Empty|CubeAction.001
+  - first:
+      74: 2276222244926889697
+    second: Empty|CubeAction.002
+  - first:
+      74: -931015134120825414
+    second: Empty|CubeAction.003
+  - first:
+      74: 5206355559787850552
+    second: Empty|CylinderAction
+  - first:
+      74: -2662208865924906605
+    second: Empty|Empty.002Action
+  - first:
+      74: -5572541973309549404
+    second: Empty|EmptyAction
+  - first:
+      74: 523742727469920145
+    second: Empty|EmptyAction.001
+  - first:
+      74: -6842528546386705466
+    second: Empty.001|CubeAction
+  - first:
+      74: 7967338362111170773
+    second: Empty.001|CubeAction.001
+  - first:
+      74: 2980111062361329664
+    second: Empty.001|CubeAction.002
+  - first:
+      74: 2229108805194057796
+    second: Empty.001|CubeAction.003
+  - first:
+      74: 5439870765993403422
+    second: Empty.001|CylinderAction
+  - first:
+      74: -3054066582643419362
+    second: Empty.001|Empty.002Action
+  - first:
+      74: 5829745925575038128
+    second: Empty.001|EmptyAction
+  - first:
+      74: 7898733980060134528
+    second: Empty.001|EmptyAction.001
+  - first:
+      74: 59151623023488993
+    second: Empty.002|CubeAction
+  - first:
+      74: 7380705326132952214
+    second: Empty.002|CubeAction.001
+  - first:
+      74: -1544662330906607322
+    second: Empty.002|CubeAction.002
+  - first:
+      74: 7237169219653026322
+    second: Empty.002|CubeAction.003
+  - first:
+      74: 3912018592510055527
+    second: Empty.002|CylinderAction
+  - first:
+      74: -7042117135717691717
+    second: Empty.002|Empty.002Action
+  - first:
+      74: -1799984827348227897
+    second: Empty.002|EmptyAction
+  - first:
+      74: -1289338485806067594
+    second: Empty.002|EmptyAction.001
+  - first:
+      74: 6822718667277663227
+    second: Mech.004|Body Turn
+  - first:
+      74: 2052721067594171732
+    second: Mech.004|CubeAction
+  - first:
+      74: -4694108572674533555
+    second: Mech.004|CubeAction.001
+  - first:
+      74: 603892300660675630
+    second: Mech.004|CubeAction.002
+  - first:
+      74: -2146602147814773785
+    second: Mech.004|CubeAction.003
+  - first:
+      74: -5394483935367475146
+    second: Mech.004|CylinderAction
+  - first:
+      74: -3222782421931869385
+    second: Mech.004|Empty.002Action
+  - first:
+      74: -6729096547159010418
+    second: Mech.004|EmptyAction
+  - first:
+      74: 2759929431499961634
+    second: Mech.004|EmptyAction.001
+  - first:
+      74: -8973741374403628952
+    second: Armature|Arm
+  - first:
+      74: 2920023865792766560
+    second: Armature|PlaneAction
+  - first:
+      74: -3722548421079296135
+    second: Armature|PlaneAction.001
+  - first:
+      74: 3188179081554864017
+    second: Armature|PlaneAction.002
+  - first:
+      74: 5629557216389519908
+    second: Armature|PlaneAction.003
+  - first:
+      74: -8014513536001368723
+    second: Armature|PlaneAction.004
+  - first:
+      74: 3691582489394652415
+    second: Armature|PlaneAction.005
+  - first:
+      74: 8682698526678111068
+    second: Armature|Arm.001
+  - first:
+      74: 1248456569961433173
+    second: Armature|Arm.002
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Alluminum
+    second: {fileID: 2100000, guid: c431cf0f72d0e2d4c9fb9399c41ec3a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BlackWood
+    second: {fileID: 2100000, guid: d769e0e2e32d53347b6dbb3bf4d6af01, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Checker Tux
+    second: {fileID: 2100000, guid: 16ce6e1cac36eb540974c2ca51420dde, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cyber Eye
+    second: {fileID: 2100000, guid: a420aa2664220b647af0b75b59eccc23, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cyber Tex
+    second: {fileID: 2100000, guid: 672e68adf9b547741aa5f71208586029, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eye
+    second: {fileID: 2100000, guid: 9ae966a9b2ef4e94c94c697f2b34ff35, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyelid
+    second: {fileID: 2100000, guid: 7438a348f1ed168478c83b683e838fec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyelid Brown
+    second: {fileID: 2100000, guid: 39cb9b017cda9934990be727754f105d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur
+    second: {fileID: 2100000, guid: 7f8bef0312779364bb468b1c961789b4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur 1
+    second: {fileID: 2100000, guid: f6aed3a6822b08847bfc646e08e4e192, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur 2
+    second: {fileID: 2100000, guid: ebd3e0e95f61d25419b878eb4eaa205d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur 3
+    second: {fileID: 2100000, guid: db15c7df4bb5a9a4c9896d8961fc91e5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: 1de2d700b6a40fc41ba83ab0bd2a38b0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Other Metals
+    second: {fileID: 2100000, guid: 28b8177df7f57ba479acdbcd94279bb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shirt
+    second: {fileID: 2100000, guid: 703a449931fd5ef439b321919ade4edb, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 2
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 2
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 0
+    bakeAxisConversion: 0
+    preserveHierarchy: 1
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 0
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 0
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

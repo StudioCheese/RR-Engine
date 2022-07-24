@@ -1,0 +1,268 @@
+fileFormatVersion: 2
+guid: 682d0566ef5f7f146bae1f3abe991706
+ModelImporter:
+  serializedVersion: 21202
+  internalIDToNameTable:
+  - first:
+      74: 2397055728171693898
+    second: Armature|Arm Forward L
+  - first:
+      74: 3780790647465194390
+    second: Armature|Arm Forward R
+  - first:
+      74: 5994832549665818275
+    second: Armature|Arm Out L
+  - first:
+      74: -8244537773066992611
+    second: Armature|Arm Out R
+  - first:
+      74: -8666850286179492755
+    second: Armature|Arm Swing L
+  - first:
+      74: 677661904715510118
+    second: Armature|Arm Swing R
+  - first:
+      74: -3145287406469393248
+    second: Armature|Elbow Up L
+  - first:
+      74: 5067482270265331647
+    second: Armature|Elbow Up R
+  - first:
+      74: -4913389476121632529
+    second: Armature|Head Up
+  - first:
+      74: -6770404782479715931
+    second: Armature|Wave L
+  - first:
+      74: -6081058267761873768
+    second: Armature|Wave R
+  - first:
+      74: -1042518184165032982
+    second: Armature|Wrist Turn L
+  - first:
+      74: -5993323274331562222
+    second: Armature|Wrist Turn R
+  - first:
+      74: 6471267088441470842
+    second: Armature|Body Turn Left
+  - first:
+      74: -8376643437477355781
+    second: Armature|Body Turn Right
+  - first:
+      74: -2058056044862172881
+    second: Armature|Mouth
+  - first:
+      74: -520351333757186535
+    second: Armature|Nose
+  - first:
+      74: -1718317249047265409
+    second: Armature|Body Lean
+  - first:
+      74: -5590328298820701922
+    second: Armature|Body Tilt L
+  - first:
+      74: 4048437641485263368
+    second: Armature|Body Tilt R
+  - first:
+      74: 2910592309923920858
+    second: Armature|Head Tilt Left
+  - first:
+      74: -5579847049396986278
+    second: Armature|Head Tilt Right
+  - first:
+      74: -7744837468582335106
+    second: Armature|Head Turn Left
+  - first:
+      74: 7412419939256199824
+    second: Armature|Head Turn Right
+  - first:
+      74: -5823086851366766925
+    second: Armature|Default.001Action
+  - first:
+      74: 3589792099415168844
+    second: Armature|Ear L
+  - first:
+      74: -5700021940034454182
+    second: Armature|Ear R
+  - first:
+      74: 1778809562757724199
+    second: Armature|Eyelids Down
+  - first:
+      74: -3008591993626825370
+    second: Armature|Eyelids Up
+  - first:
+      74: 433276810487897329
+    second: Armature|Eyes Left
+  - first:
+      74: -3398162639280079445
+    second: Armature|Eyes Right
+  - first:
+      74: -2748858956230253218
+    second: Armature|Foottap
+  - first:
+      74: -865193756023688062
+    second: Armature|Eyebrow Down
+  - first:
+      74: -8357345417872937565
+    second: Armature|Eyebrow Up
+  - first:
+      74: 740347022785065411
+    second: Armature|Default.002Action
+  - first:
+      74: 4781951162920444690
+    second: Armature|ArmatureAction
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 32m
+    second: {fileID: 2100000, guid: fa2239ab4613910428017f49d26befbc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 32m Shell
+    second: {fileID: 2100000, guid: f64f7165242701d4badef68f81550113, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Alluminum
+    second: {fileID: 2100000, guid: c431cf0f72d0e2d4c9fb9399c41ec3a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur1
+    second: {fileID: 2100000, guid: bfc7f35a986aa094d912bc1d02f94412, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur2
+    second: {fileID: 2100000, guid: 9c0b1cebdbb0e9b42bb8ddb5e23c0638, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fur3
+    second: {fileID: 2100000, guid: b737381f6d59f3d489670a12bfa03e9e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FurBlack
+    second: {fileID: 2100000, guid: c374055a75f56d84ab6c2d8f714ee2e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FurBlack2
+    second: {fileID: 2100000, guid: bd472a0baa68b1b4c98713434f3bb495, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Late Night
+    second: {fileID: 2100000, guid: e1fb64ec4c3dc0548a05c5cff53c5604, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mijin Black Plastic
+    second: {fileID: 2100000, guid: a9a10dc3205b9b94aa187858597afbb8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Other Metals
+    second: {fileID: 2100000, guid: 28b8177df7f57ba479acdbcd94279bb1, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 2
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 0
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,375 @@
+fileFormatVersion: 2
+guid: de7599cc018b05a4a890e9c1aecbd121
+ModelImporter:
+  serializedVersion: 21202
+  internalIDToNameTable:
+  - first:
+      74: -530875327730313893
+    second: Dook|EmptyAction
+  - first:
+      74: -7258468744041059188
+    second: Dook|EmptyAction.001
+  - first:
+      74: -4108412544418686406
+    second: Dook|EmptyAction.002
+  - first:
+      74: 5194636558548138979
+    second: Dook|EmptyAction.003
+  - first:
+      74: -413885201073379476
+    second: Dook|Eyes Left.002
+  - first:
+      74: -1135781380953133704
+    second: Dook|Eyes Right.002
+  - first:
+      74: 188834039934038196
+    second: Dook|Eyelid R
+  - first:
+      74: 8688381119195666145
+    second: Dook|MouthDook
+  - first:
+      74: 1114433368266793371
+    second: Dook|SunAction
+  - first:
+      74: -7185315249556912192
+    second: Dook|SunAction.001
+  - first:
+      74: 2902313174396050296
+    second: Dook|SunAction.002
+  - first:
+      74: -5647009296703835000
+    second: Dook|SunAction.003
+  - first:
+      74: 3827509841462412015
+    second: Dook|SunAction.004
+  - first:
+      74: -3814174861722697955
+    second: Dook|SunAction.005
+  - first:
+      74: 3629151237379503
+    second: Eyes Left.002
+  - first:
+      74: 8941482749693658015
+    second: Eyes Right.002
+  - first:
+      74: 5622626082468869337
+    second: Dook|Body Lean
+  - first:
+      74: -5152056747898736192
+    second: Dook|Head Left.002
+  - first:
+      74: 2734699315879022099
+    second: Dook|Head Right.002
+  - first:
+      74: 4264688588319471875
+    second: Dook|Eyelid L
+  - first:
+      74: 5025846086570407969
+    second: Dook|Head Up.003
+  - first:
+      74: -1718317249047265409
+    second: Armature|Body Lean
+  - first:
+      74: -751813995980742648
+    second: Armature|EmptyAction
+  - first:
+      74: 6914186477651995811
+    second: Armature|EmptyAction.001
+  - first:
+      74: -5028752428267467716
+    second: Armature|EmptyAction.002
+  - first:
+      74: -9150964367085206158
+    second: Armature|EmptyAction.003
+  - first:
+      74: -8102774646436671295
+    second: Armature|Eyelid L
+  - first:
+      74: -7472958636499511410
+    second: Armature|Eyes Left.002
+  - first:
+      74: -2825040486680604098
+    second: Armature|Eyes Right.002
+  - first:
+      74: -3207392840429628789
+    second: Armature|Head Left.002
+  - first:
+      74: -1515039933993149672
+    second: Armature|Head Right.002
+  - first:
+      74: -591622134592756252
+    second: Armature|Head Up.003
+  - first:
+      74: 7165113696694872863
+    second: Armature|Eyelid R
+  - first:
+      74: -779481284343297059
+    second: Armature|MouthDook
+  - first:
+      74: 8039437375205953329
+    second: Armature|SunAction
+  - first:
+      74: 18767786136841554
+    second: Armature|SunAction.001
+  - first:
+      74: -6168032749037960210
+    second: Armature|SunAction.002
+  - first:
+      74: 7856774166715922232
+    second: Armature|SunAction.003
+  - first:
+      74: 9049613367881584172
+    second: Armature|SunAction.004
+  - first:
+      74: 5659865136663727133
+    second: Armature|SunAction.005
+  - first:
+      74: -8991522383943760092
+    second: Armature|Arm L
+  - first:
+      74: -2245376543448974983
+    second: Armature|Arm L.001
+  - first:
+      74: 1743069981994972867
+    second: Armature|Arm L.004
+  - first:
+      74: -662301164090892976
+    second: Armature|ArmSwingR
+  - first:
+      74: -7567656522128324632
+    second: Armature|Body Lean.001
+  - first:
+      74: -2538085419438640294
+    second: Armature|EmptyAction.005
+  - first:
+      74: -5738119579906306520
+    second: Armature|Eyelid L.001
+  - first:
+      74: 433276810487897329
+    second: Armature|Eyes Left
+  - first:
+      74: -7201236145341678037
+    second: Armature|Eyes Left.001
+  - first:
+      74: 1682728799356323622
+    second: Armature|Eyes Left.007
+  - first:
+      74: -3398162639280079445
+    second: Armature|Eyes Right
+  - first:
+      74: 95921411098276090
+    second: Armature|Eyes Right.007
+  - first:
+      74: 83207907464575627
+    second: Armature|Head Left
+  - first:
+      74: 3177541799068961987
+    second: Armature|Head Right
+  - first:
+      74: -6688564604018061563
+    second: Armature|Head Up.002
+  - first:
+      74: -2058056044862172881
+    second: Armature|Mouth
+  - first:
+      74: 3124184821994342154
+    second: Armature|Eyelid R.001
+  - first:
+      74: -9003452450044033663
+    second: Armature|Shoulder L
+  - first:
+      74: 3466859084278082620
+    second: Armature|Shoulder L.001
+  - first:
+      74: 3991861179396999661
+    second: Armature|Shoulder L.004
+  - first:
+      74: -6681173942406314625
+    second: Armature|Shoulder R.004
+  - first:
+      74: 452949912980412017
+    second: Armature|Armdown L
+  - first:
+      74: 2423005378476169115
+    second: Armature|ArmDown R
+  - first:
+      74: -512191449819053393
+    second: Armature|ArmSwingL
+  - first:
+      74: 2047549384054703225
+    second: Armature|Hihat
+  - first:
+      74: 4713328442592464503
+    second: Armature|Eyes Right.001
+  - first:
+      74: -1818950162399287984
+    second: Armature|Head Left.001
+  - first:
+      74: 7402230198621166923
+    second: Armature|Head Right.001
+  - first:
+      74: -4913389476121632529
+    second: Armature|Head Up
+  - first:
+      74: 9054742548983156322
+    second: Armature|Head Up.001
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 1stage
+    second: {fileID: 2100000, guid: 27d4a325f140a7442929e4ebff7af2a8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Alluminum
+    second: {fileID: 2100000, guid: c431cf0f72d0e2d4c9fb9399c41ec3a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Alluminum.001
+    second: {fileID: 2100000, guid: c431cf0f72d0e2d4c9fb9399c41ec3a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cushons
+    second: {fileID: 2100000, guid: 069eb8c5b4906ec43800ef99a370a5a0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eye
+    second: {fileID: 2100000, guid: 9ae966a9b2ef4e94c94c697f2b34ff35, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyelid Brown
+    second: {fileID: 2100000, guid: 39cb9b017cda9934990be727754f105d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: e9dc92beee08f3a4cb9edb5293201dd1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MainCU
+    second: {fileID: 2100000, guid: f2f8323a6d1e712499d53b45e3aa2645, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Other Metals
+    second: {fileID: 2100000, guid: 28b8177df7f57ba479acdbcd94279bb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Other Metals.001
+    second: {fileID: 2100000, guid: 28b8177df7f57ba479acdbcd94279bb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Proto Main CU
+    second: {fileID: 2100000, guid: a0a61c5e6c3f61e4ea06b00eefa3a367, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SmittySign
+    second: {fileID: 2100000, guid: 92e21602f7c0e844a8f91502097d9f62, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

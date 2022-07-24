@@ -1,0 +1,242 @@
+fileFormatVersion: 2
+guid: 7248625609b1fe04b9d85a9ba46fa528
+ModelImporter:
+  serializedVersion: 20101
+  internalIDToNameTable:
+  - first:
+      74: 3578533287177081056
+    second: Rolfe|Arm L
+  - first:
+      74: -7354717417798566481
+    second: Rolfe|Arm L.001
+  - first:
+      74: -6633522340921816291
+    second: Rolfe|Arm R
+  - first:
+      74: -2552612916836216585
+    second: Rolfe|Arm R.001
+  - first:
+      74: -3447805937829060647
+    second: Rolfe|Arm Twist R
+  - first:
+      74: -6744247525808365715
+    second: Rolfe|Arm Twist R.001
+  - first:
+      74: 9001060047607154578
+    second: Rolfe|body do left
+  - first:
+      74: -7256432731704576720
+    second: Rolfe|body do left.001
+  - first:
+      74: 8421276652852558348
+    second: Rolfe|body do left.002
+  - first:
+      74: 7955847775163347394
+    second: Rolfe|body do left.003
+  - first:
+      74: -2451362697630068870
+    second: Rolfe|body do left.004
+  - first:
+      74: -39881138836297278
+    second: Rolfe|body do left.005
+  - first:
+      74: 5434444822659004662
+    second: Rolfe|body do left.006
+  - first:
+      74: 1314117700390751944
+    second: Rolfe|body do left.007
+  - first:
+      74: -6020657479805111183
+    second: Rolfe|body do left.008
+  - first:
+      74: 1388942790701637373
+    second: Rolfe|Body Lean
+  - first:
+      74: -5502717519381515580
+    second: Rolfe|Body Turn Right
+  - first:
+      74: -7383726447965912437
+    second: Rolfe|DefaultAction
+  - first:
+      74: 7743929614611976855
+    second: Rolfe|DefaultAction.001
+  - first:
+      74: 3302412351380050766
+    second: Rolfe|DefaultAction.002
+  - first:
+      74: -187489304959788036
+    second: Rolfe|DefaultAction.003
+  - first:
+      74: -1999462564725173978
+    second: Rolfe|Ear L
+  - first:
+      74: 5813565245371127351
+    second: Rolfe|Ear L.001
+  - first:
+      74: -1661479001494852004
+    second: Rolfe|Ear R
+  - first:
+      74: 2112687512493240332
+    second: Rolfe|Ear R.001
+  - first:
+      74: 4261895665074474168
+    second: Rolfe|Earl Eyebrow
+  - first:
+      74: 8378973883369953077
+    second: Rolfe|Earl Eyebrow.001
+  - first:
+      74: -286191110709428043
+    second: Rolfe|Earl Tilt
+  - first:
+      74: 2505106423499336732
+    second: Rolfe|Earl Tilt.001
+  - first:
+      74: 806051894446246699
+    second: Rolfe|EarlMouth
+  - first:
+      74: -4623268561756358907
+    second: Rolfe|EarlMouth.001
+  - first:
+      74: 6588990808954633644
+    second: Rolfe|Eyelid L
+  - first:
+      74: -3536080901671807108
+    second: Rolfe|Eyes Left
+  - first:
+      74: 1472445257406809097
+    second: Rolfe|Eyes Left.001
+  - first:
+      74: 1553316274164679416
+    second: Rolfe|Eyes Right
+  - first:
+      74: 3766391326400813370
+    second: Rolfe|Eyes Right.001
+  - first:
+      74: 4925263773304549577
+    second: Rolfe|Head Left
+  - first:
+      74: -5632240015501184038
+    second: Rolfe|Head Right
+  - first:
+      74: 2965680977030520200
+    second: Rolfe|Head Up
+  - first:
+      74: -7076690954115704594
+    second: Rolfe|Mouth Rolfe
+  - first:
+      74: 2946453001630154840
+    second: Rolfe|Eyelid R
+  - first:
+      74: -4478708334413958361
+    second: Rolfe|Shoulder L
+  - first:
+      74: 8749022671756559247
+    second: Rolfe|Shoulder L.001
+  - first:
+      74: 8643211411400488484
+    second: Rolfe|Shoulder R
+  - first:
+      74: 7010262114745834526
+    second: Rolfe|Shoulder R.001
+  - first:
+      74: -4731336341405595511
+    second: Rolfe|Wrist L
+  - first:
+      74: 1237679484393044408
+    second: Rolfe|Wrist L.001
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
