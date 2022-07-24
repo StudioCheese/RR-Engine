@@ -1,5 +1,4 @@
-![Reel to Reel Logo Stroke](https://user-images.githubusercontent.com/69170079/180670272-a608a629-a62b-4f02-8d18-9e0d66a7092a.png)
-![Logo Stroke](https://user-images.githubusercontent.com/69170079/174708107-ad028aba-22d2-43c5-ad11-a39537216eae.png)
+![Reel to Reel Icon Stroke - Copy](https://user-images.githubusercontent.com/69170079/180670348-4175cc09-545a-4611-802f-b2d50ef1c0e3.png)
 
 # Description
 The RR Engine is a Unity codebase for simulating and animating old animatronics, with various features to customize the viewing experience.
@@ -25,3 +24,4 @@ A set of plugins are required for building properly, and are not included within
 
 # Switching Branches
 Depending on whichever bracn is pushed with new updates, the default branch you might start in when opening the project could be different. Navigate to the "Scenes/Manger/Manager.unity" scene and open it. Click on the only object in the scene and look in the inspector. There a custom script will have buttons for switching between the 4 different builds. Click the branch button you want, then toggle the VR switch on or off to activate the branch switch. You may need to flick the VR switch a few times if it doesn't work. Be sure to open the game to be sure your branch has been switched to before leaving the Manager scene.
+
