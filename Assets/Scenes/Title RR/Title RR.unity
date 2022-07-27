@@ -8417,7 +8417,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 820976510}
   m_OnClick:
     m_PersistentCalls:
@@ -16758,6 +16758,8 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 4d1fb3ee465b7f94a837376ab35b21d6, type: 3}
   - {fileID: 2800000, guid: 1566a485b0e97904d8da0951530c5e22, type: 3}
   - {fileID: 2800000, guid: e33fd2954bda28344949dddee14956d8, type: 3}
+  - {fileID: 2800000, guid: f54d6d4deaa951b4089fb9e24628e83d, type: 3}
+  - {fileID: 2800000, guid: e3b8cb4ce3da25741acd97b961b2199f, type: 3}
 --- !u!1 &1622497396
 GameObject:
   m_ObjectHideFlags: 0

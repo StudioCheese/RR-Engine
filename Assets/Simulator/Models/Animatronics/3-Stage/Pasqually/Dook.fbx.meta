@@ -213,6 +213,12 @@ ModelImporter:
   - first:
       74: 9054742548983156322
     second: Armature|Head Up.001
+  - first:
+      74: 7600499028599063274
+    second: The new Body Lean
+  - first:
+      74: 362440958188196566
+    second: Armature|The new Body Lean
   externalObjects:
   - first:
       type: UnityEngine:Material

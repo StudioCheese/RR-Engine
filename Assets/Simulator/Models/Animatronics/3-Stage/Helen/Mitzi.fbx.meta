@@ -1740,6 +1740,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Cheerleader Body
+    second: {fileID: 2100000, guid: d900564e4d4856d43b780ef0ab236ea4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: CorpMask
     second: {fileID: 2100000, guid: a34ae05a0cfb22e4ca7114d1d896da54, type: 2}
   - first:
@@ -1752,6 +1757,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Eyelid Brown
     second: {fileID: 2100000, guid: 39cb9b017cda9934990be727754f105d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Feather Yellow
+    second: {fileID: 2100000, guid: 1542f874b031ef04789197b5cf1feadc, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -1842,6 +1852,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Other Metals.001
     second: {fileID: 2100000, guid: 28b8177df7f57ba479acdbcd94279bb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pom Poms
+    second: {fileID: 2100000, guid: 8d43039df26740d44aeed41ab25b9884, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

@@ -176,6 +176,7 @@ public class GlobalController : MonoBehaviour
 
     public void LoadShowScene(string scene)
     {
+        //Delete fake scene objects before loading
         for (int i = 0; i < showSceneNames.Length; i++)
         {
             if (SceneManager.GetSceneByName(showSceneNames[i].sceneName).IsValid())
@@ -185,8 +186,20 @@ public class GlobalController : MonoBehaviour
                 showSceneNames[i].objectShow.GetComponentInChildren(typeof(Button3D), true).gameObject.SetActive(true);
             }
         }
+
+        //Double check to unload assets
         Resources.UnloadUnusedAssets();
 
+        //Make sure multiple scenes don't get loaded
+        for (int i = 0; i < SceneManager.sceneCount; i++)
+        {
+            if(SceneManager.GetSceneAt(i).name == scene)
+            {
+                return;
+            }
+        }
+
+        //Load Scene
         if (scene != "")
         {
             for (int i = 0; i < showSceneNames.Length; i++)

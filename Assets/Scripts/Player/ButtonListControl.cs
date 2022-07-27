@@ -40,7 +40,14 @@ public class ButtonListControl : MonoBehaviour
 
     public void QuitToTitle()
     {
-        SceneManager.LoadScene("Title Screen", LoadSceneMode.Single);
+        if (GameVersion.gameName == "Faz-Anim")
+        {
+            SceneManager.LoadScene("Title Screen", LoadSceneMode.Single);
+        }
+        else
+        {
+            SceneManager.LoadScene("Title RR", LoadSceneMode.Single);
+        }
         Destroy(this.transform.root.gameObject);
     }
 

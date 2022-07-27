@@ -25794,6 +25794,23 @@ MonoBehaviour:
       - Default
       attributes:
       - Scale
+    - name: Uncle Pappy
+      description: 
+      price: 640
+      skins:
+      - Cosmeticless Chair
+      - Cosmeticless
+      - Mech Chair
+      - Mech
+      attributes:
+      - Scale
+    - name: CU Flower
+      description: 
+      price: 640
+      skins:
+      - Default
+      attributes:
+      - Scale
     - name: Cyberamic Chuck
       description: 
       price: 640
@@ -25845,16 +25862,6 @@ MonoBehaviour:
       skins:
       - Default
       - Cosmeticless
-      - Mech
-      attributes:
-      - Scale
-    - name: Uncle Pappy
-      description: 
-      price: 640
-      skins:
-      - Cosmeticless Chair
-      - Cosmeticless
-      - Mech Chair
       - Mech
       attributes:
       - Scale
