@@ -7,9 +7,10 @@ using UnityEngine.Video;
 public class StageSelector
 {
     [Header("Stage")]
+    public string stageName;
     public GameObject stage;
     [Header("Description")]
-    public string stageName;
+
     public string stageDesc;
     public string stageDate;
     public Sprite stageIcon;

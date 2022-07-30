@@ -130,6 +130,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Durby
+    second: {fileID: 2100000, guid: ca39ab0344212234f913ea2737e37bd2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Fur1
     second: {fileID: 2100000, guid: bfc7f35a986aa094d912bc1d02f94412, type: 2}
   - first:

@@ -8129,7 +8129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5215550095897422190, guid: 7acf20c26d3308d4a933cbaf4a89948c, type: 3}
       propertyPath: characters.Array.data[0].allCostumes.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5215550095897422190, guid: 7acf20c26d3308d4a933cbaf4a89948c, type: 3}
       propertyPath: characters.Array.data[1].allCostumes.Array.size
@@ -8234,10 +8234,10 @@ PrefabInstance:
     - target: {fileID: 5215550095897422190, guid: 7acf20c26d3308d4a933cbaf4a89948c, type: 3}
       propertyPath: characters.Array.data[0].allCostumes.Array.data[1].costumeIcon
       value: 
-      objectReference: {fileID: 21300000, guid: c077f654655c4a149955f210fba00c69, type: 3}
+      objectReference: {fileID: 21300000, guid: e5c3a4c20fbc47a47a983f9d8ca0a292, type: 3}
     - target: {fileID: 5215550095897422190, guid: 7acf20c26d3308d4a933cbaf4a89948c, type: 3}
       propertyPath: characters.Array.data[0].allCostumes.Array.data[1].costumeName
-      value: Cosmeticless
+      value: Durby
       objectReference: {fileID: 0}
     - target: {fileID: 5215550095897422190, guid: 7acf20c26d3308d4a933cbaf4a89948c, type: 3}
       propertyPath: characters.Array.data[0].allCostumes.Array.data[2].costumeDesc
@@ -8246,7 +8246,27 @@ PrefabInstance:
     - target: {fileID: 5215550095897422190, guid: 7acf20c26d3308d4a933cbaf4a89948c, type: 3}
       propertyPath: characters.Array.data[0].allCostumes.Array.data[2].costumeIcon
       value: 
+      objectReference: {fileID: 21300000, guid: c077f654655c4a149955f210fba00c69, type: 3}
+    - target: {fileID: 5215550095897422190, guid: 7acf20c26d3308d4a933cbaf4a89948c, type: 3}
+      propertyPath: characters.Array.data[0].allCostumes.Array.data[2].costumeName
+      value: Cosmeticless
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215550095897422190, guid: 7acf20c26d3308d4a933cbaf4a89948c, type: 3}
+      propertyPath: characters.Array.data[0].allCostumes.Array.data[3].costumeDesc
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215550095897422190, guid: 7acf20c26d3308d4a933cbaf4a89948c, type: 3}
+      propertyPath: characters.Array.data[0].allCostumes.Array.data[3].costumeIcon
+      value: 
       objectReference: {fileID: 21300000, guid: 4d1fb3ee465b7f94a837376ab35b21d6, type: 3}
+    - target: {fileID: 5215550095897422190, guid: 7acf20c26d3308d4a933cbaf4a89948c, type: 3}
+      propertyPath: characters.Array.data[0].allCostumes.Array.data[3].costumeName
+      value: Mech
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215550095897422190, guid: 7acf20c26d3308d4a933cbaf4a89948c, type: 3}
+      propertyPath: characters.Array.data[0].allCostumes.Array.data[3].costumeType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5215550095897422190, guid: 7acf20c26d3308d4a933cbaf4a89948c, type: 3}
       propertyPath: characters.Array.data[1].allCostumes.Array.data[0].costumeDesc
       value: The early Helen Henny Cyberamics mech seen in the early 80's. It had
@@ -8315,6 +8335,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5215550095897422190, guid: 7acf20c26d3308d4a933cbaf4a89948c, type: 3}
       propertyPath: characters.Array.data[0].allCostumes.Array.data[2].yearOfCostume
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215550095897422190, guid: 7acf20c26d3308d4a933cbaf4a89948c, type: 3}
+      propertyPath: characters.Array.data[0].allCostumes.Array.data[3].yearOfCostume
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5215550095897422190, guid: 7acf20c26d3308d4a933cbaf4a89948c, type: 3}

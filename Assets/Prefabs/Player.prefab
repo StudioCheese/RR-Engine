@@ -7376,7 +7376,7 @@ MonoBehaviour:
   enableJump: 1
   gravity: 12
   jumpSpeed: 4
-  airControl: 1
+  airControl: 1.5
   airTurnSpeed: 1
   enableCrouch: 1
   camInitialHeight: 0.657

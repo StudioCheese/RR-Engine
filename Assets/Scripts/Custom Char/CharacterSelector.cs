@@ -5,8 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class CharacterSelector
 {
-    public GameObject mainCharacter;
     public string characterName;
+    public GameObject mainCharacter;
     public Sprite icon;
     public int currentCostume;
     public CharacterCostume[] allCostumes;

@@ -17741,6 +17741,10 @@ PrefabInstance:
       value: -56.807
       objectReference: {fileID: 0}
     - target: {fileID: 5215550095897422191, guid: 7acf20c26d3308d4a933cbaf4a89948c, type: 3}
+      propertyPath: allShowtapes.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215550095897422191, guid: 7acf20c26d3308d4a933cbaf4a89948c, type: 3}
       propertyPath: recordingGroups.Array.size
       value: 16
       objectReference: {fileID: 0}

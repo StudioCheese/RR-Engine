@@ -552,6 +552,9 @@ public class UI_SidePanel : MonoBehaviour
                             case "Uncle Pappy":
                                 finalname = "Uncle Pappy";
                                 break;
+                            case "Kooser Chuck":
+                                finalname = "Chuck E. Cheese";
+                                break;
                             default:
                                 break;
                         }

@@ -452,6 +452,7 @@ public class TimelineEditor : MonoBehaviour
                 break;
         }
         video.playbackSpeed = speaker.pitch;
+        uiShowtapeManager.syncTvsAndSpeakers.Invoke();
     }
     public void PausePlay()
     {
@@ -493,6 +494,7 @@ public class TimelineEditor : MonoBehaviour
                 break;
         }
         video.playbackSpeed = speaker.pitch;
+        uiShowtapeManager.syncTvsAndSpeakers.Invoke();
     }
 
     public void AudioVideoGetData()

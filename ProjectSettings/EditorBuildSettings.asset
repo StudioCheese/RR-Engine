@@ -26,12 +26,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Bit Crusher/Bit Crusher.unity
     guid: ebc9cfca19d01164283d8f6d6fac00d7
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Sandbox/Sandbox.unity
     guid: b9f3d2f36c92086409656ee998d53571
+  - enabled: 1
+    path: Assets/Simulator/Scenes/Kooser/Kooser.unity
+    guid: 3b1139bd162f63e4dbc419c15e93355b
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 1ad4485362b30e14db989c88e5cdf70e, type: 2}
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: 396d6d3e9c771e24ea59ebd25ab84624, type: 2}

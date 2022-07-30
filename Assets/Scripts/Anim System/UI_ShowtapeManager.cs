@@ -805,6 +805,7 @@ public class UI_ShowtapeManager : MonoBehaviour
             yield return null;
             timeSongStarted = Time.time;
             syncTvsAndSpeakers.Invoke();
+            Debug.Log("Length = " + referenceSpeaker.clip.length + " Channels = " + referenceSpeaker.clip.channels + " Total = " + referenceSpeaker.clip.length / referenceSpeaker.clip.channels);
         }
     }
 

@@ -123,6 +123,8 @@ public class UI_PlayRecord : MonoBehaviour
                 mack.bottomDrawer[90] = mack.bottomDrawer[74];
                 mack.bottomDrawer[89] = false;
                 mack.bottomDrawer[63] = true;
+                mack.topDrawer[25] = !mack.topDrawer[25];
+                mack.topDrawer[26] = !mack.topDrawer[26];
                 break;
             case SignalChange.PrePTT:
 
@@ -957,7 +959,7 @@ public class UI_PlayRecord : MonoBehaviour
             default:
                 break;
         }
-
+        manager.syncTvsAndSpeakers.Invoke();
     }
 
     /// <summary>
@@ -1015,6 +1017,7 @@ public class UI_PlayRecord : MonoBehaviour
         {
             videoplayer.playbackSpeed = manager.referenceSpeaker.pitch;
         }
+        manager.syncTvsAndSpeakers.Invoke();
     }
 
     /// <summary>

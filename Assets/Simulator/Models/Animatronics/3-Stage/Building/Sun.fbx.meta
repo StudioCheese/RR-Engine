@@ -27,6 +27,42 @@ ModelImporter:
   - first:
       74: -2058056044862172881
     second: Armature|Mouth
+  - first:
+      74: 5449073193131188545
+    second: Armature|CubeAction
+  - first:
+      74: -3620637933483131629
+    second: Armature|Empty.001Action
+  - first:
+      74: -751813995980742648
+    second: Armature|EmptyAction
+  - first:
+      74: -8772361659261011745
+    second: Armature|Mech.001Action
+  - first:
+      74: -6480241987629465643
+    second: Empty|CubeAction
+  - first:
+      74: -1779458952936665273
+    second: Empty|Empty.001Action
+  - first:
+      74: -5572541973309549404
+    second: Empty|EmptyAction
+  - first:
+      74: -5631394104850013334
+    second: Empty|Mech.001Action
+  - first:
+      74: -6842528546386705466
+    second: Empty.001|CubeAction
+  - first:
+      74: -6949670309919530470
+    second: Empty.001|Empty.001Action
+  - first:
+      74: 5829745925575038128
+    second: Empty.001|EmptyAction
+  - first:
+      74: -2788519292052390623
+    second: Empty.001|Mech.001Action
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -41,13 +77,48 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Dark Blue
+    second: {fileID: 2100000, guid: 53510d073de5907449ef789c3254ea6c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gray
+    second: {fileID: 2100000, guid: 4734a98697313094ca994754bee807a5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Light Blue
+    second: {fileID: 2100000, guid: 56e4f0072ab02bf46898f3102aee2d74, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: 53510d073de5907449ef789c3254ea6c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mobile 1
+    second: {fileID: 2100000, guid: 786b405c01e456946a7a746a1eda9fd7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mobile 2
+    second: {fileID: 2100000, guid: 6c0dec1bd580d2245b637d24d37829d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Other Metals
     second: {fileID: 2100000, guid: 28b8177df7f57ba479acdbcd94279bb1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Phoenix
+    second: {fileID: 2100000, guid: fb4145ad50f65ea49908434b2fdbd9b4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Sun Mask
-    second: {fileID: 2100000, guid: 0b66037ce0093c840bb6f66d534a29e0, type: 2}
+    second: {fileID: 2100000, guid: 53510d073de5907449ef789c3254ea6c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

@@ -219,6 +219,9 @@ ModelImporter:
   - first:
       74: 362440958188196566
     second: Armature|The new Body Lean
+  - first:
+      74: -8772361659261011745
+    second: Armature|Mech.001Action
   externalObjects:
   - first:
       type: UnityEngine:Material

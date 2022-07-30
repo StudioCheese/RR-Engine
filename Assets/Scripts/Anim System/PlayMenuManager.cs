@@ -19,7 +19,7 @@ public class PlayMenuManager : MonoBehaviour
     public Text authorText;
     public Text titleText;
     public Text speedText;
-    public RectTransform tickTimerRect;
+    public Slider playSlider;
     int endtexttimer = 0;
     // Start is called before the first frame update
     public GameObject[] keepSizedList;
@@ -102,13 +102,19 @@ public class PlayMenuManager : MonoBehaviour
 
             int nowtimer = (int)Mathf.Floor(playUI.manager.referenceSpeaker.time);
 
-            tickTimerRect.anchoredPosition = new Vector2(-490 + (Mathf.Min(Mathf.Max((float)nowtimer / (float)(endtexttimer + 1), 0), 1) * 980), tickTimerRect.localPosition.y);
+            playSlider.value = playUI.manager.referenceSpeaker.time / (playUI.manager.referenceSpeaker.clip.length / playUI.manager.referenceSpeaker.clip.channels) * 100;
             if (nowtimer <= (float)(endtexttimer))
             {
                 nowTimeText.text = Mathf.Floor(nowtimer / 60).ToString("00") + ":" + (nowtimer % 60).ToString("00");
             }
         }
 
+    }
+
+    public void ClickSlider(int section)
+    {
+        playUI.manager.referenceSpeaker.time = (section / 10.0f) * (playUI.manager.referenceSpeaker.clip.length / playUI.manager.referenceSpeaker.clip.channels);
+        playUI.manager.syncTvsAndSpeakers.Invoke();
     }
 
     public void TextUpdate(bool record)

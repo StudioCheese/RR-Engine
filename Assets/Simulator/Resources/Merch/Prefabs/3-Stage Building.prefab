@@ -76,8 +76,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.38895103, y: 1.5948901, z: 0.28742307}
-  m_Center: {x: -0.0066620335, y: 0.7595866, z: 0.012224346}
+  m_Size: {x: 0.38895103, y: 1.2004466, z: 0.38151062}
+  m_Center: {x: -0.006662026, y: 0.5949335, z: -0.18318799}
 --- !u!1001 &1575093225020717177
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -129,11 +129,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8234339016192207170, guid: d2716eb86dfff184992527a4475ed965, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4561193470005248270, guid: d2716eb86dfff184992527a4475ed965, type: 3}
       propertyPath: m_LightProbeUsage
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4561193470005248270, guid: d2716eb86dfff184992527a4475ed965, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4257968609086018710, guid: d2716eb86dfff184992527a4475ed965, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -2791375397665132725, guid: d2716eb86dfff184992527a4475ed965, type: 3}
       propertyPath: m_UpdateWhenOffscreen
       value: 1
       objectReference: {fileID: 0}
@@ -153,9 +165,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sun
       objectReference: {fileID: 0}
+    - target: {fileID: 3749914667287801436, guid: d2716eb86dfff184992527a4475ed965, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5228019625462971392, guid: d2716eb86dfff184992527a4475ed965, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7869873546869171050, guid: d2716eb86dfff184992527a4475ed965, type: 3}
       propertyPath: m_Name
       value: Armature
+      objectReference: {fileID: 0}
+    - target: {fileID: 8859992139122851300, guid: d2716eb86dfff184992527a4475ed965, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2716eb86dfff184992527a4475ed965, type: 3}
