@@ -16,7 +16,6 @@ public class AudioController : MonoBehaviour
         bitChart = GameObject.Find("Mack Valves").GetComponent<Mack_Valves>();
         aud = this.GetComponent<AudioSource>();
     }
-
     // Update is called once per frame
     public void Update()
     {
@@ -35,6 +34,5 @@ public class AudioController : MonoBehaviour
                 boolChecks[i] = false;
             }    
         }
-
     }
 }

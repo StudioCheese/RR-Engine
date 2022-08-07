@@ -19,6 +19,7 @@ public class ShowtapeAnalyzer : MonoBehaviour
     public Text analyzeBody;
     public int exportAllSignals = 1;
     uint[] maplut = new uint[] { 10, 11, 0, 1, 2, 3, 4, 12, 13, 5, 6, 7, 8, 9, 14, 15 };
+    uint[] maplut2 = new uint[] { 2, 4, 5, 0, 3, 1, 6,7,8,9,10,11,12,13,14,15 };
     public void StartAnalysis(string type)
     {
         StartCoroutine(StartAnalysisCorou(type));
@@ -447,6 +448,15 @@ public class ShowtapeAnalyzer : MonoBehaviour
                         newaps[k + b] = aps[k + maplut[b]];
                     }
                 }
+                //Shift through the secret RAE bitswap TWICE
+                for (int k = 1024; k < aps.Length - 1024; k += 16)
+                {
+                    for (int b = 0; b < 16; b++)
+                    {
+                        aps[k + b] = newaps[k + maplut2[b]];
+                    }
+                }
+                newaps = aps;
                 loading.text.text = "Loading Bits";
                 yield return null;
 
