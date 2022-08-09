@@ -17,8 +17,8 @@ The RR Engine and its creator should be credited in any derivative works.
 
 # Plugins
 A set of plugins are required for building properly, and are not included within the public codebase.
-- [Open WAWV Parser](https://assetstore.unity.com/packages/tools/audio/open-wav-parser-90832#publisher)
-- [Dynamic Bone ($20](https://assetstore.unity.com/packages/tools/animation/dynamic-bone-16743#description)
+- [Open WAV Parser](https://assetstore.unity.com/packages/tools/audio/open-wav-parser-90832#publisher)
+- [Dynamic Bone ($20)](https://assetstore.unity.com/packages/tools/animation/dynamic-bone-16743#description)
 - [Off Screen Target Indicator](https://assetstore.unity.com/packages/tools/gui/off-screen-target-indicator-71799#publisher)
 - [Standalone File Browser](https://github.com/gkngkc/UnityStandaloneFileBrowser)
 
