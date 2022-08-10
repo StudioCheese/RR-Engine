@@ -67,9 +67,12 @@ public class TitleScreen : MonoBehaviour
                 {
                     charcustomBtn.interactable = true;
                 }
-
+                if(sandboxBtn != null)
+                {
+                   sandboxBtn.interactable = true;
+                }
                 editorBtn.interactable = true;
-                sandboxBtn.interactable = true;
+                
             }
             settingG = settingW.GetComponent<CanvasGroup>();
             faqG = faqW.GetComponent<CanvasGroup>();

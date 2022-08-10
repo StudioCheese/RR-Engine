@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 8cb3c29147f77e040b08e9429792760f
 ModelImporter:
-  serializedVersion: 20101
+  serializedVersion: 21202
   internalIDToNameTable:
   - first:
       74: 4781951162920444690
@@ -87,6 +87,87 @@ ModelImporter:
   - first:
       74: -4092182461327718427
     second: Armature|CurtainSL
+  - first:
+      74: 8680222178819355468
+    second: Armature.002|Circle.004Action
+  - first:
+      74: 8515230130707753009
+    second: Armature.002|Circle.011Action.002
+  - first:
+      74: 696796680737736093
+    second: Armature.002|Circle.011Action.003
+  - first:
+      74: -6238274849271972340
+    second: Armature.002|Circle.011Action.005
+  - first:
+      74: 3259864448748558463
+    second: Armature.002|Circle.031|Circle.011|Baked.002Action
+  - first:
+      74: -6434520476274840155
+    second: Armature.002|Circle.031|Circle.011|Baked.002Action.001
+  - first:
+      74: -4253700080090633159
+    second: Armature.002|Circle.031|Circle.011|Baked.002Action.002
+  - first:
+      74: -926194662790003347
+    second: Armature.002|Circle.031|Circle.011|Baked.002Action.003
+  - first:
+      74: -7172615736460919382
+    second: Armature.002|Circle.031|Circle.011|Baked.002Action.006
+  - first:
+      74: -6295032116738810668
+    second: Armature.002|Circle.031|Circle.011|Baked.002Action.007
+  - first:
+      74: 2183378788502479706
+    second: Armature.002|Circle.031|Circle.011|Baked.002Action.008
+  - first:
+      74: 6904550097069849191
+    second: Armature.002|Circle.031|Circle.011|Circle.004Action
+  - first:
+      74: -465630009547834833
+    second: Armature.002|Circle.031|Circle.011|Circle.005Action
+  - first:
+      74: -6258793984736821221
+    second: Armature.002|Circle.031|Circle.011|Circle.006Action
+  - first:
+      74: 4430433836567800068
+    second: Armature.002|Circle.031|Circle.011|Circle.006Action.001
+  - first:
+      74: -5578199854382426022
+    second: Armature.002|Circle.031|Circle.011|Circle.006Action.002
+  - first:
+      74: -8982217030637511173
+    second: Armature.002|Circle.031|Circle.011|Circle.006Action.003
+  - first:
+      74: 1734670117471942984
+    second: Armature.002|Circle.031|Circle.011|Circle.006Action.004
+  - first:
+      74: 9064053945659520101
+    second: Armature.002|Circle.031|Circle.011|Circle.006Action.005
+  - first:
+      74: 7416312055410895585
+    second: Armature.002|Circle.031|Circle.011|Circle.011Action
+  - first:
+      74: -4582666853782582647
+    second: Armature.002|Circle.031|Circle.011|Circle.011Action.001
+  - first:
+      74: 2206112606767346558
+    second: Armature.002|Circle.031|Circle.011|Circle.011Action.002
+  - first:
+      74: -172925240129969164
+    second: Armature.002|Circle.031|Circle.011|Circle.011Action.003
+  - first:
+      74: 3650252548241486059
+    second: Armature.002|Circle.031|Circle.011|Default.001Action
+  - first:
+      74: 1618165020306744305
+    second: Armature.002|Curtain SC
+  - first:
+      74: -6625953322819851441
+    second: Armature.002|Curtain SR
+  - first:
+      74: 6593618524445346843
+    second: Armature.002|CurtainSL
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -103,6 +184,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -132,6 +214,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    nodeNameCollisionStrategy: 0
     fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
@@ -143,6 +226,7 @@ ModelImporter:
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
+    optimizeBones: 1
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
@@ -184,6 +268,7 @@ ModelImporter:
   animationType: 2
   humanoidOversampling: 1
   avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

@@ -18754,7 +18754,7 @@ MonoBehaviour:
   showtimeButton: {fileID: 423172663}
   charcustomBtn: {fileID: 0}
   editorBtn: {fileID: 176020695}
-  sandboxBtn: {fileID: 820976509}
+  sandboxBtn: {fileID: 0}
   fade: {fileID: 44939335}
   bars:
   - {fileID: 1346529121}
