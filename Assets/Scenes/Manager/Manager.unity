@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fazAnimVersion: 1.50
-  rockafireReplayVersion: 1.60
+  rockafireReplayVersion: 1.62
   fazTexture: {fileID: 2800000, guid: b809725fe61ad73439cb70d0123ee5ff, type: 3}
   rockTexture: {fileID: 2800000, guid: 59efaaf1efb87d340ae38ae2dd1c947a, type: 3}
   fazAnimScenes:
