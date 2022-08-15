@@ -37156,7 +37156,13 @@ MonoBehaviour:
       description: 
       price: 640
       skins:
-      - PizzaCam
+      - Default
+      - Cosmeticless
+      - Black Eyelid
+      - Irving
+      - Toothless
+      - Wilmington
+      - Pre-CU Cosmeticless
       - Cosmeticless
       - Mech
       attributes:
@@ -37186,6 +37192,7 @@ MonoBehaviour:
       - Phoenix
       - Mobile 1
       - Mobile 2
+      - Cosmeticless
       - Mech
       attributes:
       - Scale

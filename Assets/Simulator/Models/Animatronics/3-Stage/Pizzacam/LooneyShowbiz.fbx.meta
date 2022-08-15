@@ -156,6 +156,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: CU Eyelid
+    second: {fileID: 2100000, guid: a9f52458f22308949ad6bbd0e594db89, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Eye
     second: {fileID: 2100000, guid: 9ae966a9b2ef4e94c94c697f2b34ff35, type: 2}
   - first:
@@ -328,6 +333,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: PizzaCam
     second: {fileID: 2100000, guid: 98bab1bad689d924f93dc135a4651ac5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RedLight
+    second: {fileID: 2100000, guid: 6280417d63fa58e42b798ea1f3ef5c5f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

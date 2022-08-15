@@ -10,7 +10,7 @@ Material:
   m_Name: CU Keyboard
   m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
   m_ShaderKeywords: _DISABLE_SSR_TRANSPARENT _ENABLE_FOG_ON_TRANSPARENT _NORMALMAP_TANGENT_SPACE
-    _REFRACTION_THIN _SURFACE_TYPE_TRANSPARENT
+    _REFRACTION_THIN _SURFACE_TYPE_TRANSPARENT _TRANSMITTANCECOLORMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -108,7 +108,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TransmittanceColorMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 3b16f6c78f88e984d94c28bd0dd1c8c9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -220,7 +220,7 @@ Material:
     - _ReceivesSSRTransparent: 0
     - _RefractionModel: 3
     - _SSRefractionProjectionModel: 0
-    - _Smoothness: 0.468
+    - _Smoothness: 0.487
     - _SmoothnessRemapMax: 1
     - _SmoothnessRemapMin: 0
     - _SmoothnessTextureChannel: 0
@@ -295,3 +295,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 12
+  hdPluginSubTargetMaterialVersions:
+    m_Keys: []
+    m_Values: 

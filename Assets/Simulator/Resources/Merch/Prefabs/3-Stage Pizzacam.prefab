@@ -352,7 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Root: {fileID: 4831471469053737036}
-  m_UpdateRate: 60
+  m_UpdateRate: 5
   m_UpdateMode: 3
   m_Damping: 0.021
   m_DampingDistrib:
@@ -361,7 +361,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_Elasticity: 0.032
+  m_Elasticity: 0.963
   m_ElasticityDistrib:
     serializedVersion: 2
     m_Curve: []
@@ -375,7 +375,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_Inert: 0.052
+  m_Inert: 0.63
   m_InertDistrib:
     serializedVersion: 2
     m_Curve: []
@@ -396,10 +396,10 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_EndLength: 0
-  m_EndOffset: {x: 0, y: 0, z: 0}
-  m_Gravity: {x: 0.002, y: 0.002, z: 0.002}
-  m_Force: {x: 0, y: 0, z: 0}
+  m_EndLength: 1.24
+  m_EndOffset: {x: 0, y: 0, z: 11}
+  m_Gravity: {x: 0.03, y: 0.002, z: 0.31}
+  m_Force: {x: 0, y: 0.15, z: 0}
   m_Colliders: []
   m_Exclusions:
   - {fileID: 8379460737970592457}
