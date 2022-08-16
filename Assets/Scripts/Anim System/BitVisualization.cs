@@ -65,7 +65,6 @@ public class BitVisualization : MonoBehaviour
         }
         else
         {
-            int e = 0;
             for (int i = 0; i < colors.Length; i++)
             {
                 if (i % 2 == 0 && (i / 20) % 2 == 0)

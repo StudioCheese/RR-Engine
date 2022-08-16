@@ -422,7 +422,6 @@ public class ShowtapeAnalyzer : MonoBehaviour
     IEnumerator ImportAPS()
     {
         Debug.Log("APS Import");
-        string apsname = "";
         loading.maximum = 300;
         loading.current = 0;
         loading.text.text = "(0/2)";
@@ -548,7 +547,6 @@ public class ShowtapeAnalyzer : MonoBehaviour
     IEnumerator ImportRR()
     {
         Debug.Log("RR Import");
-        string apsname = "";
         loading.maximum = 300;
         loading.current = 0;
         loading.text.text = "(0/2)";

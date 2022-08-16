@@ -1,0 +1,168 @@
+fileFormatVersion: 2
+guid: 61e2a84261a41ff489878ffebc2c5573
+ModelImporter:
+  serializedVersion: 21202
+  internalIDToNameTable:
+  - first:
+      74: 1277907516927110171
+    second: Armature|Arm Twist R.004
+  - first:
+      74: -512191449819053393
+    second: Armature|ArmSwingL
+  - first:
+      74: -662301164090892976
+    second: Armature|ArmSwingR
+  - first:
+      74: -1718317249047265409
+    second: Armature|Body Lean
+  - first:
+      74: -4398191431468347869
+    second: Armature|CU Cosmeticless.002Action
+  - first:
+      74: -8102774646436671295
+    second: Armature|Eyelid L
+  - first:
+      74: 7165113696694872863
+    second: Armature|Eyelid R
+  - first:
+      74: 433276810487897329
+    second: Armature|Eyes Left
+  - first:
+      74: 1682728799356323622
+    second: Armature|Eyes Left.007
+  - first:
+      74: 95921411098276090
+    second: Armature|Eyes Right.007
+  - first:
+      74: 935935998683029913
+    second: Armature|FelbowL
+  - first:
+      74: -5763508758698141182
+    second: Armature|FelbowR
+  - first:
+      74: -8785547834726071550
+    second: Armature|Foot Tap
+  - first:
+      74: -1698395801184096710
+    second: Armature|Haed Tip R
+  - first:
+      74: 83207907464575627
+    second: Armature|Head Left
+  - first:
+      74: 3177541799068961987
+    second: Armature|Head Right
+  - first:
+      74: -3068699471929101355
+    second: Armature|Head Tip L
+  - first:
+      74: -6688564604018061563
+    second: Armature|Head Up.002
+  - first:
+      74: -2058056044862172881
+    second: Armature|Mouth
+  - first:
+      74: 3991861179396999661
+    second: Armature|Shoulder L.004
+  - first:
+      74: -6681173942406314625
+    second: Armature|Shoulder R.004
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

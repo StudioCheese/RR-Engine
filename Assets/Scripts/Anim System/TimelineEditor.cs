@@ -41,6 +41,8 @@ public class TimelineEditor : MonoBehaviour
     public UI_WindowMaker windowMaker;
     public UI_PlayRecord playRecord;
 
+    public UI_RshwCreator creator;
+
     //Timeline Zoom View
     public float viewZoomMin = 0;
     public float viewZoomMax = 10;
@@ -100,11 +102,11 @@ public class TimelineEditor : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.S))
             {
-                uiShowtapeManager.SaveRecording();
+                creator.SaveRecording();
             }
             if (Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.S))
             {
-                uiShowtapeManager.SaveRecordingAs();
+                creator.SaveRecordingAs();
             }
             if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.O))
             {
@@ -178,8 +180,8 @@ public class TimelineEditor : MonoBehaviour
             switch (file.value)
             {
                 case 0:
-                    uiShowtapeManager.AddWavSpecial();
-                    uiShowtapeManager.SaveRecordingAs();
+                    creator.AddWavSpecial();
+                    creator.SaveRecordingAs();
                     if(uiShowtapeManager.showtapeSegmentPaths != null)
                     {
                         if (uiShowtapeManager.showtapeSegmentPaths[0] != "")
@@ -190,7 +192,7 @@ public class TimelineEditor : MonoBehaviour
                             }
                             uiShowtapeManager.recordMovements = true;
                             uiShowtapeManager.currentShowtapeSegment = 0;
-                            uiShowtapeManager.LoadFromURL(uiShowtapeManager.showtapeSegmentPaths[0]);
+                            creator.LoadFromURL(uiShowtapeManager.showtapeSegmentPaths[0]);
                         }
                     }
                     break;
@@ -198,14 +200,14 @@ public class TimelineEditor : MonoBehaviour
                     uiShowtapeManager.Load();
                     break;
                 case 2:
-                    uiShowtapeManager.LoadMasterRandom();
+                    //Load master, removed.
                     break;
                 case 3:
-                    uiShowtapeManager.SaveRecording();
+                    creator.SaveRecording();
                     uiShowtapeManager.recordMovements = true;
                     break;
                 case 4:
-                    uiShowtapeManager.SaveRecordingAs();
+                    creator.SaveRecordingAs();
                     uiShowtapeManager.recordMovements = true;
                     break;
                 case 5:
@@ -254,10 +256,6 @@ public class TimelineEditor : MonoBehaviour
                     }
                     exportBitDropdown.options = bits;
                     break;
-                case 5:
-                    uiShowtapeManager.SetMasterFolder();
-                    break;
-
                 default:
                     break;
             }

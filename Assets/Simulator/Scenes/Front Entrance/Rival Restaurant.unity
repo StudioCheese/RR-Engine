@@ -37138,7 +37138,14 @@ MonoBehaviour:
       description: 
       price: 640
       skins:
+      - Default
+      - Demo
+      - Modern CU
+      - CU Cosmeticless
+      - CU Mech
+      - Modern CU Cosmeticless
       - Modern CU Mech
+      - Cosmeticless
       - Mech
       attributes:
       - Scale
@@ -37272,9 +37279,9 @@ MonoBehaviour:
       price: 640
       skins:
       - Default
+      - Durby
       - Cosmeticless
       - Mech
-      - Durby
       attributes:
       - Scale
   - groupName: Lights

@@ -700,6 +700,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Outer Fur
+    second: {fileID: 2100000, guid: 2c4602637ef8cea42860eefea7a7aad0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Proto Chuck
     second: {fileID: 2100000, guid: f7a2f2ddd8720e5408bc971be1e4d07b, type: 2}
   - first:

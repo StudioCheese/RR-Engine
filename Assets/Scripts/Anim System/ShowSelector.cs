@@ -2,13 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class ShowTapeSelector
-{
-    public string showtapeName;
-    public string showtapeDate;
-    public ShowtapeSegment[] segments;
-}
+
 [System.Serializable]
 public class ShowtapeSegment
 {

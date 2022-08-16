@@ -255,7 +255,36 @@ ModelImporter:
   - first:
       74: 3466859084278082620
     second: Armature|Shoulder L.001
+  - first:
+      74: 4781951162920444690
+    second: Armature|ArmatureAction
+  - first:
+      74: -4398191431468347869
+    second: Armature|CU Cosmeticless.002Action
+  - first:
+      74: -7201236145341678037
+    second: Armature|Eyes Left.001
+  - first:
+      74: 4713328442592464503
+    second: Armature|Eyes Right.001
+  - first:
+      74: -1818950162399287984
+    second: Armature|Head Left.001
+  - first:
+      74: 7402230198621166923
+    second: Armature|Head Right.001
+  - first:
+      74: 9054742548983156322
+    second: Armature|Head Up.001
+  - first:
+      74: -1400729384605972557
+    second: Mouth
   externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Accessories
+    second: {fileID: 2100000, guid: 61f2c9ba6fad39049bfadb25f43b2103, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -299,8 +328,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Furends
+    second: {fileID: 2100000, guid: d9405beaf0d1e574f8f4c6f69dd168af, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Glass
     second: {fileID: 2100000, guid: e9dc92beee08f3a4cb9edb5293201dd1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Munch
+    second: {fileID: 2100000, guid: 49a3b0c2688e62848ab4c686a50433a5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Munch Fur
+    second: {fileID: 2100000, guid: fe9600d0454749141a8155591282a76e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
