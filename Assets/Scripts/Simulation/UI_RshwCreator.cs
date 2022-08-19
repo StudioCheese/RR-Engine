@@ -6,16 +6,22 @@ using System.Linq;
 using UnityEngine.UI;
 using SFB;
 using UnityEngine.Video;
+using YoutubePlayer;
+
 
 public class UI_RshwCreator : MonoBehaviour
 {
     UI_ShowtapeManager manager;
     UI_PlayRecord playRecord;
+    YoutubePlayer.YoutubePlayer youtubePlayer;
+
+
 
     void Start()
     {
         playRecord = this.GetComponent<UI_PlayRecord>();
         manager = this.GetComponent<UI_ShowtapeManager>();
+        youtubePlayer = this.GetComponent<YoutubePlayer.YoutubePlayer>();
     }
 
     public enum addWavResult
@@ -205,7 +211,10 @@ public class UI_RshwCreator : MonoBehaviour
         //Check if null
         if (url != "")
         {
+            manager.referenceSpeaker.volume = manager.refSpeakerVol;
             manager.referenceSpeaker.time = 0;
+            manager.useVideoAsReference = false;
+            manager.referenceVideo.time = 0;
             manager.timeSongStarted = 0;
             manager.timeSongOffset = 0;
             manager.timePauseStart = 0;
@@ -272,13 +281,57 @@ public class UI_RshwCreator : MonoBehaviour
             Debug.Log("Length = " + manager.referenceSpeaker.clip.length + " Channels = " + manager.referenceSpeaker.clip.channels + " Total = " + manager.referenceSpeaker.clip.length / manager.referenceSpeaker.clip.channels);
         }
     }
-    
+
     public void LoadYoutubeShow(string url)
     {
-        playRecord.videoplayer.url = "https://unity-youtube-dl-server.herokuapp.com/" + url;
         playRecord.videoplayer.source = VideoSource.Url;
         playRecord.videoplayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
-        playRecord.videoplayer.Play();
+        youtubePlayer.youtubeUrl = url;
+        manager.videoPath = url;
+        PrepareYTVideoA();
+    }
+
+    public async void PrepareYTVideoA()
+    {
+        Debug.Log("Loading video...");
+        await youtubePlayer.PrepareVideoAsync();
+        Debug.Log("Video ready");
+        StartCoroutine(PrepareYTVideoB());
+    }
+
+    IEnumerator PrepareYTVideoB()
+    {
+        manager.referenceSpeaker.volume = 1;
+        manager.disableCharactersOnStart = false;
+        manager.playMovements = false;
+        manager.referenceVideo.time = 0;
+        manager.referenceSpeaker.time = 0;
+        manager.useVideoAsReference = true;
+        manager.timeSongStarted = 0;
+        manager.timeSongOffset = 0;
+        manager.timePauseStart = 0;
+        manager.timeInputSpeedStart = 0;
+        yield return null;
+        //Add code for opening .rshw file
+        manager.curtainOpen.Invoke();
+        yield return null;
+        AudioSource au = this.GetComponent<AudioSource>();
+
+
+        manager.rshwData = new BitArray[100];
+        for (int i = 0; i < manager.rshwData.Length; i++)
+        {
+            manager.rshwData[i] = new BitArray(300);
+        }
+        yield return null;
+
+        manager.audioVideoGetData.Invoke();
+        yield return null;
+
+        //Finalize
+        manager.timeSongStarted = Time.time;
+        manager.syncTvsAndSpeakers.Invoke();
+        Debug.Log("Length = " + manager.referenceVideo.length + " Channels = " + manager.referenceVideo.GetAudioChannelCount(0) + " Total = " + manager.referenceVideo.length / (float)manager.referenceVideo.GetAudioChannelCount(0));
     }
 
     public void EraseShowtape()
@@ -348,6 +401,4 @@ public class UI_RshwCreator : MonoBehaviour
             }
         }
     }
-
-
 }

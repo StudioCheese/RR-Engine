@@ -200,17 +200,14 @@ public class TimelineEditor : MonoBehaviour
                     uiShowtapeManager.Load();
                     break;
                 case 2:
-                    //Load master, removed.
-                    break;
-                case 3:
                     creator.SaveRecording();
                     uiShowtapeManager.recordMovements = true;
                     break;
-                case 4:
+                case 3:
                     creator.SaveRecordingAs();
                     uiShowtapeManager.recordMovements = true;
                     break;
-                case 5:
+                case 4:
                     if (GameVersion.gameName != "Faz-Anim")
                     {
                         SceneManager.LoadScene("Title RR");

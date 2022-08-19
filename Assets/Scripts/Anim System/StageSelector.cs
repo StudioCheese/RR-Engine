@@ -91,6 +91,6 @@ public class ShowTV
     public int bitOff;
     public int bitOn;
     public MeshRenderer[] tvs;
-    [HideInInspector]
+
     public int curtainSubState;
 }

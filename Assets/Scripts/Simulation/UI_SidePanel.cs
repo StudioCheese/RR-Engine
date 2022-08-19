@@ -594,7 +594,6 @@ public class UI_SidePanel : MonoBehaviour
                                 cv.flowControlOut[e] = thefile.characters[i].flowsOut[e] / 1000f;
                                 cv.gravityScale[e] = thefile.characters[i].weightIn[e] / 1000f;
                                 cv.gravityScaleOut[e] = thefile.characters[i].weightOut[e] / 1000f;
-                                Debug.Log(cv.smashControlIn.Length);
                                 cv.smashControlIn[e] = thefile.characters[i].flowsIn[e + extra] / 1000f;
                                 cv.smashControlOut[e] = thefile.characters[i].flowsOut[e + extra] / 1000f;
                                 cv.smashSpeedIn[e] = thefile.characters[i].weightIn[e + extra] / 1000f;

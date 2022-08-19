@@ -1186,6 +1186,7 @@ MonoBehaviour:
   m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
 --- !u!114 &237189871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1957,6 +1958,7 @@ MonoBehaviour:
   taaMotionVectorRejection: 0
   taaAntiHistoryRinging: 0
   taaBaseBlendFactor: 0.875
+  taaJitterScale: 1
   physicalParameters:
     m_Iso: 200
     m_ShutterSpeed: 0.005
@@ -2755,6 +2757,8 @@ GameObject:
   - component: {fileID: 457449621}
   - component: {fileID: 457449622}
   - component: {fileID: 457449623}
+  - component: {fileID: 457449624}
+  - component: {fileID: 457449625}
   m_Layer: 0
   m_Name: Editor
   m_TagString: Untagged
@@ -2791,7 +2795,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mack: {fileID: 0}
   inputHandler: {fileID: 0}
+  creator: {fileID: 0}
   referenceSpeaker: {fileID: 457449622}
+  refSpeakerVol: 0
+  referenceVideo: {fileID: 0}
   speakerClip: {fileID: 0}
   songLoopSetting: 0
   wavPath: 
@@ -2885,9 +2892,16 @@ MonoBehaviour:
   updateTickets:
     m_PersistentCalls:
       m_Calls: []
+  disableCharactersOnStart: 1
   recordMovements: 1
   playMovements: 0
-  isRandomPlaybackOn: 0
+  useVideoAsReference: 0
+  timeSongStarted: 0
+  timeSongOffset: 0
+  timePauseStart: 0
+  timeInputSpeedStart: 0
+  previousFramePosition: 0
+  previousAnyButtonHeld: 0
 --- !u!114 &457449621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3827,6 +3841,7 @@ MonoBehaviour:
   extraInfoText: {fileID: 894990243}
   windowMaker: {fileID: 0}
   playRecord: {fileID: 0}
+  creator: {fileID: 0}
   viewZoomMin: 0
   viewZoomMax: 10
   audioLengthMax: 0
@@ -3954,6 +3969,53 @@ MonoBehaviour:
   analyzeHeader: {fileID: 1217232652}
   analyzeBody: {fileID: 1827752353}
   exportAllSignals: 1
+--- !u!114 &457449624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457449617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2475d777d1e29447894d3cf05aba72b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!328 &457449625
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457449617}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 0}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 0}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
+  m_RenderMode: 2
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 1
+  m_TargetAudioSources:
+  - {fileID: 457449622}
+  m_DirectAudioVolumes:
+  - 1
+  m_Url: 
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
+  m_PlayOnAwake: 1
+  m_SkipOnDrop: 1
+  m_Looping: 0
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []
 --- !u!1 &470619528
 GameObject:
   m_ObjectHideFlags: 0
@@ -6252,6 +6314,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
@@ -6656,6 +6719,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
@@ -6757,6 +6821,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
@@ -10325,6 +10390,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
@@ -11305,8 +11371,6 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Export All Signals In Bit
       m_Image: {fileID: 0}
-    - m_Text: Set Master Tape Folder
-      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -11644,6 +11708,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
@@ -12268,8 +12333,6 @@ MonoBehaviour:
     - m_Text: New
       m_Image: {fileID: 0}
     - m_Text: Open
-      m_Image: {fileID: 0}
-    - m_Text: (Master) Open Random
       m_Image: {fileID: 0}
     - m_Text: Save
       m_Image: {fileID: 0}
@@ -13206,6 +13269,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0

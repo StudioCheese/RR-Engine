@@ -8,6 +8,7 @@ using System;
 using System.Collections;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class FloatEvent : UnityEvent<float> { }
 
@@ -22,8 +23,10 @@ public class UI_ShowtapeManager : MonoBehaviour
     //File Show MetaData
     [Header("File Show Metadata")]
     [HideInInspector] public BitArray[] rshwData;
-      [HideInInspector] public UI_RshwCreator creator;
+    [HideInInspector] public UI_RshwCreator creator;
     public AudioSource referenceSpeaker;
+    [HideInInspector] public float refSpeakerVol;
+    public VideoPlayer referenceVideo;
     public AudioClip speakerClip;
     public LoopVers songLoopSetting;
     public string wavPath;
@@ -52,7 +55,8 @@ public class UI_ShowtapeManager : MonoBehaviour
     //Sim States
     public bool recordMovements = false;
     public bool playMovements = false;
-    public bool isRandomPlaybackOn;
+
+    public bool useVideoAsReference;
 
     //New Simulation
     [HideInInspector] public float timeSongStarted = 0;
@@ -71,10 +75,12 @@ public class UI_ShowtapeManager : MonoBehaviour
         loopPlaylist,
         loopSong
     }
-    
+
     void Start()
     {
         creator = this.GetComponent<UI_RshwCreator>();
+        referenceVideo = this.GetComponent<VideoPlayer>();
+        refSpeakerVol = referenceSpeaker.volume;
     }
 
     void Update()
@@ -97,146 +103,154 @@ public class UI_ShowtapeManager : MonoBehaviour
             mack.bottomDrawer = inputDataObj.bottomDrawer;
 
             //Check for inputs and send to mack valves
-            if (inputHandler != null && mack != null && referenceSpeaker.clip != null)
+            if (inputHandler != null && mack != null)
             {
-
-
-                if (rshwData != null)
+                if ((useVideoAsReference) || (!useVideoAsReference && referenceSpeaker.clip != null))
                 {
-                    //Show Code
-                    //Being paused means the same frame of data will loop
-                    //Being unpaused means deciding where to start next sim frame
-                    int arrayDestination = (int)(referenceSpeaker.time * dataStreamedFPS);
-
-                    //Check if new frames need to be created
-                    if (arrayDestination >= rshwData.Length && rshwData.Length != 0)
+                    if (rshwData != null)
                     {
-                        if (recordMovements)
+                        //Show Code
+                        //Being paused means the same frame of data will loop
+                        //Being unpaused means deciding where to start next sim frame
+                        int arrayDestination;
+                        if (useVideoAsReference)
                         {
-                            while (arrayDestination + 1 > rshwData.Length)
-                            {
-                                rshwData = rshwData.Append(new BitArray(300)).ToArray();
-                            }
+                            arrayDestination = (int)(referenceVideo.time * dataStreamedFPS);
                         }
                         else
                         {
-                            arrayDestination = rshwData.Length;
+                            arrayDestination = (int)(referenceSpeaker.time * dataStreamedFPS);
                         }
-                    }
 
-                    //Record
-                    if (recordMovements)
-                    {
+
+                        //Check if new frames need to be created
+                        if (arrayDestination >= rshwData.Length && rshwData.Length != 0)
+                        {
+                            if (recordMovements)
+                            {
+                                while (arrayDestination + 1 > rshwData.Length)
+                                {
+                                    rshwData = rshwData.Append(new BitArray(300)).ToArray();
+                                }
+                            }
+                            else
+                            {
+                                arrayDestination = rshwData.Length;
+                            }
+                        }
+
                         //Record
-                        if (inputDataObj.anyButtonHeld)
+                        if (recordMovements)
+                        {
+                            //Record
+                            if (inputDataObj.anyButtonHeld)
+                            {
+                                for (int i = 0; i < 150; i++)
+                                {
+                                    if (inputDataObj.topDrawer[i])
+                                    {
+                                        rshwData[arrayDestination].Set(i, true);
+                                    }
+                                    if (inputDataObj.bottomDrawer[i])
+                                    {
+                                        rshwData[arrayDestination].Set(i + 150, true);
+                                    }
+                                }
+                                if (previousAnyButtonHeld)
+                                {
+                                    //Record forward or backward
+                                    if (previousFramePosition <= arrayDestination)
+                                    {
+                                        //Forward
+                                        for (int i = 0; i < arrayDestination - previousFramePosition; i++)
+                                        {
+                                            for (int e = 0; e < 150; e++)
+                                            {
+                                                if (inputDataObj.topDrawer[e])
+                                                {
+                                                    rshwData[previousFramePosition + i].Set(e, true);
+                                                }
+                                                if (inputDataObj.bottomDrawer[e])
+                                                {
+                                                    rshwData[previousFramePosition + i].Set(e + 150, true);
+                                                }
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        //Backward
+                                        for (int i = 0; i < previousFramePosition - arrayDestination; i++)
+                                        {
+                                            for (int e = 0; e < 150; e++)
+                                            {
+                                                if (inputDataObj.topDrawer[e])
+                                                {
+                                                    rshwData[previousFramePosition - i].Set(e, true);
+                                                }
+                                                if (inputDataObj.bottomDrawer[e])
+                                                {
+                                                    rshwData[previousFramePosition - i].Set(e + 150, true);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                newDataRecorded.Invoke();
+                            }
+
+
+
+                            //Ticket Earning Code
+                            if (Input.anyKey)
+                            {
+                                ticketCheck = true;
+                            }
+                            if (!useVideoAsReference)
+                            {
+                                if (referenceSpeaker.time % 5 < 1 && !ticketCheck2)
+                                {
+                                    ticketCheck2 = true;
+                                    if (Input.anyKey)
+                                    {
+                                        ticketCheck = false;
+                                    }
+                                    if (ticketCheck)
+                                    {
+                                        PlayerPrefs.SetInt("TicketCount", PlayerPrefs.GetInt("TicketCount") + 1);
+                                        updateTickets.Invoke();
+                                    }
+                                    ticketCheck = false;
+                                }
+                                if (referenceSpeaker.time % 5 >= 1)
+                                {
+                                    ticketCheck2 = false;
+                                }
+                            }
+                        }
+
+
+                        //Apply the current frame of simulation data to the Mack Valves
+                        if (arrayDestination < rshwData.Length)
                         {
                             for (int i = 0; i < 150; i++)
                             {
-                                if (inputDataObj.topDrawer[i])
+                                if (rshwData[arrayDestination].Get(i))
                                 {
-                                    rshwData[arrayDestination].Set(i, true);
+                                    mack.topDrawer[i] = true;
                                 }
-                                if (inputDataObj.bottomDrawer[i])
+                                if (rshwData[arrayDestination].Get(i + 150))
                                 {
-                                    rshwData[arrayDestination].Set(i + 150, true);
-                                }
-                            }
-                            if (previousAnyButtonHeld)
-                            {
-                                //Record forward or backward
-                                if (previousFramePosition <= arrayDestination)
-                                {
-                                    //Forward
-                                    for (int i = 0; i < arrayDestination - previousFramePosition; i++)
-                                    {
-                                        for (int e = 0; e < 150; e++)
-                                        {
-                                            if (inputDataObj.topDrawer[e])
-                                            {
-                                                rshwData[previousFramePosition + i].Set(e, true);
-                                            }
-                                            if (inputDataObj.bottomDrawer[e])
-                                            {
-                                                rshwData[previousFramePosition + i].Set(e + 150, true);
-                                            }
-                                        }
-                                    }
-                                }
-                                else
-                                {
-                                    //Backward
-                                    for (int i = 0; i < previousFramePosition - arrayDestination; i++)
-                                    {
-                                        for (int e = 0; e < 150; e++)
-                                        {
-                                            if (inputDataObj.topDrawer[e])
-                                            {
-                                                rshwData[previousFramePosition - i].Set(e, true);
-                                            }
-                                            if (inputDataObj.bottomDrawer[e])
-                                            {
-                                                rshwData[previousFramePosition - i].Set(e + 150, true);
-                                            }
-                                        }
-                                    }
+                                    mack.bottomDrawer[i] = true;
                                 }
                             }
-                            newDataRecorded.Invoke();
                         }
 
+                        //Check if show is over
+                        if ((!useVideoAsReference && referenceSpeaker.time >= (referenceSpeaker.clip.length / referenceSpeaker.clip.channels))
+                        || (useVideoAsReference && referenceVideo.time >= (referenceVideo.length / referenceVideo.GetAudioChannelCount(0))))
+                        {
 
-
-                        //Ticket Earning Code
-                        if (Input.anyKey)
-                        {
-                            ticketCheck = true;
-                        }
-                        if (referenceSpeaker.time % 5 < 1 && !ticketCheck2)
-                        {
-                            ticketCheck2 = true;
-                            if (Input.anyKey)
-                            {
-                                ticketCheck = false;
-                            }
-                            if (ticketCheck)
-                            {
-                                PlayerPrefs.SetInt("TicketCount", PlayerPrefs.GetInt("TicketCount") + 1);
-                                updateTickets.Invoke();
-                            }
-                            ticketCheck = false;
-                        }
-                        if (referenceSpeaker.time % 5 >= 1)
-                        {
-                            ticketCheck2 = false;
-                        }
-                    }
-
-
-                    //Apply the current frame of simulation data to the Mack Valves
-                    if (arrayDestination < rshwData.Length)
-                    {
-                        for (int i = 0; i < 150; i++)
-                        {
-                            if (rshwData[arrayDestination].Get(i))
-                            {
-                                mack.topDrawer[i] = true;
-                            }
-                            if (rshwData[arrayDestination].Get(i + 150))
-                            {
-                                mack.bottomDrawer[i] = true;
-                            }
-                        }
-                    }
-
-                    //Check if show is over
-                    if (referenceSpeaker.time >= (referenceSpeaker.clip.length / referenceSpeaker.clip.channels))
-                    {
-                        if (isRandomPlaybackOn)
-                        {
-                            //load master, deleted.
-                        }
-                        else
-                        {
                             if (!recordMovements)
                             {
                                 Debug.Log("Song is over. Queuing next song / stopping.");
@@ -246,6 +260,7 @@ public class UI_ShowtapeManager : MonoBehaviour
                                     if (currentShowtapeSegment == -1)
                                     {
                                         referenceSpeaker.time = 0;
+                                        referenceVideo.time = 0;
                                     }
                                     else
                                     {
@@ -258,6 +273,7 @@ public class UI_ShowtapeManager : MonoBehaviour
                                     if (currentShowtapeSegment == -1)
                                     {
                                         referenceSpeaker.time = 0;
+                                        referenceVideo.time = 0;
                                         Unload();
                                     }
                                     else
@@ -284,9 +300,9 @@ public class UI_ShowtapeManager : MonoBehaviour
                                 }
                             }
                         }
+                        previousFramePosition = arrayDestination;
+                        previousAnyButtonHeld = inputDataObj.anyButtonHeld;
                     }
-                    previousFramePosition = arrayDestination;
-                    previousAnyButtonHeld = inputDataObj.anyButtonHeld;
                 }
             }
         }
@@ -300,6 +316,10 @@ public class UI_ShowtapeManager : MonoBehaviour
         if (referenceSpeaker != null)
         {
             referenceSpeaker.time = 0;
+        }
+        if (referenceVideo != null)
+        {
+            referenceVideo.time = 0;
         }
 
         //Call File Browser
@@ -337,6 +357,7 @@ public class UI_ShowtapeManager : MonoBehaviour
         CursorLockMode lockState = Cursor.lockState;
         Cursor.lockState = CursorLockMode.None;
         referenceSpeaker.time = 0;
+        referenceVideo.time = 0;
         //Call File Browser
         var paths = StandaloneFileBrowser.OpenFolderPanel("Select Folder of Showtapes", "", false);
         if (paths.Length > 0)
@@ -390,45 +411,41 @@ public class UI_ShowtapeManager : MonoBehaviour
 
     public void SkipSong(int skip)
     {
-        if (isRandomPlaybackOn)
-        {
-            //Load master, removed
-        }
-        else
-        {
-            playMovements = false;
-            referenceSpeaker.time = 0;
-            if (songLoopSetting == LoopVers.noLoop || songLoopSetting == LoopVers.loopPlaylist)
-            {
-                currentShowtapeSegment += skip;
-            }
 
-            if (currentShowtapeSegment < 0)
+        playMovements = false;
+        referenceSpeaker.time = 0;
+        referenceVideo.time = 0;
+        if (songLoopSetting == LoopVers.noLoop || songLoopSetting == LoopVers.loopPlaylist)
+        {
+            currentShowtapeSegment += skip;
+        }
+
+        if (currentShowtapeSegment < 0)
+        {
+            currentShowtapeSegment = 0;
+        }
+        else if (currentShowtapeSegment >= showtapeSegmentPaths.Length)
+        {
+            if (songLoopSetting == LoopVers.loopPlaylist)
             {
                 currentShowtapeSegment = 0;
             }
-            else if (currentShowtapeSegment >= showtapeSegmentPaths.Length)
+            else
             {
-                if (songLoopSetting == LoopVers.loopPlaylist)
-                {
-                    currentShowtapeSegment = 0;
-                }
-                else
-                {
-                    currentShowtapeSegment = showtapeSegmentPaths.Length - 1;
-                }
+                currentShowtapeSegment = showtapeSegmentPaths.Length - 1;
             }
-            creator.LoadFromURL(showtapeSegmentPaths[currentShowtapeSegment]);
         }
+        creator.LoadFromURL(showtapeSegmentPaths[currentShowtapeSegment]);
+
     }
 
     public void Unload()
     {
-        isRandomPlaybackOn = false;
         videoPath = "";
         playMovements = false;
         recordMovements = false;
         referenceSpeaker.time = 0;
+        referenceVideo.time = 0;
         currentShowtapeSegment = -1;
         showtapeSegmentPaths = new string[1];
         rshwData = new BitArray[0];
@@ -531,7 +548,16 @@ public class UI_ShowtapeManager : MonoBehaviour
     {
         if (rshwData != null)
         {
-            int address = (int)(referenceSpeaker.time * dataStreamedFPS);
+            int address;
+            if (useVideoAsReference)
+            {
+                address = (int)(referenceVideo.time * dataStreamedFPS);
+            }
+            else
+            {
+                address = (int)(referenceSpeaker.time * dataStreamedFPS);
+            }
+
 
             if (padding > 0)
             {
@@ -562,7 +588,7 @@ public class UI_ShowtapeManager : MonoBehaviour
                     address++;
                 }
             }
-            
+
         }
     }
 

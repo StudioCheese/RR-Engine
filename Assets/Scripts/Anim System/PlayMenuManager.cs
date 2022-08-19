@@ -101,8 +101,15 @@ public class PlayMenuManager : MonoBehaviour
             }
 
             int nowtimer = (int)Mathf.Floor(playUI.manager.referenceSpeaker.time);
+            if (playUI.manager.useVideoAsReference)
+            {
+                playSlider.value = (float)playUI.manager.referenceVideo.time / ((float)playUI.manager.referenceVideo.length / (float)playUI.manager.referenceVideo.GetAudioChannelCount(0)) * 100;
+            }
+            else
+            {
+                playSlider.value = playUI.manager.referenceSpeaker.time / (playUI.manager.referenceSpeaker.clip.length / (float)playUI.manager.referenceSpeaker.clip.channels) * 100;
+            }
 
-            playSlider.value = playUI.manager.referenceSpeaker.time / (playUI.manager.referenceSpeaker.clip.length / playUI.manager.referenceSpeaker.clip.channels) * 100;
             if (nowtimer <= (float)(endtexttimer))
             {
                 nowTimeText.text = Mathf.Floor(nowtimer / 60).ToString("00") + ":" + (nowtimer % 60).ToString("00");
@@ -113,7 +120,15 @@ public class PlayMenuManager : MonoBehaviour
 
     public void ClickSlider(int section)
     {
-        playUI.manager.referenceSpeaker.time = (section / 10.0f) * (playUI.manager.referenceSpeaker.clip.length / playUI.manager.referenceSpeaker.clip.channels);
+        if (playUI.manager.useVideoAsReference)
+        {
+            playUI.manager.referenceVideo.time = (section / 10.0f) * ((float)playUI.manager.referenceVideo.length / (float)playUI.manager.referenceVideo.GetAudioChannelCount(0));
+        }
+        else
+        {
+            playUI.manager.referenceSpeaker.time = (section / 10.0f) * (playUI.manager.referenceSpeaker.clip.length / (float)playUI.manager.referenceSpeaker.clip.channels);
+        }
+
         playUI.manager.syncTvsAndSpeakers.Invoke();
     }
 
@@ -132,21 +147,38 @@ public class PlayMenuManager : MonoBehaviour
                 child.transform.localScale = Vector3.one;
             }
             finishButton.SetActive(false);
-            endtexttimer = (int)(playUI.manager.referenceSpeaker.clip.length / playUI.manager.referenceSpeaker.clip.channels);
-            endTimeText.text = Mathf.Floor(endtexttimer / 60.0f).ToString("00") + ":" + (endtexttimer % 60).ToString("00");
-
-            string[] combined = Path.GetFileName(playUI.manager.showtapeSegmentPaths[playUI.manager.currentShowtapeSegment]).Split(new string[] { " - " }, StringSplitOptions.None);
-
-            if (combined.Length > 1)
+            if (playUI.manager.useVideoAsReference)
             {
-                titleText.text = combined[0];
-                authorText.text = combined[1].Substring(0, combined[1].Length - 5);
+                endtexttimer = (int)((float)playUI.manager.referenceVideo.length / (float)playUI.manager.referenceVideo.GetAudioChannelCount(0));
             }
             else
             {
-                titleText.text = combined[0].Substring(0, combined[0].Length - 5);
-                authorText.text = "";
+                endtexttimer = (int)(playUI.manager.referenceSpeaker.clip.length / (float)playUI.manager.referenceSpeaker.clip.channels);
             }
+            endTimeText.text = Mathf.Floor(endtexttimer / 60.0f).ToString("00") + ":" + (endtexttimer % 60).ToString("00");
+
+            //Title
+            if (playUI.manager.useVideoAsReference)
+            {
+                 titleText.text = "Youtube Video";
+                 authorText.text = "Test";
+            }
+            else
+            {
+                string[] combined = Path.GetFileName(playUI.manager.showtapeSegmentPaths[playUI.manager.currentShowtapeSegment]).Split(new string[] { " - " }, StringSplitOptions.None);
+
+                if (combined.Length > 1)
+                {
+                    titleText.text = combined[0];
+                    authorText.text = combined[1].Substring(0, combined[1].Length - 5);
+                }
+                else
+                {
+                    titleText.text = combined[0].Substring(0, combined[0].Length - 5);
+                    authorText.text = "";
+                }
+            }
+
         }
         else
         {
@@ -155,7 +187,7 @@ public class PlayMenuManager : MonoBehaviour
                 bool fafa = false;
                 for (int i = 0; i < keepSizedList.Length; i++)
                 {
-                    if(child.gameObject == keepSizedList[i])
+                    if (child.gameObject == keepSizedList[i])
                     {
                         fafa = true;
                     }
@@ -163,7 +195,7 @@ public class PlayMenuManager : MonoBehaviour
                 if (fafa)
                 {
                     Button3D check = child.GetComponent<Button3D>();
-                    if(check != null)
+                    if (check != null)
                     {
                         check.enabled = false;
                     }

@@ -147,13 +147,13 @@ public class UI_PlayRecord : MonoBehaviour
         {
             if (manager.referenceSpeaker.pitch < 0)
             {
-                stages[currentStage].curtainValves.CreateMovements(Time.deltaTime * 60,true);
+                stages[currentStage].curtainValves.CreateMovements(Time.deltaTime * 60, true);
             }
             else
             {
-                stages[currentStage].curtainValves.CreateMovements(Time.deltaTime * 60,false);
+                stages[currentStage].curtainValves.CreateMovements(Time.deltaTime * 60, false);
             }
-          
+
         }
 
         //Update Turntables
@@ -199,89 +199,119 @@ public class UI_PlayRecord : MonoBehaviour
                 }
 
 
-                for (int e = 0; e < stages[currentStage].tvs[i].tvs.Length; e++)
+
+                //Curtain check
+                if (stages[currentStage].tvs[i].onWhenCurtain)
                 {
-                    //Curtain check
-                    if (stages[currentStage].tvs[i].onWhenCurtain)
+                    //0 = Off First Frame
+                    //1 = Off
+                    //2 = On First Frame
+                    //3 = On
+
+
+                    //If Force Curtain
+                    if (stages[currentStage].curtainValves.curtainOverride && stages[currentStage].tvs[i].curtainSubState == 1)
                     {
-                        //0 = Off First Frame
-                        //1 = Off
-                        //2 = On First Frame
-                        //3 = On
-
-
-                        //If Force Curtain
-                        if (stages[currentStage].curtainValves.curtainOverride && stages[currentStage].tvs[i].curtainSubState == 1)
-                        {
-                            stages[currentStage].tvs[i].curtainSubState = 2;
-                        }
-                        if (!stages[currentStage].curtainValves.curtainOverride && stages[currentStage].tvs[i].curtainSubState == 3)
-                        {
-                            stages[currentStage].tvs[i].curtainSubState = 0;
-                        }
-
-
-
-                        //Apply
-                        if (stages[currentStage].tvs[i].curtainSubState == 0)
-                        {
-                            stages[currentStage].tvs[i].tvs[e].material.SetColor("_BaseColor", Color.black);
-                            stages[currentStage].tvs[i].curtainSubState = 1;
-                        }
-                        else if (stages[currentStage].tvs[i].curtainSubState == 2)
-                        {
-                            stages[currentStage].tvs[i].tvs[e].material.SetColor("_BaseColor", Color.black);
-                            stages[currentStage].tvs[i].curtainSubState = 3;
-                        }
-                       
+                        stages[currentStage].tvs[i].curtainSubState = 2;
                     }
-                    switch (stages[currentStage].tvs[i].tvSettings)
+                    if (!stages[currentStage].curtainValves.curtainOverride && stages[currentStage].tvs[i].curtainSubState == 3)
                     {
+                        stages[currentStage].tvs[i].curtainSubState = 0;
+                    }
 
-                        case ShowTV.tvSetting.offOnly:
-                            break;
-                            if (bitOff)
-                            {
-                                stages[currentStage].tvs[i].tvs[e].material.SetColor("_BaseColor", Color.black);
-                            }
-                            else
-                            {
-                                stages[currentStage].tvs[i].tvs[e].material.SetColor("_BaseColor", Color.white);
-                            }
-                        case ShowTV.tvSetting.onOnly:
-                            if (!bitOn)
-                            {
-                                stages[currentStage].tvs[i].tvs[e].material.SetColor("_BaseColor", Color.black);
-                            }
-                            else
-                            {
-                                stages[currentStage].tvs[i].tvs[e].material.SetColor("_BaseColor", Color.white);
-                            }
-                            break;
-                        case ShowTV.tvSetting.offOn:
-                            //Reversed time curtain bits
-                            if (stages[currentStage].tvs[i].onWhenCurtain && manager.referenceSpeaker.pitch < 0)
-                            {
-                                bool temp;
-                                temp = bitOff;
-                                bitOff = bitOn;
-                                bitOn = temp;
-                            }
-                            if (bitOff)
-                            {
-                                stages[currentStage].tvs[i].tvs[e].material.SetColor("_BaseColor", Color.black);
-                            }
-                            if (bitOn)
-                            {
-                                stages[currentStage].tvs[i].tvs[e].material.SetColor("_BaseColor", Color.white);
-                            }
-                            break;
-                        case ShowTV.tvSetting.none:
+
+
+                    //Apply
+                    if (stages[currentStage].tvs[i].curtainSubState == 0)
+                    {
+                        for (int e = 0; e < stages[currentStage].tvs[i].tvs.Length; e++)
+                        {
+                            stages[currentStage].tvs[i].tvs[e].material.SetColor("_BaseColor", Color.black);
+                        }
+                        stages[currentStage].tvs[i].curtainSubState = 1;
+                        Debug.Log("Force Closed Curtain");
+                    }
+                    else if (stages[currentStage].tvs[i].curtainSubState == 2)
+                    {
+                        for (int e = 0; e < stages[currentStage].tvs[i].tvs.Length; e++)
+                        {
                             stages[currentStage].tvs[i].tvs[e].material.SetColor("_BaseColor", Color.white);
-                            break;
-                        default:
-                            break;
+
+                        }
+                        stages[currentStage].tvs[i].curtainSubState = 3;
+                        Debug.Log("Force Opened Curtain");
                     }
+
+                }
+                switch (stages[currentStage].tvs[i].tvSettings)
+                {
+
+                    case ShowTV.tvSetting.offOnly:
+                        break;
+                        if (bitOff)
+                        {
+                            for (int e = 0; e < stages[currentStage].tvs[i].tvs.Length; e++)
+                            {
+                                stages[currentStage].tvs[i].tvs[e].material.SetColor("_BaseColor", Color.black);
+                            }
+                        }
+                        else
+                        {
+                            for (int e = 0; e < stages[currentStage].tvs[i].tvs.Length; e++)
+                            {
+                                stages[currentStage].tvs[i].tvs[e].material.SetColor("_BaseColor", Color.white);
+                            }
+                        }
+                    case ShowTV.tvSetting.onOnly:
+                        if (!bitOn)
+                        {
+                            for (int e = 0; e < stages[currentStage].tvs[i].tvs.Length; e++)
+                            {
+                                stages[currentStage].tvs[i].tvs[e].material.SetColor("_BaseColor", Color.black);
+                            }
+                        }
+                        else
+                        {
+                            for (int e = 0; e < stages[currentStage].tvs[i].tvs.Length; e++)
+                            {
+                                stages[currentStage].tvs[i].tvs[e].material.SetColor("_BaseColor", Color.white);
+                            }
+                        }
+                        break;
+                    case ShowTV.tvSetting.offOn:
+                        //Reversed time curtain bits
+                        if (stages[currentStage].tvs[i].onWhenCurtain && manager.referenceSpeaker.pitch < 0)
+                        {
+                            bool temp;
+                            temp = bitOff;
+                            bitOff = bitOn;
+                            bitOn = temp;
+                        }
+                        if (bitOff)
+                        {
+                             Debug.Log("Closed Curtain");
+                            for (int e = 0; e < stages[currentStage].tvs[i].tvs.Length; e++)
+                            {
+                                stages[currentStage].tvs[i].tvs[e].material.SetColor("_BaseColor", Color.black);
+                            }
+                        }
+                        if (bitOn)
+                        {
+                             Debug.Log("Opened Curtain");
+                            for (int e = 0; e < stages[currentStage].tvs[i].tvs.Length; e++)
+                            {
+                                stages[currentStage].tvs[i].tvs[e].material.SetColor("_BaseColor", Color.white);
+                            }
+                        }
+                        break;
+                    case ShowTV.tvSetting.none:
+                        for (int e = 0; e < stages[currentStage].tvs[i].tvs.Length; e++)
+                        {
+                            stages[currentStage].tvs[i].tvs[e].material.SetColor("_BaseColor", Color.white);
+                        }
+                        break;
+                    default:
+                        break;
                 }
             }
         }
@@ -401,11 +431,11 @@ public class UI_PlayRecord : MonoBehaviour
                 break;
             case 29:
                 //Segment Window 1
-                
+
                 break;
             case 30:
                 //Segment Window -1
-                
+
                 break;
             case 31:
                 //Showtape Help Window
@@ -749,7 +779,10 @@ public class UI_PlayRecord : MonoBehaviour
         }
         if (manager.videoPath != "")
         {
-            videoplayer.url = manager.videoPath;
+            if (!manager.useVideoAsReference)
+            {
+                videoplayer.url = manager.videoPath;
+            }
             videoplayer.Play();
             videoplayer.Pause();
         }
@@ -764,17 +797,20 @@ public class UI_PlayRecord : MonoBehaviour
     /// </summary>
     public void syncAudio()
     {
-        if (manager.videoPath != "")
+        if (!manager.useVideoAsReference)
         {
-            videoplayer.time = manager.referenceSpeaker.time;
-        }
-        for (int i = 0; i < speakerL.Length; i++)
-        {
-            speakerL[i].time = manager.referenceSpeaker.time;
-        }
-        for (int i = 0; i < speakerR.Length; i++)
-        {
-            speakerR[i].time = manager.referenceSpeaker.time;
+            if (manager.videoPath != "")
+            {
+                videoplayer.time = manager.referenceSpeaker.time;
+            }
+            for (int i = 0; i < speakerL.Length; i++)
+            {
+                speakerL[i].time = manager.referenceSpeaker.time;
+            }
+            for (int i = 0; i < speakerR.Length; i++)
+            {
+                speakerR[i].time = manager.referenceSpeaker.time;
+            }
         }
     }
 
@@ -784,6 +820,7 @@ public class UI_PlayRecord : MonoBehaviour
     public void Stop()
     {
         manager.referenceSpeaker.time = 0;
+        manager.referenceVideo.time = 0;
         manager.Play(true, false);
         SwitchWindow(2);
         for (int i = 0; i < stages[currentStage].curtainValves.curtainbools.Length; i++)
@@ -797,7 +834,7 @@ public class UI_PlayRecord : MonoBehaviour
     /// </summary>
     public void pauseSong()
     {
-        if (manager.referenceSpeaker.isPlaying)
+        if ((manager.useVideoAsReference && manager.referenceVideo.isPlaying) || (!manager.useVideoAsReference && manager.referenceSpeaker.isPlaying))
         {
             AVPause();
         }

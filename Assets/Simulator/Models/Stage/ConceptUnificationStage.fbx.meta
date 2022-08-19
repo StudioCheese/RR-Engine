@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 3b920e3421b0cdd47b3c0be61d2b67a6
 ModelImporter:
-  serializedVersion: 21202
+  serializedVersion: 22103
   internalIDToNameTable:
   - first:
       74: 64718963584902383
@@ -108,6 +108,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Black Carpet.001
     second: {fileID: 2100000, guid: 4308c6403dbc36840ac0095cdce43f67, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BlackCeiling
+    second: {fileID: 2100000, guid: 5d5de57b5b4534d46b3a08b6bb94b5e4, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -231,6 +236,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: FiberStars
+    second: {fileID: 2100000, guid: 01f25d73e2a23924a997a5d59f2b4ce3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: GasPump
     second: {fileID: 2100000, guid: c2be37bef08b24e44b94b400ed19a42b, type: 2}
   - first:
@@ -243,6 +253,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Glass
     second: {fileID: 2100000, guid: c53314f0e0122a9409ca94eb8f7a7b32, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glitternote
+    second: {fileID: 2100000, guid: 7283f3c8db5eb5a4fbd7d38bc53f920b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -407,12 +422,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: TVGlass
-    second: {fileID: 2100000, guid: ffb8024207c6cfe49b921fcd12864558, type: 2}
+    second: {fileID: 2100000, guid: 1de2d700b6a40fc41ba83ab0bd2a38b0, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: TVGlass.001
-    second: {fileID: 2100000, guid: ffb8024207c6cfe49b921fcd12864558, type: 2}
+    second: {fileID: 2100000, guid: 1de2d700b6a40fc41ba83ab0bd2a38b0, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -501,6 +516,7 @@ ModelImporter:
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -533,6 +549,8 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
