@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fazAnimVersion: 1.50
-  rockafireReplayVersion: 1.62
+  rockafireReplayVersion: 1.62.2
   fazTexture: {fileID: 2800000, guid: b809725fe61ad73439cb70d0123ee5ff, type: 3}
   rockTexture: {fileID: 2800000, guid: 59efaaf1efb87d340ae38ae2dd1c947a, type: 3}
   fazAnimScenes:
@@ -178,7 +178,6 @@ MonoBehaviour:
   - Assets/Scenes/Bit Crusher/Bit Crusher.unity
   - Assets/Scenes/Arcade Mr Hugs/Arcade Mr Hugs.unity
   - Assets/Scenes/Front Entrance/Front Entrance.unity
-  - Assets/Scenes/Tutorial/Tutorial.unity
   - Assets/Scenes/FNaF1/FNaF1.unity
   - Assets/Scenes/FNaF2/FNaF2.unity
   - Assets/Scenes/Sandbox/Sandbox.unity
@@ -190,6 +189,6 @@ MonoBehaviour:
   - Assets/Simulator/Scenes/Front Entrance/Rival Restaurant.unity
   - Assets/Simulator/Scenes/CRAE/CRAE.unity
   - Assets/Simulator/Scenes/CYBERS/CYBERS.unity
+  - Assets/Simulator/Scenes/Kooser/Kooser.unity
   - Assets/Scenes/Bit Crusher/Bit Crusher.unity
-  - Assets/Scenes/Tutorial/Tutorial.unity
   - Assets/Scenes/Sandbox/Sandbox.unity

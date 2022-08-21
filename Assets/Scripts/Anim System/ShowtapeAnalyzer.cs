@@ -19,7 +19,7 @@ public class ShowtapeAnalyzer : MonoBehaviour
     public Text analyzeBody;
     public int exportAllSignals = 1;
     uint[] maplut = new uint[] { 10, 11, 0, 1, 2, 3, 4, 12, 13, 5, 6, 7, 8, 9, 14, 15 };
-    uint[] maplut2 = new uint[] { 2, 4, 5, 0, 3, 1, 6,7,8,9,10,11,12,13,14,15 };
+    uint[] maplut2 = new uint[] { 2, 4, 5, 0, 3, 1, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
     public void StartAnalysis(string type)
     {
         StartCoroutine(StartAnalysisCorou(type));
@@ -251,6 +251,33 @@ public class ShowtapeAnalyzer : MonoBehaviour
             case "Import RR":
                 {
                     IEnumerator coroutine = ImportRR();
+                    StartCoroutine(coroutine);
+                    while (loading.current < loading.maximum)
+                    {
+                        if (cancelLoad)
+                        {
+                            break;
+                        }
+                        yield return null;
+                    }
+                    if (cancelLoad)
+                    {
+                        cancelLoad = false;
+                        loading.current = 0;
+                        loading.loadingMessage = "";
+                        loading.maximum = 1;
+                        loadingScreen.SetActive(false);
+                        StopCoroutine(coroutine);
+                        break;
+                    }
+                    yield return new WaitForSeconds(0.1f);
+                    loadingScreen.SetActive(false);
+                    editor.RepaintTimeline();
+                    break;
+                }
+            case "CEC Rosetta":
+                {
+                    IEnumerator coroutine = CECRosetta(false);
                     StartCoroutine(coroutine);
                     while (loading.current < loading.maximum)
                     {
@@ -641,6 +668,69 @@ public class ShowtapeAnalyzer : MonoBehaviour
                 yield return null;
             }
         }
+        loading.text.text = "(100/100)";
+        yield return null;
+        loading.current = loading.maximum;
+        yield return null;
+    }
+
+    IEnumerator CECRosetta(bool reverse)
+    {
+        Debug.Log("CEC Rosetta");
+        loading.maximum = manager.rshwData.Length;
+        loading.current = 0;
+        loading.text.text = "(Processing)";
+
+        //Lut Table, 0 = not used, negative numbers mean invert the bit
+        int[] lootTop = new int[]{1,-6,0,8,5,2,3,4,0,0,0,0,0,0,0,0,0,0,7,0,35,0,0,0,34,-38,0,40,37,33,39,0,0,0,36,0,0,0,0,0,-54,0,56,53,49,0,0,0,10,0,
+        0,0,0,50,51,0,0,0,52,55,0,0,0,0,0,0,110,108,0,0,101,106,111,0,0,0,123,0,0,0,123,107,0,100,109,102,122,104};
+        int[] lootBottom = new int[]{-22,0,0,0,0,18,19,-20,0,0,0,0,23,0,0,17,0,0,71,0,0,0,0,0,0,0,0,66,67,-68,-70,0,72,69,65,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+        ,0,0,0,0,0,0,0,0,0,0,0,0,0,73,0,0,0,0,0,103,119,97,117,118,121,0,0,0,0,0,0,113,0,115,114,0,0,0,0,124,99,0,0,105,125,0
+        };
+        BitArray temp = new BitArray(300);
+        for (int i = 0; i < manager.rshwData.Length; i++)
+        {
+            temp.SetAll(false);
+            for (int e = 0; e < lootTop.Length; e++)
+            {
+                if (lootTop[e] != 0)
+                {
+                    bool set = manager.rshwData[i].Get(e);
+                    if (lootTop[e] < 0)
+                    {
+                        set = !set;
+                    }
+                    temp.Set(Mathf.Abs(lootTop[e]) - 1, set);
+                }
+            }
+            for (int e = 0; e < lootBottom.Length; e++)
+            {
+                if (lootBottom[e] != 0)
+                {
+                    bool set = manager.rshwData[i].Get(e + 150);
+                    if (lootBottom[e] < 0)
+                    {
+                        set = !set;
+                    }
+                    temp.Set(Mathf.Abs(lootBottom[e]) - 1, set);
+                }
+            }
+            //Jasper's eyes, since its a double assinged bit
+            temp.Set(23,manager.rshwData[i].Get(155));
+            temp.Set(20,manager.rshwData[i].Get(156));
+
+            for (int e = 0; e < 300; e++)
+            {
+                manager.rshwData[i].Set(e, temp.Get(e));
+            }
+
+            if (i % 10000 == 0)
+            {
+                loading.current = i;
+            }
+        }
+        yield return null;
+
         loading.text.text = "(100/100)";
         yield return null;
         loading.current = loading.maximum;

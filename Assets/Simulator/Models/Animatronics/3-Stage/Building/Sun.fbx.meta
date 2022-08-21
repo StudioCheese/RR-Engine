@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: d2716eb86dfff184992527a4475ed965
 ModelImporter:
-  serializedVersion: 21202
+  serializedVersion: 22103
   internalIDToNameTable:
   - first:
       74: -6657336486850867378
@@ -63,6 +63,9 @@ ModelImporter:
   - first:
       74: -2788519292052390623
     second: Empty.001|Mech.001Action
+  - first:
+      74: 8324471698542400440
+    second: Armature|Mech.001Action.001
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -187,6 +190,7 @@ ModelImporter:
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -219,6 +223,8 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

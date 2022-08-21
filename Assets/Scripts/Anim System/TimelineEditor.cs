@@ -20,6 +20,7 @@ public class TimelineEditor : MonoBehaviour
     public Dropdown edit;
     public Dropdown analysis;
     public Dropdown import;
+    public Dropdown tool;
 
 
     public AudioSource speaker;
@@ -78,7 +79,7 @@ public class TimelineEditor : MonoBehaviour
 
     public void Update()
     {
-        if(dropdownCooldown > 0)
+        if (dropdownCooldown > 0)
         {
             dropdownCooldown--;
         }
@@ -145,7 +146,7 @@ public class TimelineEditor : MonoBehaviour
             oldviewmax = viewZoomMax;
 
             //Check Screen Size change
-            if(screenSizeOld != new Vector2(Screen.width,Screen.height))
+            if (screenSizeOld != new Vector2(Screen.width, Screen.height))
             {
                 RepaintTimeline();
                 screenSizeOld = new Vector2(Screen.width, Screen.height);
@@ -182,7 +183,7 @@ public class TimelineEditor : MonoBehaviour
                 case 0:
                     creator.AddWavSpecial();
                     creator.SaveRecordingAs();
-                    if(uiShowtapeManager.showtapeSegmentPaths != null)
+                    if (uiShowtapeManager.showtapeSegmentPaths != null)
                     {
                         if (uiShowtapeManager.showtapeSegmentPaths[0] != "")
                         {
@@ -216,7 +217,7 @@ public class TimelineEditor : MonoBehaviour
                     {
                         SceneManager.LoadScene("Title Screen");
                     }
-                    
+
                     break;
                 default:
                     break;
@@ -270,6 +271,21 @@ public class TimelineEditor : MonoBehaviour
                     break;
                 case 1:
                     analyzer.StartAnalysis("Import RR");
+                    break;
+                default:
+                    break;
+            }
+        }
+        dropdownCooldown = 30;
+    }
+    public void ToolValueChanged()
+    {
+        if (dropdownCooldown == 0 && audioLengthMax != 0)
+        {
+            switch (tool.value)
+            {
+                case 0:
+                    analyzer.StartAnalysis("CEC Rosetta");
                     break;
                 default:
                     break;
@@ -343,7 +359,7 @@ public class TimelineEditor : MonoBehaviour
     public void ZoomTimeline(float scroll)
     {
         float length = (viewZoomMax - viewZoomMin) / 2.0f;
-        length = Mathf.Min(Mathf.Max(length - (scroll * 2), 1),10);
+        length = Mathf.Min(Mathf.Max(length - (scroll * 2), 1), 10);
         if (((viewZoomMax + viewZoomMin) / 2.0f) - length >= 0)
         {
             viewZoomMin = ((viewZoomMax + viewZoomMin) / 2.0f) - length;
@@ -365,11 +381,11 @@ public class TimelineEditor : MonoBehaviour
 
     void DoubleCheckViewBounds()
     {
-        if(viewZoomMin < 0)
+        if (viewZoomMin < 0)
         {
             viewZoomMin = 0;
         }
-        if(viewZoomMax > audioLengthMax)
+        if (viewZoomMax > audioLengthMax)
         {
             viewZoomMax = audioLengthMax;
         }
@@ -515,7 +531,7 @@ public class TimelineEditor : MonoBehaviour
         waveformVisualizer.GetAudioSamples();
         waveformVisualizer.PaintWaveformSpectrum(viewZoomMin, viewZoomMax, audioLengthMax);
         fileName.text = Path.GetFileName(uiShowtapeManager.showtapeSegmentPaths[0]);
-        extraInfoText.text = "Length: " + audioLengthMax + "s | "+ uiShowtapeManager.dataStreamedFPS +" Signal Density";
+        extraInfoText.text = "Length: " + audioLengthMax + "s | " + uiShowtapeManager.dataStreamedFPS + " Signal Density";
         StartCoroutine(CreateAndLinkScene(uiShowtapeManager.showtapeSegmentPaths[0].Substring(uiShowtapeManager.showtapeSegmentPaths[0].Length - 4, 4)));
     }
 
@@ -537,7 +553,7 @@ public class TimelineEditor : MonoBehaviour
 
         for (int i = 0; i < scenes.Length; i++)
         {
-            if(scenes[i].name == "FNaF1")
+            if (scenes[i].name == "FNaF1")
             {
                 SceneManager.UnloadSceneAsync("FNaF1");
             }
@@ -751,7 +767,7 @@ public class TimelineEditor : MonoBehaviour
                         while (ui == null)
                         {
                             ui = GameObject.Find("NRAE");
-                            if(ui != null)
+                            if (ui != null)
                             {
                                 ui = ui.transform.Find("Show Selector").transform.Find("UI").gameObject;
                                 windowMaker = ui.GetComponent<UI_WindowMaker>();
@@ -792,9 +808,9 @@ public class TimelineEditor : MonoBehaviour
         }
         for (int i = 0; i < cameraFeeds.transform.childCount; i++)
         {
-            GameObject temp = GameObject.Instantiate(camFeedTemplate,camFeedHolder.transform,true);
+            GameObject temp = GameObject.Instantiate(camFeedTemplate, camFeedHolder.transform, true);
             RectTransform rect = temp.GetComponent<RectTransform>();
-            rect.anchoredPosition = new Vector2(rect.anchoredPosition.x + ((i % 2) * 50), rect.anchoredPosition.y - (40 * Mathf.FloorToInt(i/2.0f)));
+            rect.anchoredPosition = new Vector2(rect.anchoredPosition.x + ((i % 2) * 50), rect.anchoredPosition.y - (40 * Mathf.FloorToInt(i / 2.0f)));
             temp.name = i.ToString();
             temp.SetActive(true);
         }
@@ -832,12 +848,12 @@ public class TimelineEditor : MonoBehaviour
     public void ChangeCameraFeed(GameObject feedObj)
     {
         int feed = Int32.Parse(feedObj.name);
-        if(cameraFeeds != null)
+        if (cameraFeeds != null)
         {
-            feed = Mathf.Min(feed, cameraFeeds.transform.childCount-1);
+            feed = Mathf.Min(feed, cameraFeeds.transform.childCount - 1);
             for (int i = 0; i < cameraFeeds.transform.childCount; i++)
             {
-                if(i == feed)
+                if (i == feed)
                 {
                     cameraFeeds.transform.GetChild(i).gameObject.SetActive(true);
                 }
