@@ -9,13 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Intro Screen/Intro Screen.unity
     guid: 32e12fb78186c524a95803cccb5ea44a
   - enabled: 1
-    path: Assets/Scenes/Title RR/Title RR.unity
-    guid: 9b438a3370aa5164286652e843532b8e
-  - enabled: 1
     path: Assets/Simulator/Scenes/Studio C/Studio C.unity
     guid: 3364b79dfa5a03748a1d9cc8d712b52a
   - enabled: 1
-    path: Assets/Simulator/Scenes/Front Entrance/Rival Restaurant.unity
+    path: Assets/Simulator/Scenes/MAP 3-Stage Default/MAP 3-Stage Default.unity
     guid: f05fee96a9c3def4983b0e1ef48419ad
   - enabled: 1
     path: Assets/Simulator/Scenes/CRAE/CRAE.unity
@@ -32,6 +29,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Sandbox/Sandbox.unity
     guid: b9f3d2f36c92086409656ee998d53571
+  - enabled: 1
+    path: Assets/Simulator/Scenes/MAP Winchester/MAP Winchester.unity
+    guid: 12b10c2cb9c68b44c899fe92cbae0051
+  - enabled: 1
+    path: Assets/Simulator/Scenes/RR Title Screen/RR Title Screen.unity
+    guid: 885bde06413797842bab8438f65f30ad
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 1ad4485362b30e14db989c88e5cdf70e, type: 2}
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: 396d6d3e9c771e24ea59ebd25ab84624, type: 2}

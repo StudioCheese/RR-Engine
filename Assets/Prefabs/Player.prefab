@@ -1210,6 +1210,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -4723,6 +4724,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 10
   m_TargetDisplay: 0
@@ -6912,6 +6914,7 @@ MonoBehaviour:
   taaMotionVectorRejection: 0.183
   taaAntiHistoryRinging: 1
   taaBaseBlendFactor: 0.875
+  taaJitterScale: 1
   physicalParameters:
     m_Iso: 200
     m_ShutterSpeed: 0.005
@@ -7081,10 +7084,10 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 23.873241
+  m_Intensity: 135.89594
   m_Range: 60
-  m_SpotAngle: 63
-  m_InnerSpotAngle: 21.80208
+  m_SpotAngle: 50
+  m_InnerSpotAngle: 5
   m_CookieSize: 10
   m_Shadows:
     m_Type: 1
@@ -7143,8 +7146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 300
-  m_EnableSpotReflector: 0
+  m_Intensity: 80
+  m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 45.2
   m_SpotIESCutoffPercent: 100
@@ -7162,7 +7165,7 @@ MonoBehaviour:
   m_ShapeRadius: 0.3
   m_SoftnessScale: 1
   m_UseCustomSpotLightShadowCone: 0
-  m_CustomSpotLightShadowCone: 30
+  m_CustomSpotLightShadowCone: 5
   m_MaxSmoothness: 0.99
   m_ApplyRangeAttenuation: 1
   m_DisplayAreaLightEmissiveMesh: 0
@@ -7206,7 +7209,7 @@ MonoBehaviour:
     m_Override: 2048
     m_UseOverride: 1
     m_Level: 2
-  m_ShadowDimmer: 0.507
+  m_ShadowDimmer: 1
   m_VolumetricShadowDimmer: 1
   m_ShadowFadeDistance: 10000
   m_UseContactShadow:
@@ -7315,7 +7318,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3852793578409061698}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 36.71, y: -1.059, z: 27.705}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.245614, y: 1.245614, z: 1.245614}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7861,6 +7864,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -14740,6 +14744,7 @@ MonoBehaviour:
   taaMotionVectorRejection: 0
   taaAntiHistoryRinging: 0
   taaBaseBlendFactor: 0.875
+  taaJitterScale: 1
   physicalParameters:
     m_Iso: 200
     m_ShutterSpeed: 0.005
@@ -17067,6 +17072,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 1719363347
   m_SortingOrder: 2
   m_TargetDisplay: 0
@@ -17200,6 +17206,7 @@ MonoBehaviour:
   m_TrackedDeviceOrientationAction: {fileID: 1025543830046995696, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
 --- !u!1 &8604905386284411027
 GameObject:
   m_ObjectHideFlags: 0
@@ -18120,6 +18127,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 3852793578409061699}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 78b34c0d245b4b543b90c36920661eda, type: 3}
@@ -18194,11 +18202,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 2105694637702158544, guid: 78b34c0d245b4b543b90c36920661eda, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4424396828587804706, guid: 78b34c0d245b4b543b90c36920661eda, type: 3}
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 78b34c0d245b4b543b90c36920661eda, type: 3}
 --- !u!137 &564615624741731028 stripped
 SkinnedMeshRenderer:
@@ -18283,6 +18296,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 3248424146974195029}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 2dddf4bed1508cb43ba529c15506ebe4, type: 3}
@@ -18354,6 +18368,7 @@ PrefabInstance:
       value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dddf4bed1508cb43ba529c15506ebe4, type: 3}
 --- !u!4 &2378046378113722991 stripped
 Transform:
@@ -18370,6 +18385,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 3865663246761593480}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 2dddf4bed1508cb43ba529c15506ebe4, type: 3}
@@ -18441,6 +18457,7 @@ PrefabInstance:
       value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dddf4bed1508cb43ba529c15506ebe4, type: 3}
 --- !u!23 &5553020896396199771 stripped
 MeshRenderer:

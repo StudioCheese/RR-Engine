@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: de7599cc018b05a4a890e9c1aecbd121
 ModelImporter:
-  serializedVersion: 21202
+  serializedVersion: 22103
   internalIDToNameTable:
   - first:
       74: -530875327730313893
@@ -222,6 +222,24 @@ ModelImporter:
   - first:
       74: -8772361659261011745
     second: Armature|Mech.001Action
+  - first:
+      74: -2929962945392018602
+    second: Armature|Blue Drum Mech.001Action
+  - first:
+      74: 1097291283765010327
+    second: Armature|Mech.002Action
+  - first:
+      74: 1652143676014356274
+    second: Armature|Orange Drum Mech.001Action
+  - first:
+      74: -8434355280063164500
+    second: Armature|Plane.002Action
+  - first:
+      74: 4632507966716694095
+    second: Armature|Sun.006Action
+  - first:
+      74: 8893029685937502870
+    second: Armature|White Drum Mech.001Action
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -346,6 +364,7 @@ ModelImporter:
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -378,6 +397,8 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

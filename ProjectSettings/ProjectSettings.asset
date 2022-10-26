@@ -273,6 +273,15 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 5601843810378404734, guid: e985232ef48a1b748be3ccf81d9bfb2a, type: 2}
   - {fileID: 7407940477989334947, guid: 2a11291a9fff6fc49bdde0367e131c15, type: 2}
   metroInputSource: 0
@@ -591,7 +600,7 @@ PlayerSettings:
     m_APIs: 10000000
     m_Automatic: 0
   - m_BuildTarget: WindowsStandaloneSupport
-    m_APIs: 0200000012000000
+    m_APIs: 1200000002000000
     m_Automatic: 0
   - m_BuildTarget: iOSSupport
     m_APIs: 10000000
@@ -898,6 +907,7 @@ PlayerSettings:
   webGLMemoryLinearGrowthStep: 16
   webGLMemoryGeometricGrowthStep: 0.2
   webGLMemoryGeometricGrowthCap: 96
+  webGLPowerPreference: 2
   scriptingDefineSymbols:
     : UNITY_POST_PROCESSING_STACK_V2
     Android: UNITY_POST_PROCESSING_STACK_V2
@@ -922,6 +932,7 @@ PlayerSettings:
   allowUnsafeCode: 0
   useDeterministicCompilation: 1
   enableRoslynAnalyzers: 1
+  selectedPlatform: 0
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 1
   gcIncremental: 0

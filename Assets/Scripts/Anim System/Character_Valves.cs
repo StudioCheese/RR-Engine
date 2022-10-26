@@ -219,11 +219,11 @@ public class Character_Valves : MonoBehaviour
                         return false;
                     }
                 case StageHook.CRAE:
-                    mv = GameObject.Find("RFE");
+                    mv = GameObject.Find("3-Stage");
                     if (mv != null)
                     {
                         Debug.Log("Hook - " + name);
-                        ui = GameObject.Find("RFE").transform.Find("Show Selector").transform.Find("UI").GetComponent<UI_PlayRecord>();
+                        ui = GameObject.Find("3-Stage").transform.Find("Show Selector").transform.Find("UI").GetComponent<UI_PlayRecord>();
                         bitChart = mv.transform.Find("Mack Valves").GetComponent<Mack_Valves>();
                         mv.transform.Find("Show Selector").transform.Find("UI").GetComponent<UI_PlayRecord>().characterEvent.AddListener(CreateMovements);
                         ui.transform.root.Find("Live Editor").Find("UI Side Panel").GetComponent<UI_SidePanel>().FlowUpdater(this.gameObject);

@@ -710,19 +710,19 @@ public class TimelineEditor : MonoBehaviour
                         GameObject ui = null;
                         while (ui == null)
                         {
-                            ui = GameObject.Find("RFE");
+                            ui = GameObject.Find("3-Stage");
                             if (ui != null)
                             {
                                 ui = ui.transform.Find("Show Selector").transform.Find("UI").gameObject;
                                 windowMaker = ui.GetComponent<UI_WindowMaker>();
                                 playRecord = ui.GetComponent<UI_PlayRecord>();
                                 sidePanel = playRecord.sidePanel;
-                                Mack_Valves mv = GameObject.Find("RFE").transform.Find("Mack Valves").gameObject.GetComponent<Mack_Valves>();
+                                Mack_Valves mv = GameObject.Find("3-Stage").transform.Find("Mack Valves").gameObject.GetComponent<Mack_Valves>();
                                 mackValves = mv;
                                 uiShowtapeManager.mack = mv;
                                 uiShowtapeManager.inputHandler = mv.gameObject.GetComponent<InputHandler>();
                                 bitvis.mackvalves = mv;
-                                cameraFeeds = GameObject.Find("RFE").transform.Find("Cameras").gameObject;
+                                cameraFeeds = GameObject.Find("3-Stage").transform.Find("Cameras").gameObject;
                                 ui.GetComponent<UI_ShowtapeManager>().enabled = false;
                                 ui.transform.position = new Vector3(0, -100, 0);
                                 sidePanel.transform.position = new Vector3(0, -100, 0);

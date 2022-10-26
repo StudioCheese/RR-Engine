@@ -18,7 +18,7 @@ MonoBehaviour:
     m_Values: 
 --- !u!21 &2100000
 Material:
-  serializedVersion: 7
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -27,7 +27,9 @@ Material:
   m_Shader: {fileID: -6465566751694194690, guid: d691c1c15aca4804b8d4ee73e10e5517, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ShaderKeywords: _DISABLE_SSR_TRANSPARENT
+  m_ValidKeywords:
+  - _DISABLE_SSR_TRANSPARENT
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -35,12 +37,12 @@ Material:
   stringTagMap:
     MotionVector: User
   disabledShaderPasses:
-  - RayTracingPrepass
+  - ForwardEmissiveForDeferred
   - MOTIONVECTORS
   - TransparentDepthPrepass
   - TransparentDepthPostpass
   - TransparentBackface
-  - ForwardEmissiveForDeferred
+  - RayTracingPrepass
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3

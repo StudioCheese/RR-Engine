@@ -46,7 +46,7 @@ public class ButtonListControl : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("Title RR", LoadSceneMode.Single);
+            SceneManager.LoadScene("RR Title Screen", LoadSceneMode.Single);
         }
         Destroy(this.transform.root.gameObject);
     }

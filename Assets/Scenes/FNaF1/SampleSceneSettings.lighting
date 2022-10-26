@@ -7,10 +7,10 @@ LightingSettings:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SampleSceneSettings
-  serializedVersion: 3
+  serializedVersion: 5
   m_GIWorkflowMode: 1
-  m_EnableBakedLightmaps: 1
-  m_EnableRealtimeLightmaps: 0
+  m_EnableBakedLightmaps: 0
+  m_EnableRealtimeLightmaps: 1
   m_RealtimeEnvironmentLighting: 1
   m_BounceScale: 1
   m_AlbedoBoost: 1
@@ -20,7 +20,7 @@ LightingSettings:
   m_LightmapMaxSize: 2048
   m_BakeResolution: 80
   m_Padding: 3
-  m_TextureCompression: 1
+  m_LightmapCompression: 3
   m_AO: 1
   m_AOMaxDistance: 1
   m_CompAOExponent: 1
@@ -32,7 +32,7 @@ LightingSettings:
   m_LightmapParameters: {fileID: 15200, guid: 0000000000000000f000000000000000, type: 0}
   m_ExportTrainingData: 0
   m_TrainingDataDestination: TrainingData
-  m_RealtimeResolution: 2
+  m_RealtimeResolution: 3
   m_ForceWhiteAlbedo: 0
   m_ForceUpdates: 0
   m_FinalGather: 0
@@ -40,14 +40,14 @@ LightingSettings:
   m_FinalGatherFiltering: 1
   m_PVRCulling: 0
   m_PVRSampling: 1
-  m_PVRDirectSampleCount: 1000
-  m_PVRSampleCount: 3000
+  m_PVRDirectSampleCount: 1024
+  m_PVRSampleCount: 2048
   m_PVREnvironmentSampleCount: 8
   m_PVREnvironmentReferencePointCount: 2048
   m_LightProbeSampleCountMultiplier: 30
-  m_PVRBounces: 5
-  m_PVRMinBounces: 3
-  m_PVREnvironmentMIS: 1
+  m_PVRBounces: 12
+  m_PVRMinBounces: 6
+  m_PVREnvironmentImportanceSampling: 1
   m_PVRFilteringMode: 2
   m_PVRDenoiserTypeDirect: 2
   m_PVRDenoiserTypeIndirect: 2
@@ -61,3 +61,5 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaDirect: 1.28
   m_PVRFilteringAtrousPositionSigmaIndirect: 2
   m_PVRFilteringAtrousPositionSigmaAO: 1
+  m_PVRTiledBaking: 0
+  m_NumRaysToShootPerTexel: -1

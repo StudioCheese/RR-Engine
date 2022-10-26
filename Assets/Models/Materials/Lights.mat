@@ -18,15 +18,21 @@ MonoBehaviour:
     m_Values: 
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Lights
   m_Shader: {fileID: 4800000, guid: c4edd00ff2db5b24391a4fcb1762e459, type: 3}
-  m_ShaderKeywords: _DISABLE_SSR_TRANSPARENT _EMISSIVE_COLOR_MAP _NORMALMAP_TANGENT_SPACE
-  m_LightmapFlags: 2
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _EMISSIVE_COLOR_MAP
+  m_InvalidKeywords:
+  - _DISABLE_SSR_TRANSPARENT
+  - _NORMALMAP_TANGENT_SPACE
+  m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2000
@@ -34,6 +40,7 @@ Material:
   disabledShaderPasses:
   - DistortionVectors
   - MOTIONVECTORS
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -131,7 +138,7 @@ Material:
     - _AORemapMin: 0
     - _ATDistance: 1
     - _AddPrecomputedVelocity: 0
-    - _AlbedoAffectEmissive: 0
+    - _AlbedoAffectEmissive: 1
     - _AlphaCutoff: 0.5
     - _AlphaCutoffEnable: 0
     - _AlphaCutoffPostpass: 0.5
@@ -177,7 +184,7 @@ Material:
     - _DstBlend: 0
     - _EmissiveColorMode: 1
     - _EmissiveExposureWeight: 1
-    - _EmissiveIntensity: 1
+    - _EmissiveIntensity: 1000
     - _EmissiveIntensityUnit: 0
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
@@ -247,7 +254,7 @@ Material:
     - _UVBase: 0
     - _UVDetail: 0
     - _UVEmissive: 0
-    - _UseEmissiveIntensity: 0
+    - _UseEmissiveIntensity: 1
     - _UseShadowThreshold: 0
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestGBuffer: 4
@@ -261,8 +268,8 @@ Material:
     - _DiffusionProfileAsset: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissiveColor: {r: 191.74902, g: 191.74902, b: 191.74902, a: 1}
-    - _EmissiveColorLDR: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 1}
+    - _EmissiveColor: {r: 749.0196, g: 749.0196, b: 749.0196, a: 1000}
+    - _EmissiveColorLDR: {r: 0.88031507, g: 0.88031507, b: 0.88031507, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}

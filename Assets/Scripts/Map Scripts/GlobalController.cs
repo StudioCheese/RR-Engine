@@ -21,6 +21,17 @@ public class GlobalController : MonoBehaviour
     public BuildBlockMats[] buildMaterials;
     public bool unlockAllPrizes = false;
 
+    public GameObject dayTime;
+    public GameObject nightTime;
+    public GameObject morningTime;
+    public GameObject sunsetTime;
+    public GameObject rainTime;
+
+    public Transform playerSpawnDefault;
+    public Transform playerSpawnEntrance;
+    public Transform playerSpawnStage;
+    public Transform allReflectionProbes;
+
     void OnEnable()
     {
         gamepad.Gamepad.Enable();
@@ -41,6 +52,38 @@ public class GlobalController : MonoBehaviour
         JoinPlayerOne();
         //Set Height
         player.transform.localScale = new Vector3(1.245614f, 1.245614f, 1.245614f);
+
+        //Set Time of Day
+        dayTime.SetActive(false);
+        nightTime.SetActive(false);
+        morningTime.SetActive(false);
+        sunsetTime.SetActive(false);
+        rainTime.SetActive(false);
+        ReflectionProbe[] rp = allReflectionProbes.GetComponentsInChildren<ReflectionProbe>();
+        switch (PlayerPrefs.GetInt("PrevTimeSelection"))
+        {
+            case 0:
+                dayTime.SetActive(true);
+                break;
+            case 1:
+                nightTime.SetActive(true);
+                break;
+            case 2:
+                morningTime.SetActive(true);
+                break;
+            case 3:
+                sunsetTime.SetActive(true);
+                break;
+            case 4:
+                rainTime.SetActive(true);
+                break;
+            default:
+                break;
+        }
+                for (int i = 0; i < rp.Length; i++)
+        {
+            rp[i].RequestRenderNextUpdate();
+        }
     }
 
 
@@ -95,8 +138,23 @@ public class GlobalController : MonoBehaviour
             }
             else
             {
-                //PTP
-                playernew.transform.position = new Vector3(0, 1.078f, 0);
+                //Set Spawn
+                playernew.transform.position = new Vector3(0,0.924f,0);
+                switch (PlayerPrefs.GetInt("PrevSpawnSelection"))
+                {
+                    case 0:
+                        playernew.transform.position += playerSpawnDefault.position;
+                        break;
+                    case 1:
+                        playernew.transform.position += playerSpawnEntrance.position;
+                        break;
+                    case 2:
+                        playernew.transform.position += playerSpawnStage.position;
+                        break;
+                    default:
+                        break;
+                }
+
                 playernew.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0, 0.0f));
             }
             GameObject.Find("Player").transform.Find("PlayerModel").Find("MainBody").GetComponent<CharPrefaber>().playerNum = 1;
@@ -193,7 +251,7 @@ public class GlobalController : MonoBehaviour
         //Make sure multiple scenes don't get loaded
         for (int i = 0; i < SceneManager.sceneCount; i++)
         {
-            if(SceneManager.GetSceneAt(i).name == scene)
+            if (SceneManager.GetSceneAt(i).name == scene)
             {
                 return;
             }
@@ -361,7 +419,10 @@ public class GlobalController : MonoBehaviour
         GlobalIllumination ssgi = null;
         player.GetComponentInChildren<Volume>().profile.TryGet<AmbientOcclusion>(out ssao);
         player.GetComponentInChildren<Volume>().profile.TryGet<GlobalIllumination>(out ssgi);
-        if (ssao != null && ssgi != null)
+
+        //GOTTA FIX
+
+        /*if (ssao != null && ssgi != null)
         {
             switch (PlayerPrefs.GetInt("Settings: SSAO"))
             {
@@ -413,6 +474,8 @@ public class GlobalController : MonoBehaviour
                     break;
             }
         }
+        */
+
         //Res
         player.GetComponentInChildren<DynamicResCam>().currentScale = 100 - (PlayerPrefs.GetInt("Settings: Res Percent") * 5);
         player.GetComponentInChildren<DynamicResCam>().SetDynamicResolutionScale();

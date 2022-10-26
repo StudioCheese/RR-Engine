@@ -13,17 +13,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 12
+  hdPluginSubTargetMaterialVersions:
+    m_Keys: []
+    m_Values: 
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Lights
   m_Shader: {fileID: 4800000, guid: c4edd00ff2db5b24391a4fcb1762e459, type: 3}
-  m_ShaderKeywords: _DISABLE_SSR_TRANSPARENT _EMISSIVE_COLOR_MAP _NORMALMAP_TANGENT_SPACE
-  m_LightmapFlags: 2
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _EMISSIVE_COLOR_MAP
+  m_InvalidKeywords:
+  - _DISABLE_SSR_TRANSPARENT
+  - _NORMALMAP_TANGENT_SPACE
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2000
@@ -31,6 +40,7 @@ Material:
   disabledShaderPasses:
   - DistortionVectors
   - MOTIONVECTORS
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:

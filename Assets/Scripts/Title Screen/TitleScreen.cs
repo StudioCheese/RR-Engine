@@ -188,6 +188,7 @@ public class TitleScreen : MonoBehaviour
             {
                 if (GameVersion.gameName != "Faz-Anim")
                 {
+                    //sceneLoadCache = "MAP Winchester";
                     sceneLoadCache = "Rival Restaurant";
                 }
                 else
