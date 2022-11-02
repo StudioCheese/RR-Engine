@@ -6,10 +6,8 @@ public static class QualitySave
 {
     public static void ApplySavedQualitySettings()
     {
-        int qLevel = PlayerPrefs.GetInt("Settings: Quality") + ((3 - PlayerPrefs.GetInt("Settings: Texture") ) * 3);
         switch (PlayerPrefs.GetInt("Settings: Windowed"))
         {
-
             case 0:
                 Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
                 Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
@@ -20,7 +18,7 @@ public static class QualitySave
             default:
                 break;
         }
-        QualitySettings.SetQualityLevel(qLevel, true);
+        QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("Settings: Texture"), true);
         QualitySettings.vSyncCount = PlayerPrefs.GetInt("Settings: VSync");
     }
 

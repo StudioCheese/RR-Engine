@@ -30,7 +30,6 @@ public class GlobalController : MonoBehaviour
     public Transform playerSpawnDefault;
     public Transform playerSpawnEntrance;
     public Transform playerSpawnStage;
-    public Transform allReflectionProbes;
 
     void OnEnable()
     {
@@ -59,7 +58,6 @@ public class GlobalController : MonoBehaviour
         morningTime.SetActive(false);
         sunsetTime.SetActive(false);
         rainTime.SetActive(false);
-        ReflectionProbe[] rp = allReflectionProbes.GetComponentsInChildren<ReflectionProbe>();
         switch (PlayerPrefs.GetInt("PrevTimeSelection"))
         {
             case 0:
@@ -79,10 +77,6 @@ public class GlobalController : MonoBehaviour
                 break;
             default:
                 break;
-        }
-                for (int i = 0; i < rp.Length; i++)
-        {
-            rp[i].RequestRenderNextUpdate();
         }
     }
 
@@ -139,7 +133,7 @@ public class GlobalController : MonoBehaviour
             else
             {
                 //Set Spawn
-                playernew.transform.position = new Vector3(0,0.924f,0);
+                playernew.transform.position = new Vector3(0, 0.924f, 0);
                 switch (PlayerPrefs.GetInt("PrevSpawnSelection"))
                 {
                     case 0:
@@ -342,25 +336,13 @@ public class GlobalController : MonoBehaviour
     public void ApplyCamSettings(GameObject player)
     {
         HDAdditionalCameraData camData = player.GetComponentInChildren<HDAdditionalCameraData>();
-        FrameSettings frameSettings = camData.renderingPathCustomFrameSettings;
-        FrameSettingsOverrideMask frameSettingsOverrideMask = camData.renderingPathCustomFrameSettingsOverrideMask;
-        camData.customRenderingSettings = true;
+
 
         if (PlayerPrefs.GetInt("Settings: Motion Blur") == 0)
         {
             MotionBlur testDoF;
             player.GetComponentInChildren<Volume>().profile.TryGet<MotionBlur>(out testDoF);
             testDoF.intensity.value = 0;
-        }
-        if (PlayerPrefs.GetInt("Settings: Auto Exposure") == 0)
-        {
-            Exposure testDoF;
-            player.GetComponentInChildren<Volume>().profile.TryGet<Exposure>(out testDoF);
-            testDoF.mode.value = ExposureMode.Fixed;
-            if (!(testDoF.limitMin.value == 1))
-            {
-                testDoF.fixedExposure.value = 0.71f;
-            }
         }
         ScreenSpaceReflection ssr = null;
         player.GetComponentInChildren<Volume>().profile.TryGet<ScreenSpaceReflection>(out ssr);
@@ -369,7 +351,6 @@ public class GlobalController : MonoBehaviour
             switch (PlayerPrefs.GetInt("Settings: SSR"))
             {
                 case 0:
-                    camData.renderingPathCustomFrameSettings.SetEnabled(FrameSettingsField.SSR, false);
                     ssr.enabled.value = false;
                     ssr.tracing.value = RayCastingMode.RayMarching;
                     break;
@@ -403,6 +384,7 @@ public class GlobalController : MonoBehaviour
                     ssr.rayMaxIterations = 140;
                     ssr.tracing.value = RayCastingMode.RayTracing;
                     ssr.mode.value = RayTracingMode.Performance;
+                    ssr.bounceCount.value = PlayerPrefs.GetInt("Settings: SSR Bounces") + 1;
                     break;
                 case 6:
                     ssr.enabled.value = true;
@@ -410,6 +392,7 @@ public class GlobalController : MonoBehaviour
                     ssr.rayMaxIterations = 140;
                     ssr.tracing.value = RayCastingMode.RayTracing;
                     ssr.mode.value = RayTracingMode.Quality;
+                    ssr.bounceCount.value = PlayerPrefs.GetInt("Settings: SSR Bounces") + 1;
                     break;
                 default:
                     break;
@@ -421,65 +404,87 @@ public class GlobalController : MonoBehaviour
         player.GetComponentInChildren<Volume>().profile.TryGet<GlobalIllumination>(out ssgi);
 
         //GOTTA FIX
-
-        /*if (ssao != null && ssgi != null)
+        switch (PlayerPrefs.GetInt("Settings: SSAO"))
         {
-            switch (PlayerPrefs.GetInt("Settings: SSAO"))
-            {
-                case 0:
-                    camData.renderingPathCustomFrameSettings.SetEnabled(FrameSettingsField.SSAO, false);
-                    camData.renderingPathCustomFrameSettings.SetEnabled(FrameSettingsField.SSGI, false);
-                    ssgi.enable.value = false;
-                    ssao.active = false;
-                    ssgi.tracing.value = RayCastingMode.RayMarching;
-                    ssao.rayTracing.value = false;
-                    break;
-                case 1:
-                    camData.renderingPathCustomFrameSettings.SetEnabled(FrameSettingsField.SSGI, false);
-                    ssgi.enable.value = false;
-                    ssao.active = true;
-                    ssgi.tracing.value = RayCastingMode.RayMarching;
-                    ssao.rayTracing.value = false;
-                    break;
-                case 2:
-                    camData.renderingPathCustomFrameSettings.SetEnabled(FrameSettingsField.SSAO, false);
-                    ssgi.enable.value = true;
-                    ssao.active = false;
-                    ssgi.tracing.value = RayCastingMode.RayMarching;
-                    ssao.rayTracing.value = false;
-                    break;
-                case 3:
-                    camData.renderingPathCustomFrameSettings.SetEnabled(FrameSettingsField.SSGI, false);
-                    ssgi.enable.value = false;
-                    ssao.active = true;
-                    ssgi.tracing.value = RayCastingMode.RayMarching;
-                    ssao.rayTracing.value = true;
-                    break;
-                case 4:
-                    camData.renderingPathCustomFrameSettings.SetEnabled(FrameSettingsField.SSAO, false);
-                    ssgi.enable.value = true;
-                    ssao.active = false;
-                    ssgi.tracing.value = RayCastingMode.RayTracing;
-                    ssao.rayTracing.value = false;
-                    ssgi.mode.value = RayTracingMode.Performance;
-                    break;
-                case 5:
-                    camData.renderingPathCustomFrameSettings.SetEnabled(FrameSettingsField.SSAO, false);
-                    ssgi.enable.value = true;
-                    ssao.active = false;
-                    ssgi.tracing.value = RayCastingMode.RayTracing;
-                    ssgi.mode.value = RayTracingMode.Quality;
-                    break;
-                default:
-                    break;
-            }
+            case 0:
+                ssao.active = false;
+                break;
+            case 1:
+                ssao.active = true;
+                break;
+            default:
+                break;
         }
-        */
+        Debug.Log(PlayerPrefs.GetInt("Settings: GI"));
+        switch (PlayerPrefs.GetInt("Settings: GI"))
+        {
+            case 0:
+                ssgi.enable.value = false;
+                break;
+            case 1:
+                ssgi.enable.value = true;
+                ssgi.tracing.value = RayCastingMode.RayMarching;
+                ssgi.quality.value = 0;
+                break;
+            case 2:
+                ssgi.enable.value = true;
+                ssgi.tracing.value = RayCastingMode.RayMarching;
+                ssgi.quality.value = 1;
+                break;
+            case 3:
+                ssgi.enable.value = true;
+                ssgi.tracing.value = RayCastingMode.RayMarching;
+                ssgi.quality.value = 2;
+                break;
+            case 4:
+                ssgi.enable.value = true;
+                ssgi.tracing.value = RayCastingMode.Mixed;
+                ssgi.quality.value = 0;
+                break;
+            case 5:
+                ssgi.enable.value = true;
+                ssgi.tracing.value = RayCastingMode.Mixed;
+                ssgi.quality.value = 1;
+                break;
+            case 6:
+                ssgi.enable.value = true;
+                ssgi.tracing.value = RayCastingMode.Mixed;
+                ssgi.quality.value = 2;
+                break;
+            case 7:
+                ssgi.enable.value = true;
+                ssgi.tracing.value = RayCastingMode.RayTracing;
+                ssgi.mode.value = RayTracingMode.Performance;
+                ssgi.bounceCount.value = PlayerPrefs.GetInt("Settings: GI Bounces") + 1;
+                break;
+            case 8:
+                ssgi.enable.value = true;
+                ssgi.tracing.value = RayCastingMode.RayTracing;
+                ssgi.mode.value = RayTracingMode.Quality;
+                ssgi.bounceCount.value = PlayerPrefs.GetInt("Settings: GI Bounces") + 1;
+                break;
+            default:
+                break;
+        }
 
         //Res
         player.GetComponentInChildren<DynamicResCam>().currentScale = 100 - (PlayerPrefs.GetInt("Settings: Res Percent") * 5);
         player.GetComponentInChildren<DynamicResCam>().SetDynamicResolutionScale();
-
+        //7 Anti Aliasing
+        switch (PlayerPrefs.GetInt("Settings: AntiAlias"))
+        {
+            case 0:
+                camData.antialiasing = HDAdditionalCameraData.AntialiasingMode.None;
+                break;
+            case 1:
+                camData.antialiasing = HDAdditionalCameraData.AntialiasingMode.FastApproximateAntialiasing;
+                break;
+            case 2:
+                camData.antialiasing = HDAdditionalCameraData.AntialiasingMode.SubpixelMorphologicalAntiAliasing;
+                break;
+            default:
+                break;
+        }
         //DLSS
         Debug.Log("DLSS " + PlayerPrefs.GetInt("Settings: DLSS"));
         switch (PlayerPrefs.GetInt("Settings: DLSS"))
@@ -510,9 +515,6 @@ public class GlobalController : MonoBehaviour
             default:
                 break;
         }
-
-        //Applying the frame setting mask back to the camera
-        camData.renderingPathCustomFrameSettingsOverrideMask = frameSettingsOverrideMask;
     }
 
     public void AttemptAdvanceTutorial(string attemptString)

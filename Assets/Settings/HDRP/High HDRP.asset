@@ -60,7 +60,7 @@ MonoBehaviour:
       cookieTexArraySize: 16
       planarReflectionAtlasSize: 2048
       reflectionProbeCacheSize: 64
-      reflectionCubemapSize: 256
+      reflectionCubemapSize: 128
       reflectionCacheCompressed: 1
       reflectionProbeFormat: 74
       skyReflectionSize: 128

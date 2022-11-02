@@ -17,9 +17,17 @@ public class TitleSceneLoader : MonoBehaviour
     public TMP_Text spawnSelection;
     public TMP_Text timeSelection;
     public Image mapPreviewImage;
+    public Button startButton;
+    public Color startGreen;
+    public Color startGrey;
 
     public Sprite errorImage;
-
+    public AudioClip uiSoundTabIn;
+    public AudioClip uiSoundTabOut;
+    public AudioClip uiSoundClick;
+    public AudioClip uiSoundFail;
+    public AudioSource speaker;
+    public Transform[] camPos;
     int currentBotSel;
     int currentStageSel;
     int currentMapSel;
@@ -27,6 +35,14 @@ public class TitleSceneLoader : MonoBehaviour
     int currentTimeSel;
 
     List<int> mapGen;
+
+    void Start()
+    {
+        int t = Random.Range(0, camPos.Length);
+        Camera.main.transform.position = camPos[t].position;
+        Camera.main.transform.rotation = camPos[t].rotation;
+        QualitySettings.vSyncCount = 1;
+    }
 
     public void GenerateDefault()
     {
@@ -47,10 +63,14 @@ public class TitleSceneLoader : MonoBehaviour
         botSelection.text = mapTypes[currentBotSel].bottype;
         if (old == currentBotSel)
         {
-
+            if (sel != 0)
+            {
+                speaker.PlayOneShot(uiSoundFail);
+            }
         }
         else
         {
+            speaker.PlayOneShot(uiSoundClick);
             currentStageSel = 0;
         }
 
@@ -72,10 +92,14 @@ public class TitleSceneLoader : MonoBehaviour
             }
             if (old == currentStageSel)
             {
-
+                if (sel != 0)
+                {
+                    speaker.PlayOneShot(uiSoundFail);
+                }
             }
             else
             {
+                speaker.PlayOneShot(uiSoundClick);
                 currentMapSel = 0;
             }
         }
@@ -116,17 +140,24 @@ public class TitleSceneLoader : MonoBehaviour
             }
             if (old == currentMapSel)
             {
-
+                if (sel != 0)
+                {
+                    speaker.PlayOneShot(uiSoundFail);
+                }
             }
             else
             {
-
+                speaker.PlayOneShot(uiSoundClick);
             }
+            startButton.interactable = true;
+            startButton.GetComponent<Image>().color = startGreen;
         }
         else
         {
             mapSelection.text = "[NO MAP]";
             mapPreviewImage.sprite = errorImage;
+            startButton.interactable = false;
+            startButton.GetComponent<Image>().color = startGrey;
         }
     }
 
@@ -158,10 +189,14 @@ public class TitleSceneLoader : MonoBehaviour
         currentSpawnSel = (int)Mathf.Clamp(currentSpawnSel + sel, 0, spawnLocations.Length - 1);
         if (old == currentSpawnSel)
         {
-
+            if (sel != 0)
+            {
+                speaker.PlayOneShot(uiSoundFail);
+            }
         }
         else
         {
+            speaker.PlayOneShot(uiSoundClick);
             PlayerPrefs.SetInt("PrevSpawnSelection", currentSpawnSel);
             spawnSelection.text = spawnLocations[currentSpawnSel];
         }
@@ -173,10 +208,14 @@ public class TitleSceneLoader : MonoBehaviour
         currentTimeSel = (int)Mathf.Clamp(currentTimeSel + sel, 0, times.Length - 1);
         if (old == currentTimeSel)
         {
-
+            if (sel != 0)
+            {
+                speaker.PlayOneShot(uiSoundFail);
+            }
         }
         else
         {
+            speaker.PlayOneShot(uiSoundClick);
             PlayerPrefs.SetInt("PrevTimeSelection", currentTimeSel);
             timeSelection.text = times[currentTimeSel];
         }
@@ -190,8 +229,29 @@ public class TitleSceneLoader : MonoBehaviour
 
     IEnumerator GoToMapCRT()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(maps[mapGen[currentMapSel]].scenePath);
+    }
+    public void GoToEditor()
+    {
+        StartCoroutine(GoToMapEditor());
+    }
+    IEnumerator GoToMapEditor()
+    {
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene("Bit Crusher");
+    }
+
+    public void AudioTabIn(bool inOut)
+    {
+        if (inOut)
+        {
+            speaker.PlayOneShot(uiSoundTabIn);
+        }
+        else
+        {
+            speaker.PlayOneShot(uiSoundTabOut);
+        }
     }
 }
 

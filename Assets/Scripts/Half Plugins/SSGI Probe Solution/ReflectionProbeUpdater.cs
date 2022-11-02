@@ -5,7 +5,7 @@ using UnityEngine.Rendering.HighDefinition;
 public class ReflectionProbeUpdater : MonoBehaviour
 {
     [Range(0.1f, 60)] public float interval = 2;
- 
+     [Range(0.0f, 10)] public float start = 0;
     HDAdditionalReflectionData[] reflectionData = new HDAdditionalReflectionData[2];
     float[] updateTime = new float[2];
     float[] weight = new float[2];
@@ -43,8 +43,7 @@ public class ReflectionProbeUpdater : MonoBehaviour
         {
             reflectionData[i] = transform.GetChild(i).GetComponent<HDAdditionalReflectionData>();
         }
-     
-        updateTime[0] = Time.time;
+        updateTime[0] = Time.time + start;
         updateTime[1] = updateTime[0] + interval;
         intervalTwo = interval * 2;
     }

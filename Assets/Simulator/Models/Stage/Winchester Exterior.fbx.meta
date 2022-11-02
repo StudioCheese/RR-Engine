@@ -3,11 +3,56 @@ guid: c3862fa8a5168364ebcdb4bb1ecc4224
 ModelImporter:
   serializedVersion: 22103
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: AllColorWall
+    second: {fileID: 2100000, guid: 8d2379a1410befb4e93dd68c4a5196ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Concrete
+    second: {fileID: 2100000, guid: cb6624fbb180c8a488689cf03454c0f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Road
+    second: {fileID: 2100000, guid: db7ad3378751a7146b1a59539ff10109, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Road Markers
+    second: {fileID: 2100000, guid: 9e806b0d59a709d4fbc4763b83f865e5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Shingles Red
+    second: {fileID: 2100000, guid: 5c54ae13bdba146488e286a001da500a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stucco
+    second: {fileID: 2100000, guid: 0a4bee9552c7ab14baea62811746ddcb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stucco Grey
+    second: {fileID: 2100000, guid: 24202274551c3814b9f04cf601d2706d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Winchester Brick
+    second: {fileID: 2100000, guid: 1abdba9dc119257498f84c679a4e8c8d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood Planks White
+    second: {fileID: 2100000, guid: 070896c5a6144af48bac638d24be2e32, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
-    materialSearch: 1
+    materialSearch: 2
     materialLocation: 1
   animations:
     legacyGenerateAnimations: 4

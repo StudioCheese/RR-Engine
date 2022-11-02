@@ -211,7 +211,7 @@ public class TimelineEditor : MonoBehaviour
                 case 4:
                     if (GameVersion.gameName != "Faz-Anim")
                     {
-                        SceneManager.LoadScene("Title RR");
+                        SceneManager.LoadScene("RR Title Screen");
                     }
                     else
                     {
