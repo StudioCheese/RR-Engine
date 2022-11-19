@@ -1,0 +1,623 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5605387173408884618
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5605387173408884620}
+  - component: {fileID: 5605387173408884619}
+  m_Layer: 0
+  m_Name: Global Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5605387173408884620
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5605387173408884618}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5605387173408884619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5605387173408884618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91e1a1050cdf3f64e9b98c981a04bfb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 3852793578409061698, guid: c372dfd7f7262fb4388fda05084883f4, type: 3}
+  regularVolume: {fileID: 11400000, guid: 183cbd347d25080429f42b520742bbd8, type: 2}
+  TwoJoined: 0
+  debugJoinPlayerTwo: 0
+  debugResetProgress: 0
+  showSceneNames:
+  - sceneName: CRAE
+    objectShow: {fileID: 0}
+  - sceneName: CYBERS
+    objectShow: {fileID: 0}
+  - sceneName: Studio C
+    objectShow: {fileID: 0}
+  - sceneName: Kooser
+    objectShow: {fileID: 0}
+  prizeStrings:
+  - groupName: Food & Drink
+    prizeStrings:
+    - name: Pizza On Plate
+      description: A pizza slice on a paper plate.
+      price: 60
+      skins: []
+      attributes:
+      - Complex Scale
+    - name: Plate Stack
+      description: A standard stack of plates, weirdly stuck together.
+      price: 10
+      skins: []
+      attributes:
+      - Complex Scale
+  - groupName: Props
+    prizeStrings:
+    - name: Large Speaker
+      description: A large speaker as seen on stage. *Non Functional.
+      price: 80
+      skins: []
+      attributes:
+      - Material Color
+      - Complex Scale
+    - name: Durby
+      description: 
+      price: 80
+      skins: []
+      attributes:
+      - Complex Scale
+  - groupName: Decoration
+    prizeStrings:
+    - name: Vending Machine
+      description: Vending Machines seen throughout the area. Priced just right to
+        where you feel guity about getting one, but are still willing to pay the
+        cash for a quick drink.
+      price: 100
+      skins:
+      - VendingOne
+      - VendingTwo
+      attributes:
+      - Complex Scale
+    - name: Tall Table
+      description: A tall table. Batteries not included.
+      price: 50
+      skins: []
+      attributes:
+      - Complex Scale
+    - name: Pool Table
+      description: A decorative non-working pool table!
+      price: 100
+      skins:
+      - Fazbear Ent
+      - Circus Baby's
+      - Faz-Anim
+      - Fazbear's Fright
+      attributes:
+      - Complex Scale
+    - name: Exit Sign
+      description: A sign showing the exit of a room.
+      price: 10
+      skins: []
+      attributes:
+      - Complex Scale
+    - name: Fire Extinguisher
+      description: 'A cabinet holding a fire extinguisher. '
+      price: 30
+      skins: []
+      attributes:
+      - Complex Scale
+    - name: Small Chair
+      description: A small wooden chair with customizable cushions.
+      price: 50
+      skins: []
+      attributes:
+      - Complex Scale
+      - Material Color
+    - name: Star Chair
+      description: A custom Freddy Fazbear's Pizza star chair seen in only a few
+        restaurants.
+      price: 60
+      skins: []
+      attributes:
+      - Complex Scale
+      - Material Color
+    - name: Wooden Shelf
+      description: A wooden shelf that can hold many small things.
+      price: 80
+      skins: []
+      attributes:
+      - Complex Scale
+    - name: Skee-Ball
+      description: A decorative non-working skee-ball machine.
+      price: 100
+      skins: []
+      attributes:
+      - Complex Scale
+    - name: Wall Mounted TV
+      description: A decorative non-working wall mounted flat screen TV.
+      price: 40
+      skins: []
+      attributes:
+      - Complex Scale
+    - name: Trio Gumball Machine
+      description: A trio set of gumball machines.
+      price: 60
+      skins: []
+      attributes:
+      - Complex Scale
+    - name: Ball Pit
+      description: A whole entire ball pit. The whole thing.
+      price: 400
+      skins: []
+      attributes:
+      - Complex Scale
+    - name: Cardboard Box
+      description: A collection of cardboard boxes.
+      price: 50
+      skins:
+      - Box1
+      - Box2
+      - Box3
+      attributes:
+      - Complex Scale
+    - name: Office Chair
+      description: A simple office chair.
+      price: 30
+      skins: []
+      attributes:
+      - Complex Scale
+    - name: Popcorn Machine
+      description: Standard popcorn machine.
+      price: 30
+      skins: []
+      attributes:
+      - Complex Scale
+    - name: Ong
+      description: A decorative non-working arcade machine. The classic mega-hit
+        Ong!
+      price: 80
+      skins: []
+      attributes:
+      - Complex Scale
+    - name: FNWMH2
+      description: A decorative non-working arcade machine. The hit Mr. Hugs franchise
+        is back with its sequel, or should we say prequel? Watch Mr. Hugs first time
+        out of the closet, and vrooming to your doom!
+      price: 80
+      skins: []
+      attributes:
+      - Complex Scale
+    - name: Goongalar
+      description: A decorative non-working arcade machine. Can you defeat Goongalar
+        and her evil alien ships?
+      price: 80
+      skins: []
+      attributes:
+      - Complex Scale
+    - name: Electronic Pizza
+      description: A decorative non-working arcade machine. *Electronic pizza is
+        not responsible for dissapointment in not getting pizza, or death from electric
+        shock.
+      price: 80
+      skins: []
+      attributes:
+      - Complex Scale
+    - name: Fight to the Finale
+      description: A decorative non-working arcade machine. With over 75 clone characters
+        of the same playstyle, you'll be sure to master all the nuaces of this insane
+        platform fighter!
+      price: 80
+      skins: []
+      attributes:
+      - Complex Scale
+    - name: Team Car 2
+      description: A decorative non-working arcade machine. Race your friends in
+        this wacky team-based drifter with 9 cars to fit your personality!
+      price: 80
+      skins: []
+      attributes:
+      - Complex Scale
+    - name: Playset
+      description: A decorative non-working arcade machine. Build your world, show
+        off your artistic skills, then come back next time to see what other arcade
+        goers have added to your creation!
+      price: 80
+      skins: []
+      attributes:
+      - Complex Scale
+    - name: Super Sunset
+      description: A decorative non-working arcade machine. The classic racing motorbike
+        game!
+      price: 80
+      skins: []
+      attributes:
+      - Complex Scale
+    - name: SHMUPS
+      description: A decorative non-working arcade machine. Shoot, shoot, and shoot
+        some more!
+      price: 80
+      skins: []
+      attributes:
+      - Complex Scale
+    - name: SHMUPS 2
+      description: A decorative non-working arcade machine. Shoot but now with 2
+        bullets per shot! Shoot!
+      price: 80
+      skins: []
+      attributes:
+      - Complex Scale
+    - name: SCB Circus
+      description: A decorative non-working arcade machine.
+      price: 80
+      skins: []
+      attributes:
+      - Complex Scale
+  - groupName: Building Blocks
+    prizeStrings:
+    - name: Building Block Cube
+      description: A buildable piece used to decorate and create custom rooms! Comes
+        with lots of materials.
+      price: 50
+      skins:
+      - Building Block
+      attributes:
+      - Material Color
+      - Complex Scale
+    - name: Building Block Ramp
+      description: A buildable piece used to decorate and create custom rooms! Comes
+        with lots of materials.
+      price: 50
+      skins:
+      - Building Block
+      attributes:
+      - Material Color
+      - Complex Scale
+    - name: Building Block Curve
+      description: A buildable piece used to decorate and create custom rooms! Comes
+        with lots of materials.
+      price: 50
+      skins:
+      - Building Block
+      attributes:
+      - Material Color
+      - Complex Scale
+    - name: Building Block Stairs
+      description: A buildable piece used to decorate and create custom rooms! Comes
+        with lots of materials.
+      price: 50
+      skins:
+      - Building Block
+      attributes:
+      - Material Color
+      - Complex Scale
+    - name: Building Block Sphere
+      description: A buildable piece used to decorate and create custom rooms! Comes
+        with lots of materials.
+      price: 50
+      skins:
+      - Building Block
+      attributes:
+      - Material Color
+      - Complex Scale
+    - name: Building Block Cylinder
+      description: A buildable piece used to decorate and create custom rooms! Comes
+        with lots of materials.
+      price: 50
+      skins:
+      - Building Block
+      attributes:
+      - Material Color
+      - Complex Scale
+  - groupName: Interactables
+    prizeStrings: []
+  - groupName: Animatronics
+    prizeStrings:
+    - name: 3-Stage Chuck
+      description: 
+      price: 640
+      skins:
+      - 91 Latex Chuck
+      - 91 Proto Latex Chuck
+      - Cosmeticless
+      - Mech
+      - Modern CU Cosmeticless
+      - Modern CU Mech
+      attributes:
+      - Scale
+    - name: 3-Stage Helen
+      description: 
+      price: 640
+      skins:
+      - Latex Helen
+      - Cheerleader Helen
+      - Cosmeticless
+      - Mech
+      - Modern Latex Helen
+      - Modern CU Cosmeticless
+      - Modern CU Mech
+      attributes:
+      - Scale
+    - name: 3-Stage Jasper
+      description: 
+      price: 640
+      skins:
+      - Latex Cosmetics
+      - Cosmeticless
+      - Mech
+      - CU Cosmeticless
+      - CU Mech
+      - Modern CU Cosmeticless
+      - Modern CU Latex
+      - Modern CU Mech
+      - Proto Cosmetics
+      attributes:
+      - Scale
+    - name: 3-Stage Munch
+      description: 
+      price: 640
+      skins:
+      - Default
+      - Demo
+      - Modern CU
+      - CU Cosmeticless
+      - CU Mech
+      - Modern CU Cosmeticless
+      - Modern CU Mech
+      - Cosmeticless
+      - Mech
+      attributes:
+      - Scale
+    - name: 3-Stage Pasqually
+      description: 
+      price: 640
+      skins:
+      - White Drum Mech
+      - Orange Drum Mech
+      - Blue Drum Mech
+      - Mech
+      attributes:
+      - Scale
+    - name: 3-Stage Pizzacam
+      description: 
+      price: 640
+      skins:
+      - Default
+      - Cosmeticless
+      - Black Eyelid
+      - Irving
+      - Toothless
+      - Wilmington
+      - Pre-CU Cosmeticless
+      - Cosmeticless
+      - Mech
+      attributes:
+      - Scale
+    - name: 3-Stage Unused Mech
+      description: 
+      price: 640
+      skins:
+      - Cosmeticless
+      - Mech
+      attributes:
+      - Scale
+    - name: 3-Stage Wink
+      description: 
+      price: 640
+      skins:
+      - Default
+      attributes:
+      - Scale
+    - name: 3-Stage Building
+      description: 
+      price: 640
+      skins:
+      - Dark Blue
+      - Gray
+      - Light Blue
+      - Phoenix
+      - Mobile 1
+      - Mobile 2
+      - Cosmeticless
+      - Mech
+      attributes:
+      - Scale
+    - name: Uncle Pappy
+      description: 
+      price: 640
+      skins:
+      - Cosmeticless Chair
+      - Cosmeticless
+      - Mech Chair
+      - Mech
+      attributes:
+      - Scale
+    - name: CU Flower
+      description: 
+      price: 640
+      skins:
+      - Default
+      attributes:
+      - Scale
+    - name: Cyberamic Chuck
+      description: 
+      price: 640
+      skins:
+      - Default
+      - Checkered Vest
+      - Mech
+      attributes:
+      - Scale
+    - name: Cyberamic Guest
+      description: 
+      price: 640
+      skins:
+      - Mech
+      attributes:
+      - Scale
+    - name: Cyberamic Jasper
+      description: 
+      price: 640
+      skins:
+      - Mech
+      attributes:
+      - Scale
+    - name: Cyberamic Munch
+      description: 
+      price: 640
+      skins:
+      - Mech
+      attributes:
+      - Scale
+    - name: Cyberamic Pasqually
+      description: 
+      price: 640
+      skins:
+      - Mech
+      attributes:
+      - Scale
+    - name: Cyberamic Warblettes
+      description: 
+      price: 640
+      skins:
+      - Default
+      - Mech
+      attributes:
+      - Scale
+    - name: Kooser Chuck
+      description: 
+      price: 640
+      skins:
+      - Default
+      - Cosmeticless
+      - Mech
+      attributes:
+      - Scale
+    - name: Studio C Chuck
+      description: 
+      price: 640
+      skins:
+      - Default
+      - Durby
+      - Cosmeticless
+      - Mech
+      attributes:
+      - Scale
+    - name: Winchester Pasqually
+      description: 
+      price: 640
+      skins:
+      - Default
+      attributes:
+      - Scale
+  - groupName: Lights
+    prizeStrings:
+    - name: Softbox Light
+      description: A lighting device used for photography. It creates diffused light
+        by shining through a scattering material.
+      price: 150
+      skins: []
+      attributes:
+      - Light Temperature
+      - Light Color
+      - Light Intensity
+    - name: Flood Light
+      description: A small colored light on a stand.
+      price: 150
+      skins: []
+      attributes:
+      - Light Temperature
+      - Light Color
+      - Light Intensity
+      - Light Spot Size
+  - groupName: Devices
+    prizeStrings: []
+  buildMaterials:
+  - name: Plaster Grey
+    mat: {fileID: 2100000, guid: c614c0c40e709594a821116482979661, type: 2}
+  - name: Plaster White
+    mat: {fileID: 2100000, guid: df59dc277d336b741b2ffac608e8f7ad, type: 2}
+  - name: Alluminum
+    mat: {fileID: 2100000, guid: 1b5234f1beb2bdb45abe011af60a2d1e, type: 2}
+  - name: Shiny Floor
+    mat: {fileID: 2100000, guid: 249771299850e8e4fa09663df5d3f316, type: 2}
+  - name: Ceiling
+    mat: {fileID: 2100000, guid: bc39daa81bd5c58478e3237daf8317c1, type: 2}
+  - name: Tiles Tiny
+    mat: {fileID: 2100000, guid: cd19f944ec19aa74dbfaa9741efba39d, type: 2}
+  - name: Tiles Shiny
+    mat: {fileID: 2100000, guid: f6eb4c96c05e32a48aead682865a76d4, type: 2}
+  - name: Tiles Tan
+    mat: {fileID: 2100000, guid: 99ff7ade22e1e234f99bb11921d43644, type: 2}
+  - name: Tiles Grey
+    mat: {fileID: 2100000, guid: 5db594ae5f0395246aebb3c6ae3ec827, type: 2}
+  - name: Tiles Old
+    mat: {fileID: 2100000, guid: 07f0537644d002846a232ec4f98304b6, type: 2}
+  - name: Glass
+    mat: {fileID: 2100000, guid: 8100b24d2d5723f45b2d359db6ab7594, type: 2}
+  - name: Leather
+    mat: {fileID: 2100000, guid: 0f4bc0ee7f0915747bf38e7cce3d1773, type: 2}
+  - name: Mirror
+    mat: {fileID: 2100000, guid: 4ae3449b72c73744fa8b1a62270f7eed, type: 2}
+  - name: Bricks
+    mat: {fileID: 2100000, guid: e71e1015df494bb4e90b6b9cc34b72dc, type: 2}
+  - name: Brick Tan
+    mat: {fileID: 2100000, guid: f16d4bcf2d2a0884197d0088cdf5b9e7, type: 2}
+  - name: Bricks Old
+    mat: {fileID: 2100000, guid: 6493ef17756595e448bcd964bf9b921f, type: 2}
+  - name: Curtain Wall
+    mat: {fileID: 2100000, guid: 61bf2a8523084c5408bfba9cb1c12750, type: 2}
+  - name: Carpet
+    mat: {fileID: 2100000, guid: 356157c792303ac4b892ee075a67a0ff, type: 2}
+  - name: Carpet Circles
+    mat: {fileID: 2100000, guid: e97607b7249f6c3409014b7a17fe1709, type: 2}
+  - name: Carpet Arcade
+    mat: {fileID: 2100000, guid: b8b1568d0cd48c442b9c63d7233a5fbe, type: 2}
+  - name: Shiny Black
+    mat: {fileID: 2100000, guid: 7f7d57827c28a7e4a91c9cf4755d5a79, type: 2}
+  - name: Vent
+    mat: {fileID: 2100000, guid: b2ba17d1673059648bc71b23c72a099a, type: 2}
+  - name: Wall
+    mat: {fileID: 2100000, guid: 1f7932c8ca0a5a74d81512f5bbe048f9, type: 2}
+  - name: Wood
+    mat: {fileID: 2100000, guid: a7828608d14f40a43a0e8bbbe65f4b35, type: 2}
+  - name: Hardwood
+    mat: {fileID: 2100000, guid: 2311cdccf3c0e1345a79980b96fdbc0c, type: 2}
+  - name: Wood Stippled
+    mat: {fileID: 2100000, guid: af8135e4939a605438a75484966d269d, type: 2}
+  - name: Wood Fake
+    mat: {fileID: 2100000, guid: e3875600befc76641a7b111133e4b375, type: 2}
+  - name: Wood Red
+    mat: {fileID: 2100000, guid: e66542e9e01412c41b7fa015a1c50c82, type: 2}
+  - name: Wood White
+    mat: {fileID: 2100000, guid: 0c02009f03885ab4884be075f1340c17, type: 2}
+  unlockAllPrizes: 1
+  dayTime: {fileID: 0}
+  nightTime: {fileID: 0}
+  morningTime: {fileID: 0}
+  sunsetTime: {fileID: 0}
+  rainTime: {fileID: 0}
+  playerSpawnDefault: {fileID: 0}
+  playerSpawnEntrance: {fileID: 0}
+  playerSpawnStage: {fileID: 0}

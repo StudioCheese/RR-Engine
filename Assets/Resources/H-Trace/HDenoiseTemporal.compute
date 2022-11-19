@@ -1,0 +1,191 @@
+#pragma kernel Temporal_Denoise_1
+#pragma kernel Temporal_Denoise_2
+#pragma multi_compile_local _ REJECT_DENOISING
+#pragma multi_compile_local _ ADAPTIVE_CHECKERBOARD
+#pragma multi_compile_local _ HALF_RESOLUTION
+#include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/RenderPass/CustomPass/CustomPassCommon.hlsl"
+#include "../../H-Trace/Headers/HMain.hlsl"
+#include "../../H-Trace/Headers/HMath.hlsl"
+H_RW_TEXTURE(float, _Temporal_Cache_Weights_RW);
+H_RW_TEXTURE_ARRAY(float4, _Output);
+H_TEXTURE(_Temporal_Cache_Weights);
+H_TEXTURE(_Normal_Buffer_History);
+H_TEXTURE(_Depth_Buffer_History);
+H_TEXTURE_ARRAY(_Accumulation_Buffer);
+H_TEXTURE(_MaskedDepth);
+H_TEXTURE_ARRAY(_Input);
+int _SecondPass;
+[numthreads(8,8,1)]
+void Temporal_Denoise_1(uint2 pixCoord : SV_DispatchThreadID, uint2 groupThreadID : SV_GroupThreadID, uint2 groupID : SV_GroupID)
+{
+float Depth = H_LOAD(_CameraDepthTexture, pixCoord).r;
+PositionInputs posInputs = GetPositionInput(pixCoord, _ScreenSize.zw, Depth, UNITY_MATRIX_I_VP, UNITY_MATRIX_V);
+float MaskFromDepth = H_LOAD(_MaskedDepth, pixCoord).x;
+if (MaskFromDepth <= Depth * DEPTH_MULTIPLIER)
+MaskFromDepth = 0;
+if (Depth <= 1e-7 || MaskFromDepth > 0)
+{
+_Output[uint3(pixCoord.xy, H_INDEX_ARRAY(0))] = 0;
+_Output[uint3(pixCoord.xy, H_INDEX_ARRAY(1))] = 0;
+_Output[uint3(pixCoord.xy, H_INDEX_ARRAY(2))] = 0;
+return;
+}
+float2 MotionVectors = float2(0,0);
+if(_FrameCount > 0)
+MotionVectors = HBUFFER_MOTION_VECTOR(pixCoord);
+float2 prevCoord = ((posInputs.positionNDC  - MotionVectors) * _ScreenSize.xy);
+float2 checkerUV = pixCoord;
+#ifdef ADAPTIVE_CHECKERBOARD
+if (_FrameCount % uint(2) == 0)
+{
+if ( (pixCoord.x + pixCoord.y) % uint(2) == 0)
+{
+checkerUV = prevCoord;
+}
+}
+else
+{
+if ( (pixCoord.x + pixCoord.y) % uint(2) != 0)
+{
+checkerUV = prevCoord;
+}
+}
+#endif
+float Downscale = 1;
+#if defined HALF_RESOLUTION
+Downscale = 2;
+#endif
+float4 Input0 = LOAD_TEXTURE2D_ARRAY(_Input, checkerUV / Downscale, 0);
+float4 Input1 = LOAD_TEXTURE2D_ARRAY(_Input, checkerUV / Downscale, 1);
+float4 Input2 = LOAD_TEXTURE2D_ARRAY(_Input, checkerUV / Downscale, 2);
+float2 UV_Offset[4];
+UV_Offset[0] = float2(0,1);
+UV_Offset[1] = float2(0,-1);
+UV_Offset[2] = float2(1,0);
+UV_Offset[3] = float2(-1,0);
+float4 Accumulation0 = 0;
+float4 Accumulation1 = 0;
+float4 Accumulation2 = 0;
+#ifdef ADAPTIVE_CHECKERBOARD
+if (length(MotionVectors) > 0.0005)
+{
+if (_FrameCount % uint(2) == 0)
+{
+if ( (pixCoord.x + pixCoord.y) % uint(2) == 0)
+{
+int SampleStart = _FrameCount % uint(2) == 0 ? 0 : 2;
+for (int i = SampleStart; i < SampleStart + 2; i++)
+{
+Accumulation0 += LOAD_TEXTURE2D_ARRAY(_Input, pixCoord.xy + UV_Offset[i], 0);
+Accumulation1 += LOAD_TEXTURE2D_ARRAY(_Input, pixCoord.xy + UV_Offset[i], 1);
+Accumulation2 += LOAD_TEXTURE2D_ARRAY(_Input, pixCoord.xy + UV_Offset[i], 2);
+}
+Input0 = Accumulation0 / 2;
+Input1 = Accumulation1 / 2;
+Input2 = Accumulation2 / 2;
+}
+}
+else
+{
+if ( (pixCoord.x + pixCoord.y) % uint(2) != 0)
+{ 
+int SampleStart = (_FrameCount + 1) % uint(2) != 0 ? 0 : 2;
+for (int i = SampleStart; i < SampleStart + 2; i++)
+{
+Accumulation0 += LOAD_TEXTURE2D_ARRAY(_Input, pixCoord.xy + UV_Offset[i], 0);
+Accumulation1 += LOAD_TEXTURE2D_ARRAY(_Input, pixCoord.xy + UV_Offset[i], 1);
+Accumulation2 += LOAD_TEXTURE2D_ARRAY(_Input, pixCoord.xy + UV_Offset[i], 2);
+}
+Input0 = Accumulation0 / 2;
+Input1 = Accumulation1 / 2;
+Input2 = Accumulation2 / 2;
+}
+}
+}
+#endif
+float4 Accumulation_Buffer0 = H_SAMPLE_ARRAY_LOD(_Accumulation_Buffer, H_SAMPLER_LINEAR_CLAMP, prevCoord.xy * _ScreenSize.zw * _RTHandleScale.xy, 0, 0);
+float4 Accumulation_Buffer1 = H_SAMPLE_ARRAY_LOD(_Accumulation_Buffer, H_SAMPLER_LINEAR_CLAMP, prevCoord.xy * _ScreenSize.zw * _RTHandleScale.xy, 1, 0);
+float4 Accumulation_Buffer2 = H_SAMPLE_ARRAY_LOD(_Accumulation_Buffer, H_SAMPLER_LINEAR_CLAMP, prevCoord.xy * _ScreenSize.zw * _RTHandleScale.xy, 2, 0);
+uint RejectHistory = 1;
+float Sample_Count = Accumulation_Buffer1.w;
+float Accumulation_Factor = 0;
+float3 Normal_Current = HBUFFER_NORMAL_WS(pixCoord);
+float3 Normal_Previous = H_LOAD(_Normal_Buffer_History, prevCoord).xyz;
+if (dot(Normal_Current, Normal_Previous) < 0.6)
+RejectHistory = 0;
+float Depth_Previous = H_SAMPLE_LOD(_Depth_Buffer_History, H_SAMPLER_LINEAR_CLAMP, prevCoord * _ScreenSize.zw * _RTHandleScale.xy, 0).r;
+float3 Position_Previous = ComputeWorldSpacePosition(posInputs.positionNDC - MotionVectors, Depth_Previous, UNITY_MATRIX_PREV_I_VP_H);
+float MaxDistance = ComputeMaxReprojectionWorldRadius(posInputs.positionWS, Normal_Current, 0.001);
+if (length(Position_Previous - posInputs.positionWS) > MaxDistance)
+RejectHistory = 0;
+if (prevCoord.x >= _ScreenSize.x | prevCoord.x < 0 | prevCoord.y >= _ScreenSize.y | prevCoord.y < 0)
+RejectHistory = 0;
+if (Depth_Previous <= 1e-7)
+RejectHistory = 0;
+if (RejectHistory == 0 || Sample_Count == 0.0 )
+{
+Accumulation_Buffer0 = 0.0;
+Accumulation_Buffer1 = 0.0;
+Accumulation_Buffer2 = 0.0;
+Accumulation_Factor = 0.0;
+Sample_Count = 1.0;
+}
+else
+{
+Accumulation_Factor = Sample_Count >= 8.0 ? 0.93 : (Sample_Count / (Sample_Count + 1.0));
+Sample_Count = min(Sample_Count + 1.0, 8.0);
+}
+if (_SecondPass == 0)
+_Temporal_Cache_Weights_RW[H_COORD(pixCoord.xy)] = RejectHistory;
+_Output[uint3(pixCoord.xy / 1, H_INDEX_ARRAY(0))] =  float4(Input0.xyzw * (1.0 - Accumulation_Factor) + Accumulation_Buffer0.xyzw * Accumulation_Factor);
+_Output[uint3(pixCoord.xy / 1, H_INDEX_ARRAY(1))] =  float4(Input1.xyz * (1.0 - Accumulation_Factor) + Accumulation_Buffer1.xyz * Accumulation_Factor, Sample_Count);
+_Output[uint3(pixCoord.xy / 1, H_INDEX_ARRAY(2))] =  float4(Input2.xyzw * (1.0 - Accumulation_Factor) + Accumulation_Buffer2.xyzw * Accumulation_Factor);
+}
+[numthreads(8,8,1)]
+void Temporal_Denoise_2(uint2 pixCoord : SV_DispatchThreadID, uint2 groupThreadID : SV_GroupThreadID, uint2 groupID : SV_GroupID)
+{
+float Depth = H_LOAD(_CameraDepthTexture, pixCoord).x;
+float MaskFromDepth = H_LOAD(_MaskedDepth, pixCoord).x;
+if (MaskFromDepth <= Depth * DEPTH_MULTIPLIER)
+MaskFromDepth = 0;
+if (Depth <= 1e-7 || MaskFromDepth > 0)
+{
+_Output[uint3(pixCoord.xy, H_INDEX_ARRAY(0))] = 0;
+_Output[uint3(pixCoord.xy, H_INDEX_ARRAY(1))] = 0;
+_Output[uint3(pixCoord.xy, H_INDEX_ARRAY(2))] = 0;
+return;
+}
+float Downscale = 1;
+#if defined HALF_RESOLUTION
+Downscale = 2;
+#endif
+float4 Input0 = LOAD_TEXTURE2D_ARRAY(_Input, pixCoord / Downscale, 0);
+float4 Input1 = LOAD_TEXTURE2D_ARRAY(_Input, pixCoord / Downscale, 1);
+float4 Input2 = LOAD_TEXTURE2D_ARRAY(_Input, pixCoord / Downscale, 2);
+float2 MotionVectors = float2(0,0);
+if(_FrameCount > 0)
+MotionVectors = HBUFFER_MOTION_VECTOR(pixCoord);
+float2 prevCoord = (((pixCoord + 0.5) * _ScreenSize.zw - MotionVectors) * _ScreenSize.xy);
+float4 Accumulation_Buffer0 = H_SAMPLE_ARRAY_LOD(_Accumulation_Buffer, H_SAMPLER_LINEAR_CLAMP, prevCoord.xy * _ScreenSize.zw * _RTHandleScale.xy, 0, 0);
+float4 Accumulation_Buffer1 = H_SAMPLE_ARRAY_LOD(_Accumulation_Buffer, H_SAMPLER_LINEAR_CLAMP, prevCoord.xy * _ScreenSize.zw * _RTHandleScale.xy, 1, 0);
+float4 Accumulation_Buffer2 = H_SAMPLE_ARRAY_LOD(_Accumulation_Buffer, H_SAMPLER_LINEAR_CLAMP, prevCoord.xy * _ScreenSize.zw * _RTHandleScale.xy, 2, 0);
+float RejectHistory = H_LOAD(_Temporal_Cache_Weights, pixCoord).x;
+float Sample_Count = Accumulation_Buffer1.w;
+float Accumulation_Factor = 0;
+if (RejectHistory == 0 || Sample_Count == 0.0 )
+{
+Accumulation_Buffer0 = 0.0;
+Accumulation_Buffer1 = 0.0;
+Accumulation_Buffer2 = 0.0;
+Accumulation_Factor = 0.0;
+Sample_Count = 1.0;
+}
+else
+{
+Accumulation_Factor = Sample_Count >= 8.0 ? 0.93 : (Sample_Count / (Sample_Count + 1.0));
+Sample_Count = min(Sample_Count + 1.0, 8.0);
+}
+_Output[uint3(pixCoord.xy, H_INDEX_ARRAY(0))] =  float4(Input0.xyzw * (1.0 - Accumulation_Factor) + Accumulation_Buffer0.xyzw * Accumulation_Factor);
+_Output[uint3(pixCoord.xy, H_INDEX_ARRAY(1))] =  float4(Input1.xyz * (1.0 - Accumulation_Factor) + Accumulation_Buffer1.xyz * Accumulation_Factor, Sample_Count);
+_Output[uint3(pixCoord.xy, H_INDEX_ARRAY(2))] =  float4(Input2.xyzw * (1.0 - Accumulation_Factor) + Accumulation_Buffer2.xyzw * Accumulation_Factor);
+}

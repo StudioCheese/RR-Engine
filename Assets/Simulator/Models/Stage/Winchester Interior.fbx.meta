@@ -82,6 +82,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Winchester Posters
+    second: {fileID: 2100000, guid: b78447077497f5f4d950fd9bfb56e31d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Winchester Signage
     second: {fileID: 2100000, guid: 58a460bac5aea0445a802286e4002a28, type: 2}
   - first:
@@ -94,6 +99,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Winchester Unpainted Brick
     second: {fileID: 2100000, guid: 74e994702c400dc488f1ecd116d4e511, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WinchesterRedCarpet
+    second: {fileID: 2100000, guid: 0cdbc29bfea5ff14caeca30acb849b7c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

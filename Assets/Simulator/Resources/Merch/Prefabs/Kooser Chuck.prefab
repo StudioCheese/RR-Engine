@@ -83,6 +83,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 3572517102335815406}
     m_Modifications:
     - target: {fileID: -8774332435193406435, guid: 3b0da60d8fc12eb42a0a84aec7937158, type: 3}
@@ -266,6 +267,7 @@ PrefabInstance:
       value: 127.215
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b0da60d8fc12eb42a0a84aec7937158, type: 3}
 --- !u!4 &1820836849874678507 stripped
 Transform:
@@ -287,7 +289,7 @@ Animator:
   m_GameObject: {fileID: 3652978310735124141}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f6a5bbe2b31423a47b27e81b569a0292, type: 2}
+  m_Controller: {fileID: 9100000, guid: d0da7325da5e31c46b9f7cafd2eaa35c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

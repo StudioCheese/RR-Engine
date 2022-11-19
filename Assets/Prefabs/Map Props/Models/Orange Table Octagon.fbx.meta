@@ -17,8 +17,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: e9dc92beee08f3a4cb9edb5293201dd1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Other Metals
     second: {fileID: 2100000, guid: 28b8177df7f57ba479acdbcd94279bb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WinchesterTables
+    second: {fileID: 2100000, guid: 046657d6254e11d409525de21276da06, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

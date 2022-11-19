@@ -1,0 +1,204 @@
+#pragma kernel Spatial_Denoise_1
+#pragma kernel Spatial_Denoise_2
+#pragma kernel Point_Distribution
+#pragma multi_compile_local _ ADAPTIVE_CHECKERBOARD
+#pragma multi_compile_local _ DENOISE_OCCLUSION
+#pragma multi_compile_local _ HALF_RESOLUTION
+#pragma multi_compile_local _ CACHE
+#include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/RenderPass/CustomPass/CustomPassCommon.hlsl"
+#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Sampling/Sampling.hlsl"
+#include "../../H-Trace/Headers/HMain.hlsl"
+#include "../../H-Trace/Headers/HMath.hlsl"
+H_TEXTURE_ARRAY(_Input);
+H_TEXTURE_ARRAY(_Input_LOD);
+H_TEXTURE(_MaskedDepth);
+H_TEXTURE_ARRAY(_Spatial_Cache_Weights);
+H_TEXTURE_ARRAY(_Spatial_Cache_UVs);
+H_RW_TEXTURE_ARRAY(float, _Spatial_Cache_Weights_RW);
+H_RW_TEXTURE_ARRAY(float2, _Spatial_Cache_UVs_RW);
+H_RW_TEXTURE_ARRAY(float4, _Output);
+RWStructuredBuffer<float2> _PointDistributionRW;
+StructuredBuffer<float2> _PointDistribution;
+float _DenoiserFilterRadius;
+float _AccumulationSpeed;
+float _DetailPreservation;
+int _DenoiserSampleCount;
+int _RunningInViewport;
+int _SecondPass;
+[numthreads(64, 1, 1)]
+void Point_Distribution(uint3 dispatchThreadId : SV_DispatchThreadID)
+{
+_PointDistributionRW[dispatchThreadId.x] = HSampleDiskCubic(SpatioTemporalNoise(dispatchThreadId.x, 0).x, SpatioTemporalNoise(dispatchThreadId.x, 0).y);
+}
+[numthreads(8,8,1)]
+void Spatial_Denoise_1(uint2 pixCoord : SV_DispatchThreadID, uint2 groupThreadID : SV_GroupThreadID, uint2 groupID : SV_GroupID)
+{
+float Downscale = 2;
+#ifndef HALF_RESOLUTION
+if (_RunningInViewport == false)
+{
+if (_ScreenSize.x % 2 == 0 && _ScreenSize.y % 2 == 0)
+pixCoord = ThreadGroupTilingX(uint2(_ScreenSize.x / 8,  _ScreenSize.y / 8), uint2(8, 8), 8, groupThreadID, groupID);
+}
+Downscale = 1;
+#endif
+pixCoord *= Downscale;
+float4 Input0 = LOAD_TEXTURE2D_ARRAY(_Input, pixCoord.xy, 0);
+float4 Input1 = LOAD_TEXTURE2D_ARRAY(_Input, pixCoord.xy, 1);
+float4 Input2 = LOAD_TEXTURE2D_ARRAY(_Input, pixCoord.xy, 2);
+float AO = Input2.w;
+float Accumulation_Count = Input1.w / 8;
+float Accumulation_Scale = lerp(2 + _AccumulationSpeed, 1, Accumulation_Count);
+float SpecularOcclusion = LOAD_TEXTURE2D_ARRAY(_Input, pixCoord.xy, 1).z;
+float AO_Scale = lerp(1, pow(saturate(AO), 4), Accumulation_Count);
+AO_Scale = max(lerp(0.001, 0.25, AO), AO_Scale);
+AO_Scale = lerp(1, AO_Scale, _DetailPreservation);
+float Sample_Count = lerp(24, _DenoiserSampleCount, Accumulation_Count);
+float3 Normal_Center = HBUFFER_NORMAL_WS(pixCoord);
+float Depth_Center = HBUFFER_DEPTH(pixCoord);
+float MaskFromDepth = H_LOAD(_MaskedDepth, pixCoord).x;
+if (MaskFromDepth <= Depth_Center * DEPTH_MULTIPLIER)
+MaskFromDepth = 0;
+if (Depth_Center <= 1e-7 || MaskFromDepth > 0)
+{
+_Output[uint3(pixCoord.xy, H_INDEX_ARRAY(0))] = float4(0,0,0,0);
+_Output[uint3(pixCoord.xy, H_INDEX_ARRAY(1))] = float4(0,0,0, Accumulation_Count * 8);
+_Output[uint3(pixCoord.xy, H_INDEX_ARRAY(2))] = float4(0,0,0,0);
+return;
+}
+PositionInputs posInput = GetPositionInput(pixCoord, _ScreenSize.zw, Depth_Center, UNITY_MATRIX_I_VP, UNITY_MATRIX_V);
+float3 Position_Center = posInput.positionWS; 
+float3x3 LocalOrthoBasis = HGetLocalFrame(Normal_Center);
+float Radius = length(Position_Center) * _DenoiserFilterRadius / lerp(5.0, 50.0, saturate(length(Position_Center) / 500.0));
+Radius = ComputeMaxReprojectionWorldRadius(Position_Center, Normal_Center, 0.0075, Radius, 1);
+Radius *= Accumulation_Scale;
+Radius *= AO_Scale;
+float4 Accumulation_Result0 = 0.0;
+float4 Accumulation_Result1 = 0.0;
+float4 Accumulation_Result2 = 0.0;
+float Weight_Result = 0.0001;
+for (uint Sample_Index = 0; Sample_Index < (uint)Sample_Count; Sample_Index++)
+{
+float2 Sample = _PointDistribution[Sample_Index] * Radius;
+float3 Position = Position_Center + LocalOrthoBasis[0] * Sample.x + LocalOrthoBasis[1] * Sample.y; 
+float4 HClip_Position = TransformWorldToHClip(Position);
+HClip_Position.xyz /= HClip_Position.w;
+if (HClip_Position.x > 1.0 || HClip_Position.x < -1.0 || HClip_Position.y > 1.0 || HClip_Position.y < -1.0)
+continue;
+float2 NDC_Position = HClip_Position.xy * 0.5 + 0.5;
+#if UNITY_UV_STARTS_AT_TOP
+NDC_Position.y = 1.0 - NDC_Position.y;
+#endif
+float2 tapCoord = NDC_Position * _ScreenSize.xy;
+#ifdef ADAPTIVE_CHECKERBOARD
+if (_FrameCount % uint(2) == 0)
+{
+if ( (tapCoord.x + tapCoord.y) % 2 == 0)
+{
+tapCoord.x += 1 * _ScreenSize.z;
+}
+}
+else
+{
+if ( (tapCoord.x + tapCoord.y) % 2 != 0)
+{
+tapCoord.x += 1 * _ScreenSize.z;
+}
+}
+#endif
+float Distance = length(Sample);
+float Weight = 0;
+if (Distance > 0.001f )
+{   
+float Depth_Sample = H_LOAD(_CameraDepthTexture, (uint2)tapCoord).x;
+float Depth_Sample01 = Linear01Depth(Depth_Sample, _ZBufferParams);
+if (Depth_Sample01 <= 1e-7 || any(tapCoord) > 1 || any(tapCoord) < 0)
+continue;
+float Weight_Depth  = 0;
+float Weight_Normal = 0;
+float Weight_Plane  = 0;
+PositionInputs posInput = GetPositionInput(tapCoord, _ScreenSize.zw, Depth_Sample, UNITY_MATRIX_I_VP, UNITY_MATRIX_V);
+float3 Position_Sample = posInput.positionWS; 
+Weight_Depth = max(0.0, 1.0 - abs(Depth_Sample01 - Linear01Depth(Depth_Center, _ZBufferParams)));
+float3 Normal_Sample = HBUFFER_NORMAL_WS(tapCoord);
+float Normal_Difference = sqr(sqr(max(0.0, dot(Normal_Sample, Normal_Center))));
+Weight_Normal = max(0.0, Normal_Difference);
+float3 Delta = Position_Center - Position_Sample;
+float Delta_Sqr = dot(Delta, Delta);
+float Plane_Difference = max(abs(dot(Delta, Normal_Sample)), abs(dot(Delta,  Normal_Center)));
+Weight_Plane = (Delta_Sqr < 0.0001) ? 1.0 : pow(max(0.0, 1.0 - 2.0 * Plane_Difference / sqrt(Delta_Sqr)), 2.0);
+Weight = (Weight_Depth * Weight_Normal * Weight_Plane) * Gaussian(Distance, 0.9 * Radius);
+Weight_Result += Weight;
+}
+else
+{
+Weight = 1;
+Weight_Result += Weight;
+}
+#ifdef CACHE
+if (_SecondPass == 0 & Sample_Index < 8)
+{
+_Spatial_Cache_Weights_RW[uint3(pixCoord.xy / Downscale, H_INDEX_ARRAY(Sample_Index))] = (Weight);
+_Spatial_Cache_UVs_RW[uint3(pixCoord.xy / Downscale, H_INDEX_ARRAY(Sample_Index))] = tapCoord.xy;
+}
+#endif
+uint LOD_Level = 4 * (1 - Accumulation_Count);
+float4 Sample0 = H_SAMPLE_ARRAY_LOD(_Input_LOD, H_SAMPLER_POINT_CLAMP, (tapCoord.xy) * _ScreenSize.zw * _RTHandleScale.xy, 0, LOD_Level) * Weight;
+float4 Sample1 = H_SAMPLE_ARRAY_LOD(_Input_LOD, H_SAMPLER_POINT_CLAMP, (tapCoord.xy) * _ScreenSize.zw * _RTHandleScale.xy, 1, LOD_Level) * Weight;
+float4 Sample2 = 0;
+#ifdef DENOISE_OCCLUSION
+Sample2 = H_SAMPLE_ARRAY_LOD(_Input, H_SAMPLER_POINT_CLAMP, (tapCoord.xy) * _ScreenSize.zw * _RTHandleScale.xy, 2, 0) * Weight;
+#endif
+Accumulation_Result0 += Sample0;
+Accumulation_Result1 += Sample1;
+Accumulation_Result2 += Sample2;
+}
+if (Weight_Result == 0)
+{
+Accumulation_Result0 = Input0;
+Accumulation_Result1 = Input1;
+Accumulation_Result2 = Input2;
+Weight_Result +=1;
+}
+Accumulation_Result0 /= Weight_Result;
+Accumulation_Result1 /= Weight_Result;
+Accumulation_Result2 /= Weight_Result;
+#ifdef DENOISE_OCCLUSION
+if (Accumulation_Count == 1)
+{
+Accumulation_Result2   = Input2.xyzw;
+Accumulation_Result1.z = Input1.z;
+}
+#else
+Accumulation_Result2   = Input2.xyzw;
+Accumulation_Result1.z = Input1.z;
+#endif
+_Output[uint3(pixCoord.xy / Downscale, H_INDEX_ARRAY(0))] =  float4(Accumulation_Result0.xyzw);
+_Output[uint3(pixCoord.xy / Downscale, H_INDEX_ARRAY(1))] =  float4(Accumulation_Result1.xyz, Accumulation_Count * 8);
+_Output[uint3(pixCoord.xy / Downscale, H_INDEX_ARRAY(2))] =  float4(Accumulation_Result2.xyzw);
+}
+[numthreads(8,8,1)]
+void Spatial_Denoise_2(uint2 pixCoord : SV_DispatchThreadID)
+{
+float Accumulation_Count = H_LOAD_ARRAY(_Input, pixCoord.xy, 1).w / 8;
+float SpecularOcclusion = H_LOAD_ARRAY(_Input, pixCoord.xy, 1).z;
+float4 Accumulation_Result0 = 0.0;
+float4 Accumulation_Result1 = 0.0;
+float Weight_Result = 0.01;
+for (int i = 0; i < 8; i++)
+{
+float Weight = H_LOAD_ARRAY(_Spatial_Cache_Weights, pixCoord.xy, i).x;
+if (Weight > 0)
+{
+float2 tapCoord = H_LOAD_ARRAY(_Spatial_Cache_UVs, pixCoord.xy, i).xy;
+Accumulation_Result0 += H_LOAD_ARRAY(_Input, tapCoord.xy, 0) * Weight;
+Accumulation_Result1 += H_LOAD_ARRAY(_Input, tapCoord.xy, 1) * Weight;
+}
+Weight_Result += Weight;
+}
+Accumulation_Result0 /= Weight_Result;
+Accumulation_Result1 /= Weight_Result;
+_Output[uint3(pixCoord.xy, H_INDEX_ARRAY(0))] =  float4(Accumulation_Result0.xyzw);
+_Output[uint3(pixCoord.xy, H_INDEX_ARRAY(1))] =  float4(Accumulation_Result1.xy, SpecularOcclusion , Accumulation_Count * 8);
+_Output[uint3(pixCoord.xy, H_INDEX_ARRAY(2))] =  H_LOAD_ARRAY(_Input, pixCoord.xy, 2);
+}

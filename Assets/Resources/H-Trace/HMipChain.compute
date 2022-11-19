@@ -1,0 +1,423 @@
+#pragma kernel Filter_Depth
+#pragma kernel Mip_Color
+#pragma kernel Mip_Normal
+#pragma kernel Mip_Front_Depth
+#pragma kernel Mip_Back_Depth
+#pragma kernel Mip_GI
+#pragma multi_compile_local _ VIEWPORT_SCALE
+#include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/RenderPass/CustomPass/CustomPassCommon.hlsl"
+#include "../../H-Trace/Headers/HMain.hlsl"
+#include "../../H-Trace/Headers/HMath.hlsl"
+H_TEXTURE(_Depth_Back_Buffer);
+H_RW_TEXTURE(float, _Filtered_Depth_MIP0);
+H_RW_TEXTURE(float, _Filtered_Depth_MIP1);
+H_RW_TEXTURE(float, _Filtered_Depth_MIP2);
+H_TEXTURE(_Previous_Depth);
+H_TEXTURE(_Color_Buffer_History);
+H_RW_TEXTURE(float3, _Color_Buffer_Input_MIP0);
+H_RW_TEXTURE(float3, _Color_Buffer_Input_MIP1);
+H_RW_TEXTURE(float3, _Color_Buffer_Input_MIP2);
+H_RW_TEXTURE(float3, _Color_Buffer_Input_MIP3);
+H_RW_TEXTURE(float3, _Color_Buffer_Input_MIP4);
+H_RW_TEXTURE(float3, _Normal_Buffer_MIP0);
+H_RW_TEXTURE(float3, _Normal_Buffer_MIP1);
+H_RW_TEXTURE(float3, _Normal_Buffer_MIP2);
+H_RW_TEXTURE(float3, _Normal_Buffer_MIP3); 
+H_RW_TEXTURE(float3, _Normal_Buffer_MIP4);
+H_RW_TEXTURE(float, _Front_Depth_Buffer_MIP0);
+H_RW_TEXTURE(float, _Front_Depth_Buffer_MIP1);
+H_RW_TEXTURE(float, _Front_Depth_Buffer_MIP2);
+H_RW_TEXTURE(float, _Front_Depth_Buffer_MIP3); 
+H_RW_TEXTURE(float, _Front_Depth_Buffer_MIP4);
+H_TEXTURE(_Source_Depth);
+H_RW_TEXTURE(float, _Back_Depth_Buffer_MIP0);
+H_RW_TEXTURE(float, _Back_Depth_Buffer_MIP1);
+H_RW_TEXTURE(float, _Back_Depth_Buffer_MIP2);
+H_RW_TEXTURE(float, _Back_Depth_Buffer_MIP3); 
+H_RW_TEXTURE(float, _Back_Depth_Buffer_MIP4);
+H_TEXTURE_ARRAY(_GI_Buffer_Input);
+H_RW_TEXTURE_ARRAY(float4, _GI_Buffer_MIP0);
+H_RW_TEXTURE_ARRAY(float4, _GI_Buffer_MIP1);
+H_RW_TEXTURE_ARRAY(float4, _GI_Buffer_MIP2);
+H_RW_TEXTURE_ARRAY(float4, _GI_Buffer_MIP3);
+H_RW_TEXTURE_ARRAY(float4, _GI_Buffer_MIP4);
+float4 _PrevScale;
+int _RunningInViewport; 
+groupshared float BufferLDS_float[8][8]; 
+groupshared float3 BufferLDS_float3[8][8]; 
+groupshared float4 BufferLDS_float4[8][8];
+[numthreads(8,8,1)]
+void Filter_Depth (uint2 pixCoord : SV_DispatchThreadID, uint2 groupThreadID : SV_GroupThreadID)
+{
+int2 TapCoords[24];
+int Delta0 = 2;
+TapCoords[0] = int2( 0,       Delta0);
+TapCoords[1] = int2( Delta0,  0);
+TapCoords[2] = int2( Delta0,  Delta0);
+TapCoords[3] = int2( 0,      -Delta0);
+TapCoords[4] = int2( Delta0, -Delta0);
+TapCoords[5] = int2(-Delta0,  0);
+TapCoords[6] = int2(-Delta0,  Delta0);
+TapCoords[7] = int2(-Delta0, -Delta0);
+int Delta1 = 4;
+TapCoords[8] =  int2( 0,       Delta1);
+TapCoords[9] =  int2( Delta1,  0);
+TapCoords[10] = int2( Delta1,  Delta1);
+TapCoords[11] = int2( 0,      -Delta1);
+TapCoords[12] = int2( Delta1, -Delta1);
+TapCoords[13] = int2(-Delta1,  0);
+TapCoords[14] = int2(-Delta1,  Delta1);
+TapCoords[15] = int2(-Delta1, -Delta1);
+int Delta2 = 3;
+TapCoords[16] = int2( 0,       Delta2);
+TapCoords[17] = int2( Delta2,  0);
+TapCoords[18] = int2( Delta2,  Delta2);
+TapCoords[19] = int2( 0,      -Delta2);
+TapCoords[20] = int2( Delta2, -Delta2);
+TapCoords[21] = int2(-Delta2,  0);
+TapCoords[22] = int2(-Delta2,  Delta2);
+TapCoords[23] = int2(-Delta2, -Delta2);
+const uint2 baseCoord = pixCoord;
+float2 pixCoordNDC = (pixCoord * _ScreenSize.zw * _RTHandleScale.xy);
+float Depth_Back_Central = H_LOAD(_Depth_Back_Buffer, pixCoord).x;
+float Depth_Front_Central = HBUFFER_DEPTH(pixCoord).x;
+float4 BackDepthGather = H_GATHER_RED(_Depth_Back_Buffer, H_SAMPLER_POINT_CLAMP, float3(pixCoordNDC, 0), int2(1,1));
+float4 FrontDepthGather = H_GATHER_RED(_CameraDepthTexture, H_SAMPLER_POINT_CLAMP, float3(pixCoordNDC, 0), int2(1,1));
+BackDepthGather.w = BackDepthGather.w <= 1e-7 ? FrontDepthGather.w * 0.25 : BackDepthGather.w;
+BackDepthGather.z = BackDepthGather.z <= 1e-7 ? FrontDepthGather.z * 0.25 : BackDepthGather.z;
+BackDepthGather.x = BackDepthGather.x <= 1e-7 ? FrontDepthGather.x * 0.25 : BackDepthGather.x;
+BackDepthGather.y = BackDepthGather.y <= 1e-7 ? FrontDepthGather.y * 0.25 : BackDepthGather.y;
+Depth_Back_Central = Depth_Back_Central <= 1e-7 ? Depth_Front_Central * 0.25 : Depth_Back_Central;
+float BackDepth_MIP1 = min(min(BackDepthGather.w, BackDepthGather.z), min(BackDepthGather.x, BackDepthGather.y));
+_Filtered_Depth_MIP1[H_COORD(baseCoord / 2)] = BackDepth_MIP1;
+BufferLDS_float[groupThreadID.x][groupThreadID.y] = BackDepth_MIP1;
+GroupMemoryBarrierWithGroupSync( );
+[branch]
+if( all( ( groupThreadID.xy % int2(2,2) ) == 0 ) )
+{
+float inTL = BufferLDS_float[groupThreadID.x+0][groupThreadID.y+0];
+float inTR = BufferLDS_float[groupThreadID.x+1][groupThreadID.y+0];
+float inBL = BufferLDS_float[groupThreadID.x+0][groupThreadID.y+1];
+float inBR = BufferLDS_float[groupThreadID.x+1][groupThreadID.y+1];
+float BackDepth_MIP2 = min(min(inTL, inTR), min(inBL, inBR));
+_Filtered_Depth_MIP2[H_COORD(baseCoord / 4 )] = BackDepth_MIP2;
+BufferLDS_float[groupThreadID.x][groupThreadID.y] = BackDepth_MIP2;
+}
+GroupMemoryBarrierWithGroupSync( );
+float Depth_Delta = _RunningInViewport == 1 ? 0.003 : 0.015;
+Depth_Delta = Depth_Delta / LinearEyeDepth(Depth_Back_Central, _ZBufferParams);
+float Depth_Min = Depth_Back_Central;
+for (int i = 0; i < 24; i++)
+{
+float Depth_Sample = H_LOAD_LOD(_Filtered_Depth_MIP2, pixCoord / 4 + TapCoords[i], 2).x;
+if (abs(Depth_Back_Central - Depth_Sample) < Depth_Delta)
+Depth_Min = min(Depth_Min, Depth_Sample);
+}
+_Filtered_Depth_MIP0[H_COORD(pixCoord + uint2(0,0))] = Depth_Min;
+}
+[numthreads(8,8,1)]
+void Mip_Color(uint2 dispatchThreadID : SV_DispatchThreadID, uint2 groupThreadID : SV_GroupThreadID)
+{
+const uint2 baseCoord = dispatchThreadID;
+const uint2 pixCoord = baseCoord * 2;
+float2 MotionVectors;
+DecodeMotionVector(H_LOAD(_CameraMotionVectorsTexture, pixCoord), MotionVectors);
+float2 PrevScale = _PrevScale.xy;
+float2 RTHandleScale = 1;
+#ifdef VIEWPORT_SCALE
+PrevScale = 1;
+RTHandleScale = _RTHandleScale.xy;
+#endif
+float2 prevCoord =  (pixCoord.xy * PrevScale.xy - MotionVectors.xy * _ScreenSize.xy);
+float3 ColorHistory1 = H_SAMPLE_LOD(_Color_Buffer_History, H_SAMPLER_POINT_CLAMP, (prevCoord + 0.5 + uint2(0, 0)) * _ScreenSize.zw * RTHandleScale.xy, 0).xyz;
+float3 ColorHistory2 = H_SAMPLE_LOD(_Color_Buffer_History, H_SAMPLER_POINT_CLAMP, (prevCoord + 0.5 + uint2(1, 0)) * _ScreenSize.zw * RTHandleScale.xy, 0).xyz;
+float3 ColorHistory3 = H_SAMPLE_LOD(_Color_Buffer_History, H_SAMPLER_POINT_CLAMP, (prevCoord + 0.5 + uint2(0, 1)) * _ScreenSize.zw * RTHandleScale.xy, 0).xyz;
+float3 ColorHistory4 = H_SAMPLE_LOD(_Color_Buffer_History, H_SAMPLER_POINT_CLAMP, (prevCoord + 0.5 + uint2(1, 1)) * _ScreenSize.zw * RTHandleScale.xy, 0).xyz;
+float4 Depth_Previous = H_GATHER_RED(_Previous_Depth, H_SAMPLER_POINT_CLAMP, float3(prevCoord * _ScreenSize.zw * RTHandleScale.xy, 0), int2(1,1));
+float4 Depth_Current = 0;
+Depth_Current.w = HBUFFER_DEPTH(pixCoord + float2(0,0));
+Depth_Current.z = HBUFFER_DEPTH(pixCoord + float2(1,0));
+Depth_Current.x = HBUFFER_DEPTH(pixCoord + float2(0,1));
+Depth_Current.y = HBUFFER_DEPTH(pixCoord + float2(1,1));
+float DEPTH_DIFFERENCE_THRESHOLD = 0.01;
+if (abs(Depth_Previous.w - Depth_Current.w) > DEPTH_DIFFERENCE_THRESHOLD)
+ColorHistory1 = 0;
+if (abs(Depth_Previous.z - Depth_Current.z) > DEPTH_DIFFERENCE_THRESHOLD)
+ColorHistory2 = 0;
+if (abs(Depth_Previous.x - Depth_Current.x) > DEPTH_DIFFERENCE_THRESHOLD)
+ColorHistory3 = 0;
+if (abs(Depth_Previous.y - Depth_Current.y) > DEPTH_DIFFERENCE_THRESHOLD)
+ColorHistory4 = 0;
+_Color_Buffer_Input_MIP0[H_COORD(pixCoord + uint2(0, 0))] = ColorHistory1;
+_Color_Buffer_Input_MIP0[H_COORD(pixCoord + uint2(1, 0))] = ColorHistory2;
+_Color_Buffer_Input_MIP0[H_COORD(pixCoord + uint2(0, 1))] = ColorHistory3;
+_Color_Buffer_Input_MIP0[H_COORD(pixCoord + uint2(1, 1))] = ColorHistory4;
+float3 Color_MIP1 = (ColorHistory1 + ColorHistory2 + ColorHistory3 + ColorHistory4) / 4;
+_Color_Buffer_Input_MIP1[H_COORD(baseCoord)] = Color_MIP1;
+BufferLDS_float3[groupThreadID.x][groupThreadID.y] = Color_MIP1;
+GroupMemoryBarrierWithGroupSync ();
+[branch]
+if( all(( groupThreadID.xy % int2(2,2)) == 0))
+{
+float3 TL = BufferLDS_float3[groupThreadID.x+0][groupThreadID.y+0];
+float3 TR = BufferLDS_float3[groupThreadID.x+1][groupThreadID.y+0];
+float3 BL = BufferLDS_float3[groupThreadID.x+0][groupThreadID.y+1];
+float3 BR = BufferLDS_float3[groupThreadID.x+1][groupThreadID.y+1];
+float3 Color_MIP2 = (TL + TR + BL + BR) / 4;
+_Color_Buffer_Input_MIP2[H_COORD(baseCoord / 2)] = Color_MIP2;
+BufferLDS_float3[groupThreadID.x][groupThreadID.y] = Color_MIP2;
+}
+GroupMemoryBarrierWithGroupSync();
+[branch]
+if( all(( groupThreadID.xy % int2(4,4)) == 0))
+{
+float3 TL = BufferLDS_float3[groupThreadID.x+0][groupThreadID.y+0];
+float3 TR = BufferLDS_float3[groupThreadID.x+2][groupThreadID.y+0];
+float3 BL = BufferLDS_float3[groupThreadID.x+0][groupThreadID.y+2];
+float3 BR = BufferLDS_float3[groupThreadID.x+2][groupThreadID.y+2];
+float3 Color_MIP3 = (TL + TR + BL + BR) / 4;
+_Color_Buffer_Input_MIP3[H_COORD(baseCoord / 4)] = Color_MIP3;
+BufferLDS_float3[groupThreadID.x][groupThreadID.y] = Color_MIP3;
+}
+GroupMemoryBarrierWithGroupSync();
+[branch]
+if( all(( groupThreadID.xy % int2(8,8)) == 0))
+{   
+float3 TL = BufferLDS_float3[groupThreadID.x+0][groupThreadID.y+0];
+float3 TR = BufferLDS_float3[groupThreadID.x+4][groupThreadID.y+0];
+float3 BL = BufferLDS_float3[groupThreadID.x+0][groupThreadID.y+4];
+float3 BR = BufferLDS_float3[groupThreadID.x+4][groupThreadID.y+4];
+float3 Color_MIP4 = (TL + TR + BL + BR) / 4;
+_Color_Buffer_Input_MIP4[H_COORD(baseCoord / 8)] = Color_MIP4; 
+}
+}
+[numthreads(8, 8, 1)]
+void Mip_Normal (uint2 dispatchThreadID : SV_DispatchThreadID, uint2 groupThreadID : SV_GroupThreadID)
+{
+const uint2 baseCoord = dispatchThreadID;
+const uint2 pixCoord = baseCoord * 2;
+float3 Normal1 = TransformWorldToViewDir(HBUFFER_NORMAL_WS(pixCoord + uint2(0, 0)));
+float3 Normal2 = TransformWorldToViewDir(HBUFFER_NORMAL_WS(pixCoord + uint2(1, 0)));
+float3 Normal3 = TransformWorldToViewDir(HBUFFER_NORMAL_WS(pixCoord + uint2(0, 1)));
+float3 Normal4 = TransformWorldToViewDir(HBUFFER_NORMAL_WS(pixCoord + uint2(1, 1)));
+_Normal_Buffer_MIP0[H_COORD(pixCoord + uint2(0, 0))] = Normal1;
+_Normal_Buffer_MIP0[H_COORD(pixCoord + uint2(1, 0))] = Normal2;
+_Normal_Buffer_MIP0[H_COORD(pixCoord + uint2(0, 1))] = Normal3;
+_Normal_Buffer_MIP0[H_COORD(pixCoord + uint2(1, 1))] = Normal4;
+float3 Normal_MIP1 = (Normal1 + Normal2 + Normal3 + Normal4) / 4;
+_Normal_Buffer_MIP1[H_COORD(baseCoord)] = Normal_MIP1;
+BufferLDS_float3[groupThreadID.x][groupThreadID.y] = Normal_MIP1;
+GroupMemoryBarrierWithGroupSync();
+[branch]
+if( all( ( groupThreadID.xy % int2(2,2) ) == 0 ) )
+{
+float3 TL = BufferLDS_float3[groupThreadID.x+0][groupThreadID.y+0];
+float3 TR = BufferLDS_float3[groupThreadID.x+1][groupThreadID.y+0];
+float3 BL = BufferLDS_float3[groupThreadID.x+0][groupThreadID.y+1];
+float3 BR = BufferLDS_float3[groupThreadID.x+1][groupThreadID.y+1];
+float3 Normal_MIP2 = (TL + TR + BL + BR) / 4;
+_Normal_Buffer_MIP2[H_COORD(baseCoord / 2)] = Normal_MIP2;
+BufferLDS_float3[groupThreadID.x][groupThreadID.y] = Normal_MIP2;
+}
+GroupMemoryBarrierWithGroupSync();
+[branch]
+if( all( ( groupThreadID.xy % int2(4,4) ) == 0 ) )
+{
+float3 TL = BufferLDS_float3[groupThreadID.x+0][groupThreadID.y+0];
+float3 TR = BufferLDS_float3[groupThreadID.x+2][groupThreadID.y+0];
+float3 BL = BufferLDS_float3[groupThreadID.x+0][groupThreadID.y+2];
+float3 BR = BufferLDS_float3[groupThreadID.x+2][groupThreadID.y+2];
+float3 Normal_MIP3 = (TL + TR + BL + BR) / 4;
+_Normal_Buffer_MIP3[H_COORD(baseCoord / 4)] = Normal_MIP3;
+BufferLDS_float3[groupThreadID.x][groupThreadID.y] = Normal_MIP3;
+}
+GroupMemoryBarrierWithGroupSync();
+[branch]
+if( all( ( groupThreadID.xy % int2(8,8) ) == 0 ) )
+{   
+float3 TL = BufferLDS_float3[groupThreadID.x+0][groupThreadID.y+0];
+float3 TR = BufferLDS_float3[groupThreadID.x+4][groupThreadID.y+0];
+float3 BL = BufferLDS_float3[groupThreadID.x+0][groupThreadID.y+4];
+float3 BR = BufferLDS_float3[groupThreadID.x+4][groupThreadID.y+4];
+float3 Normal_MIP4 = (TL + TR + BL + BR) / 4;
+_Normal_Buffer_MIP4[H_COORD(baseCoord / 8)] = Normal_MIP4;
+}
+}
+[numthreads(8, 8, 1)]
+void Mip_Front_Depth (uint2 dispatchThreadID : SV_DispatchThreadID, uint2 groupThreadID : SV_GroupThreadID)
+{   
+const uint2 baseCoord = dispatchThreadID;
+const uint2 pixCoord = baseCoord * 2;
+float2 pixCoordNDC = (pixCoord * _ScreenSize.zw * _RTHandleScale.xy);
+float4 FrontDepth = 0;
+FrontDepth.w = HBUFFER_DEPTH(pixCoord + float2(0,0));
+FrontDepth.z = HBUFFER_DEPTH(pixCoord + float2(1,0));
+FrontDepth.x = HBUFFER_DEPTH(pixCoord + float2(0,1));
+FrontDepth.y = HBUFFER_DEPTH(pixCoord + float2(1,1));
+_Front_Depth_Buffer_MIP0[H_COORD(pixCoord + uint2(0, 0))] = FrontDepth.w;
+_Front_Depth_Buffer_MIP0[H_COORD(pixCoord + uint2(1, 0))] = FrontDepth.z;
+_Front_Depth_Buffer_MIP0[H_COORD(pixCoord + uint2(0, 1))] = FrontDepth.x;
+_Front_Depth_Buffer_MIP0[H_COORD(pixCoord + uint2(1, 1))] = FrontDepth.y;
+float FrontDepth_MIP1 = max(max(FrontDepth.w, FrontDepth.z), max(FrontDepth.x, FrontDepth.y));
+_Front_Depth_Buffer_MIP1[H_COORD(baseCoord)] = FrontDepth_MIP1;
+BufferLDS_float[groupThreadID.x][groupThreadID.y] = FrontDepth_MIP1;
+GroupMemoryBarrierWithGroupSync( );
+[branch]
+if( all( ( groupThreadID.xy % int2(2,2) ) == 0 ) )
+{
+float inTL = BufferLDS_float[groupThreadID.x+0][groupThreadID.y+0];
+float inTR = BufferLDS_float[groupThreadID.x+1][groupThreadID.y+0];
+float inBL = BufferLDS_float[groupThreadID.x+0][groupThreadID.y+1];
+float inBR = BufferLDS_float[groupThreadID.x+1][groupThreadID.y+1];
+float FrontDepth_MIP2 = max(max(inTL, inTR), max(inBL, inBR));
+_Front_Depth_Buffer_MIP2[H_COORD(baseCoord / 2)] = FrontDepth_MIP2;
+BufferLDS_float[groupThreadID.x][groupThreadID.y] = FrontDepth_MIP2;
+}
+GroupMemoryBarrierWithGroupSync( );
+[branch]
+if( all( ( groupThreadID.xy % int2(4,4) ) == 0 ) )
+{
+float inTL = BufferLDS_float[groupThreadID.x+0][groupThreadID.y+0];
+float inTR = BufferLDS_float[groupThreadID.x+2][groupThreadID.y+0];
+float inBL = BufferLDS_float[groupThreadID.x+0][groupThreadID.y+2];
+float inBR = BufferLDS_float[groupThreadID.x+2][groupThreadID.y+2];
+float FrontDepth_MIP3 = max(max(inTL, inTR), max(inBL, inBR));
+_Front_Depth_Buffer_MIP3[H_COORD(baseCoord / 4)] = FrontDepth_MIP3;
+BufferLDS_float[ groupThreadID.x ][ groupThreadID.y ] = FrontDepth_MIP3;
+}
+GroupMemoryBarrierWithGroupSync( );
+[branch]
+if( all( ( groupThreadID.xy % int2(8,8) ) == 0 ) )
+{
+float inTL = BufferLDS_float[groupThreadID.x+0][groupThreadID.y+0];
+float inTR = BufferLDS_float[groupThreadID.x+4][groupThreadID.y+0];
+float inBL = BufferLDS_float[groupThreadID.x+0][groupThreadID.y+4];
+float inBR = BufferLDS_float[groupThreadID.x+4][groupThreadID.y+4];
+float FrontDepth_MIP1 = max(max(inTL, inTR), max(inBL, inBR));
+_Front_Depth_Buffer_MIP4[H_COORD(baseCoord / 8)] = FrontDepth_MIP1;
+}
+}
+[numthreads(8, 8, 1)]
+void Mip_Back_Depth (uint2 dispatchThreadID : SV_DispatchThreadID, uint2 groupThreadID : SV_GroupThreadID)
+{   
+const uint2 baseCoord = dispatchThreadID;
+const uint2 pixCoord = baseCoord * 2;
+float2 pixCoordNDC = (pixCoord * _ScreenSize.zw * _RTHandleScale.xy);
+float4 BackDepthGather = H_GATHER_RED(_Source_Depth, H_SAMPLER_POINT_CLAMP, float3(pixCoordNDC, 0), int2(1,1));
+_Back_Depth_Buffer_MIP0[H_COORD(pixCoord + uint2(0,0))] = BackDepthGather.w;
+_Back_Depth_Buffer_MIP0[H_COORD(pixCoord + uint2(1,0))] = BackDepthGather.z;
+_Back_Depth_Buffer_MIP0[H_COORD(pixCoord + uint2(0,1))] = BackDepthGather.x;
+_Back_Depth_Buffer_MIP0[H_COORD(pixCoord + uint2(1,1))] = BackDepthGather.y;
+float BackDepth_MIP1 = max(max(BackDepthGather.w, BackDepthGather.z), max(BackDepthGather.x, BackDepthGather.y));
+_Back_Depth_Buffer_MIP1[H_COORD(baseCoord)] = BackDepth_MIP1;
+BufferLDS_float[groupThreadID.x][groupThreadID.y] = BackDepth_MIP1;
+GroupMemoryBarrierWithGroupSync( );
+[branch]
+if( all( ( groupThreadID.xy % int2(2,2) ) == 0 ) )
+{
+float inTL = BufferLDS_float[groupThreadID.x+0][groupThreadID.y+0];
+float inTR = BufferLDS_float[groupThreadID.x+1][groupThreadID.y+0];
+float inBL = BufferLDS_float[groupThreadID.x+0][groupThreadID.y+1];
+float inBR = BufferLDS_float[groupThreadID.x+1][groupThreadID.y+1];
+float BackDepth_MIP2 = max(max(inTL, inTR), max(inBL, inBR));
+_Back_Depth_Buffer_MIP2[H_COORD(baseCoord / 2)] = BackDepth_MIP2;
+BufferLDS_float[groupThreadID.x][groupThreadID.y] = BackDepth_MIP2;
+}
+GroupMemoryBarrierWithGroupSync( );
+[branch]
+if( all( ( groupThreadID.xy % int2(4,4) ) == 0 ) )
+{
+float inTL = BufferLDS_float[groupThreadID.x+0][groupThreadID.y+0];
+float inTR = BufferLDS_float[groupThreadID.x+2][groupThreadID.y+0];
+float inBL = BufferLDS_float[groupThreadID.x+0][groupThreadID.y+2];
+float inBR = BufferLDS_float[groupThreadID.x+2][groupThreadID.y+2];
+float BackDepth_MIP3 = max(max(inTL, inTR), max(inBL, inBR));
+_Back_Depth_Buffer_MIP3[H_COORD(baseCoord / 4)] = BackDepth_MIP3;
+BufferLDS_float[ groupThreadID.x ][ groupThreadID.y ] = BackDepth_MIP3;
+}
+GroupMemoryBarrierWithGroupSync( );
+[branch]
+if( all( ( groupThreadID.xy % int2(8,8) ) == 0 ) )
+{
+float inTL = BufferLDS_float[groupThreadID.x+0][groupThreadID.y+0];
+float inTR = BufferLDS_float[groupThreadID.x+4][groupThreadID.y+0];
+float inBL = BufferLDS_float[groupThreadID.x+0][groupThreadID.y+4];
+float inBR = BufferLDS_float[groupThreadID.x+4][groupThreadID.y+4];
+float BackDepth_MIP4 = max(max(inTL, inTR), max(inBL, inBR));
+_Back_Depth_Buffer_MIP4[H_COORD(baseCoord / 8)] = BackDepth_MIP4;
+}
+}
+[numthreads(8, 8,1)]
+void Mip_GI (uint2 dispatchThreadID : SV_DispatchThreadID, uint2 groupThreadID : SV_GroupThreadID)
+{   
+const uint2 baseCoord = dispatchThreadID;
+const uint2 pixCoord = baseCoord * 2.0;
+float4 GI_Slice0_1 = LOAD_TEXTURE2D_ARRAY(_GI_Buffer_Input, pixCoord + float2(0,0), 0);
+float4 GI_Slice0_2 = LOAD_TEXTURE2D_ARRAY(_GI_Buffer_Input, pixCoord + float2(1,0), 0);
+float4 GI_Slice0_3 = LOAD_TEXTURE2D_ARRAY(_GI_Buffer_Input, pixCoord + float2(0,1), 0);
+float4 GI_Slice0_4 = LOAD_TEXTURE2D_ARRAY(_GI_Buffer_Input, pixCoord + float2(1,1), 0);
+float4 GI_Slice1_1 = LOAD_TEXTURE2D_ARRAY(_GI_Buffer_Input, pixCoord + float2(0,0), 1);
+float4 GI_Slice1_2 = LOAD_TEXTURE2D_ARRAY(_GI_Buffer_Input, pixCoord + float2(1,0), 1);
+float4 GI_Slice1_3 = LOAD_TEXTURE2D_ARRAY(_GI_Buffer_Input, pixCoord + float2(0,1), 1);
+float4 GI_Slice1_4 = LOAD_TEXTURE2D_ARRAY(_GI_Buffer_Input, pixCoord + float2(1,1), 1);
+_GI_Buffer_MIP0[uint3(pixCoord.xy + uint2(0,0), H_INDEX_ARRAY(0))] = GI_Slice0_1;
+_GI_Buffer_MIP0[uint3(pixCoord.xy + uint2(1,0), H_INDEX_ARRAY(0))] = GI_Slice0_2;
+_GI_Buffer_MIP0[uint3(pixCoord.xy + uint2(0,1), H_INDEX_ARRAY(0))] = GI_Slice0_3;
+_GI_Buffer_MIP0[uint3(pixCoord.xy + uint2(1,1), H_INDEX_ARRAY(0))] = GI_Slice0_4;
+_GI_Buffer_MIP0[uint3(pixCoord.xy + uint2(0,0), H_INDEX_ARRAY(1))] = GI_Slice1_1;
+_GI_Buffer_MIP0[uint3(pixCoord.xy + uint2(1,0), H_INDEX_ARRAY(1))] = GI_Slice1_2;
+_GI_Buffer_MIP0[uint3(pixCoord.xy + uint2(0,1), H_INDEX_ARRAY(1))] = GI_Slice1_3;
+_GI_Buffer_MIP0[uint3(pixCoord.xy + uint2(1,1), H_INDEX_ARRAY(1))] = GI_Slice1_4;
+float4 Mip1_Slice0 = (GI_Slice0_1 + GI_Slice0_2 + GI_Slice0_3 + GI_Slice0_4) / 4;
+float4 Mip1_Slice1 = (GI_Slice1_1 + GI_Slice1_2 + GI_Slice1_3 + GI_Slice1_4) / 4;
+_GI_Buffer_MIP1[uint3(baseCoord, H_INDEX_ARRAY(0))] = Mip1_Slice0;
+_GI_Buffer_MIP1[uint3(baseCoord, H_INDEX_ARRAY(1))] = Mip1_Slice1;
+BufferLDS_float4[groupThreadID.x][groupThreadID.y] = PackFloats4(Mip1_Slice0, Mip1_Slice1);
+GroupMemoryBarrierWithGroupSync( );
+[branch]
+if( all( ( groupThreadID.xy % int2(2,2) ) == 0 ) )
+{
+float4 TL_Slice0, TR_Slice0, BL_Slice0, BR_Slice0;
+float4 TL_Slice1, TR_Slice1, BL_Slice1, BR_Slice1;
+UnpackFloats4(BufferLDS_float4[groupThreadID.x+0][groupThreadID.y+0], TL_Slice0,  TL_Slice1);
+UnpackFloats4(BufferLDS_float4[groupThreadID.x+1][groupThreadID.y+0], TR_Slice0,  TR_Slice1);
+UnpackFloats4(BufferLDS_float4[groupThreadID.x+0][groupThreadID.y+1], BL_Slice0,  BL_Slice1);
+UnpackFloats4(BufferLDS_float4[groupThreadID.x+1][groupThreadID.y+1], BR_Slice0,  BR_Slice1);
+float4 Mip2_Slice0 = (TL_Slice0 + TR_Slice0 + BL_Slice0 + BR_Slice0) / 4;
+float4 Mip2_Slice1 = (TL_Slice1 + TR_Slice1 + BL_Slice1 + BR_Slice1) / 4;
+_GI_Buffer_MIP2[uint3(baseCoord / 2, H_INDEX_ARRAY(0))] = Mip2_Slice0;
+_GI_Buffer_MIP2[uint3(baseCoord / 2, H_INDEX_ARRAY(1))] = Mip2_Slice1;
+BufferLDS_float4[groupThreadID.x][groupThreadID.y] = PackFloats4(Mip2_Slice0, Mip2_Slice1);
+}
+GroupMemoryBarrierWithGroupSync( );
+[branch]
+if( all( ( groupThreadID.xy % int2(4,4) ) == 0 ) )
+{
+float4 TL_Slice0, TR_Slice0, BL_Slice0, BR_Slice0;
+float4 TL_Slice1, TR_Slice1, BL_Slice1, BR_Slice1;
+UnpackFloats4(BufferLDS_float4[groupThreadID.x+0][groupThreadID.y+0], TL_Slice0,  TL_Slice1);
+UnpackFloats4(BufferLDS_float4[groupThreadID.x+2][groupThreadID.y+0], TR_Slice0,  TR_Slice1);
+UnpackFloats4(BufferLDS_float4[groupThreadID.x+0][groupThreadID.y+2], BL_Slice0,  BL_Slice1);
+UnpackFloats4(BufferLDS_float4[groupThreadID.x+2][groupThreadID.y+2], BR_Slice0,  BR_Slice1);
+float4 Mip3_Slice0 = (TL_Slice0 + TR_Slice0 + BL_Slice0 + BR_Slice0) / 4;
+float4 Mip3_Slice1 = (TL_Slice1 + TR_Slice1 + BL_Slice1 + BR_Slice1) / 4;
+_GI_Buffer_MIP3[uint3(baseCoord / 4, H_INDEX_ARRAY(0))] = Mip3_Slice0;
+_GI_Buffer_MIP3[uint3(baseCoord / 4, H_INDEX_ARRAY(1))] = Mip3_Slice1;
+BufferLDS_float4[groupThreadID.x][groupThreadID.y] = PackFloats4(Mip3_Slice0, Mip3_Slice1);
+}
+GroupMemoryBarrierWithGroupSync( );
+[branch]
+if( all( ( groupThreadID.xy % int2(8,8) ) == 0 ) )
+{
+float4 TL_Slice0, TR_Slice0, BL_Slice0, BR_Slice0;
+float4 TL_Slice1, TR_Slice1, BL_Slice1, BR_Slice1;
+UnpackFloats4(BufferLDS_float4[groupThreadID.x+0][groupThreadID.y+0], TL_Slice0,  TL_Slice1);
+UnpackFloats4(BufferLDS_float4[groupThreadID.x+4][groupThreadID.y+0], TR_Slice0,  TR_Slice1);
+UnpackFloats4(BufferLDS_float4[groupThreadID.x+0][groupThreadID.y+4], BL_Slice0,  BL_Slice1);
+UnpackFloats4(BufferLDS_float4[groupThreadID.x+4][groupThreadID.y+4], BR_Slice0,  BR_Slice1);
+float4 Mip4_Slice0 = (TL_Slice0 + TR_Slice0 + BL_Slice0 + BR_Slice0) / 4;
+float4 Mip4_Slice1 = (TL_Slice1 + TR_Slice1 + BL_Slice1 + BR_Slice1) / 4;
+_GI_Buffer_MIP4[uint3(baseCoord / 8, H_INDEX_ARRAY(0))] = Mip4_Slice0;
+_GI_Buffer_MIP4[uint3(baseCoord / 8, H_INDEX_ARRAY(1))] = Mip4_Slice1;
+}
+}

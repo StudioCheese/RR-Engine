@@ -420,48 +420,29 @@ public class GlobalController : MonoBehaviour
         {
             case 0:
                 ssgi.enable.value = false;
+                player.GetComponentInChildren<CustomPassVolume>().enabled = false;
                 break;
             case 1:
                 ssgi.enable.value = true;
                 ssgi.tracing.value = RayCastingMode.RayMarching;
-                ssgi.quality.value = 0;
+                ssgi.denoise = false;
+                player.GetComponentInChildren<CustomPassVolume>().enabled = true;
                 break;
             case 2:
-                ssgi.enable.value = true;
-                ssgi.tracing.value = RayCastingMode.RayMarching;
-                ssgi.quality.value = 1;
-                break;
-            case 3:
-                ssgi.enable.value = true;
-                ssgi.tracing.value = RayCastingMode.RayMarching;
-                ssgi.quality.value = 2;
-                break;
-            case 4:
-                ssgi.enable.value = true;
-                ssgi.tracing.value = RayCastingMode.Mixed;
-                ssgi.quality.value = 0;
-                break;
-            case 5:
-                ssgi.enable.value = true;
-                ssgi.tracing.value = RayCastingMode.Mixed;
-                ssgi.quality.value = 1;
-                break;
-            case 6:
-                ssgi.enable.value = true;
-                ssgi.tracing.value = RayCastingMode.Mixed;
-                ssgi.quality.value = 2;
-                break;
-            case 7:
                 ssgi.enable.value = true;
                 ssgi.tracing.value = RayCastingMode.RayTracing;
                 ssgi.mode.value = RayTracingMode.Performance;
                 ssgi.bounceCount.value = PlayerPrefs.GetInt("Settings: GI Bounces") + 1;
+                ssgi.denoise = true;
+                player.GetComponentInChildren<CustomPassVolume>().enabled = false;
                 break;
-            case 8:
+            case 3:
                 ssgi.enable.value = true;
                 ssgi.tracing.value = RayCastingMode.RayTracing;
                 ssgi.mode.value = RayTracingMode.Quality;
                 ssgi.bounceCount.value = PlayerPrefs.GetInt("Settings: GI Bounces") + 1;
+                ssgi.denoise = true;
+                player.GetComponentInChildren<CustomPassVolume>().enabled = false;
                 break;
             default:
                 break;

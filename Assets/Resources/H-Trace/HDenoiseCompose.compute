@@ -1,0 +1,97 @@
+#pragma kernel Denoising_Compose
+#pragma multi_compile_local _ HALF_RESOLUTION
+#pragma multi_compile_local _ ENABLE_OCCLUSION
+#pragma multi_compile_local _ HISTORY_FILTER
+#pragma multi_compile_local _ TEMPORAL_2X
+#pragma multi_compile_local _ SPATIAL_2X
+#pragma multi_compile_local _ BENT_DATA
+#include "Packages/com.unity.render-pipelines.high-definition/Runtime/RenderPipeline/RenderPass/CustomPass/CustomPassCommon.hlsl"
+#include "../../H-Trace/Headers/HMain.hlsl"
+#include "../../H-Trace/Headers/HMath.hlsl"
+H_TEXTURE_ARRAY(_Input_History_First);
+H_TEXTURE_ARRAY(_Input_History_Second);
+H_RW_TEXTURE_ARRAY(float4, _Output_History_First);
+H_RW_TEXTURE_ARRAY(float4, _Output_History_Second);
+H_TEXTURE_ARRAY(_Output_Final);
+H_TEXTURE(_Output_Final_LOD);
+H_RW_TEXTURE_ARRAY(float4, _Denoise_Output);
+H_RW_TEXTURE_ARRAY(float, _Specular_Occlusion);
+H_TEXTURE(_Spatial_Output_First);
+H_RW_TEXTURE(float3, _Output_Normal);
+H_RW_TEXTURE(float, _Output_Depth);
+H_TEXTURE(_MaskedDepth);
+float _AO_Power;
+float _SO_Intensity;
+[numthreads(8,8,1)]
+void Denoising_Compose(uint2 pixCoord : SV_DispatchThreadID)
+{
+float3 Normal = HBUFFER_NORMAL_WS(pixCoord.xy);
+float Depth = HBUFFER_DEPTH(pixCoord.xy);
+float MaskFromDepth = H_LOAD(_MaskedDepth, pixCoord).x;
+if (MaskFromDepth <= Depth * DEPTH_MULTIPLIER)
+MaskFromDepth = 0;
+if (Depth <= 1e-7 || MaskFromDepth > 0) 
+{
+_Denoise_Output[uint3(pixCoord.xy, H_INDEX_ARRAY(0))] = 0;
+_Specular_Occlusion[uint3(pixCoord.xy, H_INDEX_ARRAY(0))] = 1;
+return;
+}
+_Output_Normal[H_COORD(pixCoord.xy)] = Normal;
+_Output_Depth[H_COORD(pixCoord.xy)] = Depth;
+float4 Input_History_First_0 = LOAD_TEXTURE2D_ARRAY(_Input_History_First, pixCoord.xy, 0);
+float4 Input_History_First_1 = LOAD_TEXTURE2D_ARRAY(_Input_History_First, pixCoord.xy, 1);
+float4 Input_History_First_2 = LOAD_TEXTURE2D_ARRAY(_Input_History_First, pixCoord.xy, 2);
+_Output_History_First[uint3(pixCoord.xy, H_INDEX_ARRAY(0))] = Input_History_First_0;
+_Output_History_First[uint3(pixCoord.xy, H_INDEX_ARRAY(1))] = Input_History_First_1;
+_Output_History_First[uint3(pixCoord.xy, H_INDEX_ARRAY(2))] = Input_History_First_2;
+#ifdef TEMPORAL_2X
+float4 Input_History_Second_0 = LOAD_TEXTURE2D_ARRAY(_Input_History_Second, pixCoord.xy, 0);
+float4 Input_History_Second_1 = LOAD_TEXTURE2D_ARRAY(_Input_History_Second, pixCoord.xy, 1);
+float4 Input_History_Second_2 = LOAD_TEXTURE2D_ARRAY(_Input_History_Second, pixCoord.xy, 2);
+_Output_History_Second[uint3(pixCoord.xy, H_INDEX_ARRAY(0))] = Input_History_Second_0;
+_Output_History_Second[uint3(pixCoord.xy, H_INDEX_ARRAY(1))] = Input_History_Second_1;
+_Output_History_Second[uint3(pixCoord.xy, H_INDEX_ARRAY(2))] = Input_History_Second_2;
+#endif
+float Accumulation_Count = Input_History_First_1.w / 8;
+float4 shY = 0;
+float4 CoCg = 0;
+float3 AmbientOcclusion = 0;
+float3 BentNormal = 0;
+float Downsample = 1;
+#if (defined HALF_RESOLUTION & !defined TEMPORAL_2X) | (defined HALF_RESOLUTION & defined SPATIAL_2X)
+Downsample = 0.5;
+#endif
+#ifdef TEMPORAL_2X
+AmbientOcclusion = Input_History_Second_2.www;
+BentNormal = Input_History_Second_2.xyz;
+#else
+AmbientOcclusion = LOAD_TEXTURE2D_ARRAY(_Spatial_Output_First, pixCoord.xy * Downsample, 2).www;
+BentNormal = LOAD_TEXTURE2D_ARRAY(_Spatial_Output_First, pixCoord.xy * Downsample, 2).xyz;
+#endif
+shY = H_SAMPLE_ARRAY_LOD(_Output_Final, H_SAMPLER_LINEAR_CLAMP, (pixCoord * Downsample + 0.5) * _ScreenSize.zw * _RTHandleScale.xy, 0, 0);
+CoCg = H_SAMPLE_ARRAY_LOD(_Output_Final, H_SAMPLER_LINEAR_CLAMP, (pixCoord * Downsample + 0.5) * _ScreenSize.zw * _RTHandleScale.xy, 1, 0);
+float3 BrightnessCorrection = 1;
+float SO_IntensityMultiplier = 1;
+Normal = TransformWorldToViewDir(Normal);
+Normal.yz = -Normal.yz;
+#ifdef BENT_DATA
+Normal = lerp(BentNormal, BentNormal + Normal / 4, saturate (pow(abs(AmbientOcclusion), 16)));
+BrightnessCorrection = 1.1;
+SO_IntensityMultiplier = 4;
+#endif
+float3 Output = ResolveSH(shY, CoCg.xy, Normal) * BrightnessCorrection;
+float LumaOutput = saturate(Luminance(Output));
+float LumaDelta = abs(AmbientOcclusion.x - LumaOutput);
+AmbientOcclusion = pow(abs(AmbientOcclusion), _AO_Power * 2);
+float ReflectionOcclusion = LOAD_TEXTURE2D_ARRAY(_Output_Final, pixCoord, 1).z;
+float RO_Power = lerp(0, 1 * SO_IntensityMultiplier, _SO_Intensity);
+ReflectionOcclusion = pow(abs(ReflectionOcclusion), RO_Power);
+#ifndef ENABLE_OCCLUSION
+AmbientOcclusion = 1;
+ReflectionOcclusion = 1;
+#endif
+_Denoise_Output[uint3(pixCoord.xy, H_INDEX_ARRAY(0))] =  float4(Output, 1);
+_Denoise_Output[uint3(pixCoord.xy, H_INDEX_ARRAY(1))] =  float4(1, 1, ReflectionOcclusion, 1);
+_Denoise_Output[uint3(pixCoord.xy, H_INDEX_ARRAY(2))] =  float4(Normal.xyz, AmbientOcclusion.x);
+_Specular_Occlusion[uint3(pixCoord.xy, H_INDEX_ARRAY(0))] = ReflectionOcclusion;
+}

@@ -22,6 +22,8 @@ public class TimelineEditor : MonoBehaviour
     public Dropdown import;
     public Dropdown tool;
 
+    public GameObject[] simPrefabs;
+
 
     public AudioSource speaker;
     public VideoPlayer video;
@@ -679,85 +681,65 @@ public class TimelineEditor : MonoBehaviour
             {
                 case "sshw":
                     {
-                        SceneManager.LoadScene("Studio C", LoadSceneMode.Additive); GameObject ui = null;
-                        while (ui == null)
-                        {
-                            ui = GameObject.Find("Studio C");
-                            if (ui != null)
-                            {
-                                ui = ui.transform.Find("Show Selector").transform.Find("UI").gameObject;
-                                windowMaker = ui.GetComponent<UI_WindowMaker>();
-                                playRecord = ui.GetComponent<UI_PlayRecord>();
-                                sidePanel = playRecord.sidePanel;
-                                Mack_Valves mv = GameObject.Find("Studio C").transform.Find("Mack Valves").gameObject.GetComponent<Mack_Valves>();
-                                mackValves = mv;
-                                uiShowtapeManager.mack = mv;
-                                uiShowtapeManager.inputHandler = mv.gameObject.GetComponent<InputHandler>();
-                                bitvis.mackvalves = mv;
-                                cameraFeeds = GameObject.Find("Studio C").transform.Find("Cameras").gameObject;
-                                ui.GetComponent<UI_ShowtapeManager>().enabled = false;
-                                ui.transform.position = new Vector3(0, -100, 0);
-                                sidePanel.transform.position = new Vector3(0, -100, 0);
-                                CamFeedCreate();
-                            }
-                            yield return null;
-                        }
+                        GameObject ui = null;
+                        ui = GameObject.Instantiate(simPrefabs[3]);
+                        ui.name = ui.name.Substring(0,ui.name.Length - 7);
+                        Mack_Valves mv = ui.transform.Find("Mack Valves").gameObject.GetComponent<Mack_Valves>();
+                        cameraFeeds = ui.transform.Find("Cameras").gameObject;
+                        ui = ui.transform.Find("Show Selector").transform.Find("UI").gameObject;
+                        windowMaker = ui.GetComponent<UI_WindowMaker>();
+                        playRecord = ui.GetComponent<UI_PlayRecord>();
+                        sidePanel = playRecord.sidePanel;
+                        mackValves = mv;
+                        uiShowtapeManager.mack = mv;
+                        uiShowtapeManager.inputHandler = mv.gameObject.GetComponent<InputHandler>();
+                        bitvis.mackvalves = mv;
+                        ui.GetComponent<UI_ShowtapeManager>().enabled = false;
+                        ui.transform.position = new Vector3(0, -100, 0);
+                        sidePanel.transform.position = new Vector3(0, -100, 0);
+                        CamFeedCreate();
                         break;
                     }
                 case "rshw":
                     {
-                        SceneManager.LoadScene("CRAE", LoadSceneMode.Additive);
                         GameObject ui = null;
-                        while (ui == null)
-                        {
-                            ui = GameObject.Find("3-Stage");
-                            if (ui != null)
-                            {
-                                ui = ui.transform.Find("Show Selector").transform.Find("UI").gameObject;
-                                windowMaker = ui.GetComponent<UI_WindowMaker>();
-                                playRecord = ui.GetComponent<UI_PlayRecord>();
-                                sidePanel = playRecord.sidePanel;
-                                Mack_Valves mv = GameObject.Find("3-Stage").transform.Find("Mack Valves").gameObject.GetComponent<Mack_Valves>();
-                                mackValves = mv;
-                                uiShowtapeManager.mack = mv;
-                                uiShowtapeManager.inputHandler = mv.gameObject.GetComponent<InputHandler>();
-                                bitvis.mackvalves = mv;
-                                cameraFeeds = GameObject.Find("3-Stage").transform.Find("Cameras").gameObject;
-                                ui.GetComponent<UI_ShowtapeManager>().enabled = false;
-                                ui.transform.position = new Vector3(0, -100, 0);
-                                sidePanel.transform.position = new Vector3(0, -100, 0);
-                                CamFeedCreate();
-                            }
-                            yield return null;
-                        }
+                        ui = GameObject.Instantiate(simPrefabs[0]);
+                        ui.name = ui.name.Substring(0,ui.name.Length - 7);
+                        Mack_Valves mv = ui.transform.Find("Mack Valves").gameObject.GetComponent<Mack_Valves>();
+                        cameraFeeds = ui.transform.Find("Cameras").gameObject;
+                        ui = ui.transform.Find("Show Selector").transform.Find("UI").gameObject;
+                        windowMaker = ui.GetComponent<UI_WindowMaker>();
+                        playRecord = ui.GetComponent<UI_PlayRecord>();
+                        sidePanel = playRecord.sidePanel;
+                        mackValves = mv;
+                        uiShowtapeManager.mack = mv;
+                        uiShowtapeManager.inputHandler = mv.gameObject.GetComponent<InputHandler>();
+                        bitvis.mackvalves = mv;                   
+                        ui.GetComponent<UI_ShowtapeManager>().enabled = false;
+                        ui.transform.position = new Vector3(0, -100, 0);
+                        sidePanel.transform.position = new Vector3(0, -100, 0);
+                        CamFeedCreate();
                         break;
                     }
                 case "cshw":
                     {
-                        SceneManager.LoadScene("CYBERS", LoadSceneMode.Additive);
                         GameObject ui = null;
-                        while (ui == null)
-                        {
-                            ui = GameObject.Find("Cyberamics");
-                            if (ui != null)
-                            {
-                                ui = ui.transform.Find("Show Selector").transform.Find("UI").gameObject;
-                                windowMaker = ui.GetComponent<UI_WindowMaker>();
-                                playRecord = ui.GetComponent<UI_PlayRecord>();
-                                sidePanel = playRecord.sidePanel;
-                                Mack_Valves mv = GameObject.Find("Cyberamics").transform.Find("Mack Valves").gameObject.GetComponent<Mack_Valves>();
-                                mackValves = mv;
-                                uiShowtapeManager.mack = mv;
-                                uiShowtapeManager.inputHandler = mv.gameObject.GetComponent<InputHandler>();
-                                bitvis.mackvalves = mv;
-                                cameraFeeds = GameObject.Find("Cyberamics").transform.Find("Cameras").gameObject;
-                                ui.GetComponent<UI_ShowtapeManager>().enabled = false;
-                                ui.transform.position = new Vector3(0, -100, 0);
-                                sidePanel.transform.position = new Vector3(0, -100, 0);
-                                CamFeedCreate();
-                            }
-                            yield return null;
-                        }
+                        ui = GameObject.Instantiate(simPrefabs[1]);
+                        ui.name = ui.name.Substring(0,ui.name.Length - 7);
+                        Mack_Valves mv = ui.transform.Find("Mack Valves").gameObject.GetComponent<Mack_Valves>();
+                        cameraFeeds = ui.transform.Find("Cameras").gameObject;
+                        ui = ui.transform.Find("Show Selector").transform.Find("UI").gameObject;
+                        windowMaker = ui.GetComponent<UI_WindowMaker>();
+                        playRecord = ui.GetComponent<UI_PlayRecord>();
+                        sidePanel = playRecord.sidePanel;
+                        mackValves = mv;
+                        uiShowtapeManager.mack = mv;
+                        uiShowtapeManager.inputHandler = mv.gameObject.GetComponent<InputHandler>();
+                        bitvis.mackvalves = mv;    
+                        ui.GetComponent<UI_ShowtapeManager>().enabled = false;
+                        ui.transform.position = new Vector3(0, -100, 0);
+                        sidePanel.transform.position = new Vector3(0, -100, 0);
+                        CamFeedCreate();
                         break;
                     }
                 case "nshw":

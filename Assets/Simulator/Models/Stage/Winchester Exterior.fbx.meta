@@ -17,6 +17,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Grass
+    second: {fileID: 2100000, guid: 9461453714cde744197396d6ef46138e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mirror
+    second: {fileID: 2100000, guid: a651f3bbf316bd748beab1886612ee9f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Road
     second: {fileID: 2100000, guid: db7ad3378751a7146b1a59539ff10109, type: 2}
   - first:

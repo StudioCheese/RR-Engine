@@ -74,7 +74,7 @@ MonoBehaviour:
       maxEnvLightsOnScreen: 64
       maxDecalsOnScreen: 512
       maxPlanarReflectionOnScreen: 16
-      maxLightsPerClusterCell: 8
+      maxLightsPerClusterCell: 24
       maxLocalVolumetricFogSize: 32
       maxLocalVolumetricFogOnScreen: 64
     hdShadowInitParams:
@@ -89,7 +89,7 @@ MonoBehaviour:
         shadowAtlasResolution: 8192
         shadowAtlasDepthBits: 16
         useDynamicViewportRescale: 1
-      cachedPunctualLightShadowAtlas: 4096
+      cachedPunctualLightShadowAtlas: 8192
       cachedAreaLightShadowAtlas: 1024
       allowDirectionalMixedCachedShadows: 0
       shadowResolutionDirectional:

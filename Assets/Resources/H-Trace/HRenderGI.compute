@@ -1,0 +1,394 @@
+#pragma kernel Render_GI
+#pragma multi_compile_local _ THICKNESS_AWARE
+#pragma multi_compile_local _ STOCHASTIC_THICKNESS
+#pragma multi_compile_local _ REFLECTION_PROBE_FALLBACK
+#pragma multi_compile_local _ CUSTOM_PROBE_FALLBACK
+#pragma multi_compile_local _ ADAPTIVE_CHECKERBOARD
+#pragma multi_compile_local _ HALF_RESOLUTION
+#pragma multi_compile_local _ BENT_NORMALS
+#pragma multi_compile_local _ BENT_CONES
+#pragma multi_compile_local _ DENOISE
+#pragma multi_compile_local _ PROBE_TRACE_ATLAS_ON
+#include "Packages\com.unity.render-pipelines.high-definition\Runtime\RenderPipeline\RenderPass\CustomPass\CustomPassCommon.hlsl"
+#include "../../H-Trace/Shaders/Reflection_Probe_Trace.cginc"
+#include "../../H-Trace/Headers/HMain.hlsl"
+#include "../../H-Trace/Headers/HMath.hlsl"
+float2 _TraceThickness;
+float _Distribution_Power;
+float _FallbackIntensity;
+float _MainIntensity;
+float _FakeIntensity;
+float _Camera_FOV;
+float _AO_Radius;
+int _RadiusScale;
+int _SliceCount;
+int _StepCount;
+#ifdef CUSTOM_PROBE_FALLBACK
+TEXTURECUBE(_CustomProbeColor);
+float _CustomProbeCompression;
+float _CustomProbeMultiplier;
+#endif
+H_TEXTURE(_Depth_Front);
+H_TEXTURE(_Depth_Back);
+H_TEXTURE(_Color_Buffer_Input);
+H_TEXTURE(_Normal_Buffer);
+H_TEXTURE(_MaskedDepth);
+H_RW_TEXTURE_ARRAY(float4, _GI_Output);
+#define H_PI (3.1415926535897932384626433832795)
+#define H_PI_HALF (1.5707963267948966192313216916398)
+#define FALLOFF_RANGE (0.615f)  // distant samples contribute less
+#define RADIUS_MULTIPLIER (8.0);
+#define DXC_STATIC_DISPATCH_GRID_DIM 0
+groupshared float StopAngles0[8][8][16];
+float ComputeHorizon(H_TEXTURE(_Depth), float2 UV, float3 CenterPos, float3 viewVec, float LOD_Depth, inout float3 SampleDelta, inout float DepthLinear,  bool Thickness, bool Stochastic)
+{
+float DepthRaw = H_SAMPLE_LOD(_Depth, H_SAMPLER_POINT_CLAMP, UV * _RTHandleScale.xy, LOD_Depth).x * (Thickness == true ? 0.99 : 0.99920);
+DepthLinear = LinearEyeDepth(DepthRaw, _ZBufferParams);
+DepthLinear = Thickness == true ? DepthLinear / _TraceThickness.x + _TraceThickness.y : DepthLinear;
+SampleDelta = GetPosition(UV, DepthLinear) - CenterPos; 
+float3 Direction = normalize(SampleDelta);
+return dot(Direction, viewVec);
+}
+float3 FallbackSampleDir(float2 Seed, float3 CentralNormal)
+{
+float Phi      = TWO_PI *  Seed.x;
+float CosTheta = 1.0 - 2.0 * Seed.y;
+float3 SampleSphereUniform = SphericalToCartesian(Phi, CosTheta);
+SampleSphereUniform = TransformWorldToViewDir(SampleSphereUniform);
+return SafeNormalize(SampleSphereUniform + CentralNormal);
+}
+void ThicknessRead(uint2 groupThreadID, float Horizon, int AngleCount, inout bool RenderThickness)
+{
+int i = 0;
+while (i < AngleCount)
+{   
+half MinAngle;
+half MaxAngle;
+UnpackFloats(StopAngles0[groupThreadID.x][groupThreadID.y][i], MinAngle, MaxAngle);
+if (Horizon >= MinAngle & Horizon <= MaxAngle) 
+RenderThickness = false;
+i++;
+}  
+}
+void ThicknessWrite(uint2 groupThreadID, float Horizon, float HorizonBack, float PrevHorizon, inout float PrevHorizonBack, inout int AngleCount)
+{      
+if (Horizon < PrevHorizonBack | HorizonBack > PrevHorizon)
+{
+StopAngles0[groupThreadID.x][groupThreadID.y][AngleCount] = PackFloats(HorizonBack, Horizon);
+PrevHorizonBack = HorizonBack;
+AngleCount++;
+}
+else
+{
+half shcPrev, shcPrevBack;
+UnpackFloats(StopAngles0[groupThreadID.x][groupThreadID.y][AngleCount-1], shcPrevBack, shcPrev);
+StopAngles0[groupThreadID.x][groupThreadID.y][AngleCount-1] = PackFloats(min(HorizonBack, shcPrevBack), max(Horizon, shcPrev));
+}  
+}
+float IntegrateHalfArc(float Horizon, float n, float cosN, float sinN, int Side)
+{
+float AcosHorizon = Side == 0 ? -HFastACos(Horizon) : HFastACos(Horizon);
+float HalfArc = (cosN + 2.0f * AcosHorizon * sinN - cos(2.0f * AcosHorizon - n)) / 4;
+return HalfArc;
+}
+float IntegrateHalfArcWithAcos(float Horizon, float n, float cosN, float sinN, int Side, inout float Acos)
+{
+float AcosHorizon = Side == 0 ? -HFastACos(Horizon) : HFastACos(Horizon);
+float HalfArc = (cosN + 2.0f * AcosHorizon * sinN - cos(2.0f * AcosHorizon - n)) / 4;
+Acos = AcosHorizon;
+return HalfArc;
+}
+float3 SampleRadiance(float2 UV, float3 Direction, float Contribution, float Thickness, float ExposureMult, float LOD_Normal, float LOD_Color)
+{
+float3 SampleNormal = H_SAMPLE_LOD(_Normal_Buffer, H_SAMPLER_POINT_CLAMP, UV * _RTHandleScale.xy, LOD_Normal).xyz;
+SampleNormal.yz = -SampleNormal.yz;
+float DirectionLength = length(Direction);
+float NormalReject = smoothstep(0, 1, (-dot(Direction / DirectionLength, SampleNormal)));
+float FakeReject = 1;
+if (DirectionLength < min(1, Thickness))
+{
+FakeReject = _FakeIntensity;
+float NormalRejectFake = lerp(1, NormalReject, DirectionLength);
+NormalReject = lerp(NormalReject, NormalRejectFake, _FakeIntensity);
+}
+float3 SampleColor = H_SAMPLE_LOD(_Color_Buffer_Input, H_SAMPLER_POINT_CLAMP, UV * _RTHandleScale.xy, 0).xyz * ExposureMult;
+SampleColor *= saturate(Contribution /  NormalReject) * NormalReject;
+return SampleColor;
+}
+[numthreads(8, 8, 1)]
+void Render_GI(uint2 pixCoord : SV_DispatchThreadID, uint2 groupThreadID : SV_GroupThreadID, uint2 groupID : SV_GroupID)
+{
+uint Downscale = 1;
+#if defined HALF_RESOLUTION
+Downscale = 2;
+#endif  
+float2 UV_Mult = float2(1,1) * Downscale;
+#if defined ADAPTIVE_CHECKERBOARD & !defined HALF_RESOLUTION
+if (_FrameCount % uint(2) == 0)
+{
+if (pixCoord.x % uint(2) == 0)
+UV_Mult.y = (UV_Mult.y * 2) -1 * _ScreenSize.w;
+else
+UV_Mult.y *= 2;
+}
+else
+{
+if (pixCoord.x % uint(2) == 0)
+UV_Mult.y *= 2;
+else
+UV_Mult.y = (UV_Mult.y * 2) -1 * _ScreenSize.w;
+}
+#endif
+pixCoord = ThreadGroupTilingX(uint2(ceil(_ScreenSize.x / Downscale / 8),  ceil(_ScreenSize.y / Downscale / 8)), uint2(8, 8), 8, groupThreadID, groupID);
+float Depth = HBUFFER_DEPTH(pixCoord * UV_Mult); //* 0.99920;
+uint2 CenterCoord = pixCoord * UV_Mult;
+uint2 tileIndex = uint2(CenterCoord * 1) / H_TILE_SIZE;
+PositionInputs posInput = GetPositionInput(CenterCoord, _ScreenSize.zw, Depth, UNITY_MATRIX_I_VP, GetWorldToViewMatrix(), tileIndex * 1);
+pixCoord = posInput.positionSS;
+float2 pixCoordNDC = (posInput.positionSS + 0.5) * _ScreenSize.zw ; //(pixCoord + 0.5)  * _ScreenSize.zw ;
+float MaskFromDepth = H_LOAD(_MaskedDepth, pixCoord.xy).x;
+if (MaskFromDepth <= Depth * DEPTH_MULTIPLIER)
+MaskFromDepth = 0;
+if (Depth <= 1e-7 || MaskFromDepth > 0)
+{
+_GI_Output[uint3(pixCoord.xy / Downscale, H_INDEX_ARRAY(0))] = 0;
+_GI_Output[uint3(pixCoord.xy / Downscale, H_INDEX_ARRAY(1))] = 0;
+_GI_Output[uint3(pixCoord.xy / Downscale, H_INDEX_ARRAY(2))] = 0;
+return;
+}
+float LinearDepth = LinearEyeDepth(Depth, _ZBufferParams);
+float SliceCount = _SliceCount;
+float StepCount = _StepCount;
+float4 NormalBuffer = H_SAMPLE_LOD(_Normal_Buffer, H_SAMPLER_POINT_CLAMP, pixCoordNDC * _RTHandleScale.xy, 0);
+float3 CentralNormalWS = mul(UNITY_MATRIX_I_V, float4(NormalBuffer.xyz, 1)).xyz;
+float3 CentralNormal = NormalBuffer.xyz;
+CentralNormal.yz = -CentralNormal.yz;
+float3 pixCenterPos  = GetPosition(pixCoordNDC, LinearDepth);
+float3 viewVec = normalize(-pixCenterPos);
+float ExposureMult = GetInversePreviousExposureMultiplier();
+const float Radius                    = 100 * _RadiusScale; 
+const float sampleDistributionPower   = _Distribution_Power;
+const float falloffRange              = 0.6 * Radius;
+const float falloffFrom               = Radius  * (1 - FALLOFF_RANGE);
+const float falloffMul                = -1.0 / falloffRange;
+const float falloffAdd                = falloffFrom / falloffRange + 1.0; 
+float noiseSlice  = (SpatioTemporalNoise(pixCoord / 1, 1).x); 
+float noiseSample = (SpatioTemporalNoise(pixCoord / 1, 1).y);
+float AmbientOcclusion = 0;
+float BentCone = 0;
+const float pixelTooCloseThreshold  = 1.3;
+float FOVrad = radians(_Camera_FOV);
+float tanHalfFOVY = tan(FOVrad  * 0.5f);
+float tanHalfFOVX =  tanHalfFOVY * (_ScreenSize.x / _ScreenSize.y);
+float2 CameraTanHalfFOV  = float2(tanHalfFOVX, tanHalfFOVY);
+float2 NDCToViewMul = float2(CameraTanHalfFOV.x * 2.0f, CameraTanHalfFOV.y * -2.0f);
+float2 NDCToViewMul_x_PixelSize = float2(NDCToViewMul.x * _ScreenSize.z, NDCToViewMul.y * _ScreenSize.w);
+float2 pixelDirRBViewspaceSizeAtCenterZ = LinearDepth.xx * NDCToViewMul_x_PixelSize;
+float screenspaceRadius  = Radius / pixelDirRBViewspaceSizeAtCenterZ.x;
+AmbientOcclusion += saturate((10 - screenspaceRadius)/100)*0.5;
+bool GenerateBentData = false;
+#if defined BENT_NORMALS | defined BENT_CONES
+GenerateBentData = true;
+#endif
+if (screenspaceRadius < pixelTooCloseThreshold)
+{
+_GI_Output[uint3(pixCoord.xy / Downscale, H_INDEX_ARRAY(0))] = 0;
+_GI_Output[uint3(pixCoord.xy / Downscale, H_INDEX_ARRAY(1))] = 0;
+_GI_Output[uint3(pixCoord.xy / Downscale, H_INDEX_ARRAY(2))] = 0;
+return;
+}
+float3 BentNormal = 0;
+float3 GatheredDiffuse = 0;
+float3 DirectionAccumulation = 0;
+float2 BentHorizons = 0;
+float3 GatheredFallback = 0;
+const float minS = pixelTooCloseThreshold / screenspaceRadius;
+UNITY_LOOP
+for (float slice = 0; slice < _SliceCount; slice++ )
+{
+float sliceK = (slice + noiseSlice) / _SliceCount;
+float phi = sliceK * H_PI ;
+float cosPhi = cos(phi);
+float sinPhi = sin(phi);
+float2 omega = float2(cosPhi, -sinPhi);
+omega = omega * screenspaceRadius;
+float3 directionVec = float3(cosPhi, sinPhi, 0);
+const float3 orthoDirectionVec = directionVec - (dot(directionVec, viewVec) * viewVec);
+const float3 axisVec = normalize(cross(orthoDirectionVec, viewVec));
+float3 projectedNormalVec = CentralNormal - axisVec * dot(CentralNormal , axisVec);
+float signNorm = sign(dot(orthoDirectionVec, projectedNormalVec));
+float projectedNormalVecLength = length(projectedNormalVec);
+float cosN = saturate(dot(projectedNormalVec, viewVec) / projectedNormalVecLength);
+float n = signNorm * HFastACos(cosN);
+float sinN =sin(n);
+float3 ProbeSampleDir = FallbackSampleDir(float2(cosPhi * screenspaceRadius, noiseSample.x), normalize(projectedNormalVec));
+float3 ProbeSampleDirProjected = ProbeSampleDir - axisVec  *  (dot(ProbeSampleDir , axisVec ) );
+float ProbeDirSign = sign(dot(orthoDirectionVec, ProbeSampleDirProjected));
+float ProbeHorizon = dot(normalize(ProbeSampleDirProjected), viewVec);
+float BentConeAccumulation = 0;
+float OcclusionContribution = 0;
+float ProbeContribution = 0;
+bool TraceProbes = true;
+[unroll]
+for (int Side = 0; Side < 2; Side++)
+{
+float LowestHorizon  = cos(n + (H_PI_HALF * (-1+2 * Side)));
+float MaxHorizon            = LowestHorizon;
+float PrevHorizon           = LowestHorizon;
+float PrevHorizon_ST        = LowestHorizon;
+float AOMaxHorizon          = LowestHorizon;
+float PrevHorizonBack       = 1;
+float PrevHorizonBack_ST    = 1;
+float DepthTrack = LinearDepth;
+int AngleCount = 0;
+int MarchStep = 0;
+while(MarchStep < StepCount)
+{    
+const float stepBaseNoise = float(slice + MarchStep * StepCount) * 0.6180339887498948482;
+float stepNoise = frac(noiseSample + stepBaseNoise);
+float s = (MarchStep+stepNoise) / (StepCount);
+s = pow(abs(s), sampleDistributionPower);
+s += minS;
+float2 SampleOffset = s * omega;
+float SampleOffsetLength = length(SampleOffset);
+float LOD_Disable = 1;
+float LOD_Depth_Back  = clamp(log2(SampleOffsetLength) - 4, 0, 4) * LOD_Disable;
+float LOD_Depth       = clamp(log2(SampleOffsetLength) - 4, 0, 4) * LOD_Disable;
+float LOD_Normal      = clamp(log2(SampleOffsetLength) - 6.5, 0, 4) * LOD_Disable;
+float LOD_Color_Back  = clamp(log2(SampleOffsetLength) - 6.5, 1, 4) * LOD_Disable;
+float LOD_Color       = clamp(log2(SampleOffsetLength) - 7.0, 0, 4) * LOD_Disable;
+SampleOffset = round(SampleOffset) * _ScreenSize.zw;
+float SideMult = -1+2 * Side;
+SampleOffset = SampleOffset * SideMult;
+float AO_Radius = 1 - _AO_Radius;
+float2 SampleUV = pixCoordNDC + SampleOffset;
+if (SampleUV.x > 1 | SampleUV.y > 1 | SampleUV.y < 0 | SampleUV.x < 0)
+{
+if(sign(ProbeDirSign) == sign(SideMult) )
+{
+ThicknessRead(groupThreadID, ProbeHorizon, AngleCount, TraceProbes);
+if(TraceProbes == true & LowestHorizon < ProbeHorizon)
+{
+float ProbeArc = IntegrateHalfArc(ProbeHorizon, n, cosN, sinN, Side);
+ProbeContribution = saturate(ProbeArc) * 16;
+}
+}
+float BentAcos;
+OcclusionContribution += IntegrateHalfArcWithAcos(AOMaxHorizon, n, cosN, sinN, Side, BentAcos);
+BentConeAccumulation += BentAcos;
+if (Side == 0)
+BentHorizons.x = AOMaxHorizon;
+else
+BentHorizons.y = AOMaxHorizon;
+break;
+}
+float3 SampleDelta = 0;
+float3 SampleDelta1 = 0;
+float FrontDepth = 0;
+float BackDepth = 0;
+float HorizonBack = ComputeHorizon(_Depth_Back, SampleUV, pixCenterPos, viewVec, LOD_Depth_Back, SampleDelta1, BackDepth, true, false);
+float Horizon = ComputeHorizon(_Depth_Front, SampleUV, pixCenterPos, viewVec, LOD_Depth, SampleDelta, FrontDepth, false, false);
+float CosineFactor = saturate(dot(normalize(SampleDelta), CentralNormal));
+bool RenderThickness = true;
+if (Horizon > LowestHorizon + 0.5 & AngleCount < 16)
+ThicknessRead(groupThreadID, Horizon, AngleCount, RenderThickness);
+if (Horizon > LowestHorizon + 0.5 & AngleCount < 16)
+ThicknessWrite(groupThreadID, Horizon,  HorizonBack, PrevHorizon, PrevHorizonBack, AngleCount);
+if (CosineFactor >= 0.25)
+{
+#ifdef THICKNESS_AWARE
+if (Horizon < MaxHorizon & Horizon > PrevHorizon & Horizon > LowestHorizon & RenderThickness == true & abs(BackDepth - DepthTrack) < 50)
+{
+float ArcMin = IntegrateHalfArc(Horizon, n, cosN, sinN, Side);
+float ArcMax = IntegrateHalfArc(PrevHorizon, n, cosN, sinN, Side);
+float Contribution = projectedNormalVecLength * (ArcMax - ArcMin);
+float3 Sample = SampleRadiance(SampleUV, SampleDelta, Contribution, BackDepth - FrontDepth, ExposureMult, LOD_Normal, LOD_Color);
+GatheredDiffuse += Sample;
+DirectionAccumulation += SampleDelta * Luminance(Sample);
+}
+#endif
+if (Horizon > MaxHorizon & abs(BackDepth - DepthTrack) < 50)
+{
+float ArcMin = IntegrateHalfArc(Horizon, n, cosN, sinN, Side);
+float ArcMax = IntegrateHalfArc(MaxHorizon, n, cosN, sinN, Side);
+float Contribution = projectedNormalVecLength * (ArcMax - ArcMin);
+float3 Sample = SampleRadiance(SampleUV, SampleDelta, Contribution, BackDepth - FrontDepth, ExposureMult, LOD_Normal, LOD_Color);
+GatheredDiffuse += Sample;
+DirectionAccumulation += SampleDelta * Luminance(Sample);
+}
+DepthTrack = FrontDepth;
+}
+PrevHorizon = Horizon;
+MaxHorizon = max(MaxHorizon, Horizon);
+float AOweight0 = saturate(length(SampleDelta) * 1 * 200 * falloffMul + falloffAdd); // 1 is AO_Radius
+float AOHorizon = dot(normalize(SampleDelta), viewVec);
+AOHorizon = lerp(LowestHorizon, AOHorizon, AOweight0);
+AOMaxHorizon = max(AOMaxHorizon, AOHorizon);
+MarchStep++;
+}
+}
+float localAmbientOcclusion = projectedNormalVecLength * OcclusionContribution;
+AmbientOcclusion += localAmbientOcclusion;
+float LocalBentCone = projectedNormalVecLength * BentConeAccumulation;
+BentCone += LocalBentCone;
+if (GenerateBentData == true)
+{
+float h0 = -HFastACos(BentHorizons.x); 
+float h1 =  HFastACos(BentHorizons.y);
+float t0 = (6*sin(h0-n)-sin(3*h0-n)+6*sin(h1-n)-sin(3*h1-n)+16*sin(n)-3*(sin(h0+n)+sin(h1+n)))/12;
+float t1 = (-cos(3 * h0-n)-cos(3 * h1-n) +8 * cos(n)-3 * (cos(h0+n) +cos(h1+n)))/12;
+float3 localBentNormal = float3( directionVec.x * t0, directionVec.y * t0, - t1 );
+localBentNormal = mul(RotFromToMatrix(float3(0,0,-1), viewVec ), localBentNormal ) * projectedNormalVecLength;
+BentNormal += localBentNormal;
+}
+if (TraceProbes == true)
+{
+float3 ProbeSampleDirWS = normalize(ProbeSampleDirProjected); 
+ProbeSampleDirWS.yz = -ProbeSampleDirWS.yz;
+ProbeSampleDirWS = mul(UNITY_MATRIX_I_V, float4(ProbeSampleDirWS, 1)).xyz;
+float Probe_Weight  = 0;
+float3 Probe_Sample = 0;
+#ifdef REFLECTION_PROBE_FALLBACK
+TraceReflectionProbes(posInput, CentralNormalWS, ProbeSampleDirWS, Probe_Weight, Probe_Sample);
+GatheredFallback += Probe_Sample * saturate(ProbeContribution);
+#elif CUSTOM_PROBE_FALLBACK
+TraceCustomProbe(posInput, _CustomProbeColor, CentralNormalWS, ProbeSampleDirWS, _CustomProbeCompression, _CustomProbeMultiplier, Probe_Weight, Probe_Sample);
+GatheredFallback += Probe_Sample * saturate(ProbeContribution);
+#endif
+DirectionAccumulation += normalize(ProbeSampleDirProjected) * Luminance(Probe_Sample) ;
+}
+}
+DirectionAccumulation = SafeNormalize(DirectionAccumulation);
+AmbientOcclusion /= _SliceCount ;
+BentCone /= _SliceCount ;
+#if defined BENT_NORMALS
+BentNormal = normalize(BentNormal);
+#elif defined BENT_CONES
+BentNormal *= sqrt( max( 0.001, 1 - BentCone ) ) / length(BentNormal);
+#endif
+float3 OutputGI  = ((GatheredDiffuse * _MainIntensity / _SliceCount) + (GatheredFallback * _FallbackIntensity / _SliceCount));
+OutputGI  = RgbToHsv(OutputGI * GetCurrentExposureMultiplier());
+OutputGI.z = clamp(OutputGI.z, 0.0, 7.0f);
+OutputGI = HsvToRgb(OutputGI);
+float4 shY = 0;
+float2 CoCg = 0;
+ColorToSH(OutputGI.xyz, DirectionAccumulation, shY, CoCg);
+float3 ViewDirWS = GetWorldSpaceNormalizeViewDir(posInput.positionWS);
+float3 BentNormalWS = BentNormal;
+BentNormalWS.yz = -BentNormalWS.yz;
+BentNormalWS = mul(UNITY_MATRIX_I_V, float4(BentNormalWS, 1)).xyz ;
+float Roughness = HBUFFER_ROUGHNESS(pixCoord);
+float ReflectionOcclusion = SpecularOcclusion(ViewDirWS, BentNormalWS, CentralNormalWS, saturate(AmbientOcclusion), Roughness);
+if (AnyIsNaN(shY))
+shY = 0.0f;
+if (AnyIsNaN(CoCg))
+CoCg = 0.0f;
+ReflectionOcclusion = max(ReflectionOcclusion, 0);
+AmbientOcclusion = max(AmbientOcclusion, 0);
+#ifndef DENOISE
+shY = float4(OutputGI, 1);
+#endif
+_GI_Output[uint3(pixCoord.xy / Downscale, H_INDEX_ARRAY(0))] =  float4(shY.xyzw);
+_GI_Output[uint3(pixCoord.xy / Downscale, H_INDEX_ARRAY(1))] =  float4(CoCg.xy, ReflectionOcclusion, 1);
+_GI_Output[uint3(pixCoord.xy / Downscale, H_INDEX_ARRAY(2))] =  float4(BentNormal.xyz, AmbientOcclusion);
+}

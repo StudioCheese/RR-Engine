@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: d05d90e6f5f86b047b35e7fa71847eda
 ModelImporter:
-  serializedVersion: 21202
+  serializedVersion: 22103
   internalIDToNameTable:
   - first:
       74: 3578533287177081056
@@ -641,7 +641,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Fur1.001
-    second: {fileID: 2100000, guid: da85adbb1374bdc49b644129711cebd8, type: 2}
+    second: {fileID: 2100000, guid: a5045d658286f1c44a0ebc1003b35cd8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -680,6 +680,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: MacswayMAsk
+    second: {fileID: 2100000, guid: 2e1bb4b2056ee494e94af8f0c351fa87, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: MitziMask
     second: {fileID: 2100000, guid: 5af6c0b3072197b429306b5a7bfd6ed5, type: 2}
   - first:
@@ -702,6 +707,16 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Outer Fur
     second: {fileID: 2100000, guid: 2c4602637ef8cea42860eefea7a7aad0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PlasticChuckFur
+    second: {fileID: 2100000, guid: 2a66fc81d83c8b645a3429102e0cd8d0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PlasticChuckMask
+    second: {fileID: 2100000, guid: cbf703851d539bb4396a9352ce6b916d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -780,6 +795,7 @@ ModelImporter:
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -812,6 +828,8 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

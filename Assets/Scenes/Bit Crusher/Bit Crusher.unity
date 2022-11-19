@@ -3121,6 +3121,11 @@ MonoBehaviour:
   analysis: {fileID: 1696794781}
   import: {fileID: 279622807}
   tool: {fileID: 917268031}
+  simPrefabs:
+  - {fileID: 2782316734685028176, guid: 6096be470d4b0b942839710672a8186f, type: 3}
+  - {fileID: 5971670337004976364, guid: af4c0cc0db6a76f428755cceada8c6e7, type: 3}
+  - {fileID: 3628944828428447838, guid: 8b6f0281bc26dc34ba9b22aa8a39a627, type: 3}
+  - {fileID: 3422967840729882321, guid: 9a32354304b363047af1bc59d6804217, type: 3}
   speaker: {fileID: 457449622}
   video: {fileID: 2015517224}
   views:

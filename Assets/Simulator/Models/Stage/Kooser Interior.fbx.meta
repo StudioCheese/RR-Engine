@@ -3,11 +3,16 @@ guid: 7f2f22a4a9848384480361c1bab0337f
 ModelImporter:
   serializedVersion: 22103
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: AllColorWall
+    second: {fileID: 2100000, guid: 8d2379a1410befb4e93dd68c4a5196ad, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
-    materialSearch: 1
+    materialSearch: 2
     materialLocation: 1
   animations:
     legacyGenerateAnimations: 4

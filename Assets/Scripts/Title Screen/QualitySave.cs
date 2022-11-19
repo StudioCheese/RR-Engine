@@ -24,32 +24,21 @@ public static class QualitySave
 
     public static void FirstTimeSave()
     {
-        if (PlayerPrefs.GetInt("First Time Starting 1.14") != 1)
+        if (PlayerPrefs.GetInt("First Time Starting 1.63 2") != 1)
         {
-            PlayerPrefs.SetInt("First Time Starting 1.14", 1);
-
-            //Settings
-            PlayerPrefs.SetInt("Settings: Quality", 2);
-            PlayerPrefs.SetInt("Settings: VSync", 0);
-            PlayerPrefs.SetInt("Settings: Texture", 3);
-            PlayerPrefs.SetInt("Settings: Windowed", 0);
-            PlayerPrefs.SetInt("Settings: Playback", 1);
-        }
-        if (PlayerPrefs.GetInt("First Time Starting 1.36") != 1)
-        {
-            PlayerPrefs.SetInt("First Time Starting 1.36", 1);
-
-            //Settings
-            PlayerPrefs.SetInt("Settings: Motion Blur", 0);
-            PlayerPrefs.SetInt("Settings: Auto Exposure", 1);
-        }
-        if (PlayerPrefs.GetInt("First Time Starting 1.41") != 1)
-        {
-            PlayerPrefs.SetInt("First Time Starting 1.41", 1);
-
-            //Settings
-            PlayerPrefs.SetInt("Settings: SSR", 3);
+            PlayerPrefs.SetInt("First Time Starting 1.63 2", 1);
+            PlayerPrefs.SetInt("Settings: GI", 1);
+            PlayerPrefs.SetInt("Settings: GI Bounces", 0);
+            PlayerPrefs.SetInt("Settings: SSR", 2);
+            PlayerPrefs.SetInt("Settings: SSR Bounces", 0);
             PlayerPrefs.SetInt("Settings: SSAO", 1);
+            PlayerPrefs.SetInt("Settings: Texture", 1);
+            PlayerPrefs.SetInt("Settings: DLSS", 3);
+            PlayerPrefs.SetInt("Settings: AntiAlias", 2);
+            PlayerPrefs.SetInt("Settings: Res Percent", 6);
+            PlayerPrefs.SetInt("Settings: VSync", 1);
+            PlayerPrefs.SetInt("Settings: Motion Blur", 1);
+            PlayerPrefs.SetInt("Settings: Windowed", 0);
         }
     }
 }

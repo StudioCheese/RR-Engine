@@ -555,6 +555,9 @@ public class UI_SidePanel : MonoBehaviour
                             case "Kooser Chuck":
                                 finalname = "Chuck E. Cheese";
                                 break;
+                            case "Winchester Pasqually":
+                                finalname = "Pasqually";
+                                break;
                             default:
                                 break;
                         }
@@ -567,7 +570,7 @@ public class UI_SidePanel : MonoBehaviour
                         }
                         else
                         {
-                            Debug.Log("Flows: Error: " + finalname  + "!=" + thefile.characters[i].name);
+                            Debug.Log("Flows: Error: " + finalname + "!=" + thefile.characters[i].name);
                         }
                     }
                     if (theCharacter != null)

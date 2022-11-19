@@ -83,6 +83,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 7966070795022329106}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: d2716eb86dfff184992527a4475ed965, type: 3}
@@ -131,7 +132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8234339016192207170, guid: d2716eb86dfff184992527a4475ed965, type: 3}
       propertyPath: m_UpdateWhenOffscreen
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4561193470005248270, guid: d2716eb86dfff184992527a4475ed965, type: 3}
       propertyPath: m_LightProbeUsage
@@ -143,11 +144,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4257968609086018710, guid: d2716eb86dfff184992527a4475ed965, type: 3}
       propertyPath: m_UpdateWhenOffscreen
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -2791375397665132725, guid: d2716eb86dfff184992527a4475ed965, type: 3}
       propertyPath: m_UpdateWhenOffscreen
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -2418447339448717214, guid: d2716eb86dfff184992527a4475ed965, type: 3}
       propertyPath: m_IsActive
@@ -159,7 +160,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1314584013615251059, guid: d2716eb86dfff184992527a4475ed965, type: 3}
       propertyPath: m_UpdateWhenOffscreen
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -646609513654099797, guid: d2716eb86dfff184992527a4475ed965, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d2716eb86dfff184992527a4475ed965, type: 3}
       propertyPath: m_Name
@@ -167,11 +172,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3749914667287801436, guid: d2716eb86dfff184992527a4475ed965, type: 3}
       propertyPath: m_UpdateWhenOffscreen
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5228019625462971392, guid: d2716eb86dfff184992527a4475ed965, type: 3}
       propertyPath: m_UpdateWhenOffscreen
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7869873546869171050, guid: d2716eb86dfff184992527a4475ed965, type: 3}
       propertyPath: m_Name
@@ -179,9 +184,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8859992139122851300, guid: d2716eb86dfff184992527a4475ed965, type: 3}
       propertyPath: m_UpdateWhenOffscreen
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: d2716eb86dfff184992527a4475ed965, type: 3}
 --- !u!4 &1319945619208839058 stripped
 Transform:

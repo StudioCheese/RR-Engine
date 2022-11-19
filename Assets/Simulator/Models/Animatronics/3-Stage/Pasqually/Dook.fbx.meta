@@ -240,6 +240,69 @@ ModelImporter:
   - first:
       74: 8893029685937502870
     second: Armature|White Drum Mech.001Action
+  - first:
+      74: -4070033049550073313
+    second: Armature|Blue Drum Cosmeticless.001Action
+  - first:
+      74: 5780337489452865159
+    second: Armature|Cosmeticless.001Action
+  - first:
+      74: -4398191431468347869
+    second: Armature|CU Cosmeticless.002Action
+  - first:
+      74: -2660099372832251781
+    second: Armature|Default.002|Default.001|Body Lean
+  - first:
+      74: 6585375177211849522
+    second: Armature|Default.002|Default.001|CU Cosmeticless.002Action
+  - first:
+      74: -87022037633571954
+    second: Armature|Default.002|Default.001|EmptyAction
+  - first:
+      74: -1634202090878133090
+    second: Armature|Default.002|Default.001|EmptyAction.001
+  - first:
+      74: 1662534844420406857
+    second: Armature|Default.002|Default.001|EmptyAction.002
+  - first:
+      74: 7890919698933429426
+    second: Armature|Default.002|Default.001|EmptyAction.005
+  - first:
+      74: 5538633892928497021
+    second: Armature|Default.002|Default.001|Mech.002Action
+  - first:
+      74: 8215744019353033218
+    second: Armature|Default.002|Default.001|Orange Drum Mech.001Action
+  - first:
+      74: 2446403831189313837
+    second: Armature|Default.002|Default.001|Plane.002Action
+  - first:
+      74: 3177503666270084055
+    second: Armature|Default.002|Default.001|Sun.006Action
+  - first:
+      74: 4678730115859435658
+    second: Armature|Default.002|Default.001|SunAction
+  - first:
+      74: 441966170797134634
+    second: Armature|Default.002|Default.001|SunAction.001
+  - first:
+      74: -2190692631537809610
+    second: Armature|Default.002|Default.001|SunAction.002
+  - first:
+      74: -5583290595865567715
+    second: Armature|Default.002|Default.001|SunAction.003
+  - first:
+      74: -3325845056456672263
+    second: Armature|Default.002|Default.001|SunAction.004
+  - first:
+      74: 6854413885881464089
+    second: Armature|Default.002|Default.001|SunAction.005
+  - first:
+      74: 7071889524240158648
+    second: Armature|Default.002|Default.001|White Drum Mech.001Action
+  - first:
+      74: -1956455160350241434
+    second: Armature|White Drum Cosmeticless.001Action
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -259,6 +322,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Alluminum.003
+    second: {fileID: 2100000, guid: c431cf0f72d0e2d4c9fb9399c41ec3a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Curly Hair
+    second: {fileID: 2100000, guid: e415a689fb814d141ad6b69621d8e0fb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Cushons
     second: {fileID: 2100000, guid: 069eb8c5b4906ec43800ef99a370a5a0, type: 2}
   - first:
@@ -269,8 +342,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Eye CU
+    second: {fileID: 2100000, guid: 9969b2801deebc544ad66527d2e84dcc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Eyelid Brown
     second: {fileID: 2100000, guid: 39cb9b017cda9934990be727754f105d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eyelid CU
+    second: {fileID: 2100000, guid: a9f52458f22308949ad6bbd0e594db89, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FiberGlass Billybob
+    second: {fileID: 2100000, guid: f371922b99aeea04e942103be6dabd26, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -284,6 +372,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Mustache
+    second: {fileID: 2100000, guid: 821b38050fd50f1458de6ee957f7f013, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mustache Trans 0
+    second: {fileID: 2100000, guid: 395ebd12bd7198444869b43bf32105d3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Other Metals
     second: {fileID: 2100000, guid: 28b8177df7f57ba479acdbcd94279bb1, type: 2}
   - first:
@@ -291,6 +389,21 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Other Metals.001
     second: {fileID: 2100000, guid: 28b8177df7f57ba479acdbcd94279bb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Other Metals.003
+    second: {fileID: 2100000, guid: 28b8177df7f57ba479acdbcd94279bb1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pasq Clothes
+    second: {fileID: 2100000, guid: cf9bf7210be4ac543b59cac6bf10f7c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pasq Skin
+    second: {fileID: 2100000, guid: ff65df570d653ee4799aa8cbe4a18efb, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

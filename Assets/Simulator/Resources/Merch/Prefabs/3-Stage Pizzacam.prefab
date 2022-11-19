@@ -76,13 +76,14 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.38895103, y: 1.5948901, z: 0.28742307}
-  m_Center: {x: -0.0066620335, y: 0.7595866, z: 0.012224346}
+  m_Size: {x: 0.38895103, y: 0.74643993, z: 0.28742307}
+  m_Center: {x: -0.006662026, y: 0.33536148, z: 0.012224346}
 --- !u!1001 &3177354655527030905
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 635192620415855880}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 8eac62f63f362ce4098c4b6205a09f19, type: 3}
@@ -143,7 +144,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4561193470005248270, guid: 8eac62f63f362ce4098c4b6205a09f19, type: 3}
       propertyPath: m_UpdateWhenOffscreen
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3138288746687354429, guid: 8eac62f63f362ce4098c4b6205a09f19, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -2418447339448717214, guid: 8eac62f63f362ce4098c4b6205a09f19, type: 3}
       propertyPath: m_IsActive
@@ -159,7 +164,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -1314584013615251059, guid: 8eac62f63f362ce4098c4b6205a09f19, type: 3}
       propertyPath: m_UpdateWhenOffscreen
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -1286807191621883367, guid: 8eac62f63f362ce4098c4b6205a09f19, type: 3}
       propertyPath: m_LightProbeUsage
@@ -187,7 +192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -646609513654099797, guid: 8eac62f63f362ce4098c4b6205a09f19, type: 3}
       propertyPath: m_UpdateWhenOffscreen
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -501930538830631127, guid: 8eac62f63f362ce4098c4b6205a09f19, type: 3}
       propertyPath: m_IsActive
@@ -196,6 +201,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8eac62f63f362ce4098c4b6205a09f19, type: 3}
       propertyPath: m_Name
       value: LooneyShowbiz
+      objectReference: {fileID: 0}
+    - target: {fileID: 2849557189142416942, guid: 8eac62f63f362ce4098c4b6205a09f19, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3480069806281489118, guid: 8eac62f63f362ce4098c4b6205a09f19, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4409317717735073646, guid: 8eac62f63f362ce4098c4b6205a09f19, type: 3}
       propertyPath: m_IsActive
@@ -217,6 +230,10 @@ PrefabInstance:
       propertyPath: m_UpdateWhenOffscreen
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7160063935013164114, guid: 8eac62f63f362ce4098c4b6205a09f19, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7338094062480144537, guid: 8eac62f63f362ce4098c4b6205a09f19, type: 3}
       propertyPath: m_Name
       value: Armature
@@ -224,6 +241,10 @@ PrefabInstance:
     - target: {fileID: 7493558928055654926, guid: 8eac62f63f362ce4098c4b6205a09f19, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7756560348854094227, guid: 8eac62f63f362ce4098c4b6205a09f19, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8046881494826360093, guid: 8eac62f63f362ce4098c4b6205a09f19, type: 3}
       propertyPath: m_LightProbeUsage
@@ -242,6 +263,7 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 8eac62f63f362ce4098c4b6205a09f19, type: 3}
 --- !u!4 &408979670843648126 stripped
 Transform:
@@ -351,7 +373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9ac8d30c6a0d9642a11e5be4c440740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Root: {fileID: 4831471469053737036}
+  m_Root: {fileID: 8041734765540819170}
   m_UpdateRate: 5
   m_UpdateMode: 3
   m_Damping: 0.021
@@ -396,10 +418,10 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_EndLength: 1.24
-  m_EndOffset: {x: 0, y: 0, z: 11}
-  m_Gravity: {x: 0.03, y: 0.002, z: 0.31}
-  m_Force: {x: 0, y: 0.15, z: 0}
+  m_EndLength: 5
+  m_EndOffset: {x: 0, y: 0, z: 0}
+  m_Gravity: {x: 0, y: 0, z: 0}
+  m_Force: {x: 0.002, y: 0, z: -0.002}
   m_Colliders: []
   m_Exclusions:
   - {fileID: 8379460737970592457}
@@ -421,7 +443,7 @@ MonoBehaviour:
   - {fileID: 3224639687349446986}
   - {fileID: 8197864210861268398}
   - {fileID: 3383269638832130471}
-  m_FreezeAxis: 1
+  m_FreezeAxis: 0
   m_DistantDisable: 0
   m_ReferenceObject: {fileID: 0}
   m_DistanceToObject: 1
@@ -438,11 +460,6 @@ Transform:
 --- !u!4 &3383269638832130471 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -9012843089904313890, guid: 8eac62f63f362ce4098c4b6205a09f19, type: 3}
-  m_PrefabInstance: {fileID: 3177354655527030905}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &4831471469053737036 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -1219087320498657227, guid: 8eac62f63f362ce4098c4b6205a09f19, type: 3}
   m_PrefabInstance: {fileID: 3177354655527030905}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &5099872329553789212 stripped
@@ -478,6 +495,11 @@ Transform:
 --- !u!4 &7888129225495430063 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4710897724400538582, guid: 8eac62f63f362ce4098c4b6205a09f19, type: 3}
+  m_PrefabInstance: {fileID: 3177354655527030905}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8041734765540819170 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4864380247990538395, guid: 8eac62f63f362ce4098c4b6205a09f19, type: 3}
   m_PrefabInstance: {fileID: 3177354655527030905}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &8130003952115501556 stripped
