@@ -21,6 +21,7 @@ A set of plugins are required for building properly, and are not included within
 - [Dynamic Bone ($20)](https://assetstore.unity.com/packages/tools/animation/dynamic-bone-16743#description)
 - [Off Screen Target Indicator](https://assetstore.unity.com/packages/tools/gui/off-screen-target-indicator-71799#publisher)
 - [Standalone File Browser](https://github.com/gkngkc/UnityStandaloneFileBrowser)
+- [H-Trace ($45)](https://assetstore.unity.com/packages/vfx/shaders/fullscreen-camera-effects/h-trace-gi-occlusion-hdrp-233762)
 
 # Switching Branches
 Depending on whichever branch is pushed with new updates, the default branch you might start in when opening the project could be different. Navigate to the "Scenes/Manger/Manager.unity" scene and open it. Click on the only object in the scene and look in the inspector. There a custom script will have buttons for switching between the 4 different builds. Click the branch button you want, then toggle the VR switch on or off to activate the branch switch. You may need to flick the VR switch a few times if it doesn't work. Be sure to open the game to be sure your branch has been switched to before leaving the Manager scene.
