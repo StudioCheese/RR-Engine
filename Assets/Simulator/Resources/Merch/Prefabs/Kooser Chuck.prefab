@@ -170,6 +170,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -4561193470005248270, guid: 3b0da60d8fc12eb42a0a84aec7937158, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: -3044134930769967512, guid: 3b0da60d8fc12eb42a0a84aec7937158, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.007434888

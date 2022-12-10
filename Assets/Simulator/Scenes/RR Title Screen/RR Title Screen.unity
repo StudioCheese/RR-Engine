@@ -3721,15 +3721,6 @@ MonoBehaviour:
     botType: 01000000
     stageType: 00000000
   - sceneName: Default Map
-    scenePath: MAP Cyberamics Default
-    thumbnailDay: {fileID: 21300000, guid: 66bbf1e9fc204fc4bb3470bb0b5ca236, type: 3}
-    thumbnailNight: {fileID: 21300000, guid: 66bbf1e9fc204fc4bb3470bb0b5ca236, type: 3}
-    thumbnailMorning: {fileID: 21300000, guid: 66bbf1e9fc204fc4bb3470bb0b5ca236, type: 3}
-    thumbnailSunset: {fileID: 21300000, guid: 66bbf1e9fc204fc4bb3470bb0b5ca236, type: 3}
-    thumbnailRain: {fileID: 21300000, guid: 66bbf1e9fc204fc4bb3470bb0b5ca236, type: 3}
-    botType: 02000000
-    stageType: 00000000
-  - sceneName: Default Map
     scenePath: MAP 3-Stage Default
     thumbnailDay: {fileID: 21300000, guid: 77e2b936257f8074bb706caa38258be1, type: 3}
     thumbnailNight: {fileID: 21300000, guid: 77e2b936257f8074bb706caa38258be1, type: 3}
@@ -3755,6 +3746,15 @@ MonoBehaviour:
     thumbnailSunset: {fileID: 21300000, guid: 34f7d246472da4e4c82f56bdfb175052, type: 3}
     thumbnailRain: {fileID: 21300000, guid: 34f7d246472da4e4c82f56bdfb175052, type: 3}
     botType: 05000000
+    stageType: 00000000
+  - sceneName: Tully [WIP]
+    scenePath: MAP Tully
+    thumbnailDay: {fileID: 21300000, guid: 7ee049372c9c8474fb8bc2b3f368024c, type: 3}
+    thumbnailNight: {fileID: 21300000, guid: d866fa2a6dcbf1a45bf58a8775f269e3, type: 3}
+    thumbnailMorning: {fileID: 21300000, guid: 6960266abdc9cc949874cd8eb4f7640b, type: 3}
+    thumbnailSunset: {fileID: 21300000, guid: 5ef73218e7fe9c64181852d16a8cfd2b, type: 3}
+    thumbnailRain: {fileID: 21300000, guid: 01c2eea78114c5b4da624cc56de67102, type: 3}
+    botType: 02000000
     stageType: 00000000
   spawnLocations:
   - 'Spawn: Outside'

@@ -27,8 +27,8 @@ EditorBuildSettings:
     path: Assets/Simulator/Scenes/Maps/MAP AAM Default/MAP AAM Default.unity
     guid: 44ca2891f773e5a45aa4158907e7514a
   - enabled: 1
-    path: Assets/Simulator/Scenes/Maps/MAP Cyberamics Default/MAP Cyberamics Default.unity
-    guid: 6cf34cee22c0fe34785288fcda877a79
+    path: Assets/Simulator/Scenes/Maps/MAP Tully/MAP Tully.unity
+    guid: 4d866fc1b73cd764fbd435db4e9155ae
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 1ad4485362b30e14db989c88e5cdf70e, type: 2}
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: 396d6d3e9c771e24ea59ebd25ab84624, type: 2}

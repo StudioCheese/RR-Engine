@@ -171,6 +171,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: CU Prop Buildings
+    second: {fileID: 2100000, guid: cd99dd14ca11a78418d3d5937422fc6b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: CU Streamers
     second: {fileID: 2100000, guid: 8c3e78a91adcaca498dfdcf7bedc5e59, type: 2}
   - first:

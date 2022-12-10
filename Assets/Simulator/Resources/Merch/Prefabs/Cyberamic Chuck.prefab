@@ -83,6 +83,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 3572517102335815406}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 2824d2fb0dd59bf4a93d0dde9118ff76, type: 3}
@@ -117,7 +118,20 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: -4561193470005248270, guid: 2824d2fb0dd59bf4a93d0dde9118ff76, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -2211744058041500527, guid: 2824d2fb0dd59bf4a93d0dde9118ff76, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -1314584013615251059, guid: 2824d2fb0dd59bf4a93d0dde9118ff76, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2824d2fb0dd59bf4a93d0dde9118ff76, type: 3}
 --- !u!4 &453823404533041236 stripped
 Transform:

@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: d90b4e662fb4e984c9a59a525cffba12
 ModelImporter:
-  serializedVersion: 21202
+  serializedVersion: 22103
   internalIDToNameTable:
   - first:
       74: -21306904427389734
@@ -18,6 +18,69 @@ ModelImporter:
   - first:
       74: -6863646084104933846
     second: Cube.010|Cube.010Action
+  - first:
+      74: -3886391171815115767
+    second: Cube.010|Circle.031|Circle.011|Baked.002Action
+  - first:
+      74: -3545933457094847155
+    second: Cube.010|Circle.031|Circle.011|Baked.002Action.001
+  - first:
+      74: -6176759953176615007
+    second: Cube.010|Circle.031|Circle.011|Baked.002Action.002
+  - first:
+      74: 9014612800799085952
+    second: Cube.010|Circle.031|Circle.011|Baked.002Action.003
+  - first:
+      74: -4178246645208478961
+    second: Cube.010|Circle.031|Circle.011|Baked.002Action.006
+  - first:
+      74: -778441633423783651
+    second: Cube.010|Circle.031|Circle.011|Baked.002Action.007
+  - first:
+      74: 1717541168977390054
+    second: Cube.010|Circle.031|Circle.011|Baked.002Action.008
+  - first:
+      74: -3234818767688944983
+    second: Cube.010|Circle.031|Circle.011|Circle.004Action
+  - first:
+      74: -1022487581433553216
+    second: Cube.010|Circle.031|Circle.011|Circle.005Action
+  - first:
+      74: 9065846340697649340
+    second: Cube.010|Circle.031|Circle.011|Circle.006Action
+  - first:
+      74: -2508991877464697659
+    second: Cube.010|Circle.031|Circle.011|Circle.006Action.001
+  - first:
+      74: 4210103294052757498
+    second: Cube.010|Circle.031|Circle.011|Circle.006Action.002
+  - first:
+      74: 3315370089595177691
+    second: Cube.010|Circle.031|Circle.011|Circle.006Action.003
+  - first:
+      74: 1778794264674693045
+    second: Cube.010|Circle.031|Circle.011|Circle.006Action.004
+  - first:
+      74: -1714034955219673253
+    second: Cube.010|Circle.031|Circle.011|Circle.006Action.005
+  - first:
+      74: 1733999383981595926
+    second: Cube.010|Circle.031|Circle.011|Circle.011Action
+  - first:
+      74: -687761422195319231
+    second: Cube.010|Circle.031|Circle.011|Circle.011Action.001
+  - first:
+      74: -7383814545840102905
+    second: Cube.010|Circle.031|Circle.011|Circle.011Action.002
+  - first:
+      74: 1800623155641878217
+    second: Cube.010|Circle.031|Circle.011|Circle.011Action.003
+  - first:
+      74: -6802621270074458246
+    second: Cube.010|Circle.031|Circle.011|Default.001Action
+  - first:
+      74: 3696121282636653781
+    second: Cube.010|Shader NodetreeAction
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -28,7 +91,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Black Blank
-    second: {fileID: 2100000, guid: 8d2379a1410befb4e93dd68c4a5196ad, type: 2}
+    second: {fileID: 2100000, guid: 8c03d91254582ff4286342fb880b4a86, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -39,6 +102,21 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: New Wood
     second: {fileID: 2100000, guid: f9c3a845e02a9104e9aff7cdcb18994c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PTT Old Carpet
+    second: {fileID: 2100000, guid: 1adabbce1e7bacf40af994bed1474d79, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TullyWood
+    second: {fileID: 2100000, guid: b41caba645985e44cb2ceebe27b5daa3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WinchesterWood1
+    second: {fileID: 2100000, guid: f2384af53af949e44a2b266d98c64857, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -107,6 +185,7 @@ ModelImporter:
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
+    strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -139,6 +218,8 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
